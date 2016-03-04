@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="GB2312"?>
-<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
-<beans default-autowire="byName">
-	<!-- Diamond 配置 -->
-	<bean id="openDiamondConfig" class="com.zhongan.openapi.diamond.OpenDiamondConfig" > 
-		<property name="groupID" value="DEFAULT_GROUP" />
-		<property name="dataID" value="com.zhongan.openapi.OpenDiamondConfig" />
-	</bean>
-</beans>

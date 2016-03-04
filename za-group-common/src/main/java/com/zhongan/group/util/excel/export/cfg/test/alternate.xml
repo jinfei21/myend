@@ -1,9 +1,0 @@
-<workbook reportName="alternate" templateClasspath="" unzipPath="">
-	<sheet name="sheet1" title="payment" >
-		<row name="title" height="23.4" customFormat="true" styleIndex="12" customHeight="false">
-			<col name="A" styleIndex="2" type="number" colspan="2" cacheSize="30"></col>
-			<col name="B" styleIndex="2" type="date" colspan="2" cacheSize="30"></col>
-		</row>
-	</sheet>
-	<shardedString fontId="1" type="noConversion"></shardedString>
-</workbook>
