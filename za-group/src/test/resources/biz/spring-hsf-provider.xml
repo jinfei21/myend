@@ -1,0 +1,373 @@
+<?xml version="1.0" encoding="GB2312"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans default-autowire="byName">
+	
+	
+	<bean id="groupInsuranceElemServiceProvider" class="com.taobao.hsf.app.spring.util.HSFSpringProviderBean">
+		<property name="serviceInterface" value="com.zhongan.core.group.service.GroupInsuranceElemService" />
+		<property name="target" ref="groupInsuranceElemService" />
+		<property name="serviceVersion" value="${za.group.hsf.serviceversion.common}" />
+		<property name="clientTimeout" value="${za.group.hsf.clienttimeout.common}" />
+		<property name="clientIdleTimeout" value="60" />
+		<property name="serializeType" value="java" />
+	</bean>
+	
+	<bean id="jianzhiPolicyServiceProvider" class="com.taobao.hsf.app.spring.util.HSFSpringProviderBean">
+		<property name="serviceInterface" value="com.zhongan.core.group.service.JianzhiPolicyService" />
+		<property name="target" ref="jianzhiPolicyService" />
+		<property name="serviceVersion" value="${za.group.hsf.serviceversion.common}" />
+		<property name="clientTimeout" value="${za.group.hsf.clienttimeout.common}" />
+		<property name="clientIdleTimeout" value="60" />
+		<property name="serializeType" value="java" />
+	</bean>
+   <bean id="groupClaimServiceProvider" class="com.taobao.hsf.app.spring.util.HSFSpringProviderBean">
+		<property name="serviceInterface" value="com.zhongan.core.group.service.GroupClaimService" />
+		<property name="target" ref="groupClaimService" />
+		<property name="serviceVersion" value="${za.group.hsf.serviceversion.common}" />
+		<property name="clientTimeout" value="10000" />
+		<property name="clientIdleTimeout" value="60" />
+		<property name="serializeType" value="java" />
+	</bean>
+	
+	 <bean id="groupInsurantExtensionServiceProvider" class="com.taobao.hsf.app.spring.util.HSFSpringProviderBean">
+		<property name="serviceInterface" value="com.zhongan.core.group.service.GroupInsurantExtensionService" />
+		<property name="target" ref="groupInsurantExtensionService" />
+		<property name="serviceVersion" value="${za.group.hsf.serviceversion.common}" />
+		<property name="clientTimeout" value="${za.group.hsf.clienttimeout.common}" />
+		<property name="clientIdleTimeout" value="60" />
+		<property name="serializeType" value="java" />
+	</bean>
+	
+	
+	 <bean id="groupPolicyExtensionServiceProvider" class="com.taobao.hsf.app.spring.util.HSFSpringProviderBean">
+		<property name="serviceInterface" value="com.zhongan.core.group.service.GroupPolicyExtensionService" />
+		<property name="target" ref="groupPolicyExtensionService" />
+		<property name="serviceVersion" value="${za.group.hsf.serviceversion.common}" />
+		<property name="clientTimeout" value="${za.group.hsf.clienttimeout.common}" />
+		<property name="clientIdleTimeout" value="60" />
+		<property name="serializeType" value="java" />
+	</bean>
+	
+	 <bean id="groupPolicyServiceProvider" class="com.taobao.hsf.app.spring.util.HSFSpringProviderBean">
+		<property name="serviceInterface" value="com.zhongan.core.group.service.GroupPolicyService" />
+		<property name="target" ref="groupPolicyService" />
+		<property name="serviceVersion" value="${za.group.hsf.serviceversion.common}" />
+		<property name="clientTimeout" value="10000" />
+		<property name="clientIdleTimeout" value="60" />
+		<property name="serializeType" value="java" />
+	</bean>
+
+	<bean id="groupClaimSendMailServiceProvider" class="com.taobao.hsf.app.spring.util.HSFSpringProviderBean">
+		<property name="serviceInterface" value="com.zhongan.core.group.service.GroupClaimSendMailService" />
+		<property name="target" ref="groupClaimSendMailService" />
+		<property name="serviceVersion" value="${za.group.hsf.serviceversion.common}" />
+		<property name="clientTimeout" value="${za.group.hsf.clienttimeout.common}" />
+		<property name="clientIdleTimeout" value="60" />
+		<property name="serializeType" value="java" />
+	</bean>
+	
+	<bean id="normalPolicyServiceProvider" class="com.taobao.hsf.app.spring.util.HSFSpringProviderBean">
+		<property name="serviceInterface" value="com.zhongan.core.group.service.NormalPolicyService" />
+		<property name="target" ref="normalPolicyService" />
+		<property name="serviceVersion" value="${za.group.hsf.serviceversion.common}" />
+		<property name="clientTimeout" value="10000" />
+		<property name="clientIdleTimeout" value="60" />
+		<property name="serializeType" value="java" />
+	</bean>
+
+	<bean id="groupUtilServiceProvider" class="com.taobao.hsf.app.spring.util.HSFSpringProviderBean">
+		<property name="serviceInterface" value="com.zhongan.core.group.service.GroupUtilService" />
+		<property name="target" ref="groupUtilService" />
+		<property name="serviceVersion" value="${za.group.hsf.serviceversion.common}" />
+		<property name="clientTimeout" value="30000" />
+		<property name="clientIdleTimeout" value="60" />
+		<property name="serializeType" value="java" />
+	</bean>
+	 <bean id="policyPackageRoutServiceProvider" class="com.taobao.hsf.app.spring.util.HSFSpringProviderBean">
+		<property name="serviceInterface" value="com.zhongan.core.group.service.PolicyPackageRoutService" />
+		<property name="target" ref="policyPackageRoutService" />
+		<property name="serviceVersion" value="${za.group.hsf.serviceversion.common}" />
+		<property name="clientTimeout" value="10000" />
+		<property name="clientIdleTimeout" value="60" />
+		<property name="serializeType" value="java" />
+	</bean>
+	
+	 <bean id="policyUserRouterServiceProvider" class="com.taobao.hsf.app.spring.util.HSFSpringProviderBean">
+		<property name="serviceInterface" value="com.zhongan.core.group.service.PolicyUserRouterService" />
+		<property name="target" ref="policyUserRouterService" />
+		<property name="serviceVersion" value="${za.group.hsf.serviceversion.common}" />
+		<property name="clientTimeout" value="${za.group.hsf.clienttimeout.common}" />
+		<property name="clientIdleTimeout" value="60" />
+		<property name="serializeType" value="java" />
+	</bean>
+	
+	
+	 <bean id="groupPolicyInsuredAmountServiceProvider" class="com.taobao.hsf.app.spring.util.HSFSpringProviderBean">
+		<property name="serviceInterface" value="com.zhongan.core.group.service.GroupPolicyInsuredAmountService" />
+		<property name="target" ref="groupPolicyInsuredAmountService" />
+		<property name="serviceVersion" value="${za.group.hsf.serviceversion.common}" />
+		<property name="clientTimeout" value="${za.group.hsf.clienttimeout.common}" />
+		<property name="clientIdleTimeout" value="60" />
+		<property name="serializeType" value="java" />
+	</bean>
+	
+	
+	 <bean id="groupLogServiceProvider" class="com.taobao.hsf.app.spring.util.HSFSpringProviderBean">
+		<property name="serviceInterface" value="com.zhongan.core.group.service.GroupLogService" />
+		<property name="target" ref="groupLogService" />
+		<property name="serviceVersion" value="${za.group.hsf.serviceversion.common}" />
+		<property name="clientTimeout" value="${za.group.hsf.clienttimeout.common}" />
+		<property name="clientIdleTimeout" value="60" />
+		<property name="serializeType" value="java" />
+	</bean>
+
+	 <bean id="groupFileServiceProvider" class="com.taobao.hsf.app.spring.util.HSFSpringProviderBean">
+		<property name="serviceInterface" value="com.zhongan.core.group.service.GroupFileService" />
+		<property name="target" ref="groupFileService" />
+		<property name="serviceVersion" value="${za.group.hsf.serviceversion.common}" />
+		<property name="clientTimeout" value="120000" />
+		<property name="clientIdleTimeout" value="60" />
+		<property name="serializeType" value="java" />
+	</bean>
+	
+	<bean id="sinaHealthServiceProvider" class="com.taobao.hsf.app.spring.util.HSFSpringProviderBean">
+		<property name="serviceInterface" value="com.zhongan.core.group.service.SinaHealthService" />
+		<property name="target" ref="sinaHealthService" />
+		<property name="serviceVersion" value="${za.group.hsf.serviceversion.common}" />
+		<property name="clientTimeout" value="${za.group.hsf.clienttimeout.common}" />
+		<property name="clientIdleTimeout" value="60" />
+		<property name="serializeType" value="java" />
+	</bean>
+	
+	<bean id="groupPolicyEndorseQueryServiceProvider" class="com.taobao.hsf.app.spring.util.HSFSpringProviderBean">
+		<property name="serviceInterface" value="com.zhongan.core.group.service.GroupPolicyEndorseQueryService" />
+		<property name="target" ref="groupPolicyEndorseQueryService" />
+		<property name="serviceVersion" value="${za.group.hsf.serviceversion.common}" />
+		<property name="clientTimeout" value="${za.group.hsf.clienttimeout.common}" />
+		<property name="clientIdleTimeout" value="60" />
+		<property name="serializeType" value="java" />
+	</bean>
+  <bean id="groupPolicyEndorsementServiceProvider" class="com.taobao.hsf.app.spring.util.HSFSpringProviderBean">
+		<property name="serviceInterface" value="com.zhongan.core.group.service.GroupPolicyEndorsementService" />
+		<property name="target" ref="groupPolicyEndorsementService" />
+		<property name="serviceVersion" value="${za.group.hsf.serviceversion.common}" />
+		<property name="clientTimeout" value="30000" />
+		<property name="clientIdleTimeout" value="60" />
+		<property name="serializeType" value="java" />
+	</bean>
+  <bean id="groupClaimDocumentFeeDetailServiceProvider" class="com.taobao.hsf.app.spring.util.HSFSpringProviderBean">
+		<property name="serviceInterface" value="com.zhongan.core.group.service.GroupClaimDocumentFeeDetailService" />
+		<property name="target" ref="groupClaimDocumentFeeDetailService" />
+		<property name="serviceVersion" value="${za.group.hsf.serviceversion.common}" />
+		<property name="clientTimeout" value="${za.group.hsf.clienttimeout.common}" />
+		<property name="clientIdleTimeout" value="60" />
+		<property name="serializeType" value="java" />
+	</bean>
+	<bean id="edaijiaPolicyServiceProvider" class="com.taobao.hsf.app.spring.util.HSFSpringProviderBean">
+		<property name="serviceInterface" value="com.zhongan.core.group.service.EdaijiaPolicyService" />
+		<property name="target" ref="edaijiaPolicyService" />
+		<property name="serviceVersion" value="${za.group.hsf.serviceversion.common}" />
+		<property name="clientTimeout" value="${za.group.hsf.clienttimeout.common}" />
+		<property name="clientIdleTimeout" value="60" />
+		<property name="serializeType" value="java" />
+	</bean>
+
+  	<bean id="groupInsuranceEdaijiaExtensionServiceProvider" class="com.taobao.hsf.app.spring.util.HSFSpringProviderBean">
+		<property name="serviceInterface" value="com.zhongan.core.group.service.GroupInsuranceEdaijiaExtensionService" />
+		<property name="target" ref="groupInsuranceEdaijiaExtensionServiceImpl" />
+		<property name="serviceVersion" value="${za.group.hsf.serviceversion.common}" />
+		<property name="clientTimeout" value="${za.group.hsf.clienttimeout.common}" />
+		<property name="clientIdleTimeout" value="60" />
+		<property name="serializeType" value="java" />
+	</bean>
+	<bean id="groupInsurantCollectServiceProvider" class="com.taobao.hsf.app.spring.util.HSFSpringProviderBean">
+		<property name="serviceInterface" value="com.zhongan.core.group.service.GroupInsurantCollectService" />
+		<property name="target" ref="groupInsurantCollectService" />
+		<property name="serviceVersion" value="${za.group.hsf.serviceversion.common}" />
+		<property name="clientTimeout" value="${za.group.hsf.clienttimeout.common}" />
+		<property name="clientIdleTimeout" value="60" />
+		<property name="serializeType" value="java" />
+	</bean>
+	<bean id="companyInsurancePlanConfigServiceProvider" class="com.taobao.hsf.app.spring.util.HSFSpringProviderBean">
+		<property name="serviceInterface" value="com.zhongan.core.group.service.CompanyInsurancePlanConfigService" />
+		<property name="target" ref="companyInsurancePlanConfigService" />
+		<property name="serviceVersion" value="${za.group.hsf.serviceversion.common}" />
+		<property name="clientTimeout" value="${za.group.hsf.clienttimeout.common}" />
+		<property name="clientIdleTimeout" value="60" />
+		<property name="serializeType" value="java" />
+	</bean>
+	<bean id="groupPolicyUwdiffReportServiceProvider" class="com.taobao.hsf.app.spring.util.HSFSpringProviderBean">
+		<property name="serviceInterface" value="com.zhongan.core.group.service.GroupPolicyUwdiffReportService" />
+		<property name="target" ref="groupPolicyUwdiffReportService" />
+		<property name="serviceVersion" value="${za.group.hsf.serviceversion.common}" />
+		<property name="clientTimeout" value="${za.group.hsf.clienttimeout.common}" />
+		<property name="clientIdleTimeout" value="60" />
+		<property name="serializeType" value="java" />
+	</bean>
+	<bean id="groupPolicySendEmailServiceProvider" class="com.taobao.hsf.app.spring.util.HSFSpringProviderBean">
+		<property name="serviceInterface" value="com.zhongan.core.group.service.GroupPolicySendEmailService" />
+		<property name="target" ref="groupPolicySendEmailService" />
+		<property name="serviceVersion" value="${za.group.hsf.serviceversion.common}" />
+		<property name="clientTimeout" value="${za.group.hsf.clienttimeout.common}" />
+		<property name="clientIdleTimeout" value="60" />
+		<property name="serializeType" value="java" />
+	</bean>	
+	<bean id="quoteGroupPolicyServiceProvider" class="com.taobao.hsf.app.spring.util.HSFSpringProviderBean">
+		<property name="serviceInterface" value="com.zhongan.core.group.service.QuoteGroupPolicyService" />
+		<property name="target" ref="quoteGroupPolicyService" />
+		<property name="serviceVersion" value="${za.group.hsf.serviceversion.common}" />
+		<property name="clientTimeout" value="6000" />
+		<property name="clientIdleTimeout" value="60" />
+		<property name="serializeType" value="java" />
+	</bean>
+	<bean id="groupMasterDataServiceProvider" class="com.taobao.hsf.app.spring.util.HSFSpringProviderBean">
+		<property name="serviceInterface" value="com.zhongan.core.group.service.GroupMasterDataService" />
+		<property name="target" ref="groupMasterDataService" />
+		<property name="serviceVersion" value="${za.group.hsf.serviceversion.common}" />
+		<property name="clientTimeout" value="${za.group.hsf.clienttimeout.common}" />
+		<property name="clientIdleTimeout" value="60" />
+		<property name="serializeType" value="java" />
+	</bean>
+	<bean id="groupPolicyAttachmentServiceProvider" class="com.taobao.hsf.app.spring.util.HSFSpringProviderBean">
+		<property name="serviceInterface" value="com.zhongan.core.group.service.GroupPolicyAttachmentService" />
+		<property name="target" ref="groupPolicyAttachmentService" />
+		<property name="serviceVersion" value="${za.group.hsf.serviceversion.common}" />
+		<property name="clientTimeout" value="${za.group.hsf.clienttimeout.common}" />
+		<property name="clientIdleTimeout" value="60" />
+		<property name="serializeType" value="java" />
+	</bean>
+	<bean id="groupPolicyInsurantServiceProvider" class="com.taobao.hsf.app.spring.util.HSFSpringProviderBean">
+		<property name="serviceInterface" value="com.zhongan.core.group.service.GroupPolicyInsurantService" />
+		<property name="target" ref="groupPolicyInsurantService" />
+		<property name="serviceVersion" value="${za.group.hsf.serviceversion.common}" />
+		<property name="clientTimeout" value="10000" />
+		<property name="clientIdleTimeout" value="60" />
+		<property name="serializeType" value="java" />
+	</bean>
+	<bean id="groupPolicyQuotePriceServiceProvider" class="com.taobao.hsf.app.spring.util.HSFSpringProviderBean">
+		<property name="serviceInterface" value="com.zhongan.core.group.service.GroupPolicyQuotePriceService" />
+		<property name="target" ref="groupPolicyQuotePriceService" />
+		<property name="serviceVersion" value="${za.group.hsf.serviceversion.common}" />
+		<property name="clientTimeout" value="10000" />
+		<property name="clientIdleTimeout" value="60" />
+		<property name="serializeType" value="java" />
+	</bean>
+	<bean id="groupPolicyTaskServiceProvider" class="com.taobao.hsf.app.spring.util.HSFSpringProviderBean">
+		<property name="serviceInterface" value="com.zhongan.core.group.service.GroupPolicyTaskService" />
+		<property name="target" ref="groupPolicyTaskService" />
+		<property name="serviceVersion" value="${za.group.hsf.serviceversion.common}" />
+		<property name="clientTimeout" value="${za.group.hsf.clienttimeout.common}" />
+		<property name="clientIdleTimeout" value="60" />
+		<property name="serializeType" value="java" />
+	</bean>
+	<bean id="groupAccountAmountOrderServiceProvider" class="com.taobao.hsf.app.spring.util.HSFSpringProviderBean">
+		<property name="serviceInterface" value="com.zhongan.core.group.service.GroupAccountAmountOrderService" />
+		<property name="target" ref="groupAccountAmountOrderService" />
+		<property name="serviceVersion" value="${za.group.hsf.serviceversion.common}" />
+		<property name="clientTimeout" value="${za.group.hsf.clienttimeout.common}" />
+		<property name="clientIdleTimeout" value="60" />
+		<property name="serializeType" value="java" />
+	</bean>
+	
+	<bean id="groupInsurancePackageExtensionServiceProvider" class="com.taobao.hsf.app.spring.util.HSFSpringProviderBean">
+		<property name="serviceInterface" value="com.zhongan.core.group.service.GroupInsurancePackageExtensionService" />
+		<property name="target" ref="groupInsurancePackageExtensionService" />
+		<property name="serviceVersion" value="${za.group.hsf.serviceversion.common}" />
+		<property name="clientTimeout" value="${za.group.hsf.clienttimeout.common}" />
+		<property name="clientIdleTimeout" value="60" />
+		<property name="serializeType" value="java" />
+	</bean>
+	
+	<bean id="packagePolicyServiceProvider" class="com.taobao.hsf.app.spring.util.HSFSpringProviderBean">
+		<property name="serviceInterface"
+			value="com.zhongan.core.group.service.PackagePolicyService" />
+		<property name="target" ref="packagePolicyService" />
+		<property name="serviceVersion" value="${za.group.hsf.serviceversion.common}" />
+		<property name="clientTimeout" value="${za.group.hsf.clienttimeout.common}" />
+		<property name="clientIdleTimeout" value="60" />
+		<property name="serializeType" value="java" />
+	</bean>
+
+
+	<!-- 团险服务类 -->
+	<bean id="healthTuanServiceProvider" class="com.taobao.hsf.app.spring.util.HSFSpringProviderBean">
+		<property name="serviceInterface"
+				  value="com.zhongan.core.group.service.HealthTuanService" />
+		<property name="target" ref="healthTuanService" />
+		<property name="serviceVersion" value="${za.group.hsf.serviceversion.common}" />
+		<property name="clientTimeout" value="${za.group.hsf.clienttimeout.common}" />
+		<property name="clientIdleTimeout" value="60" />
+		<property name="serializeType" value="java" />
+	</bean>
+		<bean id="openPolicyServiceProvider" class="com.taobao.hsf.app.spring.util.HSFSpringProviderBean">
+		<property name="serviceInterface" value="com.zhongan.core.group.service.OpenPolicyService" />
+		<property name="target" ref="openPolicyService" />
+		<property name="serviceVersion" value="${za.group.hsf.serviceversion.common}" />
+		<property name="clientTimeout" value="${za.group.hsf.clienttimeout.common}" />
+		<property name="clientIdleTimeout" value="60" />
+		<property name="serializeType" value="java" />
+	</bean>
+	<bean id="groupInsuranceDetailServiceProvider" class="com.taobao.hsf.app.spring.util.HSFSpringProviderBean">
+		<property name="serviceInterface" value="com.zhongan.core.group.service.GroupInsuranceDetailService" />
+		<property name="target" ref="groupInsuranceDetailService" />
+		<property name="serviceVersion" value="${za.group.hsf.serviceversion.common}" />
+		<property name="clientTimeout" value="10000" />
+		<property name="clientIdleTimeout" value="60" />
+		<property name="serializeType" value="java" />
+	</bean>
+	<bean id="xingshulinPolicyServiceProvider" class="com.taobao.hsf.app.spring.util.HSFSpringProviderBean">
+		<property name="serviceInterface" value="com.zhongan.core.group.service.XingshulinPolicyService" />
+		<property name="target" ref="xingshulinPolicyService" />
+		<property name="serviceVersion" value="${za.group.hsf.serviceversion.common}" />
+		<property name="clientTimeout" value="${za.group.hsf.clienttimeout.common}" />
+		<property name="clientIdleTimeout" value="60" />
+		<property name="serializeType" value="java" />
+	</bean>
+	
+	<bean id="groupInsuranceCommonExtensionServiceProvider" class="com.taobao.hsf.app.spring.util.HSFSpringProviderBean">
+		<property name="serviceInterface"
+				  value="com.zhongan.core.group.service.GroupInsuranceCommonExtensionService" />
+		<property name="target" ref="groupInsuranceCommonExtensionService" />
+		<property name="serviceVersion" value="${za.group.hsf.serviceversion.common}" />
+		<property name="clientTimeout" value="${za.group.hsf.clienttimeout.common}" />
+		<property name="clientIdleTimeout" value="60" />
+		<property name="serializeType" value="java" />
+	</bean>
+	
+	
+	<bean id="groupHmpLogServiceProvider" class="com.taobao.hsf.app.spring.util.HSFSpringProviderBean">
+		<property name="serviceInterface" value="com.zhongan.core.group.service.GroupHmpLogService" />
+		<property name="target" ref="groupHmpLogService" />
+		<property name="serviceVersion" value="${za.group.hsf.serviceversion.common}" />
+		<property name="clientTimeout" value="${za.group.hsf.clienttimeout.common}" />
+		<property name="clientIdleTimeout" value="60" />
+		<property name="serializeType" value="java" />
+	</bean>
+	
+	<bean id="groupAuthorityServiceProvider" class="com.taobao.hsf.app.spring.util.HSFSpringProviderBean">
+		<property name="serviceInterface" value="com.zhongan.core.group.service.GroupAuthorityService" />
+		<property name="target" ref="groupAuthorityService" />
+		<property name="serviceVersion" value="${za.group.hsf.serviceversion.common}" />
+		<property name="clientTimeout" value="${za.group.hsf.clienttimeout.common}" />
+		<property name="clientIdleTimeout" value="60" />
+		<property name="serializeType" value="java" />
+	</bean>
+	
+	<bean id="groupPolicyRiskInsurantUtilProvider" class="com.taobao.hsf.app.spring.util.HSFSpringProviderBean">
+		<property name="serviceInterface" value="com.zhongan.core.group.service.GroupPolicyRiskInsurantUtilService" />
+		<property name="target" ref="groupPolicyRiskInsurantUtil" />
+		<property name="serviceVersion" value="${za.group.hsf.serviceversion.common}" />
+		<property name="clientTimeout" value="${za.group.hsf.clienttimeout.common}" />
+		<property name="clientIdleTimeout" value="60" />
+		<property name="serializeType" value="java" />
+	</bean>
+	
+	<bean id="groupPolicyEndorModifElemServiceProvider" class="com.taobao.hsf.app.spring.util.HSFSpringProviderBean">
+		<property name="serviceInterface" value="com.zhongan.core.group.service.GroupPolicyEndorModifElemService" />
+		<property name="target" ref="groupPolicyEndorModifElemService" />
+		<property name="serviceVersion" value="${za.group.hsf.serviceversion.common}" />
+		<property name="clientTimeout" value="${za.group.hsf.clienttimeout.common}" />
+		<property name="clientIdleTimeout" value="60" />
+		<property name="serializeType" value="java" />
+	</bean>
+</beans> 

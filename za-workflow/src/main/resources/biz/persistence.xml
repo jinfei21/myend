@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="GBK"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.springframework.org/schema/beans"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+           http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+           http://www.springframework.org/schema/tx    http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+       "
+	default-autowire="byName">
+
+	<bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor" />
+	<bean class="org.springframework.context.annotation.CommonAnnotationBeanPostProcessor" />
+
+	<!-- 声明式事务 -->
+	<tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true" />
+
+	<!-- 分表TDDL数据源 -->
+	<bean id="mysqlTddlDataSource" class="com.taobao.tddl.client.jdbc.TDataSource" init-method="init">
+		<property name="appName" value="${za.workflow.tddl.appname}" />
+		<property name="dynamicRule" value="true"/>
+		<!-- <property name="useLocalConfig" value="true" />
+		<property name="appRuleFile" value="classpath:/biz/tddl-rule.xml" /> -->
+		<property name="dataSourceType" value="DruidDataSource"/>
+		
+	</bean>
+
+	<bean id="transactionTemplate" class="org.springframework.transaction.support.TransactionTemplate">
+		<property name="transactionManager" ref="mysqlTddlTransactionManager" />
+	</bean>
+
+	<bean id="mysqlTddlTransactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="mysqlTddlDataSource" />
+	</bean>
+	<alias name="mysqlTddlTransactionManager" alias="transactionManager" />
+
+	<bean id="sqlMapClient" class="org.springframework.orm.ibatis.SqlMapClientFactoryBean">
+		<property name="configLocation">
+			<value>classpath:dal/sqlmap-config.xml</value>
+		</property>
+		<property name="dataSource" ref="mysqlTddlDataSource" />
+	</bean>
+
+	<!-- 流程实例序列 -->
+	<bean id="seqProcess" class="com.taobao.tddl.client.sequence.impl.GroupSequence" init-method="init">
+		<property name="sequenceDao" ref="idSequenceDao" />
+		<!-- sequence生成器名 -->
+		<property name="name" value="seq_process" />
+	</bean>
+	
+	<!-- 流程模板定义序列 -->
+	<bean id="seqProcessTemplate" class="com.taobao.tddl.client.sequence.impl.GroupSequence" init-method="init">
+		<property name="sequenceDao" ref="idSequenceDao" />
+		<!-- sequence生成器名 -->
+		<property name="name" value="seq_process_template" />
+	</bean>
+	
+	<!-- 流程流水序列 -->
+	<bean id="seqProcessHist" class="com.taobao.tddl.client.sequence.impl.GroupSequence" init-method="init">
+		<property name="sequenceDao" ref="idSequenceDao" />
+		<!-- sequence生成器名 -->
+		<property name="name" value="seq_process_hist" />
+	</bean>
+	
+	<!-- 流程参数序列 -->
+	<bean id="seqProcessParams" class="com.taobao.tddl.client.sequence.impl.GroupSequence" init-method="init">
+		<property name="sequenceDao" ref="idSequenceDao" />
+		<!-- sequence生成器名 -->
+		<property name="name" value="seq_process_params" />
+	</bean>
+	
+	<!-- 人工任务流水序列 -->
+	<bean id="seqTaskList" class="com.taobao.tddl.client.sequence.impl.GroupSequence" init-method="init">
+		<property name="sequenceDao" ref="idSequenceDao" />
+		<!-- sequence生成器名 -->
+		<property name="name" value="seq_task_list" />
+	</bean>
+	
+	<!-- seq -->
+	<bean id="idSequenceDao" class="com.taobao.tddl.client.sequence.impl.GroupSequenceDao" init-method="init">
+		<!-- appName，必填 -->
+		<property name="appName" value="${za.workflow.tddl.appname}" />
+		<!-- 数据源的个数 -->
+		<property name="dscount" value="${za.workflow.tddl.seq.dscount}" />
+		<!-- 数据库名：从哪些数据库中取ID -->
+		<property name="dbGroupKeys">			
+			#if("${za.basic.setting.mode}"=="DEV")
+			<list>				
+				<value>WORKFLOW_DEV_00_GROUP</value>
+			</list>
+			#elseif("${za.basic.setting.mode}"=="TST")
+			<list>
+				<value>WORKFLOW_TST_00_GROUP</value>
+			</list>
+			#elseif("${za.basic.setting.mode}"=="PRE")
+			<list>
+				<value>WORKFLOW_PRE_00_GROUP</value>
+			</list>
+			#elseif("${za.basic.setting.mode}"=="PRD")
+			<list>
+				<value>WORKFLOW_PRD_00_GROUP</value>
+			</list>
+			#end		
+		</property>
+		<!-- 内步长 ,默认为1000，取值在1-100000之间 -->
+		<property name="innerStep" value="5000" />
+		<!-- 是否开启自适应，默认是false -->
+		<property name="adjust" value="true" />
+		<!-- 重试次数，在多个gourpDataSource的场景下，建议设置成1-2次。默认为2次 -->
+		<property name="retryTimes" value="5" />
+		<!-- 使用的表的表名 ，默认为sequence -->
+		<property name="tableName" value="sequence" />
+		<!-- id生成器的字段名,默认为name -->
+		<property name="nameColumnName" value="name" />
+		<!-- 存值的列的字段名,默认为value -->
+		<property name="valueColumnName" value="value" />
+		<!-- 存修改时间的字段名 ,默认为gmt_modified -->
+		<property name="gmtModifiedColumnName" value="gmt_modified" />
+	</bean>
+	
+</beans>

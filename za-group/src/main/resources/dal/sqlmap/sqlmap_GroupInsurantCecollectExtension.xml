@@ -1,0 +1,1629 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+
+<sqlMap namespace="GroupInsurantCollect" > 
+
+  <typeAlias alias="groupInsurantCollectDO" type="com.zhongan.core.group.dao.dataobject.GroupInsurantCollectDO" />
+
+  <resultMap id="groupInsurantCollectDOResultMap" class="groupInsurantCollectDO" >
+    <result property="id" column="id" />
+    <result property="comUserId" column="com_user_id" />
+    <result property="groupPolicyId" column="group_policy_id" />
+    <result property="userId" column="user_id" />
+    <result property="companyName" column="company_name" />
+    <result property="insurantFamilySeq" column="insurant_family_seq" />
+    <result property="insurantInnerSeq" column="insurant_inner_seq" />
+    <result property="staffSeqNo" column="staff_seq_no" />
+    <result property="creator" column="creator" />
+    <result property="gmtCreated" column="gmt_created" />
+    <result property="modifier" column="modifier" />
+    <result property="gmtModified" column="gmt_modified" />
+    <result property="isDeleted" column="is_deleted" />
+    <result property="insurantName" column="insurant_name" />
+    <result property="certiType" column="certi_type" />
+    <result property="certiNo" column="certi_no" />
+    <result property="tradeNo" column="trade_no" />
+    <result property="birthday" column="birthday" />
+    <result property="gender" column="gender" />
+    <result property="socialSecurityNo" column="social_security_no" />
+    <result property="medicalInsurancePlace" column="medical_insurance_place" />
+    <result property="effectiveDate" column="effective_date" />
+    <result property="baseCertiType" column="base_certi_type" />
+    <result property="baseCertiNo" column="base_certi_no" />
+    <result property="relationToStaff" column="relation_to_staff" />
+    <result property="insurancePlan" column="insurance_plan" />
+    <result property="staffType" column="staff_type" />
+    <result property="phone" column="phone" />
+    <result property="email" column="email" />
+    <result property="dataType" column="data_type" />
+    <result property="subCompany" column="sub_company" />
+    <result property="department" column="department" />
+    <result property="salary" column="salary" />
+    <result property="nationality" column="nationality" />
+    <result property="householdLocation" column="household_location" />
+    <result property="maritalStatus" column="marital_status" />
+    <result property="nation" column="nation" />
+    <result property="occupationalCode" column="occupational_code" />
+    <result property="occupationalType" column="occupational_type" />
+    <result property="position" column="position" />
+    <result property="transferAccountBank" column="transfer_account_bank" />
+    <result property="accountHolder" column="account_holder" />
+    <result property="accountNo" column="account_no" />
+    <result property="entryDate" column="entry_date" />
+    <result property="workExperience" column="work_experience" />
+    <result property="staffNo" column="staff_no" />
+    <result property="isRenewal" column="is_renewal" />
+    <result property="remark" column="remark" />
+    <result property="projectExpiryDate" column="project_expiry_date" />
+    <result property="projectName" column="project_name" />
+    <result property="projectCode" column="project_code" />
+    <result property="insurantType" column="insurant_type" />
+    <result property="registerAddress" column="register_address" />
+    <result property="hasSocialInsurance" column="has_social_insurance" />
+    <result property="extraInfo" column="extra_info" />
+    <result property="organizationCode" column="organization_code" />
+    <result property="collectStatus" column="collect_status" />
+  </resultMap>
+
+  <sql id="groupInsurantCollect_columns" >
+    a1.id,a1.com_user_id,a1.group_policy_id, a1.user_id,a1.company_name, a1.insurant_family_seq, a1.insurant_inner_seq, 
+      a1.staff_seq_no, a1.creator, a1.gmt_created, a1.modifier, a1.gmt_modified, a1.is_deleted, 
+      a1.insurant_name, a1.certi_type, a1.certi_no, a1.trade_no, a1.birthday, a1.social_security_no, 
+      a1.medical_insurance_place, a1.gender, a1.base_certi_type, a1.base_certi_no, a1.relation_to_staff, 
+      a1.insurance_plan, a1.staff_type, a1.phone, a1.email, a1.effective_date, a1.data_type, 
+      a1.sub_company, a1.department, a1.salary, a1.nationality, a1.household_location, 
+      a1.marital_status, a1.nation, a1.occupational_code, a1.occupational_type, a1.position, 
+      a1.transfer_account_bank, a1.account_holder, a1.account_no, a1.entry_date, a1.work_experience, 
+      a1.staff_no,a1.is_renewal, a1.remark, a1.project_expiry_date, a1.project_name, a1.project_code, a1.insurant_type, 
+      a1.register_address, a1.has_social_insurance, a1.extra_info, a1.organization_code, a1.collect_status
+  </sql>
+
+  <sql id="groupInsurantCollect_do_columns" >
+    a1.id,a1.com_user_id,a1.group_policy_id, a1.user_id, a1.company_name, a1.insurant_family_seq, a1.insurant_inner_seq, 
+      a1.staff_seq_no, a1.creator, a1.gmt_created, a1.modifier, a1.gmt_modified, a1.is_deleted, 
+      a1.insurant_name, a1.certi_type, a1.certi_no, a1.trade_no, a1.birthday, a1.social_security_no, 
+      a1.medical_insurance_place, a1.gender, a1.base_certi_type, a1.base_certi_no, a1.relation_to_staff, 
+      a1.insurance_plan, a1.staff_type, a1.phone, a1.email, a1.effective_date, a1.data_type, 
+      a1.sub_company, a1.department, a1.salary, a1.nationality, a1.household_location, 
+      a1.marital_status, a1.nation, a1.occupational_code, a1.occupational_type, a1.position, 
+      a1.transfer_account_bank, a1.account_holder, a1.account_no, a1.entry_date, a1.work_experience, 
+      a1.staff_no,a1.is_renewal, a1.remark, a1.project_expiry_date, a1.project_name, a1.project_code, a1.insurant_type, 
+      a1.register_address, a1.has_social_insurance, a1.extra_info, a1.organization_code, a1.collect_status
+  </sql>
+
+  <sql id="groupInsurantCollect_query_columns" >
+    a1.id, a1.com_user_id, a1.group_policy_id, a1.user_id, a1.company_name, a1.insurant_family_seq, a1.insurant_inner_seq, 
+      a1.staff_seq_no, a1.creator, a1.gmt_created, a1.modifier, a1.gmt_modified, a1.is_deleted, 
+      a1.insurant_name, a1.certi_type, a1.certi_no, a1.trade_no, a1.birthday, a1.social_security_no, 
+      a1.medical_insurance_place, a1.gender, a1.base_certi_type, a1.base_certi_no, a1.relation_to_staff, 
+      a1.insurance_plan, a1.staff_type, a1.phone, a1.email, a1.effective_date, a1.data_type, 
+      a1.sub_company, a1.department, a1.salary, a1.nationality, a1.household_location, 
+      a1.marital_status, a1.nation, a1.occupational_code, a1.occupational_type, a1.position, 
+      a1.transfer_account_bank, a1.account_holder, a1.account_no, a1.entry_date, a1.work_experience, 
+      a1.staff_no,a1.is_renewal, a1.remark, a1.project_expiry_date, a1.project_name, a1.project_code, a1.insurant_type, 
+      a1.register_address, a1.has_social_insurance, a1.extra_info, a1.organization_code, a1.collect_status
+  </sql>
+
+  <sql id="queryParams" >
+    <dynamic prepend="WHERE" >
+      <isNotNull property="id" prepend="AND" >
+        <![CDATA[  
+        id = #id#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="comUserId" prepend="AND" >
+        <![CDATA[  
+        com_user_id = #comUserId#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="companyName" prepend="AND" >
+        <![CDATA[  
+        company_name = #companyName#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="groupPolicyId" prepend="AND" >
+        <![CDATA[  
+        group_policy_id = #groupPolicyId#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="userId" prepend="AND" >
+        <![CDATA[  
+        user_id = #userId#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="insurantFamilySeq" prepend="AND" >
+        <![CDATA[  
+        insurant_family_seq = #insurantFamilySeq#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="insurantInnerSeq" prepend="AND" >
+        <![CDATA[  
+        insurant_inner_seq = #insurantInnerSeq#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="staffSeqNo" prepend="AND" >
+        <![CDATA[  
+        staff_seq_no = #staffSeqNo#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="creator" prepend="AND" >
+        <![CDATA[  
+        creator = #creator#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="gmtCreated" prepend="AND" >
+        <![CDATA[  
+        gmt_created = #gmtCreated#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="modifier" prepend="AND" >
+        <![CDATA[  
+        modifier = #modifier#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="gmtModified" prepend="AND" >
+        <![CDATA[  
+        gmt_modified = #gmtModified#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="isDeleted" prepend="AND" >
+        <![CDATA[  
+        is_deleted = #isDeleted#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="insurantName" prepend="AND" >
+        <![CDATA[  
+        insurant_name = #insurantName#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="certiType" prepend="AND" >
+        <![CDATA[  
+        certi_type = #certiType#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="certiNo" prepend="AND" >
+        <![CDATA[  
+        certi_no = #certiNo#  
+        ]]>  
+      </isNotNull>
+       <isNotNull property="tradeNo" prepend="AND" >
+        <![CDATA[  
+        trade_no = #tradeNo#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="birthday" prepend="AND" >
+        <![CDATA[  
+        birthday = #birthday#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="socialSecurityNo" prepend="AND" >
+        <![CDATA[  
+        social_security_no = #socialSecurityNo#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="medicalInsurancePlace" prepend="AND" >
+        <![CDATA[  
+        medical_insurance_place = #medicalInsurancePlace#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="gender" prepend="AND" >
+        <![CDATA[  
+        gender = #gender#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="baseCertiType" prepend="AND" >
+        <![CDATA[  
+        base_certi_type = #baseCertiType#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="baseCertiNo" prepend="AND" >
+        <![CDATA[  
+        base_certi_no = #baseCertiNo#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="relationToStaff" prepend="AND" >
+        <![CDATA[  
+        relation_to_staff = #relationToStaff#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="insurancePlan" prepend="AND" >
+        <![CDATA[  
+        insurance_plan = #insurancePlan#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="staffType" prepend="AND" >
+        <![CDATA[  
+        staff_type = #staffType#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="phone" prepend="AND" >
+        <![CDATA[  
+        phone = #phone#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="email" prepend="AND" >
+        <![CDATA[  
+        email = #email#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="effectiveDate" prepend="AND" >
+        <![CDATA[  
+        effective_date = #effectiveDate#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="dataType" prepend="AND" >
+        <![CDATA[  
+        data_type = #dataType#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="subCompany" prepend="AND" >
+        <![CDATA[  
+        sub_company = #subCompany#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="department" prepend="AND" >
+        <![CDATA[  
+        department = #department#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="salary" prepend="AND" >
+        <![CDATA[  
+        salary = #salary#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="nationality" prepend="AND" >
+        <![CDATA[  
+        nationality = #nationality#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="householdLocation" prepend="AND" >
+        <![CDATA[  
+        household_location = #householdLocation#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="maritalStatus" prepend="AND" >
+        <![CDATA[  
+        marital_status = #maritalStatus#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="nation" prepend="AND" >
+        <![CDATA[  
+        nation = #nation#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="occupationalCode" prepend="AND" >
+        <![CDATA[  
+        occupational_code = #occupationalCode#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="occupationalType" prepend="AND" >
+        <![CDATA[  
+        occupational_type = #occupationalType#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="position" prepend="AND" >
+        <![CDATA[  
+        position = #position#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="transferAccountBank" prepend="AND" >
+        <![CDATA[  
+        transfer_account_bank = #transferAccountBank#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="accountHolder" prepend="AND" >
+        <![CDATA[  
+        account_holder = #accountHolder#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="accountNo" prepend="AND" >
+        <![CDATA[  
+        account_no = #accountNo#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="entryDate" prepend="AND" >
+        <![CDATA[  
+        entry_date = #entryDate#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="workExperience" prepend="AND" >
+        <![CDATA[  
+        work_experience = #workExperience#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="staffNo" prepend="AND" >
+        <![CDATA[  
+        staff_no = #staffNo#  
+        ]]>  
+      </isNotNull>
+       <isNotNull property="isRenewal" prepend="AND" >
+        <![CDATA[  
+        is_renewal = #isRenewal#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="remark" prepend="AND" >
+        <![CDATA[  
+        remark = #remark#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="projectExpiryDate" prepend="AND" >
+        <![CDATA[  
+        project_expiry_date = #projectExpiryDate#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="projectName" prepend="AND" >
+        <![CDATA[  
+        project_name = #projectName#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="projectCode" prepend="AND" >
+        <![CDATA[  
+        project_code = #projectCode#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="insurantType" prepend="AND" >
+        <![CDATA[  
+        insurant_type = #insurantType#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="registerAddress" prepend="AND" >
+        <![CDATA[  
+        register_address = #registerAddress#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="hasSocialInsurance" prepend="AND" >
+        <![CDATA[  
+        has_social_insurance = #hasSocialInsurance#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="extraInfo" prepend="AND" >
+        <![CDATA[  
+        extra_info = #extraInfo#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="organizationCode" prepend="AND" >
+        <![CDATA[  
+        organization_code = #organizationCode#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="collectStatus" prepend="AND">
+      	<![CDATA[
+      	collect_status = #collectStatus#
+      	]]>
+      </isNotNull>
+    </dynamic>
+  </sql>
+
+  <sql id="doQueryParams" >
+    <dynamic prepend="WHERE" >
+      <isNotNull property="id" prepend="AND" >
+        <![CDATA[  
+        id = #id#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="comUserId" prepend="AND" >
+        <![CDATA[  
+        com_user_id = #comUserId#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="companyName" prepend="AND" >
+        <![CDATA[  
+        company_name = #companyName#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="groupPolicyId" prepend="AND" >
+        <![CDATA[  
+        group_policy_id = #groupPolicyId#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="userId" prepend="AND" >
+        <![CDATA[  
+        user_id = #userId#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="insurantFamilySeq" prepend="AND" >
+        <![CDATA[  
+        insurant_family_seq = #insurantFamilySeq#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="insurantInnerSeq" prepend="AND" >
+        <![CDATA[  
+        insurant_inner_seq = #insurantInnerSeq#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="staffSeqNo" prepend="AND" >
+        <![CDATA[  
+        staff_seq_no = #staffSeqNo#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="creator" prepend="AND" >
+        <![CDATA[  
+        creator = #creator#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="gmtCreated" prepend="AND" >
+        <![CDATA[  
+        gmt_created = #gmtCreated#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="modifier" prepend="AND" >
+        <![CDATA[  
+        modifier = #modifier#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="gmtModified" prepend="AND" >
+        <![CDATA[  
+        gmt_modified = #gmtModified#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="isDeleted" prepend="AND" >
+        <![CDATA[  
+        is_deleted = #isDeleted#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="insurantName" prepend="AND" >
+        <![CDATA[  
+        insurant_name = #insurantName#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="certiType" prepend="AND" >
+        <![CDATA[  
+        certi_type = #certiType#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="certiNo" prepend="AND" >
+        <![CDATA[  
+        certi_no = #certiNo#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="tradeNo" prepend="AND" >
+        <![CDATA[  
+        trade_no = #tradeNo#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="birthday" prepend="AND" >
+        <![CDATA[  
+        birthday = #birthday#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="socialSecurityNo" prepend="AND" >
+        <![CDATA[  
+        social_security_no = #socialSecurityNo#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="medicalInsurancePlace" prepend="AND" >
+        <![CDATA[  
+        medical_insurance_place = #medicalInsurancePlace#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="gender" prepend="AND" >
+        <![CDATA[  
+        gender = #gender#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="baseCertiType" prepend="AND" >
+        <![CDATA[  
+        base_certi_type = #baseCertiType#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="baseCertiNo" prepend="AND" >
+        <![CDATA[  
+        base_certi_no = #baseCertiNo#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="relationToStaff" prepend="AND" >
+        <![CDATA[  
+        relation_to_staff = #relationToStaff#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="insurancePlan" prepend="AND" >
+        <![CDATA[  
+        insurance_plan = #insurancePlan#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="staffType" prepend="AND" >
+        <![CDATA[  
+        staff_type = #staffType#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="phone" prepend="AND" >
+        <![CDATA[  
+        phone = #phone#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="email" prepend="AND" >
+        <![CDATA[  
+        email = #email#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="effectiveDate" prepend="AND" >
+        <![CDATA[  
+        effective_date = #effectiveDate#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="dataType" prepend="AND" >
+        <![CDATA[  
+        data_type = #dataType#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="subCompany" prepend="AND" >
+        <![CDATA[  
+        sub_company = #subCompany#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="department" prepend="AND" >
+        <![CDATA[  
+        department = #department#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="salary" prepend="AND" >
+        <![CDATA[  
+        salary = #salary#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="nationality" prepend="AND" >
+        <![CDATA[  
+        nationality = #nationality#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="householdLocation" prepend="AND" >
+        <![CDATA[  
+        household_location = #householdLocation#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="maritalStatus" prepend="AND" >
+        <![CDATA[  
+        marital_status = #maritalStatus#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="nation" prepend="AND" >
+        <![CDATA[  
+        nation = #nation#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="occupationalCode" prepend="AND" >
+        <![CDATA[  
+        occupational_code = #occupationalCode#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="occupationalType" prepend="AND" >
+        <![CDATA[  
+        occupational_type = #occupationalType#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="position" prepend="AND" >
+        <![CDATA[  
+        position = #position#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="transferAccountBank" prepend="AND" >
+        <![CDATA[  
+        transfer_account_bank = #transferAccountBank#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="accountHolder" prepend="AND" >
+        <![CDATA[  
+        account_holder = #accountHolder#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="accountNo" prepend="AND" >
+        <![CDATA[  
+        account_no = #accountNo#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="entryDate" prepend="AND" >
+        <![CDATA[  
+        entry_date = #entryDate#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="workExperience" prepend="AND" >
+        <![CDATA[  
+        work_experience = #workExperience#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="staffNo" prepend="AND" >
+        <![CDATA[  
+        staff_no = #staffNo#  
+        ]]>  
+      </isNotNull>
+       <isNotNull property="isRenewal" prepend="AND" >
+        <![CDATA[  
+        is_renewal = #isRenewal#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="remark" prepend="AND" >
+        <![CDATA[  
+        remark = #remark#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="projectExpiryDate" prepend="AND" >
+        <![CDATA[  
+        project_expiry_date = #projectExpiryDate#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="projectName" prepend="AND" >
+        <![CDATA[  
+        project_name = #projectName#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="projectCode" prepend="AND" >
+        <![CDATA[  
+        project_code = #projectCode#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="insurantType" prepend="AND" >
+        <![CDATA[  
+        insurant_type = #insurantType#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="registerAddress" prepend="AND" >
+        <![CDATA[  
+        register_address = #registerAddress#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="hasSocialInsurance" prepend="AND" >
+        <![CDATA[  
+        has_social_insurance = #hasSocialInsurance#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="extraInfo" prepend="AND" >
+        <![CDATA[  
+        extra_info = #extraInfo#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="organizationCode" prepend="AND" >
+        <![CDATA[  
+        organization_code = #organizationCode#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="collectStatus" prepend="AND" >
+        <![CDATA[  
+        collect_status = #collectStatus#  
+        ]]>  
+      </isNotNull>
+    </dynamic>
+  </sql>
+
+  <sql id="queryQueryParams" >
+    <dynamic prepend="WHERE" >
+      <isNotNull property="id" prepend="AND" >
+        <![CDATA[  
+        id = #id#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="companyName" prepend="AND" >
+        <![CDATA[  
+        company_name = #companyName#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="groupPolicyId" prepend="AND" >
+        <![CDATA[  
+        group_policy_id = #groupPolicyId#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="userId" prepend="AND" >
+        <![CDATA[  
+        user_id = #userId#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="insurantFamilySeq" prepend="AND" >
+        <![CDATA[  
+        insurant_family_seq = #insurantFamilySeq#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="insurantInnerSeq" prepend="AND" >
+        <![CDATA[  
+        insurant_inner_seq = #insurantInnerSeq#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="staffSeqNo" prepend="AND" >
+        <![CDATA[  
+        staff_seq_no = #staffSeqNo#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="creator" prepend="AND" >
+        <![CDATA[  
+        creator = #creator#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="gmtCreated" prepend="AND" >
+        <![CDATA[  
+        gmt_created = #gmtCreated#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="modifier" prepend="AND" >
+        <![CDATA[  
+        modifier = #modifier#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="gmtModified" prepend="AND" >
+        <![CDATA[  
+        gmt_modified = #gmtModified#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="isDeleted" prepend="AND" >
+        <![CDATA[  
+        is_deleted = #isDeleted#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="insurantName" prepend="AND" >
+        <![CDATA[  
+        insurant_name = #insurantName#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="certiType" prepend="AND" >
+        <![CDATA[  
+        certi_type = #certiType#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="certiNo" prepend="AND" >
+        <![CDATA[  
+        certi_no = #certiNo#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="tradeNo" prepend="AND" >
+        <![CDATA[  
+        trade_no = #tradeNo#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="birthday" prepend="AND" >
+        <![CDATA[  
+        birthday = #birthday#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="socialSecurityNo" prepend="AND" >
+        <![CDATA[  
+        social_security_no = #socialSecurityNo#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="medicalInsurancePlace" prepend="AND" >
+        <![CDATA[  
+        medical_insurance_place = #medicalInsurancePlace#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="gender" prepend="AND" >
+        <![CDATA[  
+        gender = #gender#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="baseCertiType" prepend="AND" >
+        <![CDATA[  
+        base_certi_type = #baseCertiType#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="baseCertiNo" prepend="AND" >
+        <![CDATA[  
+        base_certi_no = #baseCertiNo#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="relationToStaff" prepend="AND" >
+        <![CDATA[  
+        relation_to_staff = #relationToStaff#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="insurancePlan" prepend="AND" >
+        <![CDATA[  
+        insurance_plan = #insurancePlan#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="staffType" prepend="AND" >
+        <![CDATA[  
+        staff_type = #staffType#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="phone" prepend="AND" >
+        <![CDATA[  
+        phone = #phone#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="email" prepend="AND" >
+        <![CDATA[  
+        email = #email#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="effectiveDate" prepend="AND" >
+        <![CDATA[  
+        effective_date = #effectiveDate#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="dataType" prepend="AND" >
+        <![CDATA[  
+        data_type = #dataType#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="subCompany" prepend="AND" >
+        <![CDATA[  
+        sub_company = #subCompany#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="department" prepend="AND" >
+        <![CDATA[  
+        department = #department#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="salary" prepend="AND" >
+        <![CDATA[  
+        salary = #salary#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="nationality" prepend="AND" >
+        <![CDATA[  
+        nationality = #nationality#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="householdLocation" prepend="AND" >
+        <![CDATA[  
+        household_location = #householdLocation#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="maritalStatus" prepend="AND" >
+        <![CDATA[  
+        marital_status = #maritalStatus#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="nation" prepend="AND" >
+        <![CDATA[  
+        nation = #nation#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="occupationalCode" prepend="AND" >
+        <![CDATA[  
+        occupational_code = #occupationalCode#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="occupationalType" prepend="AND" >
+        <![CDATA[  
+        occupational_type = #occupationalType#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="position" prepend="AND" >
+        <![CDATA[  
+        position = #position#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="transferAccountBank" prepend="AND" >
+        <![CDATA[  
+        transfer_account_bank = #transferAccountBank#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="accountHolder" prepend="AND" >
+        <![CDATA[  
+        account_holder = #accountHolder#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="accountNo" prepend="AND" >
+        <![CDATA[  
+        account_no = #accountNo#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="entryDate" prepend="AND" >
+        <![CDATA[  
+        entry_date = #entryDate#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="workExperience" prepend="AND" >
+        <![CDATA[  
+        work_experience = #workExperience#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="staffNo" prepend="AND" >
+        <![CDATA[  
+        staff_no = #staffNo#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="isRenewal" prepend="AND" >
+        <![CDATA[  
+        is_renewal = #isRenewal#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="remark" prepend="AND" >
+        <![CDATA[  
+        remark = #remark#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="projectExpiryDate" prepend="AND" >
+        <![CDATA[  
+        project_expiry_date = #projectExpiryDate#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="projectName" prepend="AND" >
+        <![CDATA[  
+        project_name = #projectName#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="projectCode" prepend="AND" >
+        <![CDATA[  
+        project_code = #projectCode#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="insurantType" prepend="AND" >
+        <![CDATA[  
+        insurant_type = #insurantType#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="registerAddress" prepend="AND" >
+        <![CDATA[  
+        register_address = #registerAddress#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="hasSocialInsurance" prepend="AND" >
+        <![CDATA[  
+        has_social_insurance = #hasSocialInsurance#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="extraInfo" prepend="AND" >
+        <![CDATA[  
+        extra_info = #extraInfo#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="organizationCode" prepend="AND" >
+        <![CDATA[  
+        organization_code = #organizationCode#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="collectStatus" prepend="AND">
+      	<![CDATA[
+      	collect_status = #collectStatus#
+      	]]>
+      </isNotNull>
+    </dynamic>
+  </sql>
+  
+  
+  <insert id="insert" parameterClass="groupInsurantCollectDO" >
+    INSERT INTO group_insurant_collect( id,com_user_id,group_policy_id, user_id, company_name,insurant_family_seq, insurant_inner_seq, 
+      staff_seq_no, creator, gmt_created, modifier, gmt_modified, is_deleted, 
+      insurant_name, certi_type, certi_no, trade_no, birthday, social_security_no, medical_insurance_place, 
+      gender, base_certi_type, base_certi_no, relation_to_staff, insurance_plan, staff_type, 
+      phone, email, effective_date, data_type, sub_company, department, salary, 
+      nationality, household_location, marital_status, nation, occupational_code, 
+      occupational_type, position, transfer_account_bank, account_holder, account_no, 
+      entry_date, work_experience, staff_no,is_renewal, remark,project_expiry_date,project_name,project_code,
+      insurant_type,register_address,has_social_insurance,extra_info,organization_code,collect_status)
+     VALUES ( #id#,#comUserId#,#groupPolicyId#, #userId#, #companyName#,#insurantFamilySeq#, #insurantInnerSeq#, 
+      #staffSeqNo#, #creator#, NOW(), #modifier#, NOW(), 'N', 
+      #insurantName#, #certiType#, #certiNo#,#tradeNo#, #birthday#, #socialSecurityNo#, #medicalInsurancePlace#, 
+      #gender#, #baseCertiType#, #baseCertiNo#, #relationToStaff#, #insurancePlan#, #staffType#, 
+      #phone#, #email#, #effectiveDate#, #dataType#, #subCompany#, #department#, #salary#, 
+      #nationality#, #householdLocation#, #maritalStatus#, #nation#, #occupationalCode#, 
+      #occupationalType#, #position#, #transferAccountBank#, #accountHolder#, #accountNo#, 
+      #entryDate#, #workExperience#, #staffNo#, #isRenewal#, #remark#, #projectExpiryDate#, #projectName#, 
+      #projectCode#, #insurantType#, #registerAddress#, #hasSocialInsurance#, #extraInfo#, #organizationCode#,#collectStatus#)
+  </insert>
+
+  <update id="update" parameterClass="groupInsurantCollectDO" >
+    UPDATE group_insurant_collect   SET gmt_modified = now()
+      <isNotNull property="groupPolicyId" prepend="," >
+        <![CDATA[  
+        group_policy_id = #groupPolicyId#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="companyName" prepend="," >
+        <![CDATA[  
+        company_name = #companyName#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="insurantFamilySeq" prepend="," >
+        <![CDATA[  
+        insurant_family_seq = #insurantFamilySeq#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="insurantInnerSeq" prepend="," >
+        <![CDATA[  
+        insurant_inner_seq = #insurantInnerSeq#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="staffSeqNo" prepend="," >
+        <![CDATA[  
+        staff_seq_no = #staffSeqNo#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="creator" prepend="," >
+        <![CDATA[  
+        creator = #creator#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="gmtCreated" prepend="," >
+        <![CDATA[  
+        gmt_created = #gmtCreated#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="modifier" prepend="," >
+        <![CDATA[  
+        modifier = #modifier#  
+        ]]>  
+      </isNotNull>  
+      <isNotNull property="isDeleted" prepend="," >
+        <![CDATA[  
+        is_deleted = #isDeleted#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="insurantName" prepend="," >
+        <![CDATA[  
+        insurant_name = #insurantName#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="certiType" prepend="," >
+        <![CDATA[  
+        certi_type = #certiType#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="certiNo" prepend="," >
+        <![CDATA[  
+        certi_no = #certiNo#  
+        ]]>  
+      </isNotNull>
+       <isNotNull property="tradeNo" prepend="," >
+        <![CDATA[  
+        trade_no = #tradeNo#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="birthday" prepend="," >
+        <![CDATA[  
+        birthday = #birthday#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="socialSecurityNo" prepend="," >
+        <![CDATA[  
+        social_security_no = #socialSecurityNo#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="medicalInsurancePlace" prepend="," >
+        <![CDATA[  
+        medical_insurance_place = #medicalInsurancePlace#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="gender" prepend="," >
+        <![CDATA[  
+        gender = #gender#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="baseCertiType" prepend="," >
+        <![CDATA[  
+        base_certi_type = #baseCertiType#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="baseCertiNo" prepend="," >
+        <![CDATA[  
+        base_certi_no = #baseCertiNo#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="relationToStaff" prepend="," >
+        <![CDATA[  
+        relation_to_staff = #relationToStaff#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="insurancePlan" prepend="," >
+        <![CDATA[  
+        insurance_plan = #insurancePlan#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="staffType" prepend="," >
+        <![CDATA[  
+        staff_type = #staffType#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="phone" prepend="," >
+        <![CDATA[  
+        phone = #phone#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="email" prepend="," >
+        <![CDATA[  
+        email = #email#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="effectiveDate" prepend="," >
+        <![CDATA[  
+        effective_date = #effectiveDate#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="dataType" prepend="," >
+        <![CDATA[  
+        data_type = #dataType#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="subCompany" prepend="," >
+        <![CDATA[  
+        sub_company = #subCompany#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="department" prepend="," >
+        <![CDATA[  
+        department = #department#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="salary" prepend="," >
+        <![CDATA[  
+        salary = #salary#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="nationality" prepend="," >
+        <![CDATA[  
+        nationality = #nationality#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="householdLocation" prepend="," >
+        <![CDATA[  
+        household_location = #householdLocation#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="maritalStatus" prepend="," >
+        <![CDATA[  
+        marital_status = #maritalStatus#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="nation" prepend="," >
+        <![CDATA[  
+        nation = #nation#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="occupationalCode" prepend="," >
+        <![CDATA[  
+        occupational_code = #occupationalCode#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="occupationalType" prepend="," >
+        <![CDATA[  
+        occupational_type = #occupationalType#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="position" prepend="," >
+        <![CDATA[  
+        position = #position#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="transferAccountBank" prepend="," >
+        <![CDATA[  
+        transfer_account_bank = #transferAccountBank#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="accountHolder" prepend="," >
+        <![CDATA[  
+        account_holder = #accountHolder#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="accountNo" prepend="," >
+        <![CDATA[  
+        account_no = #accountNo#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="entryDate" prepend="," >
+        <![CDATA[  
+        entry_date = #entryDate#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="workExperience" prepend="," >
+        <![CDATA[  
+        work_experience = #workExperience#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="staffNo" prepend="," >
+        <![CDATA[  
+        staff_no = #staffNo#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="isRenewal" prepend="," >
+        <![CDATA[  
+        is_renewal = #isRenewal#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="remark" prepend="," >
+        <![CDATA[  
+        remark = #remark#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="projectExpiryDate" prepend="," >
+        <![CDATA[  
+        project_expiry_date = #projectExpiryDate#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="projectName" prepend="," >
+        <![CDATA[  
+        project_name = #projectName#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="projectCode" prepend="," >
+        <![CDATA[  
+        project_code = #projectCode#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="insurantType" prepend="," >
+        <![CDATA[  
+        insurant_type = #insurantType#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="registerAddress" prepend="," >
+        <![CDATA[  
+        register_address = #registerAddress#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="hasSocialInsurance" prepend="," >
+        <![CDATA[  
+        has_social_insurance = #hasSocialInsurance#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="extraInfo" prepend="," >
+        <![CDATA[  
+        extra_info = #extraInfo#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="organizationCode" prepend="," >
+        <![CDATA[  
+        organization_code = #organizationCode#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="collectStatus" prepend="," >
+        <![CDATA[  
+        collect_status = #collectStatus#  
+        ]]>  
+      </isNotNull>
+     WHERE 1 = 1 
+      <isNotNull property="id"  prepend="AND">
+        <![CDATA[  
+        id = #id#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="comUserId" prepend="AND" >
+        <![CDATA[  
+        com_user_id = #comUserId#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="userId" prepend="AND" >
+        <![CDATA[  
+        user_id = #userId#  
+        ]]>  
+      </isNotNull>
+  </update>
+ 
+  <select id="findByPrimaryKey" parameterClass="java.lang.Long" resultMap="groupInsurantCollectDOResultMap" >
+     SELECT 
+    <include refid="groupInsurantCollect_do_columns" />
+    <![CDATA[  
+     FROM group_insurant_collect a1 WHERE id = #id#
+    ]]>  
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterClass="java.lang.Long" >
+    <![CDATA[  
+     DELETE FROM group_insurant_collect WHERE id = #id#
+    ]]>  
+  </delete>
+
+  <select id="countByDOExample" parameterClass="groupInsurantCollectDO" resultClass="java.lang.Integer" >
+    SELECT COUNT(id) AS num FROM group_insurant_collect 
+    <include refid="doQueryParams" />
+  </select>
+  
+  <select id="countByDOLikeExample" parameterClass="groupInsurantCollectDO" resultClass="java.lang.Integer" >
+    SELECT COUNT(id) AS num FROM group_insurant_collect a1
+    <dynamic prepend="WHERE" >
+	    <isNotEmpty property="companyName" prepend="AND" >
+		      <![CDATA[  
+		        a1.company_name =#companyName#
+		      ]]>  
+		</isNotEmpty>
+		<isNotEmpty property="userId" prepend="AND" >
+		      <![CDATA[  
+		        a1.user_id = #userId#  
+		      ]]>  
+		</isNotEmpty>
+		<isNotEmpty property="comUserId" prepend="AND" >
+		      <![CDATA[  
+		        a1.com_user_id = #comUserId#  
+		      ]]>  
+		</isNotEmpty>
+		<isNotEmpty property="startTime" prepend="AND"> 
+			  <![CDATA[ 
+			     a1.gmt_created >= #startTime# 
+			  ]]> 
+		</isNotEmpty> 
+		<isNotEmpty property="endTime" prepend="AND"> 
+			  <![CDATA[ 
+			     a1.gmt_created <= #endTime# 
+			  ]]> 
+		</isNotEmpty> 
+	</dynamic>
+  </select>
+
+  <select id="findListByDO" resultMap="groupInsurantCollectDOResultMap" parameterClass="groupInsurantCollectDO" >
+     SELECT 
+    <include refid="groupInsurantCollect_do_columns" />
+     FROM group_insurant_collect a1 
+    <include refid="doQueryParams" />
+  </select>
+  
+  <sql id="doQueryLikeParams">
+    <dynamic prepend="WHERE" >
+       <isNotEmpty property="userId" prepend="AND" >
+	      <![CDATA[  
+	        a1.user_id = #userId#  
+	      ]]>  
+	   </isNotEmpty>
+	   <isNotEmpty property="comUserId" prepend="AND" >
+	      <![CDATA[  
+	        a1.com_user_id = #comUserId#  
+	      ]]>  
+	   </isNotEmpty>
+	   <isNotEmpty property="startTime" prepend="AND"> 
+		  <![CDATA[ 
+		    a1.gmt_created >= #startTime# 
+		  ]]> 
+	   </isNotEmpty> 
+	   <isNotEmpty property="endTime" prepend="AND"> 
+		  <![CDATA[ 
+		    a1.gmt_created <= #endTime# 
+		  ]]> 
+	   </isNotEmpty> 
+	   <isNotEmpty property="companyName" prepend="AND" >
+	      <![CDATA[  
+	        a1.company_name = #companyName#
+	      ]]>  
+	   </isNotEmpty>
+     </dynamic>
+  </sql>
+  
+  
+  <sql id="doQueryLike1Params">
+    <dynamic prepend="WHERE" >
+       <isNotEmpty property="userId" prepend="AND" >
+	      <![CDATA[  
+	        a1.user_id = #userId#  
+	      ]]>  
+	   </isNotEmpty>
+	   <isNotEmpty property="comUserId" prepend="AND" >
+	      <![CDATA[  
+	        a1.com_user_id = #comUserId#  
+	      ]]>  
+	   </isNotEmpty>
+	   <isNotEmpty property="startTime" prepend="AND"> 
+		  <![CDATA[ 
+		    a1.gmt_created >= #startTime# 
+		  ]]> 
+	   </isNotEmpty> 
+	   <isNotEmpty property="endTime" prepend="AND"> 
+		  <![CDATA[ 
+		    a1.gmt_created <= #endTime# 
+		  ]]> 
+	   </isNotEmpty>
+	   <isNotEmpty property="companyName" prepend="AND" >
+	      <![CDATA[  
+	        a1.company_name = #companyName#
+	      ]]>  
+	   </isNotEmpty>
+     </dynamic>
+  </sql>
+      
+  
+  
+  <select id="findListByLikeDO" resultMap="groupInsurantCollectDOResultMap" parameterClass="groupInsurantCollectDO" >
+     SELECT 
+    <include refid="groupInsurantCollect_do_columns" />
+     FROM group_insurant_collect a1 
+     <include refid="doQueryLikeParams" />
+     <isNotEmpty property="start" >
+		<isNotEmpty property="limit"  >
+			<![CDATA[ 
+       			limit #start#,#limit#
+       		]]>
+       	</isNotEmpty>
+	</isNotEmpty>
+  </select>
+  
+  
+  <select id="findListByLike1DO" resultMap="groupInsurantCollectDOResultMap" parameterClass="groupInsurantCollectDO" >
+     SELECT 
+    <include refid="groupInsurantCollect_do_columns" />
+     FROM group_insurant_collect a1 
+     <include refid="doQueryLike1Params" />
+  </select>
+
+  <select id = "countInsurantByRelationType"  resultClass="java.lang.Integer"  parameterClass = "groupInsurantCollectDO" >
+     SELECT 
+       COUNT(id) AS num FROM group_insurant_collect a1
+     where a1.is_deleted ='N'
+      <isNotNull property="groupPolicyId" prepend="AND" >
+        <![CDATA[  
+        group_policy_id = #groupPolicyId#  
+        ]]>  
+      </isNotNull>
+     <isNotNull property="typeArray" prepend="AND" >
+        a1.relation_to_staff in 
+       <iterate open="(" close=")" conjunction="," property="typeArray" >   
+                     #typeArray[]#   
+       </iterate> 
+     </isNotNull>
+       
+  </select>
+   
+   <delete id="deleteByUserId" parameterClass="java.lang.Long" >
+    <![CDATA[  
+     DELETE FROM group_insurant_collect WHERE user_id = #userId#
+    ]]>  
+  </delete>
+  
+  <!-- <delete id="deleteByPolicyId" parameterClass="java.lang.Long" >
+    <![CDATA[  
+     DELETE FROM group_insurance_insurant_extension WHERE policy_id = #policyId#
+    ]]>  
+  </delete> -->
+   <delete id="deleteByCondition" parameterClass="groupInsurantCollectDO">
+    DELETE FROM group_insurant_collect 
+    <dynamic prepend="WHERE" >
+    <isNotNull property="id" prepend="AND" >
+        <![CDATA[  
+        id = #id#  
+        ]]>  
+      </isNotNull>
+     <isNotNull property="userId" prepend="AND" >
+        <![CDATA[  
+        user_id = #userId#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="groupPolicyId" prepend="AND" >
+        <![CDATA[  
+        group_policy_id = #groupPolicyId#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="isDeleted" prepend="AND" >
+        <![CDATA[  
+        is_deleted = #isDeleted#  
+        ]]>  
+      </isNotNull>
+     </dynamic>
+  </delete>
+  
+  
+  
+  
+   <update id="fixedDataById" parameterClass="groupInsurantCollectDO" >
+    UPDATE group_insurant_collect   SET gmt_modified = now()
+     <isNotNull property="modifier" prepend="," >
+        <![CDATA[  
+        modifier = #modifier#  
+        ]]>  
+      </isNotNull>
+      
+     <isNotNull property="insurantName" prepend="," >
+        <![CDATA[  
+        insurant_name = #insurantName#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="certiType" prepend="," >
+        <![CDATA[  
+        certi_type = #certiType#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="certiNo" prepend="," >
+        <![CDATA[  
+        certi_no = #certiNo#  
+        ]]>  
+      </isNotNull>
+       <isNotNull property="tradeNo" prepend="," >
+        <![CDATA[  
+        trade_no = #tradeNo#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="birthday" prepend="," >
+        <![CDATA[  
+        birthday = #birthday#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="socialSecurityNo" prepend="," >
+        <![CDATA[  
+        social_security_no = #socialSecurityNo#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="medicalInsurancePlace" prepend="," >
+        <![CDATA[  
+        medical_insurance_place = #medicalInsurancePlace#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="gender" prepend="," >
+        <![CDATA[  
+        gender = #gender#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="baseCertiType" prepend="," >
+        <![CDATA[  
+        base_certi_type = #baseCertiType#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="baseCertiNo" prepend="," >
+        <![CDATA[  
+        base_certi_no = #baseCertiNo#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="staffType" prepend="," >
+        <![CDATA[  
+        staff_type = #staffType#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="phone" prepend="," >
+        <![CDATA[  
+        phone = #phone#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="email" prepend="," >
+        <![CDATA[  
+        email = #email#  
+        ]]>  
+      </isNotNull>
+     <isNotNull property="salary" prepend="," >
+        <![CDATA[  
+        salary = #salary#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="nationality" prepend="," >
+        <![CDATA[  
+        nationality = #nationality#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="householdLocation" prepend="," >
+        <![CDATA[  
+        household_location = #householdLocation#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="maritalStatus" prepend="," >
+        <![CDATA[  
+        marital_status = #maritalStatus#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="nation" prepend="," >
+        <![CDATA[  
+        nation = #nation#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="occupationalCode" prepend="," >
+        <![CDATA[  
+        occupational_code = #occupationalCode#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="occupationalType" prepend="," >
+        <![CDATA[  
+        occupational_type = #occupationalType#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="position" prepend="," >
+        <![CDATA[  
+        position = #position#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="transferAccountBank" prepend="," >
+        <![CDATA[  
+        transfer_account_bank = #transferAccountBank#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="accountHolder" prepend="," >
+        <![CDATA[  
+        account_holder = #accountHolder#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="accountNo" prepend="," >
+        <![CDATA[  
+        account_no = #accountNo#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="entryDate" prepend="," >
+        <![CDATA[  
+        entry_date = #entryDate#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="workExperience" prepend="," >
+        <![CDATA[  
+        work_experience = #workExperience#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="staffNo" prepend="," >
+        <![CDATA[  
+        staff_no = #staffNo#  
+        ]]>  
+      </isNotNull>
+     <isNotNull property="isRenewal" prepend="," >
+        <![CDATA[  
+        is_renewal = #isRenewal#  
+        ]]>  
+      </isNotNull>
+    WHERE id = #id# 
+  </update>
+</sqlMap>

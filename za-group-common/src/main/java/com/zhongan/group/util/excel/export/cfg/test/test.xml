@@ -1,0 +1,6 @@
+<workbook reportName="enhanceSimple" templateClasspath="com/zhongan/group/util/excel/export/cfg/test/test.xlsx" 
+unzipPath="" defaultSheet="Sheet1">
+<!-- 在 initialRowNum都是样例行，defaultRow为默认的样例行，sheet页需要在此配置，sheet的label在模板文件中弄好-->
+	<sheet name="Sheet1" title="test" defaultRow="2" initialRowNum="2">
+	</sheet>
+</workbook>

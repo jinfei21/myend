@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="GB2312"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans default-autowire="byName">
+	<bean id="tairManager" class="com.taobao.tair.impl.DefaultTairManager" init-method="init">
+		<property name="configServerList">
+			<list>
+                 <value>${za.group.tair.configserver1}</value>
+                 <value>${za.group.tair.configserver2}</value>
+			</list>
+		</property>
+		<property name="groupName">
+			<value>${za.group.tair.groupname}</value>
+		</property>
+	</bean>
+    <bean id="onlineTair" class="com.zhongan.group.util.dcache.OnlineTair" >
+		<property name="tairManager" ref="tairManager"/>
+   	</bean>
+</beans>

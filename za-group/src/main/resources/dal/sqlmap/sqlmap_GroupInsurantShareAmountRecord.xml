@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+
+<sqlMap namespace="GroupInsurantShareAmountRecord" >
+
+  <typeAlias alias="groupInsurantShareAmountRecordDO" type="com.zhongan.core.group.dao.dataobject.GroupInsurantShareAmountRecordDO" />
+
+  <resultMap id="groupInsurantShareAmountRecordDOResultMap" class="groupInsurantShareAmountRecordDO" >
+    <result property="id" column="id" />
+    <result property="policyId" column="policy_id" />
+    <result property="productId" column="product_id" />
+    <result property="liabilityCode" column="liability_code" />
+    <result property="shareLiabilityCodes" column="share_liability_codes" />
+    <result property="shareAmount" column="share_amount" />
+    <result property="groupPolicyId" column="group_policy_id" />
+    <result property="isDeleted" column="is_deleted" />
+    <result property="creator" column="creator" />
+    <result property="gmtCreated" column="gmt_created" />
+    <result property="modifier" column="modifier" />
+    <result property="gmtModified" column="gmt_modified" />
+  </resultMap>
+
+  <sql id="groupInsurantShareAmountRecord_do_columns" >
+    a1.id, a1.policy_id, a1.product_id, a1.liability_code, a1.share_liability_codes, 
+      a1.share_amount, a1.group_policy_id, a1.is_deleted, a1.creator, a1.gmt_created, 
+      a1.modifier, a1.gmt_modified
+  </sql>
+
+  <sql id="doQueryParams" >
+    <dynamic prepend="WHERE" >
+      <isNotNull property="id" prepend="AND" >
+        <![CDATA[  
+        id = #id#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="policyId" prepend="AND" >
+        <![CDATA[  
+        policy_id = #policyId#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="productId" prepend="AND" >
+        <![CDATA[  
+        product_id = #productId#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="liabilityCode" prepend="AND" >
+        <![CDATA[  
+        liability_code = #liabilityCode#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="shareLiabilityCodes" prepend="AND" >
+        <![CDATA[  
+        share_liability_codes = #shareLiabilityCodes#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="shareAmount" prepend="AND" >
+        <![CDATA[  
+        share_amount = #shareAmount#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="groupPolicyId" prepend="AND" >
+        <![CDATA[  
+        group_policy_id = #groupPolicyId#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="isDeleted" prepend="AND" >
+        <![CDATA[  
+        is_deleted = #isDeleted#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="creator" prepend="AND" >
+        <![CDATA[  
+        creator = #creator#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="gmtCreated" prepend="AND" >
+        <![CDATA[  
+        gmt_created = #gmtCreated#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="modifier" prepend="AND" >
+        <![CDATA[  
+        modifier = #modifier#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="gmtModified" prepend="AND" >
+        <![CDATA[  
+        gmt_modified = #gmtModified#  
+        ]]>  
+      </isNotNull>
+    </dynamic>
+  </sql>
+
+  <insert id="insert" parameterClass="groupInsurantShareAmountRecordDO" >
+    INSERT INTO group_insurant_share_amount_record( id, policy_id, product_id, liability_code, share_liability_codes, 
+      share_amount, group_policy_id, is_deleted, creator, gmt_created, modifier, 
+      gmt_modified)
+     VALUES ( #id#, #policyId#, #productId#, #liabilityCode#, #shareLiabilityCodes#, 
+      #shareAmount#, #groupPolicyId#, 'N', #creator#, NOW(), #modifier#, 
+      NOW())
+  </insert>
+
+  <update id="update" parameterClass="groupInsurantShareAmountRecordDO" >
+    UPDATE group_insurant_share_amount_record    SET gmt_modified = now()
+      <isNotNull property="policyId" prepend="," >
+        <![CDATA[  
+        policy_id = #policyId#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="productId" prepend="," >
+        <![CDATA[  
+        product_id = #productId#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="liabilityCode" prepend="," >
+        <![CDATA[  
+        liability_code = #liabilityCode#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="shareLiabilityCodes" prepend="," >
+        <![CDATA[  
+        share_liability_codes = #shareLiabilityCodes#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="shareAmount" prepend="," >
+        <![CDATA[  
+        share_amount = #shareAmount#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="groupPolicyId" prepend="," >
+        <![CDATA[  
+        group_policy_id = #groupPolicyId#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="isDeleted" prepend="," >
+        <![CDATA[  
+        is_deleted = #isDeleted#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="creator" prepend="," >
+        <![CDATA[  
+        creator = #creator#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="gmtCreated" prepend="," >
+        <![CDATA[  
+        gmt_created = #gmtCreated#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="modifier" prepend="," >
+        <![CDATA[  
+        modifier = #modifier#  
+        ]]>  
+      </isNotNull>
+     WHERE id = #id#  
+  </update>
+
+  <select id="findByPrimaryKey" parameterClass="java.lang.Long" resultMap="groupInsurantShareAmountRecordDOResultMap" >
+     SELECT 
+    <include refid="groupInsurantShareAmountRecord_do_columns" />
+    <![CDATA[  
+     FROM group_insurant_share_amount_record a1 WHERE id = #id#
+    ]]>  
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterClass="java.lang.Long" >
+    <![CDATA[  
+     DELETE FROM group_insurant_share_amount_record WHERE id = #id#
+    ]]>  
+  </delete>
+
+  <select id="countByDOExample" parameterClass="groupInsurantShareAmountRecordDO" resultClass="java.lang.Integer" >
+    SELECT COUNT(id) AS num FROM group_insurant_share_amount_record 
+    <include refid="doQueryParams" />
+  </select>
+
+  <select id="findListByDO" resultMap="groupInsurantShareAmountRecordDOResultMap" parameterClass="groupInsurantShareAmountRecordDO" >
+     SELECT 
+    <include refid="groupInsurantShareAmountRecord_do_columns" />
+     FROM group_insurant_share_amount_record a1 
+    <include refid="doQueryParams" />
+  </select>
+
+</sqlMap>

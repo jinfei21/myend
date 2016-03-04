@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+
+<sqlMap namespace="ApiPrivilege" >
+
+  <typeAlias alias="apiPrivilegeDO" type="com.zhongan.openapi.core.dal.dataobject.ApiPrivilegeDO" />
+  <typeAlias alias="apiPrivilegeQuery" type="com.zhongan.openapi.core.dal.query.ApiPrivilegeQuery" />
+
+  <resultMap id="apiPrivilegeDOResultMap" class="apiPrivilegeDO" >
+    <result property="id" column="id" />
+    <result property="developerId" column="developer_id" />
+    <result property="apiId" column="api_id" />
+    <result property="throttledCntBySec" column="throttled_cnt_by_sec" />
+    <result property="throttledCntByDay" column="throttled_cnt_by_day" />    
+    <result property="isDel" column="is_deleted" />
+    <result property="gmtCreated" column="gmt_created" />
+    <result property="gmtModified" column="gmt_modified" />
+  </resultMap>
+
+  <sql id="apiPrivilege_query_columns" >
+    a1.id, a1.developer_id, a1.api_id, a1.throttled_cnt_by_sec, a1.throttled_cnt_by_day, a1.is_deleted, a1.gmt_created, a1.gmt_modified
+  </sql>
+
+  <sql id="queryQueryParams" >
+    <dynamic prepend="WHERE" >
+      <![CDATA[  
+      is_deleted = 'N' 
+      ]]>
+      <isParameterPresent prepend="AND">
+	      <isNotNull property="id" prepend="AND" >
+	        <![CDATA[  
+	        id = #id#  
+	        ]]>  
+	      </isNotNull>
+	      <isNotNull property="developerId" prepend="AND" >
+	        <![CDATA[  
+	        developer_id = #developerId#  
+	        ]]>  
+	      </isNotNull>
+	      <isNotNull property="apiId" prepend="AND" >
+	        <![CDATA[  
+	        api_id = #apiId#  
+	        ]]>  
+	      </isNotNull>
+	      <isNotNull property="throttledCntBySec" prepend="AND" >
+	        <![CDATA[  
+	        throttled_cnt_by_sec = #throttledCntBySec#  
+	        ]]>  
+	      </isNotNull>
+	      <isNotNull property="throttledCntByDay" prepend="AND" >
+	        <![CDATA[  
+	        throttled_cnt_by_day = #throttledCntByDay#  
+	        ]]>  
+	      </isNotNull>		      
+      </isParameterPresent>
+    </dynamic>
+  </sql>
+
+  <insert id="insert" parameterClass="apiPrivilegeDO" >
+    INSERT INTO api_privilege( id, developer_id, api_id, throttled_cnt_by_sec, throttled_cnt_by_day, is_deleted, gmt_created, gmt_modified)
+     VALUES ( #id#, #developerId#, #apiId#, #throttledCntBySec#, #throttledCntByDay#, 'N', now(), now())
+    <selectKey keyProperty="id" resultClass="java.lang.Long" >
+      SELECT LAST_INSERT_ID() AS value
+    </selectKey>
+  </insert>
+
+  <update id="update" parameterClass="apiPrivilegeDO" >
+    UPDATE api_privilege  set  gmt_modified = now()   
+      <isNotNull property="developerId" prepend="," >
+        <![CDATA[  
+        developer_id = #developerId#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="apiId" prepend="," >
+        <![CDATA[  
+        api_id = #apiId#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="throttledCntBySec" prepend="," >
+        <![CDATA[  
+        throttled_cnt_by_sec = #throttledCntBySec#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="throttledCntByDay" prepend="," >
+        <![CDATA[  
+        throttled_cnt_by_day = #throttledCntByDay#  
+        ]]>  
+      </isNotNull>	      
+     WHERE id = #id#  
+  </update>
+
+  <select id="findByPrimaryKey" parameterClass="java.lang.Long" resultMap="apiPrivilegeDOResultMap" >
+     SELECT 
+    <include refid="apiPrivilege_query_columns" />
+    <![CDATA[  
+     FROM api_privilege a1 WHERE id = #id#
+    ]]>  
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterClass="java.lang.Long" >
+    UPDATE api_privilege set is_deleted = 'Y', gmt_modified = now() WHERE id = #id#
+  </delete>
+
+  <select id="countByDOExample" parameterClass="apiPrivilegeDO" resultClass="java.lang.Integer" >
+    SELECT COUNT(id) AS num FROM api_privilege 
+    <include refid="queryQueryParams" />
+  </select>
+
+  <select id="findListByDO" resultMap="apiPrivilegeDOResultMap" parameterClass="apiPrivilegeDO" >
+     SELECT 
+    <include refid="apiPrivilege_query_columns" />
+     FROM api_privilege a1 
+    <include refid="queryQueryParams" />
+  </select>
+
+  <select id="countByQueryExample" parameterClass="apiPrivilegeQuery" resultClass="java.lang.Integer" >
+    SELECT COUNT(id) AS num FROM api_privilege 
+    <include refid="queryQueryParams" />
+  </select>
+
+  <select id="findListByQuery" resultMap="apiPrivilegeDOResultMap" parameterClass="apiPrivilegeQuery" >
+     SELECT 
+    <include refid="apiPrivilege_query_columns" />
+     FROM api_privilege a1 
+    <include refid="queryQueryParams" />
+  </select>
+</sqlMap>

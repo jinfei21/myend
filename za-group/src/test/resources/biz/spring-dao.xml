@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="GB2312"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans default-autowire="byName">
+
+	<bean id="claimDocumentDAO" class="com.zhongan.core.group.dao.impl.ClaimDocumentDAOImpl"/>
+    <bean id="claimLiabilityDAO" class="com.zhongan.core.group.dao.impl.ClaimLiabilityDAOImpl"/>
+    <bean id="claimPackageDAO" class="com.zhongan.core.group.dao.impl.ClaimPackageDAOImpl"/>
+    <bean id="claimGroupSettlementDAO" class="com.zhongan.core.group.dao.impl.ClaimGroupSettlementDAOImpl"/>
+    <bean id="claimGroupReserveDAO" class="com.zhongan.core.group.dao.impl.ClaimGroupReserveDAOImpl"/>
+    <bean id="claimGroupLogDAO" class="com.zhongan.core.group.dao.impl.ClaimGroupLogDAOImpl"/>
+    <bean id="groupClaimDocumentLiabilityDAO" class="com.zhongan.core.group.dao.impl.GroupClaimDocumentLiabilityDAOImpl"/>
+    
+    <bean id="policyUserRouterDAO" class="com.zhongan.core.group.dao.impl.PolicyUserRouterDAOImpl"/>
+    <bean id="groupInsuranceInsurantExtensionDAO" class="com.zhongan.core.group.dao.impl.GroupInsuranceInsurantExtensionDAOImpl"/>
+    <bean id="groupInsurancePolicyExtensionDAO" class="com.zhongan.core.group.dao.impl.GroupInsurancePolicyExtensionDAOImpl"/>
+    <bean id="policyPackageRoutDAO" class="com.zhongan.core.group.dao.impl.PolicyPackageRoutDAOImpl"/>
+    <bean id="groupPolicyInsuredAmountRecordDAO" class="com.zhongan.core.group.dao.impl.GroupPolicyInsuredAmountRecordDAOImpl"/>
+    
+    <bean id="groupLogDAO" class="com.zhongan.core.group.dao.impl.GroupLogDAOImpl"/>
+    
+    
+    
+    <bean id="groupPolicyEndorsementDAO" class="com.zhongan.core.group.dao.impl.GroupPolicyEndorsementDAOImpl"/>
+    <bean id="groupPolicyEndorModifElemDAO" class="com.zhongan.core.group.dao.impl.GroupPolicyEndorModifElemDAOImpl"/>
+    <bean id="groupTaskDAO" class="com.zhongan.core.group.dao.impl.GroupTaskDAOImpl"/>
+    <bean id="groupClaimDocumentFeeDetailDAO" class="com.zhongan.core.group.dao.impl.GroupClaimDocumentFeeDetailDAOImpl"/>
+    
+    <bean id="groupInsuranceEdaijiaExtensionDAO" class="com.zhongan.core.group.dao.impl.GroupInsuranceEdaijiaExtensionDAOImpl"/>
+    <bean id="groupBillAccountDAO" class="com.zhongan.core.group.dao.impl.GroupBillAccountDAOImpl"/>
+    <bean id="groupClaimDAO" class="com.zhongan.core.group.dao.impl.GroupClaimDAOImpl"/>
+
+  <bean id="groupInsurantCollectDAO" class="com.zhongan.core.group.dao.impl.GroupInsurantCollectDAOImpl"/>
+<bean id="companyInsurancePlanConfigDAO" class="com.zhongan.core.group.dao.impl.CompanyInsurancePlanConfigDAOImpl"/>
+   <bean id="groupPolicyUwdiffReportDAO" class="com.zhongan.core.group.dao.impl.GroupPolicyUwdiffReportDAOImpl"/>
+    <bean id="groupAccountAmountOrderDAO" class="com.zhongan.core.group.dao.impl.GroupAccountAmountOrderDAOImpl" ></bean>
+
+    <bean id="groupInsurancePackageExtensionDAO" class="com.zhongan.core.group.dao.impl.GroupInsurancePackageExtensionDAOImpl"/>
+
+    <bean id="groupInsuranceDetailListDAO" class="com.zhongan.core.group.dao.impl.GroupInsuranceDetailListDAOImpl"/>
+    <bean id ="groupInsuranceCommonExtensionDAO" class="com.zhongan.core.group.dao.impl.GroupInsuranceCommonExtensionDAOImpl" />
+
+    <bean id="groupHmpLogDAO" class="com.zhongan.core.group.dao.impl.GroupHmpLogDAOImpl"/>
+    
+    <bean id="groupInsuranceElemDAO" class="com.zhongan.core.group.dao.impl.GroupInsuranceElemDAOImpl"/>
+</beans>

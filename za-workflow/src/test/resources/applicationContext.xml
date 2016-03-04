@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="GB2312"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans default-autowire="byName">
+	<bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer" lazy-init="false">
+		<property name="locations">
+			<list>
+				<value>classpath*:antx.properties</value>
+			</list>
+		</property>
+	</bean>
+ 	<import resource="classpath*:/biz/persistence.xml" />
+	<import resource="classpath*:/biz/spring-biz.xml" />
+	<import resource="classpath*:/biz/spring-dao.xml" />
+	<import resource="classpath*:/biz/spring-hsf-provider.xml" />
+
+</beans>

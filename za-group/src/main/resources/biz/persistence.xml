@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="GBK"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.springframework.org/schema/beans"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+           http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+           http://www.springframework.org/schema/tx    http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+       "
+	default-autowire="byName">
+
+	<bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor" />
+	<bean class="org.springframework.context.annotation.CommonAnnotationBeanPostProcessor" />
+
+	<!-- 声明式事务 -->
+	<tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true" />
+
+	<!-- 分表TDDL数据源 -->
+	<bean id="mysqlTddlDataSource" class="com.taobao.tddl.client.jdbc.TDataSource" init-method="init">
+		<property name="appName" value="${za.group.tddl.appname}" />
+		<property name="dynamicRule" value="true" />
+	</bean>
+
+	<bean id="transactionTemplate" class="org.springframework.transaction.support.TransactionTemplate">
+		<property name="transactionManager" ref="mysqlTddlTransactionManager" />
+	</bean>
+
+	<bean id="mysqlTddlTransactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="mysqlTddlDataSource" />
+	</bean>
+	<alias name="mysqlTddlTransactionManager" alias="transactionManager" />
+
+	<bean id="sqlMapClient" class="org.springframework.orm.ibatis.SqlMapClientFactoryBean">
+		<property name="configLocations">
+			<list>
+				<value>classpath*:dal/sqlmap-config.xml</value>
+			</list>
+		</property>
+		<property name="dataSource" ref="mysqlTddlDataSource" />
+	</bean>
+	
+	<!-- 理赔产品组合表Id -->
+	<bean id="seqClaimPackage" class="com.taobao.tddl.client.sequence.impl.GroupSequence" init-method="init">
+		<property name="sequenceDao" ref="idSequenceDao" />
+		<!-- sequence生成器名 -->
+		<property name="name" value="seq_group_claim_package" />
+	</bean>
+	
+	<!-- 个人保险凭证打印记录表Id -->
+	<bean id="seqGroupPolicyPrintRec" class="com.taobao.tddl.client.sequence.impl.GroupSequence" init-method="init">
+		<property name="sequenceDao" ref="idSequenceDao" />
+		<!-- sequence生成器名 -->
+		<property name="name" value="seq_group_policy_print_rec" />
+	</bean>
+	
+	<!-- 理赔险种责任表Id -->
+	<bean id="seqClaimLiability" class="com.taobao.tddl.client.sequence.impl.GroupSequence" init-method="init">
+		<property name="sequenceDao" ref="idSequenceDao" />
+		<!-- sequence生成器名 -->
+		<property name="name" value="seq_group_claim_liability" />
+	</bean>
+	
+	<!-- 理赔票据表Id -->
+	<bean id="seqClaimDocument" class="com.taobao.tddl.client.sequence.impl.GroupSequence" init-method="init">
+		<property name="sequenceDao" ref="idSequenceDao" />
+		<!-- sequence生成器名 -->
+		<property name="name" value="seq_group_claim_document" />
+	</bean>
+	<!-- 理赔票据责任表 -->
+	<bean id="seqClaimDocumentLiability" class="com.taobao.tddl.client.sequence.impl.GroupSequence" init-method="init">
+		<property name="sequenceDao" ref="idSequenceDao" />
+		<!-- sequence生成器名 -->
+		<property name="name" value="seq_group_claim_document_liability" />
+	</bean>
+	<!-- 理赔团险理算前置表Id -->
+	<bean id="seqClaimGroupSettlement" class="com.taobao.tddl.client.sequence.impl.GroupSequence" init-method="init">
+		<property name="sequenceDao" ref="idSequenceDao" />
+		<!-- sequence生成器名 -->
+		<property name="name" value="seq_group_claim_settlement" />
+	</bean>
+	
+	<bean id="seqClaimGroupReserve" class="com.taobao.tddl.client.sequence.impl.GroupSequence" init-method="init">
+		<property name="sequenceDao" ref="idSequenceDao" />
+		<!-- sequence生成器名 -->
+		<property name="name" value="seq_group_claim_reserve" />
+	</bean>
+	
+	<bean id="seqClaimGroupLog" class="com.taobao.tddl.client.sequence.impl.GroupSequence" init-method="init">
+		<property name="sequenceDao" ref="idSequenceDao" />
+		<!-- sequence生成器名 -->
+		<property name="name" value="seq_group_claim_log" />
+	</bean>
+
+	<bean id="seqPolicyPackageRout" class="com.taobao.tddl.client.sequence.impl.GroupSequence" init-method="init">
+		<property name="sequenceDao" ref="idSequenceDao" />
+		<property name="name" value="seq_policy_package_rout" />
+	</bean>
+	
+   <bean id="seqPolicyUserRouter" class="com.taobao.tddl.client.sequence.impl.GroupSequence" init-method="init">
+		<property name="sequenceDao" ref="idSequenceDao" />
+		
+		<property name="name" value="seq_policy_User_Router" />
+	</bean>
+	
+	<bean id="seqGroupInsuranceInsurantExtension" class="com.taobao.tddl.client.sequence.impl.GroupSequence" init-method="init">
+		<property name="sequenceDao" ref="idSequenceDao" />
+		
+		<property name="name" value="seq_group_insurance_insurant_extension" />
+	</bean>
+	
+	<bean id="seqGroupInsurancePolicyExtension" class="com.taobao.tddl.client.sequence.impl.GroupSequence" init-method="init">
+		<property name="sequenceDao" ref="idSequenceDao" />
+		
+		<property name="name" value="seq_group_insurance_policy_extension" />
+	</bean>  
+	
+	<bean id="seqGroupPolicyInsuredAmountRecord" class="com.taobao.tddl.client.sequence.impl.GroupSequence" init-method="init">
+		<property name="sequenceDao" ref="idSequenceDao" />
+		
+		<property name="name" value="seq_group_policy_insured_amount_record" />
+	</bean> 
+		<bean id="seqGroupInsurantShareAmountRecord" class="com.taobao.tddl.client.sequence.impl.GroupSequence" init-method="init">
+		<property name="sequenceDao" ref="idSequenceDao" />
+		
+		<property name="name" value="seq_group_insurant_share_amount_record" />
+	</bean> 
+	
+		<bean id="seqGroupLog" class="com.taobao.tddl.client.sequence.impl.GroupSequence" init-method="init">
+		<property name="sequenceDao" ref="idSequenceDao" />
+		
+		<property name="name" value="seq_group_log" />
+	</bean>  
+	
+	<bean id="seqGroupLogSeq" class="com.taobao.tddl.client.sequence.impl.GroupSequence" init-method="init">
+		<property name="sequenceDao" ref="idSequenceDao" />
+		
+		<property name="name" value="seq_group_log_seq" />
+	</bean> 
+	
+	<bean id="seqGroupPolicyEndorModifElem" class="com.taobao.tddl.client.sequence.impl.GroupSequence" init-method="init">
+		<property name="sequenceDao" ref="idSequenceDao" />
+		<property name="name" value="seq_group_policy_endorModifElem" />
+	</bean>  
+	
+	
+	<bean id="seqGroupPolicyEndorsement" class="com.taobao.tddl.client.sequence.impl.GroupSequence" init-method="init">
+		<property name="sequenceDao" ref="idSequenceDao" />
+		
+		<property name="name" value="seq_group_policy_endorsement" />
+	</bean>  
+	
+	<bean id="seqGroupTask" class="com.taobao.tddl.client.sequence.impl.GroupSequence" init-method="init">
+		<property name="sequenceDao" ref="idSequenceDao" />
+		
+		<property name="name" value="seq_group_task" />
+	</bean>  
+	<bean id="seqGroupEndorsementNo" class="com.taobao.tddl.client.sequence.impl.GroupSequence" init-method="init">
+		<property name="sequenceDao" ref="idSequenceDao" />
+		
+		<property name="name" value="seq_endorsement_no" />
+	</bean>  
+	<bean id="seqClaimDocumentFeeDetailNo" class="com.taobao.tddl.client.sequence.impl.GroupSequence" init-method="init">
+		<property name="sequenceDao" ref="idSequenceDao" />
+		
+		<property name="name" value="seq_group_claim_document_fee_detail" />
+	</bean>
+	
+	<bean id="seqGroupInsuranceEdaijiaExtension" class="com.taobao.tddl.client.sequence.impl.GroupSequence" init-method="init">
+		<property name="sequenceDao" ref="idSequenceDao" />
+		<property name="name" value="seq_group_insurance_edaijia_extension" />
+	</bean>
+   <bean id="seqGroupClaim" class="com.taobao.tddl.client.sequence.impl.GroupSequence" init-method="init">
+		<property name="sequenceDao" ref="idSequenceDao" />
+		<property name="name" value="seq_group_claim" />
+	</bean>
+    <bean id="seqGroupBillAccount" class="com.taobao.tddl.client.sequence.impl.GroupSequence" init-method="init">
+		<property name="sequenceDao" ref="idSequenceDao" />
+		<property name="name" value="seq_group_claim_account" />
+	</bean>
+	 <bean id="seqGroupInsuranceCommonExtension" class="com.taobao.tddl.client.sequence.impl.GroupSequence" init-method="init">
+		<property name="sequenceDao" ref="idSequenceDao" />
+		<property name="name" value="seq_group_insur_common_ext" />
+	</bean>
+	<!-- 采集id -->
+	<bean id="seqGroupInsurantCollect" class="com.taobao.tddl.client.sequence.impl.GroupSequence" init-method="init">
+		<property name="sequenceDao" ref="idSequenceDao" />
+		
+		<property name="name" value="seq_group_insurance_collect" />
+	</bean>
+
+	<!-- 企业保险方案生成器 -->
+	<bean id="seqCompanyInsurancePlanConfig" class="com.taobao.tddl.client.sequence.impl.GroupSequence" init-method="init">
+		<property name="sequenceDao" ref="idSequenceDao" />
+		
+		<property name="name" value="seq_company_insurance_plan_config" />
+	</bean>
+	
+	<bean id="seqGroupAccountAmountOrder" class="com.taobao.tddl.client.sequence.impl.GroupSequence" init-method="init">
+		<property name="sequenceDao" ref="idSequenceDao" />
+		<property name="name" value="group_account_amount_order" />
+	</bean>
+	
+	<bean id="seqGroupInsurancePackageExtension" class="com.taobao.tddl.client.sequence.impl.GroupSequence" init-method="init">
+		<property name="sequenceDao" ref="idSequenceDao" />
+		<property name="name" value="seq_group_insurance_package_extension" />
+	</bean>
+	
+	<bean id="seqGroupHmpLog" class="com.taobao.tddl.client.sequence.impl.GroupSequence" init-method="init">
+		<property name="sequenceDao" ref="idSequenceDao" />
+		<property name="name" value="seq_group_hmp_log" />
+	</bean>
+	
+	<bean id="seqGroupInsuranceDetailList" class="com.taobao.tddl.client.sequence.impl.GroupSequence" init-method="init">
+		<property name="sequenceDao" ref="idSequenceDao" />
+		<property name="name" value="seq_group_insurance_detail_list" />
+	</bean>
+	
+	<bean id="seqGroupInsuranceElem" class="com.taobao.tddl.client.sequence.impl.GroupSequence" init-method="init">
+		<property name="sequenceDao" ref="idSequenceDao" />
+		<property name="name" value="seq_group_insurance_elem" />
+	</bean>
+
+	<bean id="seqClaimTpaLog" class="com.taobao.tddl.client.sequence.impl.GroupSequence" init-method="init">
+		<property name="sequenceDao" ref="idSequenceDao" />
+		<property name="name" value="seq_claim_tpa_log" />
+	</bean>
+
+	<bean id="seqClaimTpaReport" class="com.taobao.tddl.client.sequence.impl.GroupSequence" init-method="init">
+		<property name="sequenceDao" ref="idSequenceDao" />
+		<property name="name" value="seq_claim_tpa_report" />
+	</bean>
+	
+	<!-- seq -->
+	<bean id="idSequenceDao" class="com.taobao.tddl.client.sequence.impl.GroupSequenceDao" init-method="init">
+		<!-- appName，必填 -->
+		<property name="appName" value="${za.group.tddl.appname}" />
+		<!-- 数据源的个数 -->
+		<property name="dscount" value="${za.group.tddl.seq.dscount}" />
+		<!-- 数据库名：从哪些数据库中取ID -->
+		<property name="dbGroupKeys">
+			<list>
+				<!-- 如果在末尾插入"-OFF",该源将被关掉，该源占据的SQL段会被保留" -->
+				<!-- 当dbGroupKeys中配置的个数小于dbcount的值的时候，默认配置了"-OFF"的源 -->
+				<value>${za.group.tddl.seq.group}</value>
+			</list>
+		</property>
+		<!-- 内步长 ,默认为1000，取值在1-100000之间 -->
+		<property name="innerStep" value="5000" />
+		<!-- 是否开启自适应，默认是false -->
+		<!-- <property name="adjust" value="true" /> -->
+		<!-- 重试次数，在多个gourpDataSource的场景下，建议设置成1-2次。默认为2次 -->
+		<property name="retryTimes" value="5" />
+		<!-- 使用的表的表名 ，默认为sequence -->
+		<property name="tableName" value="sequence" />
+		<!-- id生成器的字段名,默认为name -->
+		<property name="nameColumnName" value="name" />
+		<!-- 存值的列的字段名,默认为value -->
+		<property name="valueColumnName" value="value" />
+		<!-- 存修改时间的字段名 ,默认为gmt_modified -->
+		<property name="gmtModifiedColumnName" value="gmt_modified" />
+		<property name="adjust" value="true" />
+	</bean>
+
+
+</beans>

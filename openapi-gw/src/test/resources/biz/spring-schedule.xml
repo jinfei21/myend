@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.springframework.org/schema/beans"
+	xmlns:task="http://www.springframework.org/schema/task"
+	xsi:schemaLocation="
+           http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+           http://www.springframework.org/schema/task  http://www.springframework.org/schema/task/spring-task-3.0.xsd
+       ">
+
+	<bean id="monitorIntfErrorTask" class="com.zhongan.openapi.core.task.MonitorIntfErrorTask">
+		<property name="inteval" value="60"></property>
+	</bean>
+	
+	<task:scheduled-tasks scheduler="scheduler"> 
+		<!-- 卡式业务  定时回退已赠送未领用的卡片 -->
+		<task:scheduled ref="monitorIntfErrorTask" method="summaryByErrorType" cron="0 0/5 * * * ?" />
+		
+		<task:scheduled ref="monitorIntfErrorTask" method="summaryByErrorCode" cron="0 0/5 * * * ?" />
+		<!-- 卡式业务  定时回退已赠送未领用的卡片 -->
+	</task:scheduled-tasks> 
+
+</beans>

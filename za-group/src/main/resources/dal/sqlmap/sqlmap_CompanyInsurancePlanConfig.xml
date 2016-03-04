@@ -1,0 +1,448 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+
+<sqlMap namespace="CompanyInsurancePlanConfig" > 
+
+  <typeAlias alias="companyInsurancePlanConfigDO" type="com.zhongan.core.group.dao.dataobject.CompanyInsurancePlanConfigDO" />
+
+  <resultMap id="companyInsurancePlanConfigDOResultMap" class="companyInsurancePlanConfigDO" >
+    <result property="id" column="id" />
+    <result property="comUserId" column="com_user_id" />
+    <result property="jobGrade" column="job_grade" />
+    <result property="relationToStaff" column="relation_to_staff" />
+    <result property="requiredPackage" column="required_package" />
+    <result property="optionPackage" column="option_package" />
+    <result property="remark" column="remark" />
+    <result property="isDeleted" column="is_deleted" />
+    <result property="creator" column="creator" />
+    <result property="modifier" column="modifier" />
+    <result property="gmtCreated" column="gmt_created" />
+    <result property="gmtModified" column="gmt_modified" />
+  </resultMap>
+
+  <sql id="companyInsurancePlanConfig_columns" >
+    a1.id,a1.com_user_id,a1.job_grade, a1.relation_to_staff, a1.required_package, a1.option_package, 
+    a1.remark, a1.is_deleted, a1.creator, a1.modifier, a1.gmt_created, a1.gmt_modified
+  </sql>
+
+  <sql id="companyInsurancePlanConfig_do_columns" >
+    a1.id,a1.com_user_id,a1.job_grade, a1.relation_to_staff, a1.required_package, a1.option_package, 
+    a1.remark, a1.is_deleted, a1.creator, a1.modifier, a1.gmt_created, a1.gmt_modified
+  </sql>
+
+  <sql id="companyInsurancePlanConfig_query_columns" >
+    a1.id,a1.com_user_id,a1.job_grade, a1.relation_to_staff, a1.required_package, a1.option_package, 
+    a1.remark, a1.is_deleted, a1.creator, a1.modifier, a1.gmt_created, a1.gmt_modified
+  </sql>
+
+  <sql id="queryParams" >
+    <dynamic prepend="WHERE" >
+      <isNotNull property="id" prepend="AND" >
+        <![CDATA[  
+        id = #id#  
+        ]]>  
+      </isNotNull>
+       <isNotNull property="comUserId" prepend="AND" >
+        <![CDATA[  
+        com_user_id = #comUserId#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="jobGrade" prepend="AND" >
+        <![CDATA[  
+        job_grade = #jobGrade#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="relationToStaff" prepend="AND" >
+        <![CDATA[  
+        relation_to_staff = #relationToStaff#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="requiredPackage" prepend="AND" >
+        <![CDATA[  
+        required_package = #requiredPackage#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="optionPackage" prepend="AND" >
+        <![CDATA[  
+        option_package = #optionPackage#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="remark" prepend="AND" >
+        <![CDATA[  
+        remark = #remark#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="isDeleted" prepend="AND" >
+        <![CDATA[  
+        is_deleted = #isDeleted#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="creator" prepend="AND" >
+        <![CDATA[  
+        creator = #creator#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="modifier" prepend="AND" >
+        <![CDATA[  
+        modifier = #modifier#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="gmtCreated" prepend="AND" >
+        <![CDATA[  
+        gmt_created = #gmtCreated#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="gmtModified" prepend="AND" >
+        <![CDATA[  
+        gmt_modified = #gmtModified#  
+        ]]>  
+      </isNotNull>
+    </dynamic>
+  </sql>
+
+  <sql id="doQueryParams" >
+    <dynamic prepend="WHERE" >
+      <isNotNull property="id" prepend="AND" >
+        <![CDATA[  
+        a1.id = #id#  
+        ]]>  
+      </isNotNull>
+       <isNotNull property="comUserId" prepend="AND" >
+        <![CDATA[  
+        a1.com_user_id = #comUserId#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="jobGrade" prepend="AND" >
+        <![CDATA[  
+        a1.job_grade = #jobGrade#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="relationToStaff" prepend="AND" >
+        <![CDATA[  
+        a1.relation_to_staff = #relationToStaff#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="requiredPackage" prepend="AND" >
+        <![CDATA[  
+        a1.required_package = #requiredPackage#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="optionPackage" prepend="AND" >
+        <![CDATA[  
+        a1.option_package = #optionPackage#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="remark" prepend="AND" >
+        <![CDATA[  
+        a1.remark = #remark#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="isDeleted" prepend="AND" >
+        <![CDATA[  
+        a1.is_deleted = #isDeleted#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="creator" prepend="AND" >
+        <![CDATA[  
+        a1.creator = #creator#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="modifier" prepend="AND" >
+        <![CDATA[  
+        a1.modifier = #modifier#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="gmtCreated" prepend="AND" >
+        <![CDATA[  
+        a1.gmt_created = #gmtCreated#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="gmtModified" prepend="AND" >
+        <![CDATA[  
+        a1.gmt_modified = #gmtModified#  
+        ]]>  
+      </isNotNull>
+    </dynamic>
+  </sql>
+
+  <sql id="queryQueryParams" >
+    <dynamic prepend="WHERE" >
+      <isNotNull property="id" prepend="AND" >
+        <![CDATA[  
+        id = #id#  
+        ]]>  
+      </isNotNull>
+       <isNotNull property="comUserId" prepend="AND" >
+        <![CDATA[  
+        com_user_id = #comUserId#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="jobGrade" prepend="AND" >
+        <![CDATA[  
+        job_grade = #jobGrade#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="relationToStaff" prepend="AND" >
+        <![CDATA[  
+        relation_to_staff = #relationToStaff#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="requiredPackage" prepend="AND" >
+        <![CDATA[  
+        required_package = #requiredPackage#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="optionPackage" prepend="AND" >
+        <![CDATA[  
+        option_package = #optionPackage#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="remark" prepend="AND" >
+        <![CDATA[  
+        remark = #remark#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="isDeleted" prepend="AND" >
+        <![CDATA[  
+        is_deleted = #isDeleted#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="creator" prepend="AND" >
+        <![CDATA[  
+        creator = #creator#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="modifier" prepend="AND" >
+        <![CDATA[  
+        modifier = #modifier#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="gmtCreated" prepend="AND" >
+        <![CDATA[  
+        gmt_created = #gmtCreated#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="gmtModified" prepend="AND" >
+        <![CDATA[  
+        gmt_modified = #gmtModified#  
+        ]]>  
+      </isNotNull>
+    </dynamic>
+  </sql>
+
+  <insert id="insert" parameterClass="companyInsurancePlanConfigDO" >
+    INSERT INTO company_insurance_plan_config(id,com_user_id,job_grade, relation_to_staff, required_package, option_package, 
+    remark, is_deleted, creator, modifier, gmt_created, gmt_modified)
+     VALUES (#id#,#comUserId#,#jobGrade#, #relationToStaff#, #requiredPackage#, #optionPackage#, 
+    #remark#, #isDeleted#, #creator#, #modifier#, #gmtCreated#, #gmtModified#)
+  </insert>
+
+  <update id="update" parameterClass="companyInsurancePlanConfigDO" >
+    UPDATE company_insurance_plan_config   SET gmt_modified = now()
+     <isNotNull property="comUserId" prepend="," >
+        <![CDATA[  
+        com_user_id = #comUserId#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="jobGrade" prepend="," >
+        <![CDATA[  
+        job_grade = #jobGrade#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="relationToStaff" prepend="," >
+        <![CDATA[  
+        relation_to_staff = #relationToStaff#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="requiredPackage" prepend="," >
+        <![CDATA[  
+        required_package = #requiredPackage#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="optionPackage" prepend="," >
+        <![CDATA[  
+        option_package = #optionPackage#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="remark" prepend="," >
+        <![CDATA[  
+        remark = #remark#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="isDeleted" prepend="," >
+        <![CDATA[  
+        is_deleted = #isDeleted#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="creator" prepend="," >
+        <![CDATA[  
+        creator = #creator#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="modifier" prepend="," >
+        <![CDATA[  
+        modifier = #modifier#  
+        ]]>  
+      </isNotNull>  
+      <isNotNull property="gmtCreated" prepend="," >
+        <![CDATA[  
+        gmt_created = #gmtCreated#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="gmtModified" prepend="," >
+        <![CDATA[  
+        gmt_modified = #gmtModified#  
+        ]]>  
+      </isNotNull>
+     WHERE 1 = 1 
+      <isNotNull property="id"  prepend="AND">
+        <![CDATA[  
+        id = #id#  
+        ]]>  
+      </isNotNull>
+  </update>
+ 
+  <select id="findByPrimaryKey" parameterClass="java.lang.Long" resultMap="companyInsurancePlanConfigDOResultMap" >
+     SELECT 
+    <include refid="companyInsurancePlanConfig_do_columns" />
+    <![CDATA[  
+     FROM company_insurance_plan_config a1 WHERE id = #id#
+    ]]>  
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterClass="java.lang.Long" >
+    <![CDATA[  
+     DELETE FROM company_insurance_plan_config WHERE id = #id#
+    ]]>  
+  </delete>
+
+  <select id="countByDOExample" parameterClass="companyInsurancePlanConfigDO" resultClass="java.lang.Integer" >
+    SELECT COUNT(id) AS num FROM company_insurance_plan_config 
+    <include refid="doQueryParams" />
+  </select>
+
+  <select id="findListByDO" resultMap="companyInsurancePlanConfigDOResultMap" parameterClass="companyInsurancePlanConfigDO" >
+     SELECT 
+    <include refid="companyInsurancePlanConfig_do_columns" />
+     FROM company_insurance_plan_config a1 
+    <include refid="doQueryParams" />
+  </select>
+
+  <select id = "countInsurantByRelationType"  resultClass="java.lang.Integer"  parameterClass = "companyInsurancePlanConfigDO" >
+     SELECT 
+       COUNT(id) AS num FROM company_insurance_plan_config a1
+     where a1.is_deleted ='N'
+      <isNotNull property="groupPolicyId" prepend="AND" >
+        <![CDATA[  
+        group_policy_id = #groupPolicyId#  
+        ]]>  
+      </isNotNull>
+     <isNotNull property="typeArray" prepend="AND" >
+        a1.relation_to_staff in 
+       <iterate open="(" close=")" conjunction="," property="typeArray" >   
+                     #typeArray[]#   
+       </iterate> 
+     </isNotNull>
+       
+  </select>
+   
+   <delete id="deleteByUserId" parameterClass="java.lang.Long" >
+    <![CDATA[  
+     DELETE FROM company_insurance_plan_config WHERE user_id = #userId#
+    ]]>  
+  </delete>
+  
+  <!-- <delete id="deleteByPolicyId" parameterClass="java.lang.Long" >
+    <![CDATA[  
+     DELETE FROM group_insurance_insurant_extension WHERE policy_id = #policyId#
+    ]]>  
+  </delete> -->
+   <delete id="deleteByCondition" parameterClass="companyInsurancePlanConfigDO">
+    DELETE FROM company_insurance_plan_config 
+    <dynamic prepend="WHERE" >
+    <isNotNull property="id" prepend="AND" >
+        <![CDATA[  
+        id = #id#  
+        ]]>  
+      </isNotNull>
+     <isNotNull property="userId" prepend="AND" >
+        <![CDATA[  
+        user_id = #userId#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="groupPolicyId" prepend="AND" >
+        <![CDATA[  
+        group_policy_id = #groupPolicyId#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="isDeleted" prepend="AND" >
+        <![CDATA[  
+        is_deleted = #isDeleted#  
+        ]]>  
+      </isNotNull>
+     </dynamic>
+  </delete>
+  
+  
+  
+  
+   <update id="fixedDataById" parameterClass="companyInsurancePlanConfigDO" >
+    UPDATE company_insurance_plan_config   SET gmt_modified = now()
+     <isNotNull property="comUserId" prepend="," >
+        <![CDATA[  
+        com_user_id = #comUserId#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="jobGrade" prepend="," >
+        <![CDATA[  
+        job_grade = #jobGrade#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="relationToStaff" prepend="," >
+        <![CDATA[  
+        relation_to_staff = #relationToStaff#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="requiredPackage" prepend="," >
+        <![CDATA[  
+        required_package = #requiredPackage#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="optionPackage" prepend="," >
+        <![CDATA[  
+        option_package = #optionPackage#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="remark" prepend="," >
+        <![CDATA[  
+        remark = #remark#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="isDeleted" prepend="," >
+        <![CDATA[  
+        is_deleted = #isDeleted#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="creator" prepend="," >
+        <![CDATA[  
+        creator = #creator#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="modifier" prepend="," >
+        <![CDATA[  
+        modifier = #modifier#  
+        ]]>  
+      </isNotNull>  
+      <isNotNull property="gmtCreated" prepend="," >
+        <![CDATA[  
+        gmt_created = #gmtCreated#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="gmtModified" prepend="," >
+        <![CDATA[  
+        gmt_modified = #gmtModified#  
+        ]]>  
+      </isNotNull>
+    WHERE id = #id# 
+  </update>
+</sqlMap>

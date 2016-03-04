@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config description="自动配置：za-workflow" xmlns:j="jelly:core">
+	<!-- mvn使用 -->
+	
+	<group name="za-basic-setting">
+        <property name="za.basic.setting.domain" defaultValue="zhongan.com" description="应用域名" />
+        <property name="za.basic.setting.workdir" defaultValue="/home/admin" description="应用工作路径" />z
+        <property name="za.basic.setting.mode" defaultValue="DEV" description="应用的部署状态（run，test，dev）" />
+    </group>
+    
+    <group name="za-workflow-basic-setting">
+        <property name="za.workflow.app" defaultValue="za-workflow" description="应用服务器名称" />        
+        <property name="za.workflow.log.dir" defaultValue="/home/admin/logs" description="log输出目录" />
+        <property name="za.workflow.log.level" defaultValue="info" description="log输出级别" />
+    </group>
+    
+    <group name="za-workflow-biz-setting">
+         
+        <property name="za.workflow.tddl.appname" defaultValue="WORKFLOW_TST_APP" description="tddl_appname" />
+        <property name="za.workflow.tddl.seq.group" defaultValue="WORKFLOW_TST_00_GROUP" description="tddl_seq_group" />
+        <property name="za.workflow.tddl.seq.dscount" defaultValue="1" description="tddl_seq_dscount" />
+       
+        <property name="za.workflow.hsf.serviceversion.common" defaultValue="1.0.0" description="hsf提供服务通用版本号" />
+        <property name="za.workflow.hsf.clienttimeout.common" defaultValue="3000" description="hsf服务通用超时时间" />
+        <property name="za.workflow.hsf.consumerversion.common" defaultValue="1.0.0" description="hsf消费服务通用版本号" />
+  
+		<property name="za.workflow.tair.configserver1" defaultValue="10.139.32.174:5198" description="tair用configserver地址" />
+        <property name="za.workflow.tair.configserver2" defaultValue="10.139.32.174:5198" description="tair用configserver地址" />
+        <property name="za.workflow.tair.groupname" defaultValue="zatair" description="tair用groupname" />  
+        <property name="za.workflow.tair.namespace" defaultValue="3" description="tair用namespace" />
+       
+		<property name="za.workflow.common.diamondGroup"  defaultValue="DEFAULT_GROUP"  description = "common diamond group"/>
+		<property name="za.workflow.common.diamondDataId" defaultValue="com.zhongan.workflow.CommonConfig" description = "common diamond config"   />        
+        
+    </group>
+    
+    <group name="za-workflow-scheduler-setting">    
+    	<property name="za.workflow.scheduler.poolSize" defaultValue="10" description="poolSize" />   
+        <property name="za.workflow.scheduler.zauserid" defaultValue="8001" description="bucketname" />
+        <property name="za.workflow.zkConnectionString" defaultValue="10.139.32.187:2181" description="zkConnectionString" />
+        <property name="za.workflow.zkSessionTimeout" defaultValue="60000" description="zkSessionTimeout" />
+        <property name="za.workflow.ephemeralZnodeParent" defaultValue="/za-workflow" description="ephemeralZnodeParent" />
+        <property name="za.workflow.ephemeralZnodeNamePrefix" defaultValue="server-" description="ephemeralZnodeNamePrefix" />
+        <property name="za.workflow.scheduler.fixeddelay" defaultValue="1200000" description="fixed-delay" />
+    </group>
+    
+	<!-- ========================================================== -->
+	<!-- 生成配置文件的脚本。 -->
+	<!-- ========================================================== -->
+	<script>
+		<generate template="WEB-INF/logback.xml" charset="UTF-8" />
+		<generate template="WEB-INF/classes/biz/persistence.xml" charset="UTF-8" />
+		<generate template="WEB-INF/classes/biz/spring-hsf-consumer.xml" charset="UTF-8" />
+		<generate template="WEB-INF/classes/biz/spring-hsf-provider.xml" charset="UTF-8" />
+		<generate template="WEB-INF/classes/biz/spring-biz.xml" charset="UTF-8" />
+		<generate template="WEB-INF/classes/biz/spring-scheduler.xml" charset="UTF-8" />
+	</script>
+</config>

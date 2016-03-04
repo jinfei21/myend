@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Bill">
+	<!-- 通过typeAlias使得我们在下面使用Student实体类的时候不需要写包名 -->
+	<typeAlias alias="BillDO"
+		type="com.zhongan.core.group.dao.dataobject.BillDO" />
+
+	<resultMap id="billDOResultMap" class="BillDO">
+		<result property="id" column="id" />
+		<result property="payUserId" column="pay_user_id" />
+		<result property="payType" column="pay_type" />
+		<result property="payAccount" column="pay_account" />
+		<result property="feeAccount" column="fee_account" />
+		<result property="policyId" column="policy_id" />
+		<result property="amount" column="amount" />
+		<result property="currency" column="currency" />
+		<result property="applyDate" column="apply_date" />
+		<result property="dueDate" column="due_date" />
+		<result property="paymentDatetime" column="payment_datetime" />
+		<result property="paymentType" column="payment_type" />
+		<result property="status" column="status" />
+		<result property="payObjectType" column="pay_object_type" />
+		<result property="payObject" column="pay_object" />
+		<result property="paymentWay" column="payment_way" />
+		<result property="tradeNo" column="trade_no" />
+		<result property="balanceAccountId" column="balance_account_id" />
+		<result property="receiptId" column="receipt_id" />
+		<result property="subPayType" column="sub_pay_type" />
+		<result property="needBalance" column="need_balance" />
+		<result property="businessNo" column="business_no" />
+		<result property="returnReason" column="return_reason" />
+		<result property="remark" column="remark" />
+		<result property="creator" column="creator" />
+		<result property="gmtCreated" column="gmt_created" />
+		<result property="modifier" column="modifier" />
+		<result property="gmtModified" column="gmt_modified" />
+		<result property="isDeleted" column="is_deleted" />
+		<result property="channelId" column="channel_id" />
+		<result property="productId" column="product_id" />
+		<result property="logDate" column="log_date" />
+		<result property="cashId" column="cash_id" />
+	</resultMap>
+
+
+</sqlMap>

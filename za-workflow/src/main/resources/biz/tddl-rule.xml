@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+	<bean id="vtabroot" class="com.taobao.tddl.interact.rule.VirtualTableRoot"
+		init-method="init">
+		<property name="defaultDbIndex" value="${za.workflow.tddl.appname}" />
+		<property name="dbType" value="MYSQL"></property>
+		<property name="tableRules">
+			<map>
+			</map>
+		</property>
+	</bean>
+	
+	<!-- <bean id="policy" class="com.taobao.tddl.interact.rule.TableRule"
+		init-method="init">
+		<property name="dbNamePattern" value="POL_DEV_{00}_GROUP" />
+		<property name="dbRuleArray">
+			<value>(Math.abs(#id,1,4#.toString().hashCode()).longValue()%4).intdiv(2)</value>
+		</property>
+		<property name="tbNamePattern" value="policy_{0000}"></property>
+		<property name="tbRuleArray">
+			<value>Math.abs(#id,1,4#.toString().hashCode()).longValue()%4</value>
+		</property>
+		<property name="allowFullTableScan" value="false" />
+	</bean> -->
+	
+</beans>
+			

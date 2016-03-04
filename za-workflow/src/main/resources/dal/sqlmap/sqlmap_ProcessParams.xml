@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+
+<sqlMap namespace="ProcessParams" >
+
+  <typeAlias alias="processParamsDO" type="com.zhongan.workflow.domain.ProcessParamsDO" />
+
+  <resultMap id="processParamsDOResultMap" class="processParamsDO" >
+    <result property="id" column="id" />
+    <result property="processId" column="process_id" />
+    <result property="paraKey" column="para_key" />
+    <result property="paraValue" column="para_value" />
+    <result property="isDeleted" column="is_deleted" />
+    <result property="gmtCreated" column="gmt_created" />
+    <result property="creator" column="creator" />
+    <result property="gmtModified" column="gmt_modified" />
+    <result property="modifier" column="modifier" />
+  </resultMap>
+
+  <sql id="processParams_columns" >
+    a1.id, a1.process_id, a1.para_key, a1.para_value, a1.is_deleted, a1.gmt_created, 
+      a1.creator, a1.gmt_modified, a1.modifier
+  </sql>
+
+  <sql id="processParams_do_columns" >
+    a1.id, a1.process_id, a1.para_key, a1.para_value, a1.is_deleted, a1.gmt_created, 
+      a1.creator, a1.gmt_modified, a1.modifier
+  </sql>
+
+  <sql id="queryParams" >
+    <dynamic prepend="WHERE" >
+      <isNotNull property="id" prepend="AND" >
+        <![CDATA[  
+        id = #id#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="processId" prepend="AND" >
+        <![CDATA[  
+        process_id = #processId#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="paraKey" prepend="AND" >
+        <![CDATA[  
+        para_key = #paraKey#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="paraValue" prepend="AND" >
+        <![CDATA[  
+        para_value = #paraValue#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="isDeleted" prepend="AND" >
+        <![CDATA[  
+        is_deleted = #isDeleted#  
+        ]]>  
+      </isNotNull>
+      <isNull property="isDeleted" prepend="AND" >
+        <![CDATA[  
+        is_deleted = 'N'  
+        ]]>  
+      </isNull>
+      <isNotNull property="gmtCreated" prepend="AND" >
+        <![CDATA[  
+        gmt_created = #gmtCreated#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="creator" prepend="AND" >
+        <![CDATA[  
+        creator = #creator#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="gmtModified" prepend="AND" >
+        <![CDATA[  
+        gmt_modified = #gmtModified#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="modifier" prepend="AND" >
+        <![CDATA[  
+        modifier = #modifier#  
+        ]]>  
+      </isNotNull>
+    </dynamic>
+  </sql>
+
+  <sql id="doQueryParams" >
+    <dynamic prepend="WHERE" >
+      <isNotNull property="id" prepend="AND" >
+        <![CDATA[  
+        id = #id#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="processId" prepend="AND" >
+        <![CDATA[  
+        process_id = #processId#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="paraKey" prepend="AND" >
+        <![CDATA[  
+        para_key = #paraKey#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="paraValue" prepend="AND" >
+        <![CDATA[  
+        para_value = #paraValue#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="isDeleted" prepend="AND" >
+        <![CDATA[  
+        is_deleted = #isDeleted#  
+        ]]>  
+      </isNotNull>
+      <isNull property="isDeleted" prepend="AND" >
+        <![CDATA[  
+        is_deleted = 'N'  
+        ]]>  
+      </isNull>
+      <isNotNull property="gmtCreated" prepend="AND" >
+        <![CDATA[  
+        gmt_created = #gmtCreated#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="creator" prepend="AND" >
+        <![CDATA[  
+        creator = #creator#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="gmtModified" prepend="AND" >
+        <![CDATA[  
+        gmt_modified = #gmtModified#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="modifier" prepend="AND" >
+        <![CDATA[  
+        modifier = #modifier#  
+        ]]>  
+      </isNotNull>
+    </dynamic>
+  </sql>
+
+  <insert id="insert" parameterClass="processParamsDO" >
+    INSERT INTO process_params( id, process_id, para_key, para_value, is_deleted, gmt_created, creator, 
+      gmt_modified, modifier)
+     VALUES ( #id#, #processId#, #paraKey#, #paraValue#, #isDeleted#, #gmtCreated#, #creator#, 
+      #gmtModified#, #modifier#)
+  </insert>
+
+  <update id="update" parameterClass="processParamsDO" >
+    UPDATE process_params   
+    <dynamic prepend="SET" >
+      <!--
+      <isNotNull property="id" prepend="," >
+        <![CDATA[  
+        id = #id#  
+        ]]>  
+      </isNotNull>
+      -->
+      <isNotNull property="processId" prepend="," >
+        <![CDATA[  
+        process_id = #processId#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="paraKey" prepend="," >
+        <![CDATA[  
+        para_key = #paraKey#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="paraValue" prepend="," >
+        <![CDATA[  
+        para_value = #paraValue#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="isDeleted" prepend="," >
+        <![CDATA[  
+        is_deleted = #isDeleted#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="gmtCreated" prepend="," >
+        <![CDATA[  
+        gmt_created = #gmtCreated#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="creator" prepend="," >
+        <![CDATA[  
+        creator = #creator#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="gmtModified" prepend="," >
+        <![CDATA[  
+        gmt_modified = #gmtModified#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="modifier" prepend="," >
+        <![CDATA[  
+        modifier = #modifier#  
+        ]]>  
+      </isNotNull>
+    </dynamic>
+     WHERE id = #id#  
+  </update>
+
+  <select id="findByPrimaryKey" parameterClass="java.lang.Long" resultMap="processParamsDOResultMap" >
+     SELECT 
+    <include refid="processParams_do_columns" />
+    <![CDATA[  
+     FROM process_params a1 WHERE id = #id#
+    ]]>  
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterClass="java.lang.Long" >
+    <![CDATA[  
+     DELETE FROM process_params WHERE id = #id#
+    ]]>  
+  </delete>
+
+  <select id="countByDOExample" parameterClass="processParamsDO" resultClass="java.lang.Integer" >
+    SELECT COUNT(id) AS num FROM process_params 
+    <include refid="doQueryParams" />
+  </select>
+
+  <select id="findListByDO" resultMap="processParamsDOResultMap" parameterClass="processParamsDO" >
+     SELECT 
+    <include refid="processParams_do_columns" />
+     FROM process_params a1 
+    <include refid="doQueryParams" />
+  </select>
+</sqlMap>

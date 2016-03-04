@@ -1,0 +1,379 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+
+<sqlMap namespace="PolicyUserRouter" >
+
+  <typeAlias alias="policyUserRouterDO" type="com.zhongan.core.group.dao.dataobject.PolicyUserRouterDO" />
+
+  <resultMap id="policyUserRouterDOResultMap" class="policyUserRouterDO" >
+    <result property="id" column="id" />
+    <result property="policyId" column="policy_id" />
+    <result property="userId" column="user_id" />
+    <result property="businessNo" column="business_no" />
+    <result property="creator" column="creator" />
+    <result property="gmtCreated" column="gmt_created" />
+    <result property="modifier" column="modifier" />
+    <result property="gmtModified" column="gmt_modified" />
+    <result property="isDeleted" column="is_deleted" />
+    <result property="orgCode" column="org_code" />
+    <result property="subCompany" column="sub_company" />
+    <result property="department" column="department" />
+  </resultMap>
+ 
+   <resultMap id="policyIdResultMap" class="policyUserRouterDO" >
+  
+    <result property="policyId" column="policy_id" />
+   
+  </resultMap>
+
+  <sql id="policyUserRouter_columns" >
+    a1.id, a1.policy_id, a1.user_id,a1.business_no, a1.creator, a1.gmt_created, a1.modifier, a1.gmt_modified, 
+      a1.is_deleted,a1.org_code,a1.sub_company,a1.department
+  </sql>
+
+  <sql id="policyUserRouter_do_columns" >
+    a1.id, a1.policy_id, a1.user_id,a1.business_no, a1.creator, a1.gmt_created, a1.modifier, a1.gmt_modified, 
+      a1.is_deleted,a1.org_code,a1.sub_company,a1.department
+  </sql>
+
+  <sql id="queryParams" >
+    <dynamic prepend="WHERE" >
+      <isNotNull property="id" prepend="AND" >
+        <![CDATA[  
+        id = #id#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="policyId" prepend="AND" >
+        <![CDATA[  
+        policy_id = #policyId#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="userId" prepend="AND" >
+        <![CDATA[  
+        user_id = #userId#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="businessNo" prepend="AND" >
+        <![CDATA[  
+        business_no = #businessNo#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="creator" prepend="AND" >
+        <![CDATA[  
+        creator = #creator#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="gmtCreated" prepend="AND" >
+        <![CDATA[  
+        gmt_created = #gmtCreated#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="modifier" prepend="AND" >
+        <![CDATA[  
+        modifier = #modifier#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="gmtModified" prepend="AND" >
+        <![CDATA[  
+        gmt_modified = #gmtModified#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="isDeleted" prepend="AND" >
+        <![CDATA[  
+        is_deleted = #isDeleted#  
+        ]]>  
+      </isNotNull>
+       <isNotNull property="orgCode" prepend="AND" >
+        <![CDATA[  
+        org_code = #orgCode#  
+        ]]>  
+      </isNotNull>
+       <isNotNull property="subCompany" prepend="AND" >
+        <![CDATA[  
+        sub_company = #subCompany#  
+        ]]>  
+      </isNotNull>
+       <isNotNull property="department" prepend="AND" >
+        <![CDATA[  
+        department = #department#  
+        ]]>  
+      </isNotNull>
+    </dynamic>
+  </sql>
+
+  <sql id="doQueryParams" >
+    <dynamic prepend="WHERE" >
+      <isNotNull property="id" prepend="AND" >
+        <![CDATA[  
+        id = #id#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="policyId" prepend="AND" >
+        <![CDATA[  
+        policy_id = #policyId#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="userId" prepend="AND" >
+        <![CDATA[  
+        user_id = #userId#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="businessNo" prepend="AND" >
+        <![CDATA[  
+        business_no = #businessNo#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="creator" prepend="AND" >
+        <![CDATA[  
+        creator = #creator#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="gmtCreated" prepend="AND" >
+        <![CDATA[  
+        gmt_created = #gmtCreated#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="modifier" prepend="AND" >
+        <![CDATA[  
+        modifier = #modifier#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="gmtModified" prepend="AND" >
+        <![CDATA[  
+        gmt_modified = #gmtModified#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="isDeleted" prepend="AND" >
+        <![CDATA[  
+        is_deleted = #isDeleted#  
+        ]]>  
+      </isNotNull>
+       <isNotNull property="orgCode" prepend="AND" >
+        <![CDATA[  
+        org_code = #orgCode#  
+        ]]>  
+      </isNotNull>
+       <isNotNull property="subCompany" prepend="AND" >
+        <![CDATA[  
+        sub_company = #subCompany#  
+        ]]>  
+      </isNotNull>
+       <isNotNull property="department" prepend="AND" >
+        <![CDATA[  
+        department = #department#  
+        ]]>  
+      </isNotNull>
+    </dynamic>
+  </sql>
+
+<sql id="doQueryParamsBycode" >
+    <dynamic prepend="WHERE" >
+      <isNotNull property="id" prepend="AND" >
+        <![CDATA[  
+        id = #id#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="policyId" prepend="AND" >
+        <![CDATA[  
+        policy_id = #policyId#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="userId" prepend="AND" >
+        <![CDATA[  
+        user_id = #userId#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="businessNo" prepend="AND" >
+        <![CDATA[  
+        business_no = #businessNo#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="creator" prepend="AND" >
+        <![CDATA[  
+        creator = #creator#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="gmtCreated" prepend="AND" >
+        <![CDATA[  
+        gmt_created = #gmtCreated#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="modifier" prepend="AND" >
+        <![CDATA[  
+        modifier = #modifier#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="gmtModified" prepend="AND" >
+        <![CDATA[  
+        gmt_modified = #gmtModified#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="isDeleted" prepend="AND" >
+        <![CDATA[  
+        is_deleted = #isDeleted#  
+        ]]>  
+      </isNotNull>
+       <isNotNull property="orgCode" prepend="AND" >
+        <![CDATA[  
+        org_code like CONCAT(#orgCode#, '%')  
+        ]]>  
+      </isNotNull>
+       <isNotNull property="subCompany" prepend="AND" >
+        <![CDATA[  
+        sub_company = #subCompany#  
+        ]]>  
+      </isNotNull>
+       <isNotNull property="department" prepend="AND" >
+        <![CDATA[  
+        department = #department#  
+        ]]>  
+      </isNotNull>
+    </dynamic>
+  </sql>
+
+  <insert id="insert" parameterClass="policyUserRouterDO" >
+    INSERT INTO group_policy_user_rout( id, policy_id, user_id,business_no, creator, gmt_created, modifier, gmt_modified, 
+      is_deleted,org_code,sub_company,department)
+     VALUES ( #id#, #policyId#, #userId#,#businessNo#, #creator#, now(), #modifier#, now(), 'N', #orgCode#,#subCompany#, #department#)
+  </insert>
+
+  <update id="update" parameterClass="policyUserRouterDO" >
+    UPDATE group_policy_user_rout  set  gmt_modified =now() 
+      <isNotNull property="policyId" prepend="," >
+        <![CDATA[  
+        policy_id = #policyId#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="userId" prepend="," >
+        <![CDATA[  
+        user_id = #userId#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="businessNo" prepend="," >
+        <![CDATA[  
+        business_no = #businessNo#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="creator" prepend="," >
+        <![CDATA[  
+        creator = #creator#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="gmtCreated" prepend="," >
+        <![CDATA[  
+        gmt_created = #gmtCreated#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="modifier" prepend="," >
+        <![CDATA[  
+        modifier = #modifier#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="isDeleted" prepend="," >
+        <![CDATA[  
+        is_deleted = #isDeleted#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="orgCode" prepend="," >
+        <![CDATA[  
+        org_code = #orgCode#  
+        ]]>  
+      </isNotNull>
+       <isNotNull property="subCompany" prepend="," >
+        <![CDATA[  
+        sub_company = #subCompany#  
+        ]]>  
+      </isNotNull>
+       <isNotNull property="department" prepend="," >
+        <![CDATA[  
+        department = #department#  
+        ]]>  
+      </isNotNull>
+     WHERE id = #id#  
+  </update>
+
+  <select id="findByPrimaryKey" parameterClass="java.lang.Long" resultMap="policyUserRouterDOResultMap" >
+     SELECT 
+    <include refid="policyUserRouter_do_columns" />
+    <![CDATA[  
+     FROM group_policy_user_rout a1 WHERE id = #id#
+    ]]>  
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterClass="java.lang.Long" >
+    <![CDATA[  
+     DELETE FROM group_policy_user_rout WHERE id = #id#
+    ]]>  
+  </delete>
+
+  <select id="countByDOExample" parameterClass="policyUserRouterDO" resultClass="java.lang.Integer" >
+    SELECT COUNT(id) AS num FROM group_policy_user_rout 
+    <include refid="doQueryParams" />
+  </select>
+
+  <select id="findListByDO" resultMap="policyUserRouterDOResultMap" parameterClass="policyUserRouterDO" >
+     SELECT 
+    <include refid="policyUserRouter_do_columns" />
+     FROM group_policy_user_rout a1 
+    <include refid="doQueryParams" />
+  </select>
+  
+  <select id="findListByOrgCodeAndGroupPolicyId" resultMap="policyUserRouterDOResultMap" parameterClass="policyUserRouterDO" >
+     SELECT 
+    <include refid="policyUserRouter_do_columns" />
+     FROM group_policy_user_rout a1 
+    <include refid="doQueryParamsBycode" />
+  </select>
+  
+  <select id = "findPolicyIdsByUserIds"  resultMap="policyUserRouterDOResultMap"  parameterClass = "policyUserRouterDO" >
+     SELECT 
+      <include refid="policyUserRouter_do_columns" />
+     FROM group_policy_user_rout a1 
+     where a1.is_deleted ='N'
+     <isNotNull property="userArray" prepend="AND" >
+        a1.user_id in 
+       <iterate open="(" close=")" conjunction="," property="userArray" >   
+                     #userArray[]#   
+       </iterate> 
+     </isNotNull>
+       
+  	<isNotNull property="businessNo" prepend="AND" >
+        <![CDATA[  
+        business_no = #businessNo#  
+        ]]>  
+      </isNotNull>
+       
+  </select>
+  
+  
+  <delete id="deleteByUserIdAndPolicyId" parameterClass = "policyUserRouterDO" >
+    <![CDATA[  
+     DELETE FROM group_policy_user_rout WHERE user_id = #userId# and policy_id = #policyId#
+    ]]>  
+  </delete>
+  
+  <delete id="deleteByPolicyId" parameterClass = "policyUserRouterDO" >
+    <![CDATA[  
+     DELETE FROM group_policy_user_rout WHERE  policy_id = #policyId#
+    ]]>  
+  </delete>
+  
+  <select id="countPolicyIdsByOrgCodeAndGroupPolicyId" parameterClass="policyUserRouterDO" resultClass="java.lang.Integer" >
+    SELECT COUNT(id) AS num FROM group_policy_user_rout a1
+    <include refid="doQueryParamsBycode" />
+  </select>
+  
+   <select id = "findPolicyIdsByOrgCodeAndGroupPolicyId"  resultMap="policyUserRouterDOResultMap"  parameterClass = "policyUserRouterDO" >
+     SELECT 
+      <include refid="policyUserRouter_do_columns" />
+       FROM group_policy_user_rout  a1      
+      <include refid="doQueryParamsBycode" /> 
+      <isNotNull property="start" >
+			   <isNotNull property="limit"  >
+				    <![CDATA[ 
+       			          limit #start#,#limit#
+       		        ]]>
+       		     </isNotNull>
+	</isNotNull>
+  </select>
+</sqlMap>

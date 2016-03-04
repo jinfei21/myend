@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans default-autowire="byName">
+
+
+	<bean id="developerServiceProvider" class="com.taobao.hsf.app.spring.util.HSFSpringProviderBean">
+		<property name="serviceInterface"
+			value="com.zhongan.openapi.core.service.DeveloperService" />
+		<property name="target" ref="developerService" />
+		<property name="serviceVersion" value="1.0.0" />
+		<property name="clientTimeout" value="30000" />
+		<property name="clientIdleTimeout" value="60" />
+		<property name="serializeType" value="java" />
+	</bean>
+
+	<bean id="apiServiceProvider" class="com.taobao.hsf.app.spring.util.HSFSpringProviderBean">
+		<property name="serviceInterface" value="com.zhongan.openapi.core.service.ApiService" />
+		<property name="target" ref="apiService" />
+		<property name="serviceVersion" value="1.0.0" />
+		<property name="clientTimeout" value="30000" />
+		<property name="clientIdleTimeout" value="60" />
+		<property name="serializeType" value="java" />
+	</bean>
+
+	<bean id="apiPrivilegeServiceProvider" class="com.taobao.hsf.app.spring.util.HSFSpringProviderBean">
+		<property name="serviceInterface"
+			value="com.zhongan.openapi.core.service.ApiPrivilegeService" />
+		<property name="target" ref="apiPrivilegeService" />
+		<property name="serviceVersion" value="1.0.0" />
+		<property name="clientTimeout" value="30000" />
+		<property name="clientIdleTimeout" value="60" />
+		<property name="serializeType" value="java" />
+	</bean>
+
+	<bean id="publicKeyServiceProvider" class="com.taobao.hsf.app.spring.util.HSFSpringProviderBean">
+		<property name="serviceInterface"
+			value="com.zhongan.openapi.core.service.PublicKeyService" />
+		<property name="target" ref="publicKeyService" />
+		<property name="serviceVersion" value="1.0.0" />
+		<property name="clientTimeout" value="30000" />
+		<property name="clientIdleTimeout" value="60" />
+		<property name="serializeType" value="java" />
+	</bean>
+	
+	<bean id="apiRequestLogServiceProvider" class="com.taobao.hsf.app.spring.util.HSFSpringProviderBean">
+		<property name="serviceInterface"
+			value="com.zhongan.openapi.core.service.ApiRequestLogService" />
+		<property name="target" ref="apiRequestLogService" />
+		<property name="serviceVersion" value="1.0.0" />
+		<property name="clientTimeout" value="30000" />
+		<property name="clientIdleTimeout" value="60" />
+		<property name="serializeType" value="java" />
+	</bean>	
+</beans> 

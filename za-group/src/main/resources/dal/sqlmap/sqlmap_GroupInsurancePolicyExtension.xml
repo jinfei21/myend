@@ -1,0 +1,843 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+
+<sqlMap namespace="GroupInsurancePolicyExtension" >
+
+  <typeAlias alias="groupInsurancePolicyExtensionDO" type="com.zhongan.core.group.dao.dataobject.GroupInsurancePolicyExtensionDO" />
+
+  <resultMap id="groupInsurancePolicyExtensionDOResultMap" class="groupInsurancePolicyExtensionDO" >
+    <result property="id" column="id" />
+    <result property="companyPayPercent" column="company_pay_percent" />
+    <result property="staffPayPercent" column="staff_pay_percent" />
+    <result property="companyTotalNumber" column="company_total_number" />
+    <result property="staffInsuranceType" column="staff_insurance_type" />
+    <result property="contactPeople" column="contact_people" />
+    <result property="contactDepartment" column="contact_department" />
+    <result property="contactPhone" column="contact_phone" />
+    <result property="contactEmail" column="contact_email" />
+    <result property="policyCreator" column="policy_creator" />
+    <result property="specailConvention" column="specail_convention" />
+    <result property="creator" column="creator" />
+    <result property="gmtCreated" column="gmt_created" />
+    <result property="modifier" column="modifier" />
+    <result property="gmtModified" column="gmt_modified" />
+    <result property="isDeleted" column="is_deleted" />
+     <result property="isSubaccount" column="is_subaccount" />
+     <result property="policyId" column="policy_id" />
+     <result property="staffAmount" column="staff_amount" />
+     <result property="relativesAmount" column="relatives_amount" />
+     <result property="contactZipcode" column="contact_zipcode" />
+     <result property="contactAddress" column="contact_address" />
+     <result property="contactCertiType" column="contact_certi_type" />
+     <result property="contactCertiNo" column="contact_certi_no" />
+     <result property="extraInfo" column="extra_info" />     
+     <result property="contactProvinceCode" column="contact_province_code" />
+     <result property="contactCityCode" column="contact_city_code" />
+     <result property="contactCountryCode" column="contact_country_code" />
+     <result property="companyProvinceCode" column="company_province_code" />
+     <result property="companyCityCode" column="company_city_code" />
+     <result property="companyCountryCode" column="company_country_code" />
+      <result property="quotationInfoId" column="quotation_info_id" />
+      
+      <result property="groupProductType" column="group_product_type" />
+      <result property="manageFeeRate" column="manage_fee_rate" />
+      <result property="manageFee" column="manage_fee" />
+      <result property="publicAccountAmount" column="public_account_amount" />
+      <result property="usedPublicAccountAmount" column="used_public_account_amount" />
+      <result property="groupCommissionRate" column="group_commission_rate" />
+      <result property="groupCommissionAmount" column="group_commission_amount" />
+      <result property="payFrequencyRate" column="pay_frequency_rate" />
+  </resultMap>
+
+  <sql id="groupInsurancePolicyExtension_columns" >
+    a1.id, a1.company_pay_percent, a1.staff_pay_percent, a1.company_total_number, a1.staff_insurance_type, 
+      a1.contact_people, a1.contact_department, a1.contact_phone, a1.contact_email, a1.policy_creator, 
+      a1.specail_convention, a1.creator, a1.gmt_created, a1.modifier, a1.gmt_modified, a1.is_deleted, a1.is_subaccount,
+      a1.policy_id,a1.staff_amount,a1.relatives_amount, a1.contact_zipcode, a1.contact_address, a1.contact_certi_type, a1.contact_certi_no,
+      a1.contact_province_code,a1.contact_city_code,a1.contact_country_code, a1.company_province_code, a1.company_city_code, a1.company_country_code, 
+      a1.quotation_info_id, a1.extra_info,a1.group_product_type,a1.manage_fee_rate, a1.manage_fee,a1.public_account_amount,a1.used_public_account_amount,
+      a1.group_commission_rate,a1.group_commission_amount,a1.pay_frequency_rate
+  </sql>
+
+  <sql id="groupInsurancePolicyExtension_do_columns" >
+    a1.id, a1.company_pay_percent, a1.staff_pay_percent, a1.company_total_number, a1.staff_insurance_type, 
+      a1.contact_people, a1.contact_department, a1.contact_phone, a1.contact_email, a1.policy_creator, 
+      a1.specail_convention, a1.creator, a1.gmt_created, a1.modifier, a1.gmt_modified, a1.is_deleted,a1.is_subaccount,
+      a1.policy_id,a1.staff_amount,a1.relatives_amount, a1.contact_zipcode, a1.contact_address, a1.contact_certi_type, a1.contact_certi_no, 
+      a1.contact_province_code,a1.contact_city_code,a1.contact_country_code, a1.company_province_code, a1.company_city_code, a1.company_country_code,
+      a1.quotation_info_id, a1.extra_info,a1.group_product_type,a1.manage_fee_rate, a1.manage_fee,a1.public_account_amount,a1.used_public_account_amount,
+      a1.group_commission_rate,a1.group_commission_amount,a1.pay_frequency_rate
+  </sql>
+
+  <sql id="queryParams" >
+    <dynamic prepend="WHERE" >
+      <isNotNull property="id" prepend="AND" >
+        <![CDATA[  
+        id = #id#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="companyPayPercent" prepend="AND" >
+        <![CDATA[  
+        company_pay_percent = #companyPayPercent#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="staffPayPercent" prepend="AND" >
+        <![CDATA[  
+        staff_pay_percent = #staffPayPercent#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="companyTotalNumber" prepend="AND" >
+        <![CDATA[  
+        company_total_number = #companyTotalNumber#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="staffInsuranceType" prepend="AND" >
+        <![CDATA[  
+        staff_insurance_type = #staffInsuranceType#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="contactPeople" prepend="AND" >
+        <![CDATA[  
+        contact_people = #contactPeople#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="contactDepartment" prepend="AND" >
+        <![CDATA[  
+        contact_department = #contactDepartment#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="contactPhone" prepend="AND" >
+        <![CDATA[  
+        contact_phone = #contactPhone#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="contactEmail" prepend="AND" >
+        <![CDATA[  
+        contact_email = #contactEmail#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="policyCreator" prepend="AND" >
+        <![CDATA[  
+        policy_creator = #policyCreator#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="specailConvention" prepend="AND" >
+        <![CDATA[  
+        specail_convention = #specailConvention#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="creator" prepend="AND" >
+        <![CDATA[  
+        creator = #creator#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="gmtCreated" prepend="AND" >
+        <![CDATA[  
+        gmt_created = #gmtCreated#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="modifier" prepend="AND" >
+        <![CDATA[  
+        modifier = #modifier#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="gmtModified" prepend="AND" >
+        <![CDATA[  
+        gmt_modified = #gmtModified#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="isSubaccount" prepend="AND" >
+        <![CDATA[  
+        is_subaccount = #isSubaccount#  
+        ]]>  
+      </isNotNull>
+       <isNotNull property="isDeleted" prepend="AND" >
+        <![CDATA[  
+        is_deleted = #isDeleted#  
+        ]]>  
+      </isNotNull>
+       <isNotNull property="policyId" prepend="AND" >
+        <![CDATA[  
+        policy_id = #policyId#  
+        ]]>  
+      </isNotNull>
+      
+       <isNotNull property="staffAmount" prepend="AND" >
+        <![CDATA[  
+        staff_amount = #staffAmount#  
+        ]]>  
+      </isNotNull>
+       <isNotNull property="relativesAmount" prepend="AND" >
+        <![CDATA[  
+        relatives_amount = #relativesAmount#  
+        ]]>  
+      </isNotNull>
+      
+      <isNotNull property="contactZipcode" prepend="AND" >
+        <![CDATA[  
+        contact_zipcode = #contactZipcode#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="contactAddress" prepend="AND" >
+        <![CDATA[  
+        contact_address = #contactAddress#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="contactCertiType" prepend="AND" >
+        <![CDATA[  
+        contact_certi_type = #contactCertiType#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="contactCertiNo" prepend="AND" >
+        <![CDATA[  
+        contact_certi_no = #contactCertiNo#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="quotationInfoId" prepend="AND" >
+        <![CDATA[  
+        quotation_info_id = #quotationInfoId#  
+        ]]>  
+      </isNotNull>
+      
+      <isNotNull property="groupProductType" prepend="AND" >
+        <![CDATA[  
+        group_product_type = #groupProductType#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="manageFeeRate" prepend="AND" >
+        <![CDATA[  
+        manage_fee_rate = #manageFeeRate#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="manageFee" prepend="AND" >
+        <![CDATA[  
+        manage_fee = #manageFee#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="publicAccountAmount" prepend="AND" >
+        <![CDATA[  
+        public_account_amount = #publicAccountAmount#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="usedPublicAccountAmount" prepend="AND" >
+        <![CDATA[  
+        used_public_account_amount = #usedPublicAccountAmount#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="groupCommissionRate" prepend="AND" >
+        <![CDATA[  
+        group_commission_rate = #groupCommissionRate#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="groupCommissionAmount" prepend="AND" >
+        <![CDATA[  
+        group_commission_amount = #groupCommissionAmount#  
+        ]]>  
+      </isNotNull>
+       <isNotNull property="payFrequencyRate" prepend="AND" >
+        <![CDATA[  
+        pay_frequency_rate = #payFrequencyRate#  
+        ]]>  
+      </isNotNull>
+    </dynamic>
+  </sql>
+
+  <sql id="doQueryParams" >
+    <dynamic prepend="WHERE" >
+      <isNotNull property="id" prepend="AND" >
+        <![CDATA[  
+        id = #id#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="companyPayPercent" prepend="AND" >
+        <![CDATA[  
+        company_pay_percent = #companyPayPercent#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="staffPayPercent" prepend="AND" >
+        <![CDATA[  
+        staff_pay_percent = #staffPayPercent#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="companyTotalNumber" prepend="AND" >
+        <![CDATA[  
+        company_total_number = #companyTotalNumber#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="staffInsuranceType" prepend="AND" >
+        <![CDATA[  
+        staff_insurance_type = #staffInsuranceType#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="contactPeople" prepend="AND" >
+        <![CDATA[  
+        contact_people = #contactPeople#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="contactDepartment" prepend="AND" >
+        <![CDATA[  
+        contact_department = #contactDepartment#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="contactPhone" prepend="AND" >
+        <![CDATA[  
+        contact_phone = #contactPhone#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="contactEmail" prepend="AND" >
+        <![CDATA[  
+        contact_email = #contactEmail#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="policyCreator" prepend="AND" >
+        <![CDATA[  
+        policy_creator = #policyCreator#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="specailConvention" prepend="AND" >
+        <![CDATA[  
+        specail_convention = #specailConvention#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="creator" prepend="AND" >
+        <![CDATA[  
+        creator = #creator#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="gmtCreated" prepend="AND" >
+        <![CDATA[  
+        gmt_created = #gmtCreated#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="modifier" prepend="AND" >
+        <![CDATA[  
+        modifier = #modifier#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="gmtModified" prepend="AND" >
+        <![CDATA[  
+        gmt_modified = #gmtModified#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="isDeleted" prepend="AND" >
+        <![CDATA[  
+        is_deleted = #isDeleted#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="isSubaccount" prepend="AND" >
+        <![CDATA[  
+        is_subaccount = #isSubaccount#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="policyId" prepend="AND" >
+          <![CDATA[  
+          policy_id = #policyId#  
+           ]]>  
+      </isNotNull>
+        <isNotNull property="staffAmount" prepend="AND" >
+        <![CDATA[  
+        staff_amount = #staffAmount#  
+        ]]>  
+      </isNotNull>
+      
+       <isNotNull property="relativesAmount" prepend="AND" >
+        <![CDATA[  
+        relatives_amount = #relativesAmount#  
+        ]]>  
+      </isNotNull>
+      
+      <isNotNull property="contactZipcode" prepend="AND" >
+        <![CDATA[  
+        contact_zipcode = #contactZipcode#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="contactAddress" prepend="AND" >
+        <![CDATA[  
+        contact_address = #contactAddress#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="contactCertiType" prepend="AND" >
+        <![CDATA[  
+        contact_certi_type = #contactCertiType#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="contactCertiNo" prepend="AND" >
+        <![CDATA[  
+        contact_certi_no = #contactCertiNo#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="quotationInfoId" prepend="AND" >
+        <![CDATA[  
+        quotation_info_id = #quotationInfoId#  
+        ]]>  
+      </isNotNull>
+      
+       <isNotNull property="groupProductType" prepend="AND" >
+        <![CDATA[  
+        group_product_type = #groupProductType#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="manageFeeRate" prepend="AND" >
+        <![CDATA[  
+        manage_fee_rate = #manageFeeRate#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="manageFee" prepend="AND" >
+        <![CDATA[  
+        manage_fee = #manageFee#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="publicAccountAmount" prepend="AND" >
+        <![CDATA[  
+        public_account_amount = #publicAccountAmount#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="usedPublicAccountAmount" prepend="AND" >
+        <![CDATA[  
+        used_public_account_amount = #usedPublicAccountAmount#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="groupCommissionRate" prepend="AND" >
+        <![CDATA[  
+        group_commission_rate = #groupCommissionRate#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="groupCommissionAmount" prepend="AND" >
+        <![CDATA[  
+        group_commission_amount = #groupCommissionAmount#  
+        ]]>  
+      </isNotNull>
+       <isNotNull property="payFrequencyRate" prepend="AND" >
+        <![CDATA[  
+        pay_frequency_rate = #payFrequencyRate#  
+        ]]>  
+      </isNotNull>
+    </dynamic>
+  </sql>
+
+  <insert id="insert" parameterClass="groupInsurancePolicyExtensionDO" >
+    INSERT INTO group_insurance_policy_extension( id, company_pay_percent, staff_pay_percent, company_total_number, staff_insurance_type, 
+      contact_people, contact_department, contact_phone, contact_email, policy_creator, specail_convention, creator, gmt_created, modifier,
+      gmt_modified, is_deleted,is_subaccount,policy_id,staff_amount,relatives_amount, contact_zipcode, contact_address, contact_certi_type, contact_certi_no, 
+      contact_province_code,contact_city_code,contact_country_code,company_province_code,company_city_code,company_country_code,quotation_info_id,extra_info
+      ,group_product_type,manage_fee_rate, manage_fee,public_account_amount,used_public_account_amount,group_commission_rate,group_commission_amount,pay_frequency_rate)
+     VALUES ( #id#, #companyPayPercent#, #staffPayPercent#, #companyTotalNumber#, #staffInsuranceType#, #contactPeople#, #contactDepartment#,
+      #contactPhone#, #contactEmail#, #policyCreator#, #specailConvention#, #creator#, now(), #modifier#, now(), 'N',#isSubaccount#,#policyId#, #staffAmount#,
+      #relativesAmount#,#contactZipcode#,#contactAddress#,#contactCertiType#,#contactCertiNo#,#contactProvinceCode#,#contactCityCode#,
+      #contactCountryCode#,#companyProvinceCode#,#companyCityCode#,#companyCountryCode#,#quotationInfoId#,#extraInfo#
+      ,#groupProductType#,#manageFeeRate#,#manageFee#,#publicAccountAmount#,#usedPublicAccountAmount#,#groupCommissionRate#,#groupCommissionAmount#,#payFrequencyRate#)
+  </insert>
+
+  <update id="update" parameterClass="groupInsurancePolicyExtensionDO" >
+    UPDATE group_insurance_policy_extension   
+    <dynamic prepend="SET" >
+      <!--
+      <isNotNull property="id" prepend="," >
+        <![CDATA[  
+        id = #id#  
+        ]]>  
+      </isNotNull>
+      -->
+      <isNotNull property="companyPayPercent" prepend="," >
+        <![CDATA[  
+        company_pay_percent = #companyPayPercent#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="staffPayPercent" prepend="," >
+        <![CDATA[  
+        staff_pay_percent = #staffPayPercent#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="companyTotalNumber" prepend="," >
+        <![CDATA[  
+        company_total_number = #companyTotalNumber#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="staffInsuranceType" prepend="," >
+        <![CDATA[  
+        staff_insurance_type = #staffInsuranceType#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="contactPeople" prepend="," >
+        <![CDATA[  
+        contact_people = #contactPeople#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="contactDepartment" prepend="," >
+        <![CDATA[  
+        contact_department = #contactDepartment#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="contactPhone" prepend="," >
+        <![CDATA[  
+        contact_phone = #contactPhone#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="contactEmail" prepend="," >
+        <![CDATA[  
+        contact_email = #contactEmail#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="policyCreator" prepend="," >
+        <![CDATA[  
+        policy_creator = #policyCreator#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="specailConvention" prepend="," >
+        <![CDATA[  
+        specail_convention = #specailConvention#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="creator" prepend="," >
+        <![CDATA[  
+        creator = #creator#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="gmtCreated" prepend="," >
+        <![CDATA[  
+        gmt_created = #gmtCreated#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="modifier" prepend="," >
+        <![CDATA[  
+        modifier = #modifier#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="gmtModified" prepend="," >
+        <![CDATA[  
+        gmt_modified = #gmtModified#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="isDeleted" prepend="," >
+        <![CDATA[  
+        is_deleted = #isDeleted#  
+        ]]>  
+      </isNotNull>
+        <isNotNull property="policyId" prepend="," >
+          <![CDATA[  
+          policy_id = #policyId#  
+           ]]>  
+      </isNotNull>
+      <isNotNull property="staffAmount" prepend="," >
+        <![CDATA[  
+        staff_amount = #staffAmount#  
+        ]]>  
+      </isNotNull>
+      
+       <isNotNull property="relativesAmount" prepend="," >
+        <![CDATA[  
+        relatives_amount = #relativesAmount#  
+        ]]>  
+      </isNotNull>      
+      <isNotNull property="contactZipcode" prepend="," >
+        <![CDATA[  
+        contact_zipcode = #contactZipcode#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="contactAddress" prepend="," >
+        <![CDATA[  
+        contact_address = #contactAddress#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="contactCertiType" prepend="," >
+        <![CDATA[  
+        contact_certi_type = #contactCertiType#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="contactCertiNo" prepend="," >
+        <![CDATA[  
+        contact_certi_no = #contactCertiNo#  
+        ]]>  
+      </isNotNull>     
+      <isNotNull property="contactProvinceCode" prepend="," >
+        <![CDATA[  
+        contact_province_code = #contactProvinceCode#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="contactCityCode" prepend="," >
+        <![CDATA[  
+        contact_city_code = #contactCityCode#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="contactCountryCode" prepend="," >
+        <![CDATA[  
+        contact_country_code = #contactCountryCode#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="companyProvinceCode" prepend="," >
+        <![CDATA[  
+        company_province_code = #companyProvinceCode#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="companyCityCode" prepend="," >
+        <![CDATA[  
+        company_city_code = #companyCityCode#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="companyCountryCode" prepend="," >
+        <![CDATA[  
+        company_country_code = #companyCountryCode#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="quotationInfoId" prepend="," >
+        <![CDATA[  
+        quotation_info_id = #quotationInfoId#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="extraInfo" prepend="," >
+        <![CDATA[  
+        extra_info = #extraInfo#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="isSubaccount" prepend="," >
+        <![CDATA[  
+        is_subaccount = #isSubaccount#  
+        ]]>  
+      </isNotNull>
+      
+      <isNotNull property="groupProductType" prepend="," >
+        <![CDATA[  
+        group_product_type = #groupProductType#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="manageFeeRate" prepend="," >
+        <![CDATA[  
+        manage_fee_rate = #manageFeeRate#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="manageFee" prepend="," >
+        <![CDATA[  
+        manage_fee = #manageFee#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="publicAccountAmount" prepend="," >
+        <![CDATA[  
+        public_account_amount = #publicAccountAmount#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="usedPublicAccountAmount" prepend="," >
+        <![CDATA[  
+        used_public_account_amount = #usedPublicAccountAmount#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="groupCommissionRate" prepend="," >
+        <![CDATA[  
+        group_commission_rate = #groupCommissionRate#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="groupCommissionAmount" prepend="," >
+        <![CDATA[  
+        group_commission_amount = #groupCommissionAmount#  
+        ]]>  
+      </isNotNull>
+       <isNotNull property="payFrequencyRate" prepend="," >
+        <![CDATA[  
+        pay_frequency_rate = #payFrequencyRate#  
+        ]]>  
+      </isNotNull>
+    </dynamic>
+     WHERE id = #id#  
+  </update>
+
+  <select id="findByPrimaryKey" parameterClass="java.lang.Long" resultMap="groupInsurancePolicyExtensionDOResultMap" >
+     SELECT 
+    <include refid="groupInsurancePolicyExtension_do_columns" />
+    <![CDATA[  
+     FROM group_insurance_policy_extension a1 WHERE id = #id#
+    ]]>  
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterClass="java.lang.Long" >
+    <![CDATA[  
+     DELETE FROM group_insurance_policy_extension WHERE id = #id#
+    ]]>  
+  </delete>
+
+  <select id="countByDOExample" parameterClass="groupInsurancePolicyExtensionDO" resultClass="java.lang.Integer" >
+    SELECT COUNT(id) AS num FROM group_insurance_policy_extension 
+    <include refid="doQueryParams" />
+  </select>
+
+  <select id="findListByDO" resultMap="groupInsurancePolicyExtensionDOResultMap" parameterClass="groupInsurancePolicyExtensionDO" >
+     SELECT 
+    <include refid="groupInsurancePolicyExtension_do_columns" />
+     FROM group_insurance_policy_extension a1 
+    <include refid="doQueryParams" />
+  </select>
+  
+  
+    <update id="updateByPolicyId" parameterClass="groupInsurancePolicyExtensionDO" >
+      UPDATE group_insurance_policy_extension  SET gmt_modified = now() ,specail_convention = #specailConvention#  
+      <isNotNull property="companyPayPercent" prepend="," >
+        <![CDATA[  
+        company_pay_percent = #companyPayPercent#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="staffPayPercent" prepend="," >
+        <![CDATA[  
+        staff_pay_percent = #staffPayPercent#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="companyTotalNumber" prepend="," >
+        <![CDATA[  
+        company_total_number = #companyTotalNumber#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="staffInsuranceType" prepend="," >
+        <![CDATA[  
+        staff_insurance_type = #staffInsuranceType#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="contactPeople" prepend="," >
+        <![CDATA[  
+        contact_people = #contactPeople#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="contactDepartment" prepend="," >
+        <![CDATA[  
+        contact_department = #contactDepartment#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="contactPhone" prepend="," >
+        <![CDATA[  
+        contact_phone = #contactPhone#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="contactEmail" prepend="," >
+        <![CDATA[  
+        contact_email = #contactEmail#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="policyCreator" prepend="," >
+        <![CDATA[  
+        policy_creator = #policyCreator#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="modifier" prepend="," >
+        <![CDATA[  
+        modifier = #modifier#  
+        ]]>  
+      </isNotNull>
+    <isNotNull property="isDeleted" prepend="," >
+        <![CDATA[  
+        is_deleted = #isDeleted#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="isSubaccount" prepend="," >
+        <![CDATA[  
+        is_subaccount = #isSubaccount#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="staffAmount" prepend="," >
+        <![CDATA[  
+        staff_amount = #staffAmount#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="relativesAmount" prepend="," >
+        <![CDATA[  
+        relatives_amount = #relativesAmount#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="contactZipcode" prepend="," >
+        <![CDATA[  
+        contact_zipcode = #contactZipcode#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="contactAddress" prepend="," >
+        <![CDATA[  
+        contact_address = #contactAddress#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="contactCertiType" prepend="," >
+        <![CDATA[  
+        contact_certi_type = #contactCertiType#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="contactCertiNo" prepend="," >
+        <![CDATA[  
+        contact_certi_no = #contactCertiNo#  
+        ]]>  
+      </isNotNull>
+       <isNotNull property="contactProvinceCode" prepend="," >
+        <![CDATA[  
+        contact_province_code = #contactProvinceCode#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="contactCityCode" prepend="," >
+        <![CDATA[  
+        contact_city_code = #contactCityCode#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="contactCountryCode" prepend="," >
+        <![CDATA[  
+        contact_country_code = #contactCountryCode#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="companyProvinceCode" prepend="," >
+        <![CDATA[  
+        company_province_code = #companyProvinceCode#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="companyCityCode" prepend="," >
+        <![CDATA[  
+        company_city_code = #companyCityCode#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="companyCountryCode" prepend="," >
+        <![CDATA[  
+        company_country_code = #companyCountryCode#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="quotationInfoId" prepend="," >
+        <![CDATA[  
+        quotation_info_id = #quotationInfoId#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="extraInfo" prepend="," >
+        <![CDATA[  
+        extra_info = #extraInfo#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="groupProductType" prepend="," >
+        <![CDATA[  
+        group_product_type = #groupProductType#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="manageFeeRate" prepend="," >
+        <![CDATA[  
+        manage_fee_rate = #manageFeeRate#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="manageFee" prepend="," >
+        <![CDATA[  
+        manage_fee = #manageFee#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="publicAccountAmount" prepend="," >
+        <![CDATA[  
+        public_account_amount = #publicAccountAmount#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="usedPublicAccountAmount" prepend="," >
+        <![CDATA[  
+        used_public_account_amount = #usedPublicAccountAmount#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="groupCommissionRate" prepend="," >
+        <![CDATA[  
+        group_commission_rate = #groupCommissionRate#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="groupCommissionAmount" prepend="," >
+        <![CDATA[  
+        group_commission_amount = #groupCommissionAmount#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="payFrequencyRate" prepend="," >
+        <![CDATA[  
+        pay_frequency_rate = #payFrequencyRate#  
+        ]]>  
+      </isNotNull>
+      WHERE policy_id = #policyId#  
+  </update>
+</sqlMap>

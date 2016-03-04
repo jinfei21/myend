@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.springframework.org/schema/beans"
+	xsi:schemaLocation="
+           http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       "
+	default-autowire="byName">
+
+	<bean id="apiDAO" class="com.zhongan.openapi.core.dao.impl.ApiDAOImpl" />
+	<bean id="apiAttributeDAO" class="com.zhongan.openapi.core.dao.impl.ApiAttributeDAOImpl" />
+	<bean id="apiErrorCodeDAO" class="com.zhongan.openapi.core.dao.impl.ApiErrorCodeDAOImpl" />
+	<bean id="apiGroupDAO" class="com.zhongan.openapi.core.dao.impl.ApiGroupDAOImpl" />
+	<bean id="apiPrivilegeDAO" class="com.zhongan.openapi.core.dao.impl.ApiPrivilegeDAOImpl" />
+	<bean id="developerDAO" class="com.zhongan.openapi.core.dao.impl.DeveloperDAOImpl" />
+	<bean id="publicKeyDAO" class="com.zhongan.openapi.core.dao.impl.PublicKeyDAOImpl" />
+	<bean id="apiRequestLogDAO" class="com.zhongan.openapi.core.dao.impl.ApiRequestLogDAOImpl"/>
+</beans>

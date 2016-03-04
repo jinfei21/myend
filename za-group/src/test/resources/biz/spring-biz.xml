@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans default-autowire="byName">
+	
+	<bean id="claimLiabilityService"
+		class="com.zhongan.core.group.service.impl.ClaimLiabilityServiceImpl" />
+		
+	<bean id="claimDocumentService"
+		class="com.zhongan.core.group.service.impl.ClaimDocumentServiceImpl" />	
+		
+	<bean id="claimGroupSettlementService"
+		class="com.zhongan.core.group.service.impl.ClaimGroupSettlmentServiceImpl" />		
+		
+	<bean id="claimPackageService"
+		class="com.zhongan.core.group.service.impl.ClaimPackageServiceImpl" />	
+		
+	<bean id="claimGroupReserveService"
+		class="com.zhongan.core.group.service.impl.ClaimGroupReserveServiceImpl" />	
+		
+    <bean id="claimGroupLogService"
+		class="com.zhongan.core.group.service.impl.ClaimGroupLogServiceImpl" />				
+		
+	<bean id="groupClaimService" class="com.zhongan.core.group.service.impl.GroupClaimServiceImpl"></bean>	
+	
+	<bean id="claimGroupBizRuleService"
+		class="com.zhongan.core.group.service.impl.ClaimGroupBizRuleServiceImpl" />	
+		
+	<bean id="taskExecutor" class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">
+       <property name="corePoolSize" value="10" />
+       <property name="keepAliveSeconds" value="20000" />
+       <property name="maxPoolSize" value="50" />
+       <property name="queueCapacity" value="5000" />
+    </bean>
+
+	<bean id="groupPolicyService" class="com.zhongan.core.group.service.impl.GroupPolicyServiceImpl"/>
+	
+	<bean id="groupUtilService" class="com.zhongan.core.group.service.impl.GroupUtilServiceImpl"/>
+	
+	<bean id="policyUserRouterService" class="com.zhongan.core.group.service.impl.PolicyUserRouterServiceImpl"/>
+	
+	<bean id="groupInsurantExtensionService" class="com.zhongan.core.group.service.impl.GroupInsurantExtensionServiceImpl"/>
+	
+	<bean id="groupPolicyExtensionService" class="com.zhongan.core.group.service.impl.GroupPolicyExtensionServiceImpl"/>
+		
+	<bean id="policyPackageRoutService" class="com.zhongan.core.group.service.impl.PolicyPackageRoutServiceImpl"/>
+	
+	<bean id="groupPolicyInsuredAmountService" class="com.zhongan.core.group.service.impl.GroupPolicyInsuredAmountServiceImpl"/>
+
+    <bean id="endorsementServiceUtil" class="com.zhongan.core.group.util.EndorsementServiceUtil"/>
+    
+    <bean id="createBillUtil" class="com.zhongan.core.group.util.CreateBillUtil"/>
+    
+     <bean id="groupLogService" class="com.zhongan.core.group.service.impl.GroupLogServiceImpl"/>
+	 <bean id="groupFileService" class="com.zhongan.core.group.service.impl.GroupFileServiceImpl"/>
+
+	<bean id="groupPolicyRiskInsurantUtil" class="com.zhongan.core.group.util.GroupPolicyRiskInsurantUtil"/>
+	
+	<bean id="groupPolicyQuotePriceService" class="com.zhongan.core.group.service.impl.GroupPolicyQuotePriceServiceImpl"/>
+	<bean id="subPolicyService" class="com.zhongan.core.group.service.impl.SubPolicyServiceImpl"/>
+	<bean id="groupPolicyTaskService" class="com.zhongan.core.group.service.impl.GroupPolicyTaskServiceImpl">
+		<property name="dependConfigMap">
+			<map>
+				<entry key="pubSendEmail" value="${za.group.email.sender.public.address}" />
+				<entry key="pubSendEmailUserName" value="${za.group.email.sender.public.username}" />
+				<entry key="pubSendEmailPassword" value="${za.group.email.sender.public.password}" />
+				<entry key="auditQuoteToEmails" value="${za.group.email.receiver.auditQuote.address}" />
+				<entry key="gwALiPayNoticeToEmails" value="${za.group.email.receiver.gwALiPayNotice.address}" />
+				<entry key="bopsDoaminURL" value="${za.group.bops.domain.url}" />
+			</map>
+		</property>
+	</bean>
+	<!-- 天使汇 -->
+	<bean id="angelHealthService" class="com.zhongan.core.group.service.impl.AngelHealthServiceImpl"/>
+	<!-- 天使汇 -->
+	
+	<!-- 新浪健康险 -->
+	<bean id="sinaHealthService" class="com.zhongan.core.group.service.impl.SinaHealthServiceImpl"/>
+	<bean id="sinaDataValidateService" class="com.zhongan.core.group.service.impl.SinaDataValidateServiceImpl"/>
+	<!-- 新浪健康险 -->
+    
+    <bean id="generator" class="com.zhongan.core.group.util.Generator"/>
+	<bean id="groupPolicyEndorsementService" class="com.zhongan.core.group.service.impl.GroupPolicyEndorsementServiceImpl"/>
+	<bean id="lock" class="com.zhongan.core.group.task.LockUtil"/>
+	
+	<bean id="healthSupportService" class="com.zhongan.core.group.service.impl.HealthSupportServiceImpl"/>
+	<bean id="idcardValidator" class="com.zhongan.core.group.util.IdcardValidator"/>
+	
+	<bean id="groupPolicyEndorseQueryService" class="com.zhongan.core.group.service.impl.GroupPolicyEndorseQueryServiceImpl"/>
+	<bean id="groupClaimDocumentFeeDetailService" class="com.zhongan.core.group.service.impl.GroupClaimDocumentFeeDetailServiceImpl"/>
+    
+    <!-- 新浪团险待核保邮件通知接口 -->
+    <bean id="groupEndorEmailSendService" class="com.zhongan.core.group.service.impl.GroupEndorEmailSendServiceImpl">
+    	<property name="emailAddress" value="${za.group.sina.emailAddress}"></property>
+      </bean>
+
+  	<bean id="groupInsurantCollectService" class="com.zhongan.core.group.service.impl.GroupInsurantCollectServiceImpl"/>
+	
+	<bean id="companyInsurancePlanConfigService" class="com.zhongan.core.group.service.impl.CompanyInsurancePlanConfigServiceImpl"/>
+ 
+	<bean id="groupEPolicyService" class="com.zhongan.core.group.service.impl.GroupEPolicyServiceImpl"/>   
+    <bean id="groupInsuranceCommonExtensionService" class="com.zhongan.core.group.service.impl.GroupInsuranceCommonExtensionServiceImpl"></bean>
+    <bean id="groupPolicyUwdiffReportService" class="com.zhongan.core.group.service.impl.GroupPolicyUwdiffReportServiceImpl"/>
+    
+    <bean id="groupPolicySendEmailService" class="com.zhongan.core.group.service.impl.GroupPolicySendEmailServiceImpl"/>   	
+	<bean id="quoteGroupPolicyService" class="com.zhongan.core.group.service.impl.QuoteGroupPolicyServiceImpl"/>
+	
+	<bean id="groupMasterDataService" class="com.zhongan.core.group.service.impl.GroupMasterDataServiceImpl"/>	
+	<bean id="groupPolicyAttachmentService" class="com.zhongan.core.group.service.impl.GroupPolicyAttachmentServiceImpl"/>	
+	<bean id="groupPolicyInsurantService" class="com.zhongan.core.group.service.impl.GroupPolicyInsurantServiceImpl"/>
+
+	<bean id="groupClaimSendMailService" class="com.zhongan.core.group.service.impl.GroupClaimSendMailServiceImpl"></bean>
+	
+	<bean id="groupMailDiamondConfig" class="com.zhongan.core.group.common.diamond.GroupMailDiamondConfig" > 
+  		<property name="groupID" value="DEFAULT_GROUP" />
+  		<property name="dataID"  value="com.zhongan.core.group.common.diamond.GroupMailDiamondConfig" />
+ 	</bean>
+
+	<bean id="groupAccountAmountOrderService" class="com.zhongan.core.group.service.impl.GroupAccountAmountOrderServiceImpl"></bean>
+	
+	<bean id="groupAuthorityService" class="com.zhongan.core.group.service.impl.GroupAuthorityServiceImpl" ></bean>
+	
+	<bean id="groupInsurancePackageExtensionService" class="com.zhongan.core.group.service.impl.GroupInsurancePackageExtensionServiceImpl"></bean>
+			
+	<bean id="packagePolicyService" class="com.zhongan.core.group.service.impl.PackagePolicyServiceImpl"/>
+
+	<bean id="groupHmpLogService" class="com.zhongan.core.group.service.impl.GroupHmpLogServiceImpl"></bean>
+
+	<bean id="claimOssUtil" class="com.zhongan.core.group.util.ClaimOssUtil">
+		<property name="accessId"><value>${za.group.oss.accessid}</value></property>
+		<property name="accessKey"><value>${za.group.oss.accesskey}</value></property>
+		<property name="endpoint"><value>${za.group.oss.endpoint}</value></property>
+		<property name="bucketName"><value>${za.group.oss.bucketname}</value></property>
+	</bean>
+
+	<!-- 团险服务 -->
+	<bean id="tuanClaimService" class="com.zhongan.core.group.service.impl.TuanClaimServiceImpl"></bean>
+	<bean id="healthTuanService" class="com.zhongan.core.group.service.impl.HealthTuanServiceImpl"></bean>
+	
+	<bean id="openPolicyService" class="com.zhongan.core.group.service.impl.OpenPolicyServiceImpl"></bean>
+	<bean id="groupInsuranceDetailService" class="com.zhongan.core.group.service.impl.GroupInsuranceDetailServiceImpl"></bean>
+	<bean id="jianZhiDiamondConfig" class="com.zhongan.core.group.common.diamond.JianZhiDiamondConfig" > 
+  		<property name="groupID" value="DEFAULT_GROUP" />
+  		<property name="dataID"  value="com.zhongan.core.group.common.diamond.JianZhiDiamondConfig" />
+ 	</bean>
+ 	
+ 	<bean id="normalPolicyService" class="com.zhongan.core.group.service.impl.NormalPolicyServiceImpl"/>
+ 	
+ 	<bean id="groupPolicyEndorModifElemService" class="com.zhongan.core.group.service.impl.GroupPolicyEndorModifElemServiceImpl"></bean>
+	
+	<bean id="groupInsuranceElemService" class="com.zhongan.core.group.service.impl.GroupInsuranceElemServiceImpl"></bean>
+	
+	<bean id="defaultModifyBasicInfoService" class="com.zhongan.core.group.notify.handle.impl.DefaultModifyBasicInfoServiceImpl" />
+	
+	<bean id="modifyBasicInfoFactory" class="com.zhongan.core.group.notify.handle.ModifyBasicInfoFactory">
+		<property name="modifyBasicInfoMap">
+			<map>
+				<entry key="default" value-ref="defaultModifyBasicInfoService" />
+			</map>
+		</property>
+	</bean>
+	
+</beans>
+

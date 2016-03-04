@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="GB2312"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans default-autowire="byName">
+	 <!-- 
+	<bean id="claimGrossService" class="com.taobao.hsf.app.spring.util.HSFSpringConsumerBean"
+		init-method="init">
+		<property name="interfaceName" value="com.zhongan.core.claim.service.ClaimGrossService"/>
+		<property name="version" value="${za.openapi.gw.hsf.consumerversion.common}"/>
+	</bean>
+	 -->
+</beans> 

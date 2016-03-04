@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Logback Configuration.  -->
+<configuration debug="false">
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <target>System.out</target>
+        <encoding>UTF-8</encoding>
+        <filter class="com.alibaba.citrus.logconfig.logback.LevelRangeFilter">
+            <levelMax>INFO</levelMax>
+            <levelMax>ERROR</levelMax>
+        </filter>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <pattern>%d [%thread] %-5p [%c] [%F:%L] - %msg%n</pattern>
+        </layout>
+    </appender>
+
+    <appender name="STDERR" class="ch.qos.logback.core.ConsoleAppender">
+        <target>System.err</target>
+        <encoding>UTF-8</encoding>
+        <filter class="com.alibaba.citrus.logconfig.logback.LevelRangeFilter">
+            <levelMin>WARN</levelMin>
+        </filter>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <pattern>%d [%thread] %-5p [%c] [%F:%L] - %msg%n</pattern>
+        </layout>
+    </appender>
+    
+    <appender name="RollingFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+
+        <!-- 可让每天产生一个日志文件，最多 30 个，自动回滚 -->
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${za.group.log.dir}/group-%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <file>${za.group.log.dir}/group.log</file>
+        <encoder charset="UTF-8"> <!-- encoder 可以指定字符集，对于中文输出有意义 -->
+            <pattern>%d [%thread] %-5p [%c] [%F:%L] - %msg%n</pattern>
+        </encoder>
+    </appender>
+    
+    
+    
+    <appender name="LogServiceMessage" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <!-- 可让每天产生一个日志文件 -->
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${za.group.log.dir}/group-logdata-%d{yyyy-MM-dd}.log</fileNamePattern> 
+        </rollingPolicy>
+        <file>${za.group.log.dir}/group-logdata.log</file>
+        <encoder charset="UTF-8"> <!-- encoder 可以指定字符集，对于中文输出有意义 -->
+            <pattern>%d [%thread] %-5p [%c] [%F:%L] - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+ 
+     <appender name="TASK" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <filter>
+            <level>TRACE</level>
+        </filter>
+        <!-- 可让每天产生一个日志文件，最多 30 个，自动回滚 -->
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${za.group.log.dir}/task-%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <file>${za.group.log.dir}/task.log</file>
+        <encoder charset="UTF-8"> <!-- encoder 可以指定字符集，对于中文输出有意义 -->
+            <pattern>%d [%thread] %-5p [%c] [%F:%L] - %msg%n</pattern>
+        </encoder>
+    </appender>
+   	
+   	<logger name="com.zhongan.core.group.task" additivity="false">
+		<level value="${za.group.log.level}" />
+		<appender-ref ref="TASK" />
+	</logger>
+   	 <!-- 异步输出 -->
+	<appender name ="GROUP_ASYNC" class= "ch.qos.logback.classic.AsyncAppender">  
+		<!-- 不丢失日志.默认的,如果队列的80%已满,则会丢弃TRACT、DEBUG、INFO级别的日志 -->  
+		<discardingThreshold >0</discardingThreshold>
+		<!-- 更改默认的队列的深度,该值会影响性能.默认值为256 -->  
+		<queueSize>512</queueSize>
+		<!-- 添加附加的appender,最多只能添加一个 -->  
+		<appender-ref ref ="RollingFile"/>
+	</appender>
+	<appender name="GROUP_ERROR_RollingFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <!-- 可让每天产生一个日志文件，最多 30 个，自动回滚 -->
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${za.group.log.dir}/error-%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <file>${za.group.log.dir}/error.log</file>
+        <encoder charset="UTF-8"> <!-- encoder 可以指定字符集，对于中文输出有意义 -->
+            <pattern>%d [%thread] %-5p [%c] [%F:%L] - %msg%n</pattern>
+        </encoder>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter"><!-- 只打印错误日志 -->
+			<level>ERROR</level>
+			<onMatch>ACCEPT</onMatch>
+			<onMismatch>DENY</onMismatch>
+		</filter>
+    </appender>
+	<!-- 异步输出 -->
+	<appender name ="GROUP_ERROR_ASYNC" class= "ch.qos.logback.classic.AsyncAppender">  
+		<!-- 不丢失日志.默认的,如果队列的80%已满,则会丢弃TRACT、DEBUG、INFO级别的日志 -->  
+		<discardingThreshold >0</discardingThreshold>
+		<!-- 更改默认的队列的深度,该值会影响性能.默认值为256 -->  
+		<queueSize>256</queueSize>
+		<!-- 添加附加的appender,最多只能添加一个 -->  
+		<appender-ref ref ="GROUP_ERROR_RollingFile"/>
+	</appender>
+
+	#if("dev"=="${za.basic.setting.mode}") 
+    <logger name="com.ibatis" level="INFO" />
+    <logger name="com.ibatis.common.jdbc.SimpleDataSource" level="INFO" />
+    <logger name="com.ibatis.common.jdbc.ScriptRunner" level="INFO" />
+    <logger name="com.ibatis.sqlmap.engine.impl.SqlMapClientDelegate" level="INFO" />
+    <logger name="java.sql.Connection" level="INFO" />
+    <logger name="java.sql.Statement" level="INFO" />
+    <logger name="java.sql.PreparedStatement" level="INFO" />
+    <logger name="java.sql.ResultSet" level="INFO" />  
+    #end
+
+    <logger name="org.apache">
+        <level value="INFO" />
+    </logger>
+
+    <logger name="org.springframework">
+        <level value="INFO" />
+    </logger>
+
+    <logger name="com.alibaba.citrus.springext.support.context">
+        <level value="INFO" />
+    </logger> 
+
+    <root>
+    	<level value="${za.group.log.level}" />
+        #if("dev"=="${za.basic.setting.mode}") 
+	        <appender-ref ref="STDERR" />
+	        <appender-ref ref="STDOUT" />
+        #end
+        <appender-ref ref="GROUP_ASYNC" />
+        <appender-ref ref="GROUP_ERROR_ASYNC"></appender-ref>
+    </root>
+</configuration>

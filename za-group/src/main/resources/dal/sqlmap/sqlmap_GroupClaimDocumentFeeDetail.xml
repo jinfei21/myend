@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+
+<sqlMap namespace="GroupClaimDocumentFeeDetail" >
+
+  <typeAlias alias="groupClaimDocumentFeeDetailDO" type="com.zhongan.core.group.dao.dataobject.GroupClaimDocumentFeeDetailDO" />
+
+  <resultMap id="groupClaimDocumentFeeDetailDOResultMap" class="groupClaimDocumentFeeDetailDO" >
+    <result property="id" column="id" />
+    <result property="claimId" column="claim_id" />
+    <result property="reportNo" column="report_no" />
+    <result property="receiptNo" column="receipt_no" />
+    <result property="detailInfo" column="detail_info" />
+    <result property="isDeleted" column="is_deleted" />
+    <result property="gmtCreated" column="gmt_created" />
+    <result property="creator" column="creator" />
+    <result property="gmtModified" column="gmt_modified" />
+    <result property="modifier" column="modifier" />
+  </resultMap>
+
+  <sql id="groupClaimDocumentFeeDetail_columns" >
+    a1.id, a1.claim_id, a1.report_no, a1.receipt_no, a1.detail_info, a1.is_deleted, a1.gmt_created, 
+      a1.creator, a1.gmt_modified, a1.modifier
+  </sql>
+
+  <sql id="groupClaimDocumentFeeDetail_do_columns" >
+    a1.id, a1.claim_id, a1.report_no, a1.receipt_no, a1.detail_info, a1.is_deleted, a1.gmt_created, 
+      a1.creator, a1.gmt_modified, a1.modifier
+  </sql>
+
+  <sql id="queryParams" >
+    <dynamic prepend="WHERE" >
+      <isNotNull property="id" prepend="AND" >
+        <![CDATA[  
+        id = #id#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="claimId" prepend="AND" >
+        <![CDATA[  
+        claim_id = #claimId#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="reportNo" prepend="AND" >
+        <![CDATA[  
+        report_no = #reportNo#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="receiptNo" prepend="AND" >
+        <![CDATA[  
+        receipt_no = #receiptNo#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="detailInfo" prepend="AND" >
+        <![CDATA[  
+        detail_info = #detailInfo#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="isDeleted" prepend="AND" >
+        <![CDATA[  
+        is_deleted = #isDeleted#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="gmtCreated" prepend="AND" >
+        <![CDATA[  
+        gmt_created = #gmtCreated#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="creator" prepend="AND" >
+        <![CDATA[  
+        creator = #creator#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="gmtModified" prepend="AND" >
+        <![CDATA[  
+        gmt_modified = #gmtModified#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="modifier" prepend="AND" >
+        <![CDATA[  
+        modifier = #modifier#  
+        ]]>  
+      </isNotNull>
+    </dynamic>
+  </sql>
+
+  <sql id="doQueryParams" >
+    <dynamic prepend="WHERE" >
+      <isNotNull property="id" prepend="AND" >
+        <![CDATA[  
+        id = #id#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="claimId" prepend="AND" >
+        <![CDATA[  
+        claim_id = #claimId#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="reportNo" prepend="AND" >
+        <![CDATA[  
+        report_no = #reportNo#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="receiptNo" prepend="AND" >
+        <![CDATA[  
+        receipt_no = #receiptNo#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="detailInfo" prepend="AND" >
+        <![CDATA[  
+        detail_info = #detailInfo#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="isDeleted" prepend="AND" >
+        <![CDATA[  
+        is_deleted = #isDeleted#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="gmtCreated" prepend="AND" >
+        <![CDATA[  
+        gmt_created = #gmtCreated#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="creator" prepend="AND" >
+        <![CDATA[  
+        creator = #creator#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="gmtModified" prepend="AND" >
+        <![CDATA[  
+        gmt_modified = #gmtModified#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="modifier" prepend="AND" >
+        <![CDATA[  
+        modifier = #modifier#  
+        ]]>  
+      </isNotNull>
+    </dynamic>
+  </sql>
+
+  <insert id="insert" parameterClass="groupClaimDocumentFeeDetailDO" >
+    INSERT INTO group_claim_document_fee_detail( id, claim_id, report_no, receipt_no, detail_info, is_deleted, gmt_created, 
+      creator, gmt_modified, modifier)
+     VALUES ( #id#, #claimId#, #reportNo#, #receiptNo#, #detailInfo#, #isDeleted#, #gmtCreated#, 
+      #creator#, #gmtModified#, #modifier#)
+    <selectKey keyProperty="id" resultClass="java.lang.Long" >
+      SELECT LAST_INSERT_ID() AS value
+    </selectKey>
+  </insert>
+
+  <update id="update" parameterClass="groupClaimDocumentFeeDetailDO" >
+    UPDATE group_claim_document_fee_detail   
+    <dynamic prepend="SET" >
+      <isNotNull property="detailInfo" prepend="," >
+        <![CDATA[  
+        detail_info = #detailInfo#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="isDeleted" prepend="," >
+        <![CDATA[  
+        is_deleted = #isDeleted#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="gmtModified" prepend="," >
+        <![CDATA[  
+        gmt_modified = #gmtModified#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="modifier" prepend="," >
+        <![CDATA[  
+        modifier = #modifier#  
+        ]]>  
+      </isNotNull>
+    </dynamic>
+      WHERE is_deleted ='N' 
+      <isNotNull property="id" prepend="AND" >
+        <![CDATA[  
+        id = #id#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="claimId" prepend="AND" >
+        <![CDATA[  
+        claim_id = #claimId#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="reportNo" prepend="AND" >
+        <![CDATA[  
+        report_no = #reportNo#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="receiptNo" prepend="AND" >
+        <![CDATA[  
+        receipt_no = #receiptNo#  
+        ]]>  
+      </isNotNull>
+  </update>
+
+  <select id="findByPrimaryKey" parameterClass="groupClaimDocumentFeeDetailDO" resultMap="groupClaimDocumentFeeDetailDOResultMap" >
+     SELECT 
+    <include refid="groupClaimDocumentFeeDetail_do_columns" />
+    <![CDATA[  
+     FROM group_claim_document_fee_detail a1 
+      ]]> 
+       <include refid="doQueryParams" />
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterClass="java.lang.Long" >
+    <![CDATA[  
+     DELETE FROM group_claim_document_fee_detail WHERE id = #id#
+    ]]>  
+  </delete>
+
+  <select id="countByDOExample" parameterClass="groupClaimDocumentFeeDetailDO" resultClass="java.lang.Integer" >
+    SELECT COUNT(id) AS num FROM group_claim_document_fee_detail 
+    <include refid="doQueryParams" />
+  </select>
+
+  <select id="findListByDO" resultMap="groupClaimDocumentFeeDetailDOResultMap" parameterClass="groupClaimDocumentFeeDetailDO" >
+     SELECT 
+    <include refid="groupClaimDocumentFeeDetail_do_columns" />
+     FROM group_claim_document_fee_detail a1 
+    <include refid="doQueryParams" />
+  </select>
+</sqlMap>

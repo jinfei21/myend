@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+
+<sqlMap namespace="ApiErrorCode" >
+
+  <typeAlias alias="apiErrorCodeDO" type="com.zhongan.openapi.core.dal.dataobject.ApiErrorCodeDO" />
+  <typeAlias alias="apiErrorCodeQuery" type="com.zhongan.openapi.core.dal.query.ApiErrorCodeQuery" />
+
+  <resultMap id="apiErrorCodeDOResultMap" class="apiErrorCodeDO" >
+    <result property="id" column="id" />
+    <result property="apiId" column="api_id" />
+    <result property="errorCode" column="error_code" />
+    <result property="description" column="description" />
+    <result property="solution" column="solution" />
+    <result property="isDel" column="is_deleted" />
+    <result property="gmtCreated" column="gmt_created" />
+    <result property="gmtModified" column="gmt_modified" />
+  </resultMap>
+
+  <sql id="apiErrorCode_query_columns" >
+    a1.id, a1.api_id, a1.error_code, a1.description, a1.solution, a1.is_deleted, a1.gmt_created, 
+      a1.gmt_modified
+  </sql>
+
+  <sql id="queryQueryParams" >
+    <dynamic prepend="WHERE" >
+      <![CDATA[  
+      is_deleted = 'N' 
+      ]]>  
+      <isParameterPresent prepend="AND">
+	      <isNotNull property="id" prepend="AND" >
+	        <![CDATA[  
+	        id = #id#  
+	        ]]>  
+	      </isNotNull>
+	      <isNotNull property="apiId" prepend="AND" >
+	        <![CDATA[  
+	        api_id = #apiId#  
+	        ]]>  
+	      </isNotNull>
+	      <isNotNull property="errorCode" prepend="AND" >
+	        <![CDATA[  
+	        error_code = #errorCode#  
+	        ]]>  
+	      </isNotNull>
+	      <isNotNull property="description" prepend="AND" >
+	        <![CDATA[  
+	        description = #description#  
+	        ]]>  
+	      </isNotNull>
+	      <isNotNull property="solution" prepend="AND" >
+	        <![CDATA[  
+	        solution = #solution#  
+	        ]]>  
+	      </isNotNull>
+      </isParameterPresent>
+    </dynamic>
+  </sql>
+
+  <insert id="insert" parameterClass="apiErrorCodeDO" >
+    INSERT INTO api_error_code( id, api_id, error_code, description, solution, is_deleted, gmt_created, 
+      gmt_modified)
+     VALUES ( #id#, #apiId#, #errorCode#, #description#, #solution#, 'N', now(), 
+      now())
+    <selectKey keyProperty="id" resultClass="java.lang.Long" >
+      SELECT LAST_INSERT_ID() AS value
+    </selectKey>
+  </insert>
+
+  <update id="update" parameterClass="apiErrorCodeDO" >
+    UPDATE api_error_code   
+    <dynamic prepend="SET" >
+      <isNotNull property="apiId" prepend="," >
+        <![CDATA[  
+        api_id = #apiId#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="errorCode" prepend="," >
+        <![CDATA[  
+        error_code = #errorCode#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="description" prepend="," >
+        <![CDATA[  
+        description = #description#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="solution" prepend="," >
+        <![CDATA[  
+        solution = #solution#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="gmtModified" prepend="," >
+        <![CDATA[  
+        gmt_modified = now()  
+        ]]>  
+      </isNotNull>
+    </dynamic>
+     WHERE id = #id#  
+  </update>
+
+  <select id="findByPrimaryKey" parameterClass="java.lang.Long" resultMap="apiErrorCodeDOResultMap" >
+     SELECT 
+    <include refid="apiErrorCode_query_columns" />
+    <![CDATA[  
+     FROM api_error_code a1 WHERE id = #id#
+    ]]>  
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterClass="java.lang.Long" >
+    UPDATE api_error_code set is_deleted = 'Y', gmt_modified = now() WHERE id = #id#  
+  </delete>
+
+  <select id="countByDOExample" parameterClass="apiErrorCodeDO" resultClass="java.lang.Integer" >
+    SELECT COUNT(id) AS num FROM api_error_code 
+    <include refid="queryQueryParams" />
+  </select>
+
+  <select id="findListByDO" resultMap="apiErrorCodeDOResultMap" parameterClass="apiErrorCodeDO" >
+     SELECT 
+    <include refid="apiErrorCode_query_columns" />
+     FROM api_error_code a1 
+    <include refid="queryQueryParams" />
+  </select>
+
+  <select id="countByQueryExample" parameterClass="apiErrorCodeQuery" resultClass="java.lang.Integer" >
+    SELECT COUNT(id) AS num FROM api_error_code 
+    <include refid="queryQueryParams" />
+  </select>
+
+  <select id="findListByQuery" resultMap="apiErrorCodeDOResultMap" parameterClass="apiErrorCodeQuery" >
+     SELECT 
+    <include refid="apiErrorCode_query_columns" />
+     FROM api_error_code a1 
+    <include refid="queryQueryParams" />
+  </select>
+  
+  <select id="findApiErrorCodeListByApiId" parameterClass="java.lang.Long" resultMap="apiErrorCodeDOResultMap" >
+      SELECT 
+    <include refid="apiErrorCode_query_columns" />
+     FROM api_error_code a1 WHERE is_deleted = 'N' AND api_id = #apiId#  
+  </select>
+  
+</sqlMap>

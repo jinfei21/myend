@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd"
+	default-autowire="byName">
+
+	<bean id="groupPolicyScheduler"
+		class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="triggers">
+			<list>
+				<ref bean="taskScannerTrigger" />
+				<ref bean="mailTaskTrigger" />
+				<ref bean="createBillCashTaskTrigger"/>
+				<ref bean="createJianZhiTrigger"/>
+			</list>
+		</property>
+		<property name="autoStartup">
+			<value>true</value>
+		</property>
+		<property name="schedulerName">
+			<value>za group schedule</value>
+		</property>
+	</bean>
+
+
+	<!-- 任务扫描 begin -->
+	<bean id="taskScannerJob"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject">
+			<ref bean="groupTaskScanner" />
+		</property>
+		<property name="targetMethod">
+			<value>scan</value>
+		</property>
+		<property name="concurrent" value="false" />
+	</bean>
+	<bean id="taskScannerTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail">
+			<ref bean="taskScannerJob" />
+		</property>
+		<property name="cronExpression">
+			<value>${za.group.sina.endor.task}</value><!-- */5 * * * * ? 每5秒钟 -->
+		</property>
+	</bean>
+	<!-- 任务扫描 end -->
+
+	<!-- 扫描任务表，判断某一批次号下的批改是否处理完毕，完成后针对某一批次号发送批改成功的邮件！ -->
+	<bean id="sendMailTask"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject">
+			<ref bean="groupTaskScanner" />
+		</property>
+		<property name="targetMethod">
+			<value>mailTask</value><!-- mailTask -->
+		</property>
+		<property name="concurrent" value="false" />
+	</bean>
+	<bean id="mailTaskTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail">
+			<ref bean="sendMailTask" />
+		</property>
+		<property name="cronExpression">
+			<value>${za.group.sina.endor.mail.task}</value><!-- 测试环境每5秒钟执行一次，如果是生产的话，建议2小时或者一天   -->
+		</property>
+	</bean>
+	<!-- 扫描任务表，判断某一批次号下的批改是否处理完毕，完成后针对某一批次号发送批改成功的邮件！ -->
+
+	<!-- 每月2号统计E代驾团单下分单，并换算成bill_cash保费，插入bill_cash start -->
+	<bean id="createEDaijiaBillCashTask"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject">
+			<ref bean="groupTaskScanner" />
+		</property>
+		<property name="targetMethod">
+			<value>eDaijiaCreateBillCashTask</value>
+		</property>
+		<property name="concurrent" value="false"/>
+	</bean>
+
+	<bean id="createBillCashTaskTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail">
+			<ref bean="createEDaijiaBillCashTask" />
+		</property>
+		<property name="cronExpression">
+			<value>${za.group.edaijia.billcash.task}</value><!-- 每月2号执行 -->
+		</property>
+	</bean>
+	<!-- 每月2号统计E代驾团单下分单，并换算成bill_cash保费，插入bill_cash end -->
+	
+	
+	<!-- 每天早上6:00点统计兼职达人团单下分单，整理成CVS文件 ，上传到服务器端      start -->
+	<bean id="createJianZhiTask"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject">
+			<ref bean="groupTaskjianzhi" />
+		</property>
+		<property name="targetMethod">
+			<value>jianZhiCreateBillCashTask</value>
+		</property>
+		<property name="concurrent" value="false"/>
+	</bean>
+
+	<bean id="createJianZhiTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail">
+			<ref bean="createJianZhiTask" />
+		</property>
+		<property name="cronExpression">
+			<value>${za.group.jianzhi.billcash.task}</value><!-- 每天6:00执行     0 0 6 * * ? --><!-- 每1分钟触发一次   0 0/1 * * * ? -->
+		</property>
+	</bean>
+	<!-- 每天早上6:00点统计兼职达人团单下分单，整理成CVS文件， 上传到服务器端     end -->
+	
+	
+	
+</beans>

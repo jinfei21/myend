@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans default-autowire="byName">
+	
+	<bean id="groupTaskScanner" class="com.zhongan.core.group.task.GroupTaskScanner"></bean>
+	 
+	<bean id="groupTaskjianzhi" class="com.zhongan.core.group.task.GroupTaskjianzhi"></bean>
+	
+	<bean id="groupTaskManager" class="com.zhongan.core.group.task.manager.GroupTaskManagerImpl" >
+		<property name="processors">
+			<map>
+				<entry key="0" value-ref="groupEndorsementProcessor" />
+			</map>
+		</property>
+	</bean>
+	
+    <bean id="groupEndorsementProcessor" class="com.zhongan.core.group.task.processor.GroupEndorsementProcessor">
+    	<property name="groupEndorsementHandleMap">
+			<map>
+				<entry key="0" value-ref="groupInsurantAddHandleProcessor" />
+				<entry key="5" value-ref="groupInsurantChangeFrontInfoHandleProcessor" />
+				<entry key="1" value-ref="groupInsurantPlanChangeHandleProcessor" />
+				<entry key="2" value-ref="groupInsurantQuitHandleProcessor" />
+				<entry key="4" value-ref="groupInsurantChangeRelationHandleProcessor" />
+				<entry key="3" value-ref="groupInsurantBasicInfoChangeHandleProcessor" />
+			
+			</map>
+		</property>
+    </bean>
+    
+      <bean id="groupInsurantBasicInfoChangeHandleProcessor" class="com.zhongan.core.group.task.processor.handle.GroupInsurantBasicInfoChangeHandleProcessor"/>
+      <bean id="groupInsurantChangeRelationHandleProcessor" class="com.zhongan.core.group.task.processor.handle.GroupInsurantChangeRelationHandleProcessor"/>
+      <bean id="groupInsurantAddHandleProcessor" class="com.zhongan.core.group.task.processor.handle.GroupInsurantAddHandleProcessor"/>
+      <bean id="groupInsurantChangeFrontInfoHandleProcessor" class="com.zhongan.core.group.task.processor.handle.GroupInsurantChangeFrontInfoHandleProcessor"/>
+      <bean id="groupInsurantPlanChangeHandleProcessor" class="com.zhongan.core.group.task.processor.handle.GroupInsurantPlanChangeHandleProcessor"/>
+      <bean id="groupInsurantQuitHandleProcessor" class="com.zhongan.core.group.task.processor.handle.GroupInsurantQuitHandleProcessor"/>
+</beans>

@@ -1,0 +1,498 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+
+<sqlMap namespace="GroupClaim" >
+
+  <typeAlias alias="groupClaimDO" type="com.zhongan.core.group.dao.dataobject.GroupClaimDO" />
+
+  <resultMap id="groupClaimDOResultMap" class="groupClaimDO" >
+    <result property="id" column="id" />
+    <result property="claimId" column="claim_id" />
+    <result property="policyId" column="policy_id" />
+    <result property="extroInfo" column="extro_info" />
+    <result property="parentPolicyId" column="parent_policy_id" />
+    <result property="source" column="source" />
+    <result property="remark" column="remark" />
+    <result property="superiorDealedPerson" column="superior_dealed_person" />
+    <result property="dealedPerson" column="dealed_person" />
+    <result property="informationDate" column="information_date" />
+    <result property="checkClaimStatus" column="check_claim_status" />
+    <result property="isDeleted" column="is_deleted" />
+    <result property="gmtCreated" column="gmt_created" />
+    <result property="creator" column="creator" />
+    <result property="gmtModified" column="gmt_modified" />
+    <result property="modifier" column="modifier" />
+    <result property="status" column="status" />
+  </resultMap>
+
+  <sql id="groupClaim_columns" >
+    a1.id, a1.claim_id, a1.policy_id, a1.extro_info, a1.parent_policy_id,a1.source,a1.remark, a1.superior_dealed_person, 
+      a1.dealed_person, a1.information_date, a1.check_claim_status, a1.is_deleted, a1.gmt_created, 
+      a1.creator, a1.gmt_modified, a1.modifier, a1.status
+  </sql>
+
+  <sql id="groupClaim_do_columns" >
+    a1.id, a1.claim_id, a1.policy_id, a1.extro_info,a1.parent_policy_id,a1.source,a1.remark, a1.superior_dealed_person, 
+      a1.dealed_person, a1.information_date, a1.check_claim_status, a1.is_deleted, a1.gmt_created, 
+      a1.creator, a1.gmt_modified, a1.modifier, a1.status
+  </sql>
+
+  <sql id="queryParams" >
+    <dynamic prepend="WHERE" >
+      <isNotNull property="id" prepend="AND" >
+        <![CDATA[  
+        id = #id#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="claimId" prepend="AND" >
+        <![CDATA[  
+        claim_id = #claimId#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="policyId" prepend="AND" >
+        <![CDATA[  
+        policy_id = #policyId#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="extroInfo" prepend="AND" >
+        <![CDATA[  
+        extro_info = #extroInfo#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="parentPolicyId" prepend="AND" >
+        <![CDATA[  
+        parent_policy_id = #parentPolicyId#  
+        ]]>  
+      </isNotNull>
+     <isNotNull property="source" prepend="AND" >
+        <![CDATA[  
+        source = #source#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="remark" prepend="AND" >
+        <![CDATA[  
+        remark = #remark#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="superiorDealedPerson" prepend="AND" >
+        <![CDATA[  
+        superior_dealed_person = #superiorDealedPerson#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="dealedPerson" prepend="AND" >
+        <![CDATA[  
+        dealed_person = #dealedPerson#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="informationDate" prepend="AND" >
+        <![CDATA[  
+        information_date = #informationDate#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="checkClaimStatus" prepend="AND" >
+        <![CDATA[  
+        check_claim_status = #checkClaimStatus#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="isDeleted" prepend="AND" >
+        <![CDATA[  
+        is_deleted = #isDeleted#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="gmtCreated" prepend="AND" >
+        <![CDATA[  
+        gmt_created = #gmtCreated#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="creator" prepend="AND" >
+        <![CDATA[  
+        creator = #creator#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="gmtModified" prepend="AND" >
+        <![CDATA[  
+        gmt_modified = #gmtModified#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="modifier" prepend="AND" >
+        <![CDATA[  
+        modifier = #modifier#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="status" prepend="AND" >
+        <![CDATA[  
+        status = #status#  
+        ]]>  
+      </isNotNull>
+    </dynamic>
+  </sql>
+
+  <sql id="doQueryParams" >
+    <dynamic prepend="WHERE" >
+      <isNotNull property="id" prepend="AND" >
+        <![CDATA[  
+        id = #id#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="claimId" prepend="AND" >
+        <![CDATA[  
+        claim_id = #claimId#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="policyId" prepend="AND" >
+        <![CDATA[  
+        policy_id = #policyId#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="extroInfo" prepend="AND" >
+        <![CDATA[  
+        extro_info = #extroInfo#  
+        ]]>  
+      </isNotNull>
+       <isNotNull property="parentPolicyId" prepend="AND" >
+        <![CDATA[  
+        parent_policy_id = #parentPolicyId#  
+        ]]>  
+      </isNotNull>
+     <isNotNull property="source" prepend="AND" >
+        <![CDATA[  
+        source = #source#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="remark" prepend="AND" >
+        <![CDATA[  
+        remark = #remark#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="superiorDealedPerson" prepend="AND" >
+        <![CDATA[  
+        superior_dealed_person = #superiorDealedPerson#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="dealedPerson" prepend="AND" >
+        <![CDATA[  
+        dealed_person = #dealedPerson#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="informationDate" prepend="AND" >
+        <![CDATA[  
+        information_date = #informationDate#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="checkClaimStatus" prepend="AND" >
+        <![CDATA[  
+        check_claim_status = #checkClaimStatus#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="isDeleted" prepend="AND" >
+        <![CDATA[  
+        is_deleted = #isDeleted#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="gmtCreated" prepend="AND" >
+        <![CDATA[  
+        gmt_created = #gmtCreated#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="creator" prepend="AND" >
+        <![CDATA[  
+        creator = #creator#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="gmtModified" prepend="AND" >
+        <![CDATA[  
+        gmt_modified = #gmtModified#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="modifier" prepend="AND" >
+        <![CDATA[  
+        modifier = #modifier#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="status" prepend="AND" >
+        <![CDATA[  
+        status = #status#  
+        ]]>  
+      </isNotNull>
+    </dynamic>
+  </sql>
+
+  <insert id="insert" parameterClass="groupClaimDO" >
+    INSERT INTO group_claim( id, claim_id, policy_id, extro_info,parent_policy_id,source,remark, superior_dealed_person, 
+      dealed_person, information_date, check_claim_status, is_deleted, gmt_created, 
+      creator, gmt_modified, modifier, status)
+     VALUES ( #id#, #claimId#, #policyId#, #extroInfo#,#parentPolicyId#,#source#,#remark#, #superiorDealedPerson#, 
+      #dealedPerson#, #informationDate#, #checkClaimStatus#, #isDeleted#, #gmtCreated#, 
+      #creator#, #gmtModified#, #modifier#, #status#)
+  </insert>
+
+  <update id="update" parameterClass="groupClaimDO" >
+    UPDATE group_claim   
+    <dynamic prepend="SET" >
+      <!--
+      <isNotNull property="id" prepend="," >
+        <![CDATA[  
+        id = #id#  
+        ]]>  
+      </isNotNull>
+      -->
+      <isNotNull property="claimId" prepend="," >
+        <![CDATA[  
+        claim_id = #claimId#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="policyId" prepend="," >
+        <![CDATA[  
+        policy_id = #policyId#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="extroInfo" prepend="," >
+        <![CDATA[  
+        extro_info = #extroInfo#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="parentPolicyId" prepend="," >
+        <![CDATA[  
+        parent_policy_id = #parentPolicyId#  
+        ]]>  
+      </isNotNull>
+     <isNotNull property="source" prepend="," >
+        <![CDATA[  
+        source = #source#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="remark" prepend="," >
+        <![CDATA[  
+        remark = #remark#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="superiorDealedPerson" prepend="," >
+        <![CDATA[  
+        superior_dealed_person = #superiorDealedPerson#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="dealedPerson" prepend="," >
+        <![CDATA[  
+        dealed_person = #dealedPerson#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="informationDate" prepend="," >
+        <![CDATA[  
+        information_date = #informationDate#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="checkClaimStatus" prepend="," >
+        <![CDATA[  
+        check_claim_status = #checkClaimStatus#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="isDeleted" prepend="," >
+        <![CDATA[  
+        is_deleted = #isDeleted#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="gmtCreated" prepend="," >
+        <![CDATA[  
+        gmt_created = #gmtCreated#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="creator" prepend="," >
+        <![CDATA[  
+        creator = #creator#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="gmtModified" prepend="," >
+        <![CDATA[  
+        gmt_modified = #gmtModified#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="modifier" prepend="," >
+        <![CDATA[  
+        modifier = #modifier#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="status" prepend="," >
+        <![CDATA[  
+        status = #status#  
+        ]]>  
+      </isNotNull>
+    </dynamic>
+     WHERE is_deleted = 'N'  
+      <isNotNull property="id" prepend="AND" >
+        <![CDATA[  
+        id = #id#  
+        ]]> 
+      </isNotNull>
+      <isNotNull property="claimId" prepend="AND" >
+        <![CDATA[  
+        claim_id = #claimId#  
+        ]]> 
+      </isNotNull>
+      <isNotNull property="policyId" prepend="AND" >
+        <![CDATA[  
+        policy_id = #policyId#  
+        ]]>  
+      </isNotNull>
+  </update>
+  
+  <update id="updateById" parameterClass="groupClaimDO" >
+    UPDATE group_claim   
+    <dynamic prepend="SET" >
+      <isNotNull property="claimId" prepend="," >
+        <![CDATA[  
+        claim_id = #claimId#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="policyId" prepend="," >
+        <![CDATA[  
+        policy_id = #policyId#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="extroInfo" prepend="," >
+        <![CDATA[  
+        extro_info = #extroInfo#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="parentPolicyId" prepend="," >
+        <![CDATA[  
+        parent_policy_id = #parentPolicyId#  
+        ]]>  
+      </isNotNull>
+     <isNotNull property="source" prepend="," >
+        <![CDATA[  
+        source = #source#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="remark" prepend="," >
+        <![CDATA[  
+        remark = #remark#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="superiorDealedPerson" prepend="," >
+        <![CDATA[  
+        superior_dealed_person = #superiorDealedPerson#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="dealedPerson" prepend="," >
+        <![CDATA[  
+        dealed_person = #dealedPerson#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="informationDate" prepend="," >
+        <![CDATA[  
+        information_date = #informationDate#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="checkClaimStatus" prepend="," >
+        <![CDATA[  
+        check_claim_status = #checkClaimStatus#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="isDeleted" prepend="," >
+        <![CDATA[  
+        is_deleted = #isDeleted#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="gmtCreated" prepend="," >
+        <![CDATA[  
+        gmt_created = #gmtCreated#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="creator" prepend="," >
+        <![CDATA[  
+        creator = #creator#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="gmtModified" prepend="," >
+        <![CDATA[  
+        gmt_modified = #gmtModified#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="modifier" prepend="," >
+        <![CDATA[  
+        modifier = #modifier#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="status" prepend="," >
+        <![CDATA[  
+        status = #status#  
+        ]]>  
+      </isNotNull>
+    </dynamic>
+     WHERE is_deleted = 'N'  
+      <isNotNull property="id" prepend="AND" >
+        <![CDATA[  
+        id = #id#  
+        ]]> 
+      </isNotNull>
+  </update>
+
+
+  <select id="findByPrimaryKey" parameterClass="java.lang.Long" resultMap="groupClaimDOResultMap" >
+     SELECT 
+    <include refid="groupClaim_do_columns" />
+    <![CDATA[  
+     FROM group_claim a1 WHERE id = #id#
+    ]]>  
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterClass="java.lang.Long" >
+    <![CDATA[  
+     DELETE FROM group_claim WHERE id = #id#
+    ]]>  
+  </delete>
+
+  <select id="countByDOExample" parameterClass="groupClaimDO" resultClass="java.lang.Integer" >
+    SELECT COUNT(id) AS num FROM group_claim 
+    <include refid="doQueryParams" />
+    <isNotEmpty property="parentPolicyIds" prepend="AND" >
+        parent_policy_id in 
+         <iterate property="parentPolicyIds" conjunction="," open="("
+				close=")">
+				#parentPolicyIds[]#
+		 </iterate>
+    </isNotEmpty>
+    <isNotEmpty property="sources" prepend="AND" >
+        source in 
+         <iterate property="sources" conjunction="," open="("
+				close=")">
+				#sources[]#
+		 </iterate>
+    </isNotEmpty>	
+    <isNotEmpty property="inStatus" prepend="AND" >
+        status in 
+         <iterate property="inStatus" conjunction="," open="("
+				close=")">
+				#inStatus[]#
+		 </iterate>
+    </isNotEmpty>
+  </select>
+
+  <select id="findListByDO" resultMap="groupClaimDOResultMap" parameterClass="groupClaimDO" >
+     SELECT 
+    <include refid="groupClaim_do_columns" />
+     FROM group_claim a1 
+    <include refid="doQueryParams" />
+    <isNotEmpty property="parentPolicyIds" prepend="AND" >
+        parent_policy_id in 
+         <iterate property="parentPolicyIds" conjunction="," open="("
+				close=")">
+				#parentPolicyIds[]#
+		 </iterate>
+    </isNotEmpty>
+    <isNotEmpty property="sources" prepend="AND" >
+        source in 
+         <iterate property="sources" conjunction="," open="("
+				close=")">
+				#sources[]#
+		 </iterate>
+    </isNotEmpty>	
+    <isNotEmpty property="inStatus" prepend="AND" >
+        status in 
+         <iterate property="inStatus" conjunction="," open="("
+				close=")">
+				#inStatus[]#
+		 </iterate>
+    </isNotEmpty>	
+  </select>
+</sqlMap>

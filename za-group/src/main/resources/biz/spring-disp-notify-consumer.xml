@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="GBK"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans default-autowire="byName">
+	<!-- 保单notify消息处理器 -->
+	<bean id="groupPolicyMsgListener" class="com.zhongan.core.group.notify.listener.GroupPolicyMsgListener">
+		<property name="defaultNotifyListener">
+			<ref bean="haiHongGroupPolicyEndorsementMessageProcessor"/>
+		</property>
+		<property name="groupPolicyProcessors">
+			<map>
+				<!-- 海虹团险 产品组合Id-->
+				<entry key="130001" value-ref="haiHongGroupPolicyEndorsementMessageProcessor" />
+			</map>
+		</property>
+	</bean>
+	
+	<bean id="policyNotifySendManager" class="com.taobao.hsf.notify.client.NotifyManagerBean"
+	    init-method="init">
+		<property name="subscribeMessages">
+			<map>
+				<entry key="${za.group.policy.change.notify.msgtype.policy_status_change}"> 
+					 <map>
+                		 <entry key="${za.group.policy.change.notify.msgtype.policy_endor_effective}"> 
+                    		<bean class="com.taobao.hsf.notify.client.SubscriptMsgDetailInfo"> 
+		                        <property name="persistence" value="true" /> 
+		                        <property name="waterMark" value="-1" /> 
+                    		</bean> 
+                		</entry>
+            		</map>
+				</entry>
+			</map>
+		</property>
+		
+		<property name="groupId" value="${za.group.policy.change.notify.policyGroupId}" />
+		<property name="name" value="${za.group.policy.change.notify.name}" />
+		<property name="description" value="${za.group.policy.change.notify.description}" />
+		<property name="messageListener" ref="groupPolicyMsgListener" />
+	</bean>
+
+    <bean id="haiHongGroupPolicyEndorsementMessageProcessor" class="com.zhongan.core.group.notify.processor.HaiHongGroupPolicyEndorsementMessageProcessor">		 
+	    <property name="defaultModifyBasicInfoService">
+			<ref bean="defaultModifyBasicInfoService"/>
+		</property>	 
+	</bean>
+		<!-- 监听收付费消息处理器 -->
+	<bean id="groupClaimBillMsgListener" class="com.zhongan.core.group.notify.listener.GroupClaimBillMsgListener">
+	</bean>
+	
+	<bean id="claimBillNotifySendManager" class="com.taobao.hsf.notify.client.NotifyManagerBean"
+	    init-method="init">
+		<property name="subscribeMessages">
+			<map>
+				<entry key="${za.group.claim.notify.topic}"> 
+					 <map>
+                		 <entry key="${za.group.claim.notify.msgtype}"> 
+                    		<bean class="com.taobao.hsf.notify.client.SubscriptMsgDetailInfo"> 
+		                        <property name="persistence" value="true" /> 
+		                        <property name="waterMark" value="-1" /> 
+                    		</bean> 
+                		</entry>
+            		</map>
+				</entry>
+			</map>
+		</property>
+		
+		<property name="groupId" value="${za.group.claim.notify.billGroupId}" />
+		<property name="name" value="${za.group.claim.notify.name}" />
+		<property name="description" value="${za.group.claim.notify.description}" />
+		<property name="messageListener" ref="groupClaimBillMsgListener" />
+	</bean>
+</beans>

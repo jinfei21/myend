@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Logback Configuration.  -->
+<configuration debug="false">
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <target>System.out</target>
+        <encoding>UTF-8</encoding>
+        <filter class="com.alibaba.citrus.logconfig.logback.LevelRangeFilter">
+            <levelMax>INFO</levelMax>
+        </filter>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <pattern><![CDATA[
+%n%-4r [%d{yyyy-MM-dd HH:mm:ss} %X{productionMode}] - %X{method} %X{requestURIWithQueryString} [ip=%X{remoteAddr}, ref=%X{referrer}, ua=%X{userAgent}, sid=%X{cookie.JSESSIONID}]%n  %-5level %logger{35} - %m%n
+            ]]></pattern>
+        </layout>
+    </appender>
+
+    <appender name="STDERR" class="ch.qos.logback.core.ConsoleAppender">
+        <target>System.err</target>
+        <encoding>UTF-8</encoding>
+        <filter class="com.alibaba.citrus.logconfig.logback.LevelRangeFilter">
+            <levelMin>WARN</levelMin>
+        </filter>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <pattern><![CDATA[
+%n%-4r [%d{yyyy-MM-dd HH:mm:ss} %X{productionMode}] - %X{method} %X{requestURIWithQueryString} [ip=%X{remoteAddr}, ref=%X{referrer}, ua=%X{userAgent}, sid=%X{cookie.JSESSIONID}]%n  %-5level %logger{35} - %m%n
+            ]]></pattern>
+        </layout>
+    </appender>
+    
+    <appender name="RollingFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <!-- 可让每天产生一个日志文件，最多 30 个，自动回滚 -->
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${za.openapi.gw.log.dir}/openapi-gw-%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <file>${za.openapi.gw.log.dir}/openapi-gw.log</file>
+        <encoder charset="UTF-8"> <!-- encoder 可以指定字符集，对于中文输出有意义 -->
+        	<pattern>%d [%thread] %-5p [%c] [%F:%L] - %msg%n</pattern>
+            <!-- <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger - %msg%n</pattern> -->
+        </encoder>
+    </appender>
+
+    <appender name="ApiGroup5" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <!-- 可让每天产生一个日志文件，最多 30 个，自动回滚 -->
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${za.openapi.gw.log.dir}/openapi-gw-ApiGroup5-%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <file>${za.openapi.gw.log.dir}/openapi-gw-ApiGroup5.log</file>
+        <encoder charset="UTF-8"> <!-- encoder 可以指定字符集，对于中文输出有意义 -->
+        	<pattern>%d [%thread] %-5p [%c] [%F:%L] - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="ApiGroup11" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <!-- 可让每天产生一个日志文件，最多 30 个，自动回滚 -->
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${za.openapi.gw.log.dir}/openapi-gw-ApiGroup11-%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <file>${za.openapi.gw.log.dir}/openapi-gw-ApiGroup11.log</file>
+        <encoder charset="UTF-8"> <!-- encoder 可以指定字符集，对于中文输出有意义 -->
+        	<pattern>%d [%thread] %-5p [%c] [%F:%L] - %msg%n</pattern>
+        </encoder>
+    </appender>
+    
+    <appender name="ApiGroup15" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <!-- 可让每天产生一个日志文件，最多 30 个，自动回滚 -->
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${za.openapi.gw.log.dir}/openapi-gw-ApiGroup15-%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <file>${za.openapi.gw.log.dir}/openapi-gw-ApiGroup15.log</file>
+        <encoder charset="UTF-8"> <!-- encoder 可以指定字符集，对于中文输出有意义 -->
+        	<pattern>%d [%thread] %-5p [%c] [%F:%L] - %msg%n</pattern>
+        </encoder>
+    </appender>
+    
+    <appender name="ApiGroup16" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <!-- 可让每天产生一个日志文件，最多 30 个，自动回滚 -->
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${za.openapi.gw.log.dir}/openapi-gw-ApiGroup16-%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <file>${za.openapi.gw.log.dir}/openapi-gw-ApiGroup16.log</file>
+        <encoder charset="UTF-8"> <!-- encoder 可以指定字符集，对于中文输出有意义 -->
+        	<pattern>%d [%thread] %-5p [%c] [%F:%L] - %msg%n</pattern>
+        </encoder>
+    </appender>
+    
+    <appender name="ApiGroup27" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <!-- 可让每天产生一个日志文件，最多 30 个，自动回滚 -->
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${za.openapi.gw.log.dir}/openapi-gw-ApiGroup27-%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <file>${za.openapi.gw.log.dir}/openapi-gw-ApiGroup27.log</file>
+        <encoder charset="UTF-8"> <!-- encoder 可以指定字符集，对于中文输出有意义 -->
+        	<pattern>%d [%thread] %-5p [%c] [%F:%L] - %msg%n</pattern>
+        </encoder>
+    </appender>   
+    
+    <appender name="ApiGroup30" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <!-- 可让每天产生一个日志文件，最多 30 个，自动回滚 -->
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${za.openapi.gw.log.dir}/openapi-gw-ApiGroup30-%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <file>${za.openapi.gw.log.dir}/openapi-gw-ApiGroup30.log</file>
+        <encoder charset="UTF-8"> <!-- encoder 可以指定字符集，对于中文输出有意义 -->
+        	<pattern>%d [%thread] %-5p [%c] [%F:%L] - %msg%n</pattern>
+        </encoder>
+    </appender>         
+    
+    <appender name="ApiGroup32" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <!-- 可让每天产生一个日志文件，最多 30 个，自动回滚 -->
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${za.openapi.gw.log.dir}/openapi-gw-ApiGroup32-%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <file>${za.openapi.gw.log.dir}/openapi-gw-ApiGroup32.log</file>
+        <encoder charset="UTF-8"> <!-- encoder 可以指定字符集，对于中文输出有意义 -->
+        	<pattern>%d [%thread] %-5p [%c] [%F:%L] - %msg%n</pattern>
+        </encoder>
+    </appender>          
+    
+    <appender name="ApiGroup33" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <!-- 可让每天产生一个日志文件，最多 30 个，自动回滚 -->
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${za.openapi.gw.log.dir}/openapi-gw-ApiGroup33-%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <file>${za.openapi.gw.log.dir}/openapi-gw-ApiGroup33.log</file>
+        <encoder charset="UTF-8"> <!-- encoder 可以指定字符集，对于中文输出有意义 -->
+        	<pattern>%d [%thread] %-5p [%c] [%F:%L] - %msg%n</pattern>
+        </encoder>
+    </appender>
+    
+    <appender name="ApiGroup35" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <!-- 可让每天产生一个日志文件，最多 30 个，自动回滚 -->
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${za.openapi.gw.log.dir}/openapi-gw-ApiGroup35-%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <file>${za.openapi.gw.log.dir}/openapi-gw-ApiGroup35.log</file>
+        <encoder charset="UTF-8"> <!-- encoder 可以指定字符集，对于中文输出有意义 -->
+        	<pattern>%d [%thread] %-5p [%c] [%F:%L] - %msg%n</pattern>
+        </encoder>
+    </appender>    
+    
+    <appender name="ApiGroup36" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <!-- 可让每天产生一个日志文件，最多 30 个，自动回滚 -->
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${za.openapi.gw.log.dir}/openapi-gw-ApiGroup36-%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <file>${za.openapi.gw.log.dir}/openapi-gw-ApiGroup36.log</file>
+        <encoder charset="UTF-8"> <!-- encoder 可以指定字符集，对于中文输出有意义 -->
+        	<pattern>%d [%thread] %-5p [%c] [%F:%L] - %msg%n</pattern>
+        </encoder>
+    </appender>           
+    
+    <appender name="Others" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <!-- 可让每天产生一个日志文件，最多 30 个，自动回滚 -->
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${za.openapi.gw.log.dir}/openapi-gw-Others-%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <file>${za.openapi.gw.log.dir}/openapi-gw-Others.log</file>
+        <encoder charset="UTF-8"> <!-- encoder 可以指定字符集，对于中文输出有意义 -->
+        	<pattern>%d [%thread] %-5p [%c] [%F:%L] - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+	<appender name="monitorErrorByType" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<!-- 可让每天产生一个日志文件，最多 30 个，自动回滚 -->
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${za.openapi.gw.log.dir}/monitorErrorByType-%d{yyyy-MM-dd}.log</fileNamePattern>
+			<maxHistory>30</maxHistory>
+		</rollingPolicy>
+		<file>${za.openapi.gw.log.dir}/monitorErrorByType.log</file>
+		<encoder charset="UTF-8"> <!-- encoder 可以指定字符集，对于中文输出有意义 -->
+			<pattern>%d [%thread] %-5p [%c] [%F:%L] - %msg%n</pattern>
+			<!-- <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger - %msg%n</pattern> -->
+		</encoder>
+	</appender>
+	
+	<appender name="monitorErrorByCode" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<!-- 可让每天产生一个日志文件，最多 30 个，自动回滚 -->
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${za.openapi.gw.log.dir}/monitorErrorByCode-%d{yyyy-MM-dd}.log</fileNamePattern>
+			<maxHistory>30</maxHistory>
+		</rollingPolicy>
+		<file>${za.openapi.gw.log.dir}/monitorErrorByCode.log</file>
+		<encoder charset="UTF-8"> <!-- encoder 可以指定字符集，对于中文输出有意义 -->
+			<pattern>%d [%thread] %-5p [%c] [%F:%L] - %msg%n</pattern>
+			<!-- <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger - %msg%n</pattern> -->
+		</encoder>
+	</appender>  	
+
+    <logger name="org.apache">
+        <level value="INFO" />
+    </logger>
+
+    <logger name="org.springframework">
+        <level value="INFO" />
+    </logger>
+
+    <logger name="com.alibaba.citrus.springext.support.context">
+        <level value="INFO" />
+    </logger>
+    
+    <logger name="com.zhongan.openapi">
+        <level value="INFO" />
+    </logger>
+    
+    <logger name="MonitorErrorByType"  additivity="false">
+    	<level value="INFO"/>
+    	<appender-ref ref="monitorErrorByType" />  
+    </logger>
+
+    <logger name="MonitorErrorByCode"  additivity="false">
+    	<level value="INFO"/>
+    	<appender-ref ref="monitorErrorByCode" />  
+    </logger>  
+
+    <root>
+        
+        <level value="${za.openapi.gw.log.level}" />
+        #if("run"=="${za.basic.setting.mode}") 
+	        <appender-ref ref="STDERR" />
+	        <appender-ref ref="STDOUT" />
+        #end
+        <appender-ref ref="RollingFile" />
+    </root>
+</configuration>

@@ -1,0 +1,13 @@
+$page.setTitle("It works.")
+
+<h1>It works.</h1>
+
+<ol>
+<li>
+    <h2>Simple Page without Template</h2>
+
+    #set($url = "$app1Link.setTarget('simple/listDemo.do')")
+    <a href="$url">$url</a>
+</li>
+
+</ol>

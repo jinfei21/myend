@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+
+<sqlMap namespace="ClaimLiability" >
+
+  <typeAlias alias="claimLiabilityDO" type="com.zhongan.core.group.dao.dataobject.ClaimLiabilityDO" />
+
+  <resultMap id="claimLiabilityDOResultMap" class="claimLiabilityDO" >
+    <result property="id" column="id" />
+    <result property="reportNo" column="report_no" />
+    <result property="claimId" column="claim_id" />
+    <result property="insuranceCertificateId" column="insurance_certificate_id" />
+  
+    <result property="policyLiabilityId" column="policy_liability_id" />
+    
+    <result property="compensateExp" column="compensate_exp" />
+    <result property="liabilityCode" column="liability_code" />
+    <result property="reportAmount" column="report_amount" />
+    <result property="deductibleAmount" column="deductible_amount" />
+    <result property="settlementAmount" column="settlement_amount" />
+    <result property="settlementDiffReason" column="settlement_diff_reason" />
+    <result property="isDeleted" column="is_deleted" />
+    <result property="gmtCreated" column="gmt_created" />
+    <result property="creator" column="creator" />
+    <result property="gmtModified" column="gmt_modified" />
+    <result property="modifier" column="modifier" />
+  </resultMap>
+
+  <sql id="claimLiability_columns" >
+    id, report_no, claim_id,insurance_certificate_id, policy_liability_id,compensate_exp,liability_code, report_amount, 
+      deductible_amount, settlement_amount,settlement_diff_reason, is_deleted, gmt_created, creator, 
+      gmt_modified, modifier
+  </sql>
+  
+  <sql id="claimLiability_do_columns" >
+    id, report_no, claim_id,insurance_certificate_id, policy_liability_id, compensate_exp,liability_code, report_amount, 
+      deductible_amount, settlement_amount, settlement_diff_reason,is_deleted, gmt_created, creator, 
+      gmt_modified, modifier
+  </sql>
+
+  <sql id="queryParams" >
+    <dynamic prepend="WHERE" >
+      <isNotNull property="id" prepend="AND" >
+        <![CDATA[  
+        id = #id#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="reportNo" prepend="AND" >
+        <![CDATA[  
+        report_no = #reportNo#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="claimId" prepend="AND" >
+        <![CDATA[  
+        claim_id = #claimId#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="insuranceCertificateId" prepend="AND" >
+        <![CDATA[  
+        insurance_certificate_id = #insuranceCertificateId#  
+        ]]>  
+      </isNotNull>
+      
+      <isNotNull property="policyLiabilityId" prepend="AND" >
+        <![CDATA[  
+        policy_liability_id = #policyLiabilityId#  
+        ]]>  
+      </isNotNull>
+      
+      <isNotNull property="liabilityCode" prepend="AND" >
+        <![CDATA[  
+        liability_code = #liabilityCode#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="reportAmount" prepend="AND" >
+        <![CDATA[  
+        report_amount = #reportAmount#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="deductibleAmount" prepend="AND" >
+        <![CDATA[  
+        deductible_amount = #deductibleAmount#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="settlementAmount" prepend="AND" >
+        <![CDATA[  
+        settlement_amount = #settlementAmount#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="isDeleted" prepend="AND" >
+        <![CDATA[  
+        is_deleted = #isDeleted#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="gmtCreated" prepend="AND" >
+        <![CDATA[  
+        gmt_created = #gmtCreated#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="creator" prepend="AND" >
+        <![CDATA[  
+        creator = #creator#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="gmtModified" prepend="AND" >
+        <![CDATA[  
+        gmt_modified = #gmtModified#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="modifier" prepend="AND" >
+        <![CDATA[  
+        modifier = #modifier#  
+        ]]>  
+      </isNotNull>
+    </dynamic>
+  </sql>
+
+  <sql id="doQueryParams" >
+    <dynamic prepend="WHERE" >
+      <isNotNull property="id" prepend="AND" >
+        <![CDATA[  
+        id = #id#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="reportNo" prepend="AND" >
+        <![CDATA[  
+        report_no = #reportNo#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="insuranceCertificateId" prepend="AND" >
+        <![CDATA[  
+        insurance_certificate_id = #insuranceCertificateId#  
+        ]]>  
+      </isNotNull>
+      
+      <isNotNull property="policyLiabilityId" prepend="AND" >
+        <![CDATA[  
+        policy_liability_id = #policyLiabilityId#  
+        ]]>  
+      </isNotNull>
+   
+      <isNotNull property="liabilityCode" prepend="AND" >
+        <![CDATA[  
+        liability_code = #liabilityCode#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="reportAmount" prepend="AND" >
+        <![CDATA[  
+        report_amount = #reportAmount#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="deductibleAmount" prepend="AND" >
+        <![CDATA[  
+        deductible_amount = #deductibleAmount#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="settlementAmount" prepend="AND" >
+        <![CDATA[  
+        settlement_amount = #settlementAmount#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="isDeleted" prepend="AND" >
+        <![CDATA[  
+        is_deleted = #isDeleted#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="gmtCreated" prepend="AND" >
+        <![CDATA[  
+        gmt_created = #gmtCreated#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="creator" prepend="AND" >
+        <![CDATA[  
+        creator = #creator#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="gmtModified" prepend="AND" >
+        <![CDATA[  
+        gmt_modified = #gmtModified#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="modifier" prepend="AND" >
+        <![CDATA[  
+        modifier = #modifier#  
+        ]]>  
+      </isNotNull>
+    </dynamic>
+  </sql>
+
+  <insert id="insert" parameterClass="claimLiabilityDO" >
+    INSERT INTO group_claim_liability( id, report_no, claim_id,insurance_certificate_id,policy_liability_id, compensate_exp,liability_code, report_amount, 
+      deductible_amount, settlement_amount, settlement_diff_reason,is_deleted, gmt_created, creator, gmt_modified, 
+      modifier)
+     VALUES ( #id#, #reportNo#,#claimId#, #insuranceCertificateId#,#policyLiabilityId#,#compensateExp#, #liabilityCode#, #reportAmount#, 
+      #deductibleAmount#, #settlementAmount#, #settlementDiffReason#,#isDeleted#, #gmtCreated#, #creator#, #gmtModified#, 
+      #modifier#)
+  </insert>
+  
+    
+
+  <update id="update" parameterClass="claimLiabilityDO" >
+    UPDATE group_claim_liability   
+    <dynamic prepend="SET" >     
+      <isNotNull property="liabilityCode" prepend="," >
+        <![CDATA[  
+        liability_code = #liabilityCode#  
+        ]]>  
+      </isNotNull>
+      
+      <isNotNull property="policyLiabilityId" prepend="," >
+        <![CDATA[  
+        policy_liability_id = #policyLiabilityId#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="reportAmount" prepend="," >
+        <![CDATA[  
+        report_amount = #reportAmount#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="deductibleAmount" prepend="," >
+        <![CDATA[  
+        deductible_amount = #deductibleAmount#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="settlementAmount" prepend="," >
+        <![CDATA[  
+        settlement_amount = #settlementAmount#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="settlementDiffReason" prepend="," >
+        <![CDATA[  
+        settlement_diff_reason = #settlementDiffReason#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="compensateExp" prepend="," >
+        <![CDATA[  
+        compensate_exp = #compensateExp#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="isDeleted" prepend="," >
+        <![CDATA[  
+        is_deleted = #isDeleted#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="gmtCreated" prepend="," >
+        <![CDATA[  
+        gmt_created = #gmtCreated#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="creator" prepend="," >
+        <![CDATA[  
+        creator = #creator#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="gmtModified" prepend="," >
+        <![CDATA[  
+        gmt_modified = #gmtModified#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="modifier" prepend="," >
+        <![CDATA[  
+        modifier = #modifier#  
+        ]]>  
+      </isNotNull>
+    </dynamic>
+     WHERE id = #id#  
+     and claim_id = #claimId#       
+     and is_deleted = 'N' 
+  </update>
+
+  <select id="findByPrimaryKey" parameterClass="claimLiabilityDO" resultMap="claimLiabilityDOResultMap" >
+     SELECT 
+    <include refid="claimLiability_do_columns" />
+    <![CDATA[  
+     FROM group_claim_liability  WHERE id = #id# and claim_id = #claimId# 
+    ]]>  
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterClass="claimLiabilityDO" >
+    <![CDATA[  
+     update group_claim_liability set is_deleted = 'Y'  WHERE id = #id# and claim_id = #claimId# 
+    ]]>  
+  </delete>
+
+  <select id="countByDOExample" parameterClass="claimLiabilityDO" resultClass="java.lang.Integer" >
+    SELECT COUNT(id) AS num FROM group_claim_liability 
+    <include refid="doQueryParams" />
+  </select>
+
+  <select id="findListByDO" resultMap="claimLiabilityDOResultMap" parameterClass="claimLiabilityDO" >
+     SELECT 
+    <include refid="claimLiability_do_columns" />
+     FROM group_claim_liability  
+    <include refid="doQueryParams" />
+  </select>
+  
+  <select id="findListByClaimLiabilityDO" resultMap="claimLiabilityDOResultMap" parameterClass="claimLiabilityDO" >
+     SELECT 
+    <include refid="claimLiability_do_columns" />
+     FROM group_claim_liability  
+     WHERE claim_id = #claimId#   
+    <isNotNull property="insuranceCertificateId" prepend="and" >
+        <![CDATA[  
+        insurance_certificate_id = #insuranceCertificateId#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="liabilityCode" prepend="and" >
+        <![CDATA[  
+        liability_code = #liabilityCode#  
+        ]]>  
+      </isNotNull>
+      
+      <isNotNull property="policyLiabilityId" prepend="and" >
+        <![CDATA[  
+        policy_liability_id = #policyLiabilityId#  
+        ]]>  
+      </isNotNull>
+      
+     and is_deleted = 'N' 
+  </select>
+</sqlMap>

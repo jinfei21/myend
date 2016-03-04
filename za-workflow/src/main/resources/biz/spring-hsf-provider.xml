@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans default-autowire="byName">
+
+    <!-- 流程服务 -->
+	<bean id="processServiceProvider" class="com.taobao.hsf.app.spring.util.HSFSpringProviderBean">
+		<property name="serviceInterface"
+			value="com.zhongan.workflow.engine.service.ProcessService" />
+		<property name="target" ref="processService" />
+		<property name="serviceVersion" value="${za.workflow.hsf.serviceversion.common}" />
+		<property name="clientTimeout" value="15000" />
+		<property name="clientIdleTimeout" value="${za.workflow.hsf.clienttimeout.common}" />
+		<property name="serializeType" value="java" />
+	</bean>
+	
+	<!-- 站内信待办任务 -->
+	<bean id="taskListServiceProvider" class="com.taobao.hsf.app.spring.util.HSFSpringProviderBean">
+		<property name="serviceInterface"
+			value="com.zhongan.workflow.engine.service.TaskListService" />
+		<property name="target" ref="taskListService" />
+		<property name="serviceVersion" value="${za.workflow.hsf.serviceversion.common}" />
+		<property name="clientTimeout" value="15000" />
+		<property name="clientIdleTimeout" value="${za.workflow.hsf.clienttimeout.common}" />
+		<property name="serializeType" value="java" />
+	</bean>
+</beans> 

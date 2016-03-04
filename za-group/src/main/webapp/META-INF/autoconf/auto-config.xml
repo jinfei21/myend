@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config description="自动配置：za-group" xmlns:j="jelly:core">
+	<!-- mvn使用 -->
+	
+	<group name="za-basic-setting">
+        <property name="za.basic.setting.domain" defaultValue="zhongan.com" description="应用域名" />
+        <property name="za.basic.setting.workdir" defaultValue="/home/admin" description="应用工作路径" />
+        <property name="za.basic.setting.mode" defaultValue="dev" description="应用的部署状态（run，test，dev）" />
+    </group>
+    
+    <group name="za-group-basic-setting">
+        <property name="za.group.app" defaultValue="za-group" description="应用服务器名称" />
+        <property name="za.group.log.dir" defaultValue="/home/admin/za-group/logs" description="log输出目录" />
+        <property name="za.group.log.level" defaultValue="INFO" description="log输出级别" />
+    </group>
+    
+    <group name="za-group-biz-setting">
+        <property name="za.group.tddl.appname" defaultValue="GROUP_DEV_APP" description="group_tddl_appname" />
+        <property name="za.group.tddl.seq.group" defaultValue="GROUP_DEV_00_GROUP" description="group_tddl_seq_group" />
+        <property name="za.group.tddl.seq.dscount" defaultValue="2" description="产生seq的数据库个数" />
+        <property name="za.group.hsf.serviceversion.common" defaultValue="1.0.0" description="hsf服务通用版本号" />
+        <property name="za.group.hsf.clienttimeout.common" defaultValue="3000" description="hsf服务通用超时时间" />
+        <property name="za.group.hsf.clientidletimeout.common" defaultValue="60" description="hsfIDle服务通用超时时间" />
+        <property name="za.group.intervaltime" defaultValue="20" description="The unit is minutes , 1 mean 1min ,A positive integer" />
+        <property name="za.group.list.num" defaultValue="4" description="group_group table list number" />
+        <property name="za.group.zauserid" defaultValue="8001" description="bucketname" />       
+        <property name="za.group.zkConnectionString" defaultValue="10.139.103.1:2181" description="zkConnectionString" />
+        <property name="za.group.zkSessionTimeout" defaultValue="60000" description="zkSessionTimeout" />
+        <property name="za.group.ephemeralZnodeParent" defaultValue="/za-core" description="ephemeralZnodeParent" />
+        <property name="za.group.ephemeralZnodeNamePrefix" defaultValue="server-" description="ephemeralZnodeNamePrefix" />
+        <property name="za.group.fixeddelay" defaultValue="1200000" description="fixed-delay" />
+        <property name="za.group.poolSize" defaultValue="10" description="poolSize" />
+		<property name="za.group.hsf.consumerversion.common" defaultValue="1.0.0" description="hsf消费版本" />
+		<property name="za.group.hsf.consumerversion.doc" defaultValue="1.0.0" description="hsf消费版本" />
+		<property name="za.group.hsf.consumerversion.policy" defaultValue="1.0.0" description="hsf消费版本" />
+		<property name="za.group.hsf.consumerversion.broker" defaultValue="1.0.0" description="hsf broker消费版本" />
+		<!-- oss -->
+		
+		<!-- task -->
+		<property name="za.group.sina.endor.task" defaultValue="0 0/5 * * * ?" description="任务处理时间" />
+		<property name="za.group.sina.endor.mail.task" defaultValue="0 0/20 * * * ?" description="邮件任务处理时间" />
+		<property name="za.group.sina.emailAddress" defaultValue="wein@meyacom.com" description="运营邮箱"/>
+		<property name="za.group.edaijia.billcash.task" defaultValue="0 0/5 * * * ?" description="edaijiaBillCash任务时间"/>
+		<property name="za.group.jianzhi.billcash.task" defaultValue="0 0 6 * * ?" description="jianzhiBillCash任务时间"/>
+		<property name="za.group.payperiod.smsoremail.task" defaultValue="0 30 10 * * ?" description="团险期缴定时发送邮件短信"/>
+		
+		<!-- tair -->
+		<property name="za.group.tair.configserver1" defaultValue="10.139.103.1:5198" description="tair用configserver地址" />
+        <property name="za.group.tair.configserver2" defaultValue="10.139.103.1:5198" description="tair用configserver地址" />
+        <property name="za.group.tair.groupname" defaultValue="zatair_daily" description="tair用groupname" />
+        
+        <!-- Email -->
+		<property name="za.group.email.sender.public.address" defaultValue="cs@zhongan.com" description="公共发送邮箱" />
+		<property name="za.group.email.sender.public.username" defaultValue="cs@zhongan.com" description="公共发送邮箱用户名" />
+		<property name="za.group.email.sender.public.password" defaultValue="yunying1234zhongan" description="公共发送邮箱密码"/>
+		<property name="za.group.email.receiver.auditQuote.address" defaultValue="hao.zhang@zhongan.com,angier.zhu@zhongan.com,wb_yaojiaqi@zhongan.com" description="核价通知接收邮箱"/>
+		<property name="za.group.email.receiver.gwALiPayNotice.address" defaultValue="hao.zhang@zhongan.com,angier.zhu@zhongan.com,wb_weining@zhongan.com" description="官网支付宝支付通知接收邮箱"/>
+
+        <property name="za.group.oss.accessid" defaultValue="N9S9RaY4r7P1z3Pt" description="oss访问id" />
+        <property name="za.group.oss.accesskey" defaultValue="2RrhBrL5Credn2RPIe2fEh8e2dPzw7" description="oss访问key" />
+        <property name="za.group.oss.endpoint" defaultValue="http://oss-cn-hzjbp-a-internal.aliyuncs.com" description="endpoint" />
+        <property name="za.group.oss.bucketname" defaultValue="wujieshan-new" description="bucketname" />
+        
+        <property name="za.group.bops.domain.url" defaultValue="https://bops.daily.zhonganonline.com:8443" description="bops系统地址" />
+        <property name="za.group.static.domain.url" defaultValue="http://static.zhongan.com/website" description="静态服务器资源地址" />
+    </group>
+    
+    <group name="za-group-basic-setting">
+         <!-- notify-policy 配置 -->
+        <property name="za.group.policy.change.notify.policyGroupId" defaultValue="S-policyMsg-group" description="保单用户组" />
+        <property name="za.group.policy.change.notify.name" defaultValue="za-group" description="保单消息名称" />
+        <property name="za.group.policy.change.notify.description" defaultValue="za-group-policyMsg" description="保单消息描述" />
+        <property name="za.group.policy.change.notify.msgtype.policy_status_change" defaultValue="policy_status_modify" description="保单状态变化消息topic" />>
+        <property name="za.group.policy.change.notify.msgtype.policy_endor_effective" defaultValue="endor-Group-INVAILD" description="团单批改生效请求前置" />
+        <!-- notify-bill 配置 -->
+        <property name="za.group.claim.notify.billGroupId" defaultValue="S-D1-GROUP-150810" description="收付费消息" />
+        <property name="za.group.claim.notify.name" defaultValue="za-group" description="收付费消息名称" />
+        <property name="za.group.claim.notify.description" defaultValue="billCash" description="收付费消息描述" />
+        <property name="za.group.claim.notify.topic" defaultValue="bill_msg" description="收付费消息topic" />>
+        <property name="za.group.claim.notify.msgtype" defaultValue="billCashPayment" description="收付费消息msgType" />
+         <!-- notify-offlinepay 配置 -->
+        <property name="za.group.online.offlinePay.notify.topic" defaultValue="D1-GROUP-20150706" description="线下支付通知消息主题" />
+        <property name="za.group.online.offlinePay.notify.groupId" defaultValue="P-D1-GROUP-20150706" description="线下支付通知消息用户组" />
+        <property name="za.group.online.offlinePay.notify.name" defaultValue="za-group" description="线下支付通知消息名称" />   
+         <!-- notify-团险理赔短信、邮件通知 配置 -->
+        <property name="za.group.ncs.claimMessage.notify.topic" defaultValue="D1-GROUP-150806" description="团险理赔短信、邮件通知消息主题" />
+        <property name="za.group.ncs.claimMessage.notify.groupId" defaultValue="P-D1-NCS-150806" description="团险理赔短信、邮件通知消息用户组" />
+        <property name="za.group.ncs.claimMessage.notify.name" defaultValue="za-group" description="团险理赔短信、邮件通知消息名称" />             
+    </group>
+    
+	<!-- ========================================================== -->
+	<!-- 生成配置文件的脚本。 -->
+	<!-- ========================================================== -->
+	<script>
+		<generate template="WEB-INF/logback.xml" charset="UTF-8" />
+		<generate template="WEB-INF/classes/biz/persistence.xml" charset="UTF-8" />
+		<generate template="WEB-INF/classes/biz/spring-disp-notify-consumer.xml" charset="UTF-8" />
+		<generate template="WEB-INF/classes/biz/spring-hsf-provider.xml" charset="UTF-8" />
+		<generate template="WEB-INF/classes/biz/spring-hsf-consumer.xml" charset="UTF-8" />
+		<generate template="WEB-INF/classes/biz/spring-tair.xml" charset="UTF-8" />
+		<generate template="WEB-INF/classes/biz/file.properties" charset="UTF-8" />
+		<generate template="WEB-INF/classes/biz/spring-quartz.xml" charset="UTF-8" />
+		<generate template="WEB-INF/classes/biz/spring-biz.xml" charset="UTF-8" />
+		<generate template="WEB-INF/classes/biz/spring-queue-client.xml" charset="UTF-8" />
+		<generate template="WEB-INF/classes/biz/spring-group-notify-sender.xml" charset="UTF-8" />
+	</script>
+</config>

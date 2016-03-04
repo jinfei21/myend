@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://www.springframework.org/schema/beans" xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"
+	default-autowire="byName">
+
+ 
+	<!-- api 接口服务注入 -->
+	<!--
+	<bean id="apiService" class="com.zhongan.openapi.core.service.impl.ApiServiceImpl" />
+	<bean id="developerService" class="com.zhongan.openapi.core.service.impl.DeveloperServiceImpl" />
+	<bean id="apiPrivilegeService" class="com.zhongan.openapi.core.service.impl.ApiPrivilegeServiceImpl" />
+	<bean id="signService" class="com.zhongan.openapi.security.service.impl.SignServiceImpl" />
+	
+	<bean id="apiInvokeService" class="com.zhongan.openapi.core.service.impl.ApiInvokeServiceImpl" />
+	<bean id="publicKeyService" class="com.zhongan.openapi.core.service.impl.PublicKeyServiceImpl" />
+	<bean id="apiAttributeService" class="com.zhongan.openapi.core.service.impl.ApiAttributeServiceImpl" />
+	<bean id="apiRequestLogService" class="com.zhongan.openapi.core.service.impl.ApiRequestLogServiceImpl" />
+	 -->
+	<bean id="RSARC4SignProcessor" class="com.zhongan.openapi.security.processor.RSARC4SignProcessor" />
+	<bean id="RSASignProcessor" class="com.zhongan.openapi.security.processor.RSASignProcessor" />
+	
+	<bean id="openConfigHelper" class="com.zhongan.openapi.helper.OpenConfigHelper" >
+		<property name="zaPublicKey" value="${za.openapi.gw.sign.zaPublicKey}"></property>
+		<property name="zaPrivateKey" value="${za.openapi.gw.sign.zaPrivateKey}"></property>
+		<property name="signProcessors">
+			<map>
+				<entry key="RSA" value-ref="RSASignProcessor"></entry>
+				<entry key="RSARC4" value-ref="RSARC4SignProcessor"></entry>
+			</map>
+		</property>
+	</bean>	
+</beans>

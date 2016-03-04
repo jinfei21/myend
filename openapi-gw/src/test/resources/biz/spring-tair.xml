@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans default-autowire="byName">
+
+	<bean id="openTairManager" class="com.zhongan.openapi.core.cache.OpenTairManager" init-method="init">
+		<property name="configServerList">
+             <list>
+                 <value>10.139.32.174:5198</value>
+                 <value>10.139.32.174:5198</value>
+             </list>
+        </property>
+         <property name="groupName">
+            <value>zatair</value>
+        </property>
+		<property name="namespace">
+            <value>1</value>
+        </property>
+	</bean>
+
+
+    <bean id="zaTairManager" class="com.taobao.tair.impl.DefaultTairManager" init-method="init">
+		<property name="configServerList">
+             <list>
+                 <value>10.139.32.174:5198</value>
+                 <value>10.139.32.174:5198</value>
+             </list>
+        </property>
+   
+         <property name="groupName">
+            <value>zatair</value>
+        </property>
+           
+	</bean>	
+</beans>
+
+

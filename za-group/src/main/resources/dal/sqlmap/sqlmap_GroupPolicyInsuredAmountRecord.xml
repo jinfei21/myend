@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+
+<sqlMap namespace="GroupPolicyInsuredAmountRecord" >
+
+  <typeAlias alias="groupPolicyInsuredAmountRecordDO" type="com.zhongan.core.group.dao.dataobject.GroupPolicyInsuredAmountRecordDO" />
+
+  <resultMap id="groupPolicyInsuredAmountRecordDOResultMap" class="groupPolicyInsuredAmountRecordDO" >
+    <result property="id" column="id" />
+    <result property="policyId" column="policy_id" />
+    <result property="liabilityCode" column="liability_code" />
+    <result property="policyType" column="policy_type" />
+    <result property="insuredAmount" column="insured_amount" />
+    <result property="usedInsuredAmount" column="used_insured_amount" />
+    <result property="creator" column="creator" />
+    <result property="gmtCreated" column="gmt_created" />
+    <result property="modifier" column="modifier" />
+    <result property="gmtModified" column="gmt_modified" />
+    <result property="isDeleted" column="is_deleted" />
+  </resultMap>
+
+  <sql id="groupPolicyInsuredAmountRecord_columns" >
+    a1.id, a1.policy_id, a1.policy_type, a1.insured_amount, a1.used_insured_amount, a1.creator, 
+      a1.gmt_created, a1.modifier, a1.gmt_modified, a1.is_deleted,a1.liability_code
+  </sql>
+
+  <sql id="groupPolicyInsuredAmountRecord_do_columns" >
+    a1.id, a1.policy_id, a1.policy_type, a1.insured_amount, a1.used_insured_amount, a1.creator, 
+      a1.gmt_created, a1.modifier, a1.gmt_modified, a1.is_deleted,a1.liability_code
+  </sql>
+
+  <sql id="queryParams" >
+    <dynamic prepend="WHERE" >
+      <isNotNull property="id" prepend="AND" >
+        <![CDATA[  
+        id = #id#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="policyId" prepend="AND" >
+        <![CDATA[  
+        policy_id = #policyId#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="policyType" prepend="AND" >
+        <![CDATA[  
+        policy_type = #policyType#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="insuredAmount" prepend="AND" >
+        <![CDATA[  
+        insured_amount = #insuredAmount#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="usedInsuredAmount" prepend="AND" >
+        <![CDATA[  
+        used_insured_amount = #usedInsuredAmount#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="creator" prepend="AND" >
+        <![CDATA[  
+        creator = #creator#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="gmtCreated" prepend="AND" >
+        <![CDATA[  
+        gmt_created = #gmtCreated#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="modifier" prepend="AND" >
+        <![CDATA[  
+        modifier = #modifier#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="gmtModified" prepend="AND" >
+        <![CDATA[  
+        gmt_modified = #gmtModified#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="isDeleted" prepend="AND" >
+        <![CDATA[  
+        is_deleted = #isDeleted#  
+        ]]>  
+      </isNotNull>
+      
+       <isNotNull property="liabilityCode" prepend="AND" >
+        <![CDATA[  
+        liability_code = #liabilityCode#  
+        ]]>  
+      </isNotNull>
+    </dynamic>
+  </sql>
+
+  <sql id="doQueryParams" >
+    <dynamic prepend="WHERE" >
+      <isNotNull property="id" prepend="AND" >
+        <![CDATA[  
+        id = #id#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="policyId" prepend="AND" >
+        <![CDATA[  
+        policy_id = #policyId#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="policyType" prepend="AND" >
+        <![CDATA[  
+        policy_type = #policyType#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="insuredAmount" prepend="AND" >
+        <![CDATA[  
+        insured_amount = #insuredAmount#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="usedInsuredAmount" prepend="AND" >
+        <![CDATA[  
+        used_insured_amount = #usedInsuredAmount#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="creator" prepend="AND" >
+        <![CDATA[  
+        creator = #creator#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="gmtCreated" prepend="AND" >
+        <![CDATA[  
+        gmt_created = #gmtCreated#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="modifier" prepend="AND" >
+        <![CDATA[  
+        modifier = #modifier#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="gmtModified" prepend="AND" >
+        <![CDATA[  
+        gmt_modified = #gmtModified#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="isDeleted" prepend="AND" >
+        <![CDATA[  
+        is_deleted = #isDeleted#  
+        ]]>  
+      </isNotNull>
+       <isNotNull property="liabilityCode" prepend="AND" >
+        <![CDATA[  
+        liability_code = #liabilityCode#  
+        ]]>  
+      </isNotNull>
+    </dynamic>
+  </sql>
+
+  <insert id="insert" parameterClass="groupPolicyInsuredAmountRecordDO" >
+    INSERT INTO group_policy_insured_amount_record( id, policy_id, policy_type, insured_amount, used_insured_amount, creator, 
+      gmt_created, modifier, gmt_modified, is_deleted,liability_code)
+     VALUES ( #id#, #policyId#, #policyType#, #insuredAmount#, #usedInsuredAmount#, #creator#, 
+      now(), #modifier#, #gmtModified#, 'N',#liabilityCode#)
+    <selectKey keyProperty="id" resultClass="java.lang.Long" >
+      SELECT LAST_INSERT_ID() AS value
+    </selectKey>
+  </insert>
+
+  <update id="update" parameterClass="groupPolicyInsuredAmountRecordDO" >
+    UPDATE group_policy_insured_amount_record   
+    <dynamic prepend="SET" >
+      <!--
+      <isNotNull property="id" prepend="," >
+        <![CDATA[  
+        id = #id#  
+        ]]>  
+      </isNotNull>
+      -->
+      <isNotNull property="policyId" prepend="," >
+        <![CDATA[  
+        policy_id = #policyId#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="policyType" prepend="," >
+        <![CDATA[  
+        policy_type = #policyType#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="insuredAmount" prepend="," >
+        <![CDATA[  
+        insured_amount = #insuredAmount#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="usedInsuredAmount" prepend="," >
+        <![CDATA[  
+        used_insured_amount = #usedInsuredAmount#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="creator" prepend="," >
+        <![CDATA[  
+        creator = #creator#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="gmtCreated" prepend="," >
+        <![CDATA[  
+        gmt_created = #gmtCreated#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="modifier" prepend="," >
+        <![CDATA[  
+        modifier = #modifier#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="gmtModified" prepend="," >
+        <![CDATA[  
+        gmt_modified = #gmtModified#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="isDeleted" prepend="," >
+        <![CDATA[  
+        is_deleted = #isDeleted#  
+        ]]>  
+      </isNotNull>
+       <isNotNull property="liabilityCode" prepend="," >
+        <![CDATA[  
+        liability_code = #liabilityCode#  
+        ]]>  
+      </isNotNull>
+    </dynamic>
+     WHERE id = #id#  
+  </update>
+
+  <select id="findByPrimaryKey" parameterClass="java.lang.Long" resultMap="groupPolicyInsuredAmountRecordDOResultMap" >
+     SELECT 
+    <include refid="groupPolicyInsuredAmountRecord_do_columns" />
+    <![CDATA[  
+     FROM group_policy_insured_amount_record a1 WHERE id = #id#
+    ]]>  
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterClass="java.lang.Long" >
+    <![CDATA[  
+     DELETE FROM group_policy_insured_amount_record WHERE id = #id#
+    ]]>  
+  </delete>
+
+  <select id="countByDOExample" parameterClass="groupPolicyInsuredAmountRecordDO" resultClass="java.lang.Integer" >
+    SELECT COUNT(id) AS num FROM group_policy_insured_amount_record 
+    <include refid="doQueryParams" />
+  </select>
+
+  <select id="findListByDO" resultMap="groupPolicyInsuredAmountRecordDOResultMap" parameterClass="groupPolicyInsuredAmountRecordDO" >
+     SELECT 
+    <include refid="groupPolicyInsuredAmountRecord_do_columns" />
+     FROM group_policy_insured_amount_record a1 
+    <include refid="doQueryParams" />
+  </select>
+  
+  
+  
+    <update id="updateByPolicyId" parameterClass="groupPolicyInsuredAmountRecordDO" >
+      UPDATE group_policy_insured_amount_record  set gmt_modified = now()  
+     <isNotNull property="policyType" prepend="," >
+        <![CDATA[  
+        policy_type = #policyType#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="insuredAmount" prepend="," >
+        <![CDATA[  
+        insured_amount = #insuredAmount#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="usedInsuredAmount" prepend="," >
+        <![CDATA[  
+        used_insured_amount = #usedInsuredAmount#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="creator" prepend="," >
+        <![CDATA[  
+        creator = #creator#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="gmtCreated" prepend="," >
+        <![CDATA[  
+        gmt_created = #gmtCreated#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="modifier" prepend="," >
+        <![CDATA[  
+        modifier = #modifier#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="isDeleted" prepend="," >
+        <![CDATA[  
+        is_deleted = #isDeleted#  
+        ]]>  
+      </isNotNull>
+     WHERE policy_id = #policyId#  and  liability_code = #liabilityCode#
+  </update>
+</sqlMap>

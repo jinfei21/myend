@@ -1,0 +1,384 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+
+<sqlMap namespace="ClaimDocumentReport" >
+
+    <typeAlias alias="claimDocumentReportDO" type="com.zhongan.core.group.dao.dataobject.ClaimDocumentReportDO" />
+
+    <resultMap id="claimDocumentReportDOResultMap" class="claimDocumentReportDO" >
+        <result property="policyHolderNo" column="policy_holder_no" />
+        <result property="policyHolderName" column="policy_holder_name" />
+        <result property="campaignName" column="campaign_name" />
+        <result property="groupPolicyNo" column="group_policy_no" />
+        <result property="policyPackageNo" column="policy_package_no" />
+        <result property="packageFullName" column="package_full_name" />
+        <result property="productPackageCode" column="product_package_code" />
+        <result property="insurantUserNo" column="insurant_user_no" />
+        <result property="insurantUserName" column="insurant_user_name" />
+        <result property="insurantGender" column="insurant_gender" />
+        <result property="insurantBirthday" column="insurant_birthday" />
+        <result property="insurantCertiNo" column="insurant_certi_no" />
+        <result property="insurantCertiType" column="insurant_certi_type" />
+        <result property="insurantEmployeeNo" column="insurant_employee_no" />
+        <result property="insurantDepartment" column="insurant_department" />
+        <result property="insurantSSPlace" column="insurant_ssplace" />
+        <result property="insurantWorkPlace" column="insurant_workplace" />
+        <result property="insureDate" column="insure_date" />
+        <result property="effectiveDate" column="effective_date" />
+        <result property="expiryDate" column="expiry_date" />
+        <result property="claimReason" column="claim_reason" />
+        <result property="accidentPlace" column="accident_place" />
+        <result property="accidentDate" column="accident_date" />
+        <result property="reportNo" column="report_no" />
+        <result property="claimNo" column="claim_no" />
+        <result property="reportDate" column="report_date" />
+        <result property="registerDate" column="register_date" />
+        <result property="closeDate" column="close_date" />
+        <result property="transferDate" column="transfer_date" />
+        <result property="payType" column="pay_type" />
+        <result property="payeeName" column="payee_name" />
+        <result property="payeeAccountBank" column="payee_account_bank" />
+        <result property="payeeAccountNo" column="payee_account_no" />
+        <result property="uwOperator" column="uwoperator" />
+        <result property="reuwOperator" column="reuwoperator" />
+        <result property="tpaChannel" column="tpa_channel" />
+        <result property="receiptSeqNo" column="receipt_seq_no" />
+        <result property="receiptType" column="receipt_type" />
+        <result property="receiptNo" column="receipt_no" />
+        <result property="inDate" column="in_date" />
+        <result property="outDate" column="out_date" />
+        <result property="inDays" column="in_days" />
+        <result property="hospitalName" column="hospital_name" />
+        <result property="hospitalDepartment" column="hospital_department" />
+        <result property="diagnosticContent" column="diagnostic_content" />
+        <result property="diagnosticCode" column="diagnostic_code" />
+        <result property="receiptAmount" column="receipt_amount" />
+        <result property="herbalMedicineCost" column="herbal_medicine_cost" />
+        <result property="physicalTherapyCost" column="physical_therapy_cost" />
+        <result property="selfAmount" column="self_amount" />
+        <result property="selfPayAmount" column="self_pay_amount" />
+        <result property="bmiPayAmount" column="bmi_pay_amount" />
+        <result property="bmiDeductionAmount" column="bmi_deduction_amount" />
+        <result property="otherAmount" column="other_amount" />
+        <result property="exceptAmount" column="except_amount" />
+        <result property="unreasonableAmount" column="unreasonable_amount" />
+        <result property="checkAmount" column="check_amount" />
+        <result property="deductionAmount" column="deduction_amount" />
+        <result property="insurantRelation" column="insurant_relation" />
+    </resultMap>
+
+    <sql id="claimDocumentReportDO_columns" >
+        policy_holder_no,policy_holder_name,campaign_name,group_policy_no,policy_package_no,package_full_name,
+        product_package_code,insurant_user_no,insurant_user_name,insurant_gender,
+        insurant_birthday,
+        insurant_certi_no,
+        insurant_certi_type,insurant_employee_no,insurant_department,insurant_ssplace,insurant_workplace,
+        insure_date,
+        effective_date,
+        expiry_date,
+        claim_reason,accident_place,
+        accident_date,
+        report_no,claim_no,
+        report_date,
+        register_date,
+        close_date,
+        transfer_date,
+        pay_type,payee_name,payee_account_bank,payee_account_no,uwoperator,reuwoperator,
+        tpa_channel,receipt_seq_no,receipt_type,receipt_no,
+        in_date,
+        out_date,
+        in_days,hospital_name,hospital_department,
+        diagnostic_content,diagnostic_code,receipt_amount,herbal_medicine_cost,physical_therapy_cost,self_amount,
+        self_pay_amount,bmi_pay_amount,bmi_deduction_amount,other_amount,except_amount,unreasonable_amount,check_amount,
+        deduction_amount,insurant_relation
+    </sql>
+
+
+
+    <sql id="queryParams" >
+        <isNotNull property="campaignName" prepend="AND" >
+            <![CDATA[campaign_name like CONCAT('%',#campaignName#, '%') ]]>
+        </isNotNull>
+        <isNotNull property="policyHolderName" prepend="AND" >
+            <![CDATA[policy_holder_name like CONCAT('%',#policyHolderName#, '%') ]]>
+        </isNotNull>
+        <isNotNull property="groupPolicyNo" prepend="AND" >
+            <![CDATA[group_policy_no = #groupPolicyNo#]]>
+        </isNotNull>
+        <isNotNull property="fromReportDate" prepend="AND" >
+            <![CDATA[report_date >= #fromReportDate#]]>
+        </isNotNull>
+        <isNotNull property="toReportDate" prepend="AND" >
+            <![CDATA[report_date <= #toReportDate#]]>
+        </isNotNull>
+    </sql>
+
+    <sql id="doQueryParams" >
+        <dynamic prepend="WHERE" >
+            <isNotNull property="campaignName" prepend="AND" >
+                <![CDATA[campaign_name like CONCAT('%',#campaignName#, '%') ]]>
+            </isNotNull>
+            <isNotNull property="policyHolderName" prepend="AND" >
+                <![CDATA[policy_holder_name like CONCAT('%',#policyHolderName#, '%') ]]>
+            </isNotNull>
+            <isNotNull property="groupPolicyNo" prepend="AND" >
+                <![CDATA[group_policy_no = #groupPolicyNo#]]>
+            </isNotNull>
+            <isNotNull property="fromReportDate" prepend="AND" >
+                <![CDATA[report_date >= #fromReportDate#]]>
+            </isNotNull>
+            <isNotNull property="toReportDate" prepend="AND" >
+                <![CDATA[report_date <= #toReportDate#]]>
+            </isNotNull>
+        </dynamic>
+    </sql>
+
+    <insert id="save" parameterClass="claimDocumentReportDO" >
+        INSERT INTO group_claim_document_report(  policy_holder_no,policy_holder_name,campaign_name,group_policy_no,policy_package_no,package_full_name,
+        product_package_code,insurant_user_no,insurant_user_name,insurant_gender,insurant_birthday,insurant_certi_no,
+        insurant_certi_type,insurant_employee_no,insurant_department,insurant_ssplace,insurant_workplace,
+        insure_date,effective_date,expiry_date,claim_reason,accident_place,accident_date,report_no,claim_no,
+        report_date,register_date,close_date,transfer_date,pay_type,payee_name,payee_account_bank,payee_account_no,
+        uwoperator,reuwoperator,tpa_channel,receipt_seq_no,receipt_type,receipt_no,in_date,out_date,in_days,hospital_name,
+        hospital_department,diagnostic_content,diagnostic_code,receipt_amount,herbal_medicine_cost,physical_therapy_cost,
+        self_amount,self_pay_amount,bmi_pay_amount,bmi_deduction_amount,other_amount,except_amount,unreasonable_amount,
+        check_amount,deduction_amount,insurant_relation
+        )
+        VALUES ( #policyHolderNo#,#policyHolderName#,#campaignName#,#groupPolicyNo#,#policyPackageNo#,#packageFullName#,
+        #productPackageCode#,#insurantUserNo#,#insurantUserName#,#insurantGender#,#insurantBirthday#,#insurantCertiNo#,#insurantCertiType#,
+        #insurantEmployeeNo#,#insurantDepartment#,#insurantSSPlace#,#insurantWorkPlace#,#insureDate#,#effectiveDate#,#expiryDate#,
+        #claimReason#,#accidentPlace#,#accidentDate#,#reportNo#,#claimNo#,#reportDate#,#registerDate#,#closeDate#,#transferDate#,#payType#,
+        #payeeName#,#payeeAccountBank#,#payeeAccountNo#,#uwOperator#,#reuwOperator#,#tpaChannel#,#receiptSeqNo#,#receiptType#,#receiptNo#,
+        #inDate#,#outDate#,#inDays#,#hospitalName#,#hospitalDepartment#,#diagnosticContent#,#diagnosticCode#,#receiptAmount#,#herbalMedicineCost#,
+        #physicalTherapyCost#,#selfAmount#,#selfPayAmount#,#bmiPayAmount#,#bmiDeductionAmount#,#otherAmount#,#exceptAmount#,#unreasonableAmount#,
+        #checkAmount#,#deductionAmount#,#insurantRelation#
+        )
+    </insert>
+
+    <update id="update" parameterClass="claimDocumentReportDO" >
+        UPDATE group_claim_document_report
+        <dynamic prepend="SET" >
+            <isNotNull property="policyHolderNo" prepend="," >
+                <![CDATA[policy_holder_no = #policyHolderNo#]]>
+            </isNotNull>
+            <isNotNull property="policyHolderName" prepend="," >
+                <![CDATA[policy_holder_name = #policyHolderName#]]>
+            </isNotNull>
+            <isNotNull property="campaignName" prepend="," >
+                <![CDATA[campaign_name = #campaignName#]]>
+            </isNotNull>
+            <isNotNull property="groupPolicyNo" prepend="," >
+                <![CDATA[group_policy_no = #groupPolicyNo#]]>
+            </isNotNull>
+            <isNotNull property="policyPackageNo" prepend="," >
+                <![CDATA[policy_package_no = #policyPackageNo#]]>
+            </isNotNull>
+            <isNotNull property="packageFullName" prepend="," >
+                <![CDATA[package_full_name = #packageFullName#]]>
+            </isNotNull>
+            <isNotNull property="productPackageCode" prepend="," >
+                <![CDATA[product_package_code = #productPackageCode#]]>
+            </isNotNull>
+            <isNotNull property="insurantUserNo" prepend="," >
+                <![CDATA[insurant_user_no = #insurantUserNo#]]>
+            </isNotNull>
+            <isNotNull property="insurantUserName" prepend="," >
+                <![CDATA[insurant_user_name = #insurantUserName#]]>
+            </isNotNull>
+            <isNotNull property="insurantGender" prepend="," >
+                <![CDATA[insurant_gender = #insurantGender#]]>
+            </isNotNull>
+            <isNotNull property="insurantBirthday" prepend="," >
+                <![CDATA[insurant_birthday = #insurantBirthday#]]>
+            </isNotNull>
+            <isNotNull property="insurantCertiNo" prepend="," >
+                <![CDATA[ insurant_certi_no = #insurantCertiNo#]]>
+            </isNotNull>
+            <isNotNull property="insurantCertiType" prepend="," >
+                <![CDATA[insurant_certi_type = #insurantCertiType# ]]>
+            </isNotNull>
+            <isNotNull property="insurantEmployeeNo" prepend="," >
+                <![CDATA[insurant_employee_no = #insurantEmployeeNo# ]]>
+            </isNotNull>
+            <isNotNull property="insurantDepartment" prepend="," >
+                <![CDATA[insurant_department = #insurantDepartment# ]]>
+            </isNotNull>
+            <isNotNull property="insurantSSPlace" prepend="," >
+                <![CDATA[insurant_ssplace = #insurantSSPlace# ]]>
+            </isNotNull>
+            <isNotNull property="insurantWorkPlace" prepend="," >
+                <![CDATA[insurant_workplace = #insurantWorkPlace# ]]>
+            </isNotNull>
+            <isNotNull property="insureDate" prepend="," >
+                <![CDATA[insure_date = #insureDate# ]]>
+            </isNotNull>
+            <isNotNull property="effectiveDate" prepend="," >
+                <![CDATA[effective_date = #effectiveDate# ]]>
+            </isNotNull>
+            <isNotNull property="expiryDate" prepend="," >
+                <![CDATA[expiry_date = #expiryDate# ]]>
+            </isNotNull>
+            <isNotNull property="claimReason" prepend="," >
+                <![CDATA[claim_reason = #claimReason# ]]>
+            </isNotNull>
+            <isNotNull property="accidentPlace" prepend="," >
+                <![CDATA[accident_place = #accidentPlace# ]]>
+            </isNotNull>
+            <isNotNull property="accidentDate" prepend="," >
+                <![CDATA[accident_date = #accidentDate# ]]>
+            </isNotNull>
+            <isNotNull property="reportNo" prepend="," >
+                <![CDATA[report_no = #reportNo# ]]>
+            </isNotNull>
+            <isNotNull property="claimNo" prepend="," >
+                <![CDATA[claim_no = #claimNo# ]]>
+            </isNotNull>
+            <isNotNull property="reportDate" prepend="," >
+                <![CDATA[report_date = #reportDate# ]]>
+            </isNotNull>
+            <isNotNull property="registerDate" prepend="," >
+                <![CDATA[register_date = #registerDate# ]]>
+            </isNotNull>
+            <isNotNull property="closeDate" prepend="," >
+                <![CDATA[close_date = #closeDate# ]]>
+            </isNotNull>
+            <isNotNull property="transferDate" prepend="," >
+                <![CDATA[transfer_date = #transferDate# ]]>
+            </isNotNull>
+            <isNotNull property="payType" prepend="," >
+                <![CDATA[pay_type = #payType# ]]>
+            </isNotNull>
+            <isNotNull property="payeeName" prepend="," >
+                <![CDATA[payee_name = #payeeName# ]]>
+            </isNotNull>
+            <isNotNull property="payeeAccountBank" prepend="," >
+                <![CDATA[payee_account_bank = #payeeAccountBank# ]]>
+            </isNotNull>
+            <isNotNull property="payeeAccountNo" prepend="," >
+                <![CDATA[payee_account_no = #payeeAccountNo# ]]>
+            </isNotNull>
+            <isNotNull property="uwOperator" prepend="," >
+                <![CDATA[uwoperator = #uwOperator# ]]>
+            </isNotNull>
+            <isNotNull property="reuwOperator" prepend="," >
+                <![CDATA[reuwoperator = #reuwOperator# ]]>
+            </isNotNull>
+            <isNotNull property="tpaChannel" prepend="," >
+                <![CDATA[tpa_channel = #tpaChannel# ]]>
+            </isNotNull>
+            <isNotNull property="receiptSeqNo" prepend="," >
+                <![CDATA[receipt_seq_no = #receiptSeqNo# ]]>
+            </isNotNull>
+            <isNotNull property="receiptType" prepend="," >
+                <![CDATA[receipt_type = #receiptType# ]]>
+            </isNotNull>
+            <isNotNull property="receiptNo" prepend="," >
+                <![CDATA[receipt_no = #receiptNo# ]]>
+            </isNotNull>
+            <isNotNull property="inDate" prepend="," >
+                <![CDATA[in_date = #inDate# ]]>
+            </isNotNull>
+            <isNotNull property="outDate" prepend="," >
+                <![CDATA[out_date = #outDate# ]]>
+            </isNotNull>
+            <isNotNull property="inDays" prepend="," >
+                <![CDATA[in_days = #inDays# ]]>
+            </isNotNull>
+            <isNotNull property="hospitalName" prepend="," >
+                <![CDATA[hospital_name = #hospitalName# ]]>
+            </isNotNull>
+            <isNotNull property="hospitalDepartment" prepend="," >
+                <![CDATA[hospital_department = #hospitalDepartment# ]]>
+            </isNotNull>
+            <isNotNull property="diagnosticContent" prepend="," >
+                <![CDATA[diagnostic_content = #diagnosticContent# ]]>
+            </isNotNull>
+            <isNotNull property="diagnosticCode" prepend="," >
+                <![CDATA[diagnostic_code = #diagnosticCode# ]]>
+            </isNotNull>
+            <isNotNull property="receiptAmount" prepend="," >
+                <![CDATA[receipt_amount = #receiptAmount# ]]>
+            </isNotNull>
+            <isNotNull property="herbalMedicineCost" prepend="," >
+                <![CDATA[herbal_medicine_cost = #herbalMedicineCost# ]]>
+            </isNotNull>
+            <isNotNull property="physicalTherapyCost" prepend="," >
+                <![CDATA[physical_therapy_cost = #physicalTherapyCost# ]]>
+            </isNotNull>
+            <isNotNull property="selfAmount" prepend="," >
+                <![CDATA[self_amount = #selfAmount# ]]>
+            </isNotNull>
+            <isNotNull property="selfPayAmount" prepend="," >
+                <![CDATA[self_pay_amount = #selfPayAmount# ]]>
+            </isNotNull>
+            <isNotNull property="bmiPayAmount" prepend="," >
+                <![CDATA[bmi_pay_amount = #bmiPayAmount# ]]>
+            </isNotNull>
+            <isNotNull property="bmiDeductionAmount" prepend="," >
+                <![CDATA[bmi_deduction_amount = #bmiDeductionAmount# ]]>
+            </isNotNull>
+            <isNotNull property="otherAmount" prepend="," >
+                <![CDATA[other_amount = #otherAmount# ]]>
+            </isNotNull>
+            <isNotNull property="exceptAmount" prepend="," >
+                <![CDATA[except_amount = #exceptAmount# ]]>
+            </isNotNull>
+            <isNotNull property="unreasonableAmount" prepend="," >
+                <![CDATA[unreasonable_amount = #unreasonableAmount# ]]>
+            </isNotNull>
+            <isNotNull property="checkAmount" prepend="," >
+                <![CDATA[check_amount = #checkAmount# ]]>
+            </isNotNull>
+            <isNotNull property="deductionAmount" prepend="," >
+                <![CDATA[deduction_amount = #deductionAmount# ]]>
+            </isNotNull>
+            <isNotNull property="insurantRelation" prepend="," >
+                <![CDATA[insurant_relation = #insurantRelation# ]]>
+            </isNotNull>
+        </dynamic>
+        <include refid="doQueryParams" />
+
+    </update>
+
+    <select id="findById" parameterClass="java.lang.String" resultMap="claimDocumentReportDOResultMap" >
+        SELECT
+        <include refid="claimDocumentReportDO_columns" />
+        <![CDATA[
+     FROM group_claim_document_report  WHERE policy_package_no = #policyPackageNo#
+    ]]>
+    </select>
+
+    <delete id="deleteById" parameterClass="java.lang.String" >
+        <![CDATA[
+     DELETE FROM group_claim_document_report WHERE policy_package_no = #policyPackageNo#
+    ]]>
+    </delete>
+
+    <select id="count" parameterClass="claimDocumentReportDO" resultClass="java.lang.Integer" >
+        SELECT COUNT(*) AS num FROM group_claim_document_report
+        <include refid="doQueryParams" />
+    </select>
+
+    <select id="findByExample" resultMap="claimDocumentReportDOResultMap" parameterClass="claimDocumentReportDO" >
+        SELECT
+        <include refid="claimDocumentReportDO_columns" />
+        FROM group_claim_document_report
+        <include refid="doQueryParams" />
+        <isNotNull property="orderByClause" >
+            order by $orderByClause$
+        </isNotNull>
+        <isNotNull property="start" >
+            <isNotNull property="limit"  >
+                <![CDATA[
+       			          limit #start#,#limit#
+       		        ]]>
+            </isNotNull>
+        </isNotNull>
+    </select>
+
+    <delete id="deleteByExample"  parameterClass="claimDocumentReportDO" >
+        DELETE FROM
+          group_claim_document_report
+        <include refid="doQueryParams" />
+    </delete>
+</sqlMap>

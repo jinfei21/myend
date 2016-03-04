@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.springframework.org/schema/beans"
+	xsi:schemaLocation="
+           http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+       "
+	default-autowire="byName">
+
+	<bean name="beanContext" class="com.zhongan.core.common.BeanContextFactoryBean">
+		<property name="configLocations">
+			<list>
+				<value>classpath*:biz/persistence.xml</value>
+				<value>classpath*:biz/spring-biz.xml</value>
+				<value>classpath*:biz/spring-queue-client.xml</value>
+				<value>classpath*:biz/spring-oss.xml</value>
+				<value>classpath*:biz/spring-msg-row-parser.xml</value>
+				<value>classpath*:biz/spring-dao.xml</value>
+				<value>classpath*:biz/spring-hsf-provider.xml</value>
+				<value>classpath*:biz/spring-hsf-consumer.xml</value>
+				<value>classpath*:biz/spring-tair.xml</value>
+				<value>classpath*:biz/spring-disp-notify-consumer.xml</value>
+				<value>classpath*:biz/spring-manager.xml</value>
+				<value>classpath*:biz/spring-task.xml</value>
+				<value>classpath*:biz/spring-quartz.xml</value>
+				<value>classpath*:biz/spring-group-notify-sender.xml</value>
+				</list>
+		</property>
+	</bean>
+</beans>

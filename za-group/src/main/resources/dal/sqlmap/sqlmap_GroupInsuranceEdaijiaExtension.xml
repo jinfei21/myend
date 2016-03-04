@@ -1,0 +1,334 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+
+<sqlMap namespace="GroupInsuranceEdaijiaExtension" >
+
+  <typeAlias alias="groupInsuranceEdaijiaExtensionDO" type="com.zhongan.core.group.dao.dataobject.GroupInsuranceEdaijiaExtensionDO" />
+
+  <resultMap id="groupInsuranceEdaijiaExtensionDOResultMap" class="groupInsuranceEdaijiaExtensionDO" >
+    <result property="id" column="id" />
+    <result property="creator" column="creator" />
+    <result property="gmtCreated" column="gmt_created" />
+    <result property="modifier" column="modifier" />
+    <result property="gmtModified" column="gmt_modified" />
+    <result property="isDeleted" column="is_deleted" />
+    <result property="policyId" column="policy_id" />
+    <result property="policyNo" column="policy_No" />
+    <result property="driverNo" column="driver_no" />
+    <result property="driverName" column="driver_name" />
+    <result property="identityNo" column="identity_no" />
+    <result property="channelOrderNo" column="channel_order_no" />
+    <result property="loginTime" column="login_time" />
+    <result property="effectiveDate" column="effective_date" />
+    <result property="expiryDate" column="expiry_date" />
+    <result property="success" column="success" />
+    <result property="errorMsg" column="error_msg" />
+    <result property="groupPolicyId" column="group_policy_id" />
+    <result property="localCity" column="local_city" />
+    <result property="remark" column="remark" />
+  </resultMap>
+           
+  <sql id="groupInsuranceEdaijiaExtension_do_columns" >
+    a1.id, a1.creator, a1.gmt_created, a1.modifier, a1.gmt_modified, a1.is_deleted,a1.policy_id,a1.policy_no, a1.driver_no, a1.driver_name,
+      a1.identity_no, a1.channel_order_no, a1.login_time, a1.effective_date, a1.expiry_date, a1.success, 
+     a1.error_msg, a1.group_policy_id,  a1.local_city, a1.remark
+  </sql>
+
+  <sql id="doQueryParams" >
+    <dynamic prepend="WHERE" >
+      <isNotNull property="id" prepend="AND" >
+        <![CDATA[  
+        id = #id#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="creator" prepend="AND" >
+        <![CDATA[  
+        creator = #creator#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="gmtCreated" prepend="AND" >
+        <![CDATA[  
+        gmt_created = #gmtCreated#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="modifier" prepend="AND" >
+        <![CDATA[  
+        modifier = #modifier#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="gmtModified" prepend="AND" >
+        <![CDATA[  
+        gmt_modified = #gmtModified#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="isDeleted" prepend="AND" >
+        <![CDATA[  
+        is_deleted = #isDeleted#  
+        ]]>  
+       </isNotNull>
+       <isNotNull property="policyId" prepend="AND" >
+        <![CDATA[  
+        policy_id = #policyId#  
+        ]]>  
+      </isNotNull>
+       <isNotNull property="policyNo" prepend="AND" >
+        <![CDATA[  
+        policy_no = #policyNo#  
+        ]]>  
+      </isNotNull>
+       <isNotNull property="driverNo" prepend="AND" >
+        <![CDATA[  
+        driver_no = #driverNo#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="driverName" prepend="AND" >
+        <![CDATA[  
+        driver_name = #driverName#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="identityNo" prepend="AND" >
+        <![CDATA[  
+        identity_no = #identityNo#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="channelOrderNo" prepend="AND" >
+        <![CDATA[  
+        channel_order_no = #channelOrderNo#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="loginTime" prepend="AND" >
+        <![CDATA[  
+        login_time = #loginTime#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="effectiveDate" prepend="AND" >
+        <![CDATA[  
+        effective_date = #effectiveDate#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="expiryDate" prepend="AND" >
+        <![CDATA[  
+        expiry_date = #expiryDate#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="success" prepend="AND" >
+        <![CDATA[  
+        success = #success#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="errorMsg" prepend="AND" >
+        <![CDATA[  
+        error_msg = #errorMsg#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="groupPolicyId" prepend="AND" >
+        <![CDATA[  
+        group_policy_id = #groupPolicyId#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="localCity" prepend="AND" >
+        <![CDATA[  
+        local_city = #localCity#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="remark" prepend="AND" >
+        <![CDATA[  
+        remark = #remark#  
+        ]]>  
+      </isNotNull>
+    </dynamic>
+  </sql>
+  
+<sql id="doQueryParamsForCheck" >
+    <dynamic prepend="WHERE" >     
+        is_deleted = "N"  
+       <isNotNull property="driverNo" prepend="AND" >
+        <![CDATA[  
+        driver_no = #driverNo#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="driverName" prepend="AND" >
+        <![CDATA[  
+        driver_name = #driverName#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="identityNo" prepend="AND" >
+        <![CDATA[  
+        identity_no = #identityNo#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="channelOrderNo" prepend="AND" >
+        <![CDATA[  
+        channel_order_no = #channelOrderNo#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="loginTime" prepend="AND" >
+        <![CDATA[  
+        login_time = #loginTime#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="localCity" prepend="AND" >
+        <![CDATA[  
+        local_city = #localCity#  
+        ]]>  
+      </isNotNull>
+      
+    </dynamic>
+  </sql>
+  <insert id="insert" parameterClass="groupInsuranceEdaijiaExtensionDO" >
+    INSERT INTO group_insurance_edaijia_extension( id, creator, gmt_created, modifier,
+      gmt_modified, is_deleted,policy_id,policy_no,driver_no,driver_name,identity_no,channel_order_no,login_time,effective_date,
+      expiry_date,success,error_msg,group_policy_id,local_city,remark)
+     VALUES ( #id#, #creator#, now(), #modifier#, now(), 'N',#policyId#,#policyNo#,#driverNo#,#driverName#,#identityNo#,
+     #channelOrderNo#,#loginTime#,#effectiveDate#,#expiryDate#,#success#,#errorMsg#,#groupPolicyId#,
+     #localCity#,#remark#)
+  </insert>
+
+  <update id="update" parameterClass="groupInsuranceEdaijiaExtensionDO" >
+    UPDATE group_insurance_edaijia_extension   
+    set gmt_modified = now()
+      <isNotNull property="creator" prepend="," >
+        <![CDATA[  
+        creator = #creator#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="gmtCreated" prepend="," >
+        <![CDATA[  
+        gmt_created = #gmtCreated#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="modifier" prepend="," >
+        <![CDATA[  
+        modifier = #modifier#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="isDeleted" prepend="," >
+        <![CDATA[  
+        is_deleted = #isDeleted#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="policyId" prepend="," >
+          <![CDATA[  
+          policy_id = #policyId#  
+           ]]>  
+      </isNotNull>
+       <isNotNull property="policyNo" prepend="," >
+          <![CDATA[  
+          policy_no = #policyNo#  
+           ]]>  
+      </isNotNull>
+       <isNotNull property="driverNo" prepend="," >
+        <![CDATA[  
+        driver_no = #driverNo#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="driverName" prepend="," >
+        <![CDATA[  
+        driver_name = #driverName#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="identityNo" prepend="," >
+        <![CDATA[  
+        identity_no = #identityNo#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="channelOrderNo" prepend="," >
+        <![CDATA[  
+        channel_order_no = #channelOrderNo#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="loginTime" prepend="," >
+        <![CDATA[  
+        login_time = #loginTime#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="effectiveDate" prepend="," >
+        <![CDATA[  
+        effective_date = #effectiveDate#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="expiryDate" prepend="," >
+        <![CDATA[  
+        expiry_date = #expiryDate#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="success" prepend="," >
+        <![CDATA[  
+        success = #success#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="errorMsg" prepend="," >
+        <![CDATA[  
+        error_msg = #errorMsg#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="groupPolicyId" prepend="," >
+        <![CDATA[  
+        group_policy_id = #groupPolicyId#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="localCity" prepend="," >
+        <![CDATA[  
+        local_city = #localCity#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="remark" prepend="," >
+        <![CDATA[  
+        remark = #remark#  
+        ]]>  
+      </isNotNull>
+
+     WHERE id = #id#  
+  </update>
+
+
+  <delete id="deleteByPrimaryKey" parameterClass="java.lang.Long" >
+    <![CDATA[  
+     DELETE FROM group_insurance_edaijia_extension WHERE id = #id#
+    ]]>  
+  </delete>
+
+  <select id="countByDOExample" parameterClass="groupInsuranceEdaijiaExtensionDO" resultClass="java.lang.Integer" >
+    SELECT COUNT(id) AS num FROM group_insurance_edaijia_extension 
+    <include refid="doQueryParams" />
+  </select>
+
+  <select id="findListByDO" resultMap="groupInsuranceEdaijiaExtensionDOResultMap" parameterClass="groupInsuranceEdaijiaExtensionDO" >
+     SELECT 
+    <include refid="groupInsuranceEdaijiaExtension_do_columns" />
+     FROM group_insurance_edaijia_extension a1 
+    <include refid="doQueryParams" />
+  </select>
+  
+  <select id="findListNoPolicyId" resultMap="groupInsuranceEdaijiaExtensionDOResultMap" parameterClass="groupInsuranceEdaijiaExtensionDO" >
+     SELECT 
+    <include refid="groupInsuranceEdaijiaExtension_do_columns" />
+     FROM group_insurance_edaijia_extension a1 where  is_deleted = 'N'  and ((policy_id is null or remark = 'N') or(remark is null and gmt_created>'2015-08-05'))
+  </select>
+  <select id="findListForCheckRepeat" resultMap="groupInsuranceEdaijiaExtensionDOResultMap" parameterClass="groupInsuranceEdaijiaExtensionDO" >
+  
+     SELECT 
+    <include refid="groupInsuranceEdaijiaExtension_do_columns" />
+     FROM group_insurance_edaijia_extension a1 
+    <include refid="doQueryParamsForCheck" />
+  </select>
+  
+   <select id="findListByExample" resultMap="groupInsuranceEdaijiaExtensionDOResultMap" parameterClass="groupInsuranceEdaijiaExtensionDO" >
+     SELECT 
+    <include refid="groupInsuranceEdaijiaExtension_do_columns" />
+    <![CDATA[  FROM group_insurance_edaijia_extension a1  
+    where is_deleted="N" and success="Y" and identity_no = #identityNo#  and 
+     ((effective_date <= #effectiveDate#  and expiry_date >= #effectiveDate# ) or (effective_date <= #expiryDate#  and expiry_date >= #expiryDate# )) 
+	]]>
+  </select>
+  
+  <!-- 统计上月某一个团单下，所有分单数 -->
+  <select id="countGroupInsuranceEdaijiaExtensionByCondition" resultClass="java.lang.Integer" parameterClass="groupInsuranceEdaijiaExtensionDO">
+  	SELECT COUNT(t.id) AS amounts
+  	<![CDATA[
+	FROM group_00.group_insurance_edaijia_extension t
+	WHERE t.is_deleted='N' AND DATE_FORMAT(t.effective_date,'%y-%m')=DATE_FORMAT(#effectiveDate#,'%y-%m')
+	AND t.group_policy_id=#groupPolicyId#
+	]]>	
+  </select>
+</sqlMap>

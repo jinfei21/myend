@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+
+<sqlMap namespace="GroupInsuranceElem" >
+
+  <typeAlias alias="groupInsuranceElemDO" type="com.zhongan.core.group.dao.dataobject.GroupInsuranceElemDO" />
+
+  <resultMap id="groupInsuranceElemDOResultMap" class="groupInsuranceElemDO" >
+    <result property="id" column="id" />
+    <result property="productId" column="product_id" />
+    <result property="groupPolicyId" column="group_policy_id" />
+    <result property="premium" column="premium" />
+    <result property="creator" column="creator" />
+    <result property="gmtCreated" column="gmt_created" />
+    <result property="modifier" column="modifier" />
+    <result property="gmtModified" column="gmt_modified" />
+    <result property="isDeleted" column="is_deleted" />
+    <result property="remark" column="remark" />
+  </resultMap>
+
+  <sql id="groupInsuranceElem_columns" >
+    a1.id, a1.product_id, a1.group_policy_id, a1.premium, a1.creator, a1.gmt_created, 
+      a1.modifier, a1.gmt_modified, a1.is_deleted, a1.remark
+  </sql>
+
+  <sql id="groupInsuranceElem_do_columns" >
+    a1.id, a1.product_id, a1.group_policy_id, a1.premium, a1.creator, a1.gmt_created, 
+      a1.modifier, a1.gmt_modified, a1.is_deleted, a1.remark
+  </sql>
+
+  <sql id="queryParams" >
+    <dynamic prepend="WHERE" >
+      <isNotNull property="id" prepend="AND" >
+        <![CDATA[  
+        id = #id#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="productId" prepend="AND" >
+        <![CDATA[  
+        product_id = #productId#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="groupPolicyId" prepend="AND" >
+        <![CDATA[  
+        group_policy_id = #groupPolicyId#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="premium" prepend="AND" >
+        <![CDATA[  
+        premium = #premium#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="creator" prepend="AND" >
+        <![CDATA[  
+        creator = #creator#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="gmtCreated" prepend="AND" >
+        <![CDATA[  
+        gmt_created = #gmtCreated#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="modifier" prepend="AND" >
+        <![CDATA[  
+        modifier = #modifier#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="gmtModified" prepend="AND" >
+        <![CDATA[  
+        gmt_modified = #gmtModified#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="isDeleted" prepend="AND" >
+        <![CDATA[  
+        is_deleted = #isDeleted#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="remark" prepend="AND" >
+        <![CDATA[  
+        remark = #remark#  
+        ]]>  
+      </isNotNull>
+    </dynamic>
+  </sql>
+
+  <sql id="doQueryParams" >
+    <dynamic prepend="WHERE" >
+      <isNotNull property="id" prepend="AND" >
+        <![CDATA[  
+        id = #id#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="productId" prepend="AND" >
+        <![CDATA[  
+        product_id = #productId#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="groupPolicyId" prepend="AND" >
+        <![CDATA[  
+        group_policy_id = #groupPolicyId#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="premium" prepend="AND" >
+        <![CDATA[  
+        premium = #premium#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="creator" prepend="AND" >
+        <![CDATA[  
+        creator = #creator#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="gmtCreated" prepend="AND" >
+        <![CDATA[  
+        gmt_created = #gmtCreated#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="modifier" prepend="AND" >
+        <![CDATA[  
+        modifier = #modifier#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="gmtModified" prepend="AND" >
+        <![CDATA[  
+        gmt_modified = #gmtModified#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="isDeleted" prepend="AND" >
+        <![CDATA[  
+        is_deleted = #isDeleted#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="remark" prepend="AND" >
+        <![CDATA[  
+        remark = #remark#  
+        ]]>  
+      </isNotNull>
+    </dynamic>
+  </sql>
+
+  <insert id="insert" parameterClass="groupInsuranceElemDO" >
+    INSERT INTO group_insurance_elem( id, product_id, group_policy_id, premium, creator, gmt_created, 
+      modifier, gmt_modified, is_deleted, remark)
+     VALUES ( #id#, #productId#, #groupPolicyId#, #premium#, #creator#, #gmtCreated#, 
+      #modifier#, #gmtModified#, #isDeleted#, #remark#)
+    <selectKey keyProperty="id" resultClass="java.lang.Long" >
+      SELECT LAST_INSERT_ID() AS value
+    </selectKey>
+  </insert>
+
+  <update id="update" parameterClass="groupInsuranceElemDO" >
+    UPDATE group_insurance_elem   
+    <dynamic prepend="SET" >
+      <!--
+      <isNotNull property="id" prepend="," >
+        <![CDATA[  
+        id = #id#  
+        ]]>  
+      </isNotNull>
+      -->
+      <isNotNull property="productId" prepend="," >
+        <![CDATA[  
+        product_id = #productId#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="groupPolicyId" prepend="," >
+        <![CDATA[  
+        group_policy_id = #groupPolicyId#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="premium" prepend="," >
+        <![CDATA[  
+        premium = #premium#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="creator" prepend="," >
+        <![CDATA[  
+        creator = #creator#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="gmtCreated" prepend="," >
+        <![CDATA[  
+        gmt_created = #gmtCreated#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="modifier" prepend="," >
+        <![CDATA[  
+        modifier = #modifier#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="gmtModified" prepend="," >
+        <![CDATA[  
+        gmt_modified = #gmtModified#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="isDeleted" prepend="," >
+        <![CDATA[  
+        is_deleted = #isDeleted#  
+        ]]>  
+      </isNotNull>
+      <isNotNull property="remark" prepend="," >
+        <![CDATA[  
+        remark = #remark#  
+        ]]>  
+      </isNotNull>
+    </dynamic>
+     WHERE id = #id#  
+  </update>
+
+  <select id="findByPrimaryKey" parameterClass="java.lang.Long" resultMap="groupInsuranceElemDOResultMap" >
+     SELECT 
+    <include refid="groupInsuranceElem_do_columns" />
+    <![CDATA[  
+     FROM group_insurance_elem a1 WHERE id = #id#
+    ]]>  
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterClass="java.lang.Long" >
+    <![CDATA[  
+     DELETE FROM group_insurance_elem WHERE id = #id#
+    ]]>  
+  </delete>
+
+  <select id="countByDOExample" parameterClass="groupInsuranceElemDO" resultClass="java.lang.Integer" >
+    SELECT COUNT(id) AS num FROM group_insurance_elem 
+    <include refid="doQueryParams" />
+  </select>
+
+  <select id="findListByDO" resultMap="groupInsuranceElemDOResultMap" parameterClass="groupInsuranceElemDO" >
+     SELECT 
+    <include refid="groupInsuranceElem_do_columns" />
+     FROM group_insurance_elem a1 
+    <include refid="doQueryParams" />
+  </select>
+</sqlMap>

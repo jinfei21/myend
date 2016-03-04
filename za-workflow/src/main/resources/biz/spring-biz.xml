@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans default-autowire="byName">
+	<!-- 节点解析器 beanId命名规范  (NodeParser) applicationContext.getBean(nodeName.toLowerCase() + "Parser")-->
+	<!-- decision节点 -->
+	<bean id="decisionParser" class="com.zhongan.workflow.engine.parser.impl.DecisionParser"/>
+	<!-- end节点 -->
+	<bean id="endParser" class="com.zhongan.workflow.engine.parser.impl.EndParser"/>
+	<!-- start节点 -->
+	<bean id="startParser" class="com.zhongan.workflow.engine.parser.impl.StartParser"/>
+	<!-- task节点 -->
+	<bean id="taskParser" class="com.zhongan.workflow.engine.parser.impl.TaskParser"/>
+	<!-- 模型解析器 -->
+	<bean id="modelParser" class="com.zhongan.workflow.engine.parser.ModelParser"></bean>
+	
+	<!-- 流程服务参数校验 -->
+	<bean id="processValidator" class="com.zhongan.workflow.engine.service.validate.ProcessValidator"></bean>
+	<bean id="processManager" class="com.zhongan.workflow.engine.service.manager.ProcessManager"></bean>
+	<bean id="processTemplateManager" class="com.zhongan.workflow.engine.service.manager.ProcessTemplateManager"></bean>
+	<bean id="processHistManager" class="com.zhongan.workflow.engine.service.manager.ProcessHistManager"></bean>
+	<bean id="processParamsManager" class="com.zhongan.workflow.engine.service.manager.ProcessParamsManager"></bean>
+	<bean id="processModelManager" class="com.zhongan.workflow.engine.service.manager.ProcessModelManager"></bean>
+	<bean id="processService" class="com.zhongan.workflow.engine.service.impl.ProcessServiceImpl"></bean>
+	
+	<!-- spel表达式解析 -->
+	<bean id="spelExpression" class="com.zhongan.workflow.engine.expression.impl.SpelExpression"></bean>
+	
+	
+	<bean id="tairManager" class="com.taobao.tair.impl.DefaultTairManager" init-method="init">
+		<property name="configServerList">
+			<list>
+				<value>${za.workflow.tair.configserver1}</value>
+				<value>${za.workflow.tair.configserver2}</value>
+			</list>
+		</property>
+		<property name="groupName">
+			<value>${za.workflow.tair.groupname}</value>
+		</property>
+	</bean>
+</beans>

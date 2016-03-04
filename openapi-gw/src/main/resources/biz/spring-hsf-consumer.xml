@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="GB2312"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans default-autowire="byName">
+
+	<bean id="lotusOrderService" class="com.taobao.hsf.app.spring.util.HSFSpringConsumerBean"
+		init-method="init">
+		<property name="interfaceName" value="com.zhongan.lotus.core.service.LotusOrderService"/>
+		<property name="version" value="${za.openapi.gw.hsf.consumerversion.common}"/>
+	</bean>
+	
+	<bean id="lotusServiceConfigService" class="com.taobao.hsf.app.spring.util.HSFSpringConsumerBean"
+		init-method="init">
+		<property name="interfaceName" value="com.zhongan.lotus.core.service.LotusServiceConfigService"/>
+		<property name="version" value="${za.openapi.gw.hsf.consumerversion.common}"/>
+	</bean>	
+	
+</beans> 
