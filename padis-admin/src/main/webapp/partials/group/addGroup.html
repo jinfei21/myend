@@ -1,0 +1,48 @@
+<div class="modal-header">
+	<h3 class="modal-title">{{data.title}}</h3>
+</div>
+<div class="col-xs-12">
+    	<alert ng-show="data.isShow" type="data.type" close="closeAlert()">{{data.msg}}</alert>
+</div>
+
+<div class="modal-body">
+	<form name="groupform" class="form-horizontal">
+		<div class="form-group">
+			<label for="groupID" class="col-sm-3 control-label no-padding-right">GroupID</label>
+
+            <div class="col-sm-7">
+                <input type="text" class="form-control" name="gid" placeholder="GroupID" ng-model="group.id" ng-pattern="/^[0-9]*$/" required/>
+                <div class="error" ng-show="groupform.gid.$dirty && groupform.gid.$invalid">
+					<div class="error" ng-show="groupform.gid.$error.required">
+						groupID不能为空
+					</div> 
+					<div class="error" ng-show="groupform.gid.$error.pattern">
+						只能是数字
+					</div> 
+				</div>
+             </div>
+		</div>
+		
+		<div class="form-group">            
+			<label for="groupMaster" class="col-sm-3 control-label no-padding-right">Master</label>
+			
+            <div class="col-sm-7">
+                <input type="text" class="form-control" ng-model="group.master" placeholder="IP:Port"/>
+            </div>
+        </div>
+		
+		<div class="form-group">
+            <label for="groupSlave" class="col-sm-3 control-label no-padding-right">Slave</label>
+            
+            <div class="col-sm-7">
+               <input type="text" class="form-control" ng-model="group.slave" placeholder="IP:Port"/>
+            </div>
+        </div>		
+		
+	</form>
+</div>
+
+<div class="modal-footer">
+	<button class="btn btn-primary" ng-click="addGroup()">确定</button>
+	<button class="btn btn-warning" ng-click="cancel()">取消</button>
+</div>
