@@ -4,7 +4,10 @@ public enum Status {
 	PRE_MIGRATE("pre_migrate","预迁移"),
 	OFFLINE("offline","下线"),
 	ONLINE("online","上线"),
-	MIGRATE("migrate","迁移");
+	MIGRATE("migrate","迁移"),
+	LIMIT("limit","限流"),
+	PENDING("pending","等待"),
+	ERROR("error","错误");
 	
 	private String name;
 	private String text;

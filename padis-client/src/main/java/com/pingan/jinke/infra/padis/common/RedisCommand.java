@@ -14,6 +14,8 @@ public interface RedisCommand {
 	 */
 	String ping();
 
+	Long delete(String key);
+	
 	String set(String key, String value);
 
 	String set(String key, String value, SetParams params);

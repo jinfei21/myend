@@ -3,6 +3,7 @@ package com.pingan.jinke.infra.padis.core;
 import static com.pingan.jinke.infra.padis.common.ProtocolCommand.APPEND;
 import static com.pingan.jinke.infra.padis.common.ProtocolCommand.DECR;
 import static com.pingan.jinke.infra.padis.common.ProtocolCommand.DECRBY;
+import static com.pingan.jinke.infra.padis.common.ProtocolCommand.DEL;
 import static com.pingan.jinke.infra.padis.common.ProtocolCommand.EXISTS;
 import static com.pingan.jinke.infra.padis.common.ProtocolCommand.EXPIRE;
 import static com.pingan.jinke.infra.padis.common.ProtocolCommand.EXPIREAT;
@@ -26,6 +27,7 @@ import static com.pingan.jinke.infra.padis.common.ProtocolCommand.MIGRATE;
 import static com.pingan.jinke.infra.padis.common.ProtocolCommand.PERSIST;
 import static com.pingan.jinke.infra.padis.common.ProtocolCommand.PEXPIRE;
 import static com.pingan.jinke.infra.padis.common.ProtocolCommand.PEXPIREAT;
+import static com.pingan.jinke.infra.padis.common.ProtocolCommand.PING;
 import static com.pingan.jinke.infra.padis.common.ProtocolCommand.PTTL;
 import static com.pingan.jinke.infra.padis.common.ProtocolCommand.RPOP;
 import static com.pingan.jinke.infra.padis.common.ProtocolCommand.RPUSH;
@@ -43,7 +45,7 @@ import static com.pingan.jinke.infra.padis.common.ProtocolCommand.ZADD;
 import static com.pingan.jinke.infra.padis.common.ProtocolCommand.ZCARD;
 import static com.pingan.jinke.infra.padis.common.ProtocolCommand.ZRANGE;
 import static com.pingan.jinke.infra.padis.common.ProtocolCommand.ZREM;
-import static com.pingan.jinke.infra.padis.common.ProtocolCommand.*;
+import static com.pingan.jinke.infra.padis.common.ProtocolCommand.ZSCORE;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -87,6 +89,12 @@ public class Client extends Connection implements RedisCommand {
 		return getStatusCodeReply();
 	}
 
+	@Override
+	public Long delete(String key) {
+		sendCommand(DEL, key);
+		return getIntegerReply();
+	}
+	
 	@Override
 	public String set(String key, String value, SetParams params) {
 		sendCommand(SET, params.getByteParams(SafeEncoder.encode(key), SafeEncoder.encode(value)));

@@ -22,7 +22,9 @@ public class NodeStorage {
     	
     }
     
-    
+    public void addCacheData(final String path) {
+    	this.coordinatorRegistryCenter.addCacheData(path);
+    }
     
     /**
      * 判断节点是否存在.
@@ -95,12 +97,20 @@ public class NodeStorage {
      * 填充临时节点数据.
      * 
      * @param path 节点路径
-     * @param value 作业节点数据值
+     * @param value 节点数据值
      */
     public void fillEphemeralNodePath(final String path, final Object value) {
         coordinatorRegistryCenter.persistEphemeral(path, value.toString());
     }
     
+    /**
+     * 填充临时节点数据.
+     * 
+     * @param path 节点路径
+     */
+    public String fillEphemeralSeqNodePath(String path, final Object value) {
+    	return coordinatorRegistryCenter.persistEphemeralSequential(path,value.toString());
+    }
     /**
      * 更新节点数据.
      * 

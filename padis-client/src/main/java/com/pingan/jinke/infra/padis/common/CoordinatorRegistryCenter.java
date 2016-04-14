@@ -37,8 +37,9 @@ public interface CoordinatorRegistryCenter extends RegistryCenter {
      * 持久化临时顺序注册数据.
      * 
      * @param key 键
+     * @param value 值
      */
-    String persistEphemeralSequential(String key);
+    String persistEphemeralSequential(String key, String value);
     
     /**
      * 添加本地缓存.

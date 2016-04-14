@@ -30,10 +30,15 @@ public abstract class AbstractListenerManager {
     public abstract void start();
     
     protected void addDataListener(final TreeCacheListener listener,String path) {
+    	nodeStorage.addCacheData(path);
     	nodeStorage.addDataListener(listener,path);
     }
     
     protected void addConnectionStateListener(final ConnectionStateListener listener) {
     	nodeStorage.addConnectionStateListener(listener);
+    }
+    
+    public ClusterManager getClusterManager(){
+    	return clusterManager;
     }
 }

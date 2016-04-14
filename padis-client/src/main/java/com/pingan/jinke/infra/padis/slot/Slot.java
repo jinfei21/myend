@@ -1,7 +1,5 @@
 package com.pingan.jinke.infra.padis.slot;
 
-import java.util.Date;
-
 import com.pingan.jinke.infra.padis.common.Status;
 
 import lombok.Getter;
@@ -17,12 +15,12 @@ public class Slot {
 	
 	private Status status;
 	
-	private Date create;
+	private long create;
 	
 	private int src_gid;
 	
-	private Date modify;
-	
-	public int to_gid;
-	
+	private int to_gid;
+
+	private long modify;
+		
 }

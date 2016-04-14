@@ -30,6 +30,10 @@ public class GroupService {
 		}
 	}
 	
+	public String getRootGroupPath(){
+		return this.groupNode.getRootGroupPath();
+	}
+	
 	public void delGroup(int group_id){
 		nodeStorage.removeNodeIfExisted(groupNode.getGroupPath(group_id));
 	}

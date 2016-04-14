@@ -259,9 +259,9 @@ public class ZookeeperRegistryCenter implements CoordinatorRegistryCenter {
 	}
 
 	@Override
-	public String persistEphemeralSequential(String key) {
+	public String persistEphemeralSequential(String key,String value) {
         try {
-            return client.create().creatingParentsIfNeeded().withMode(CreateMode.EPHEMERAL_SEQUENTIAL).forPath(key);
+            return client.create().creatingParentsIfNeeded().withMode(CreateMode.EPHEMERAL_SEQUENTIAL).forPath(key, value.getBytes(Charset.forName("UTF-8")));
         //CHECKSTYLE:OFF
         } catch (final Exception ex) {
         //CHECKSTYLE:ON

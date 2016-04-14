@@ -33,7 +33,12 @@ public abstract class PadisCommand<T> {
 	public T run(String key,boolean isWrite) throws Exception {
 
 		checkNotNull(key, "No way to dispatch this command to Redis Cluster.");
-
+		if(this.clusterManager.limit()){
+			try{
+				Thread.sleep(100);
+			}catch(Throwable t){				
+			}
+		}
 		int sid = CRC16Utils.getSlot(key);
 
 		Slot slot = this.clusterManager.getSlot(sid);

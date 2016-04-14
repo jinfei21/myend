@@ -1,9 +1,11 @@
 package com.pingan.jinke.infra.padis.slot;
 
 import java.util.List;
+import java.util.Set;
 
 import com.alibaba.fastjson.JSON;
 import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
 import com.pingan.jinke.infra.padis.common.CoordinatorRegistryCenter;
 import com.pingan.jinke.infra.padis.storage.NodeStorage;
 
@@ -31,7 +33,7 @@ public class SlotService {
 	public void setSlot(Slot slot){
 		String data = JSON.toJSONString(slot);
 		String path = this.slotNode.getSlotPath(slot.getId());
-		this.nodeStorage.updateNodePath(path, data);
+		this.nodeStorage.replaceNodePath(path, data);
 	}
 	
 	public List<Slot> getAllSlots(){
@@ -43,5 +45,14 @@ public class SlotService {
 		}
 		
 		return list;
+	}
+	
+	public Set<Integer> getAllGroups(){
+		Set<Integer> set = Sets.newHashSet();
+		
+		for(Slot slot:getAllSlots()){
+			set.add(slot.getSrc_gid());
+		}
+		return set;
 	}
 }

@@ -1,7 +1,5 @@
 package com.pingan.jinke.infra.padis.group;
 
-import java.util.Date;
-
 import com.alibaba.fastjson.JSON;
 import com.pingan.jinke.infra.padis.common.HostAndPort;
 import com.pingan.jinke.infra.padis.common.Status;
