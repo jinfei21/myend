@@ -33,11 +33,11 @@ class PadisClient implements IPadis{
 	}
 	
 	private void init(){
-		//Æô¶¯¼àÌıÆ÷
+		//å¯åŠ¨ç›‘å¬å™¨
 		this.clusterManager.startAllListeners();
-		//³õÊ¼»¯slot
+		//åŠ è½½sloté…ç½®
 		this.clusterManager.loadRemoteConfig();
-		//³õÊ¼»¯Á¬½Ó³Ø
+		//åˆå§‹åŒ–è¿æ¥æ± 
 		this.poolManager.init(this.clusterManager.getAllMaster());
 	}
 
