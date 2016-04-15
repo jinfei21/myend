@@ -23,8 +23,16 @@ public class CustomListenerManager extends AbstractListenerManager{
 		this.customService = new CustomService(instance, coordinatorRegistryCenter);
 		this.customService.registerCustom();
 	}
+	
+	public String getCustomPath(){
+		return this.customService.getLocalCustomPath();
+	}
+	
+	public Custom updateCustom(Custom custom){
+		return this.customService.updateCustom(custom);
+	}
 
-	@Override
+	@Override 
 	public void start() {
 		addDataListener(new CustomStatusListener() , customService.getRootCustomPath());
 	}
@@ -40,7 +48,7 @@ public class CustomListenerManager extends AbstractListenerManager{
 						String json = new String(event.getData().getData());					
 						Custom custom = JSON.parseObject(json, Custom.class);	
 						log.info("custom:{}",json);			
-						getClusterManager().updateCustom(custom);	
+						getClusterManager().updateCustom(custom,false);	
 					}catch(Throwable t){
 						log.error("update custom fail!", t);
 					}

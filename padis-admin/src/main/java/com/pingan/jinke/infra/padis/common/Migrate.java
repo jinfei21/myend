@@ -1,4 +1,4 @@
-package com.pingan.jinke.infra.padis.migrate;
+package com.pingan.jinke.infra.padis.common;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

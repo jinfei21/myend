@@ -1,12 +1,10 @@
 package com.pingan.jinke.infra.padis.core;
 
-import static com.pingan.jinke.infra.padis.common.Status.LIMIT;
-
 import java.util.List;
 import java.util.Random;
 import java.util.Set;
 import java.util.concurrent.ConcurrentMap;
-
+import java.util.concurrent.atomic.AtomicReference;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
 import com.pingan.jinke.infra.padis.common.CoordinatorRegistryCenter;
@@ -16,7 +14,6 @@ import com.pingan.jinke.infra.padis.custom.Custom;
 import com.pingan.jinke.infra.padis.custom.CustomListenerManager;
 import com.pingan.jinke.infra.padis.group.Group;
 import com.pingan.jinke.infra.padis.group.GroupListenerManager;
-import com.pingan.jinke.infra.padis.migrate.MigrateListenerManager;
 import com.pingan.jinke.infra.padis.slot.Slot;
 import com.pingan.jinke.infra.padis.slot.SlotListenerManager;
 
@@ -31,21 +28,19 @@ public class ClusterManager {
 
 	private SlotListenerManager slotListenerManager;
 
-	private MigrateListenerManager migrateListenerManager;
-
 	private GroupListenerManager groupListenerManager;
 
 	private CustomListenerManager customListenerManager;
 	
-	private Custom custom;
+	private AtomicReference<Custom> atomicCustom;
 
 	public ClusterManager(final String instance, final CoordinatorRegistryCenter coordinatorRegistryCenter) {
 		this.slotListenerManager = new SlotListenerManager(instance, coordinatorRegistryCenter, this);
-		this.migrateListenerManager = new MigrateListenerManager(instance, coordinatorRegistryCenter, this);
 		this.groupListenerManager = new GroupListenerManager(instance, coordinatorRegistryCenter, this);
 		this.customListenerManager = new CustomListenerManager(instance, coordinatorRegistryCenter, this);
 		this.slotMap = Maps.newConcurrentMap();
 		this.groupMap = Maps.newConcurrentMap();
+		this.atomicCustom = new AtomicReference<Custom>();
 	}
 
 	public void loadRemoteConfig() {
@@ -97,10 +92,11 @@ public class ClusterManager {
 	
 	
 	public boolean limit(){
+		Custom custom = atomicCustom.get();
 		if(custom == null){
 			return false;
 		}else{
-			if(custom.getStatus() == LIMIT){				
+			if(custom.getLimit()>0){				
 				int limit = new Random().nextInt(100);
 				if(limit < custom.getLimit()){
 					return true;
@@ -110,16 +106,15 @@ public class ClusterManager {
 		return false;
 	}
 	
-	public void updateCustom(Custom custom){
-		this.custom = custom;
+	public void updateCustom(Custom custom,boolean remote){		
+		if(remote){
+			custom = customListenerManager.updateCustom(custom);
+		}
+		this.atomicCustom.set(custom);
 	}
 
-	/**
-	 * ¿ªÆôËùÓÐ¼àÌýÆ÷.
-	 */
 	public void startAllListeners() {
 		this.slotListenerManager.start();
-		this.migrateListenerManager.start();
 		this.groupListenerManager.start();
 		this.customListenerManager.start();
 	}

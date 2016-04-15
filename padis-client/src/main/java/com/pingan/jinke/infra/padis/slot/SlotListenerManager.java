@@ -10,7 +10,10 @@ import com.alibaba.fastjson.JSON;
 import com.pingan.jinke.infra.padis.common.AbstractListenerManager;
 import com.pingan.jinke.infra.padis.common.AbstractNodeListener;
 import com.pingan.jinke.infra.padis.common.CoordinatorRegistryCenter;
+import com.pingan.jinke.infra.padis.common.Status;
 import com.pingan.jinke.infra.padis.core.ClusterManager;
+import com.pingan.jinke.infra.padis.custom.Custom;
+import com.pingan.jinke.infra.padis.custom.CustomService;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -47,6 +50,13 @@ public class SlotListenerManager extends AbstractListenerManager{
 					String json = new String(event.getData().getData());
 					Slot slot = JSON.parseObject(json, Slot.class);
 					getClusterManager().addSlot(slot);
+					
+					if(Status.PRE_MIGRATE == slot.getStatus()){
+						Custom custom = new Custom();
+						custom.setStatus(Status.MIGRATE);
+						custom.setModify(System.currentTimeMillis());
+						getClusterManager().updateCustom(custom, true);
+					}
 				} catch (Throwable t) {
 					log.error("slot update fail!", t);
 				}
