@@ -1,13 +1,13 @@
 package com.pingan.jinke.infra.padis.common;
 
 public enum Status {
-	PRE_MIGRATE("pre_migrate","Ô¤Ç¨ÒÆ"),
-	OFFLINE("offline","ÏÂÏß"),
-	ONLINE("online","ÉÏÏß"),
-	MIGRATE("migrate","Ç¨ÒÆ"),
-	LIMIT("limit","ÏŞÁ÷"),
-	PENDING("pending","µÈ´ı"),
-	ERROR("error","´íÎó");
+	PRE_MIGRATE("pre_migrate","é¢„è¿ç§»"),
+	OFFLINE("offline","ä¸‹çº¿"),
+	ONLINE("online","ä¸Šçº¿"),
+	MIGRATE("migrate","è¿ç§»"),
+	LIMIT("limit","é™æµ"),
+	PENDING("pending","ç­‰å¾…"),
+	ERROR("error","é”™è¯¯");
 	
 	private String name;
 	private String text;

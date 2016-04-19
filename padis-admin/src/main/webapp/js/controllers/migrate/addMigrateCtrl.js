@@ -28,6 +28,7 @@ function AddMigrateCtrl($scope,$rootScope,MigrateService,data,BaseTableService,$
         };
         
         $scope.ok = function(task){
+        	task.instance = $scope.data.instance;
         	var result = MigrateService.addTask({
                 'data': task
               });

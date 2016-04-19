@@ -8,6 +8,8 @@ import com.pingan.jinke.infra.padis.custom.Custom;
 import com.pingan.jinke.infra.padis.custom.CustomListenerManager;
 import com.pingan.jinke.infra.padis.custom.CustomService;
 import com.pingan.jinke.infra.padis.group.GroupListenerManager;
+import com.pingan.jinke.infra.padis.slot.Slot;
+import com.pingan.jinke.infra.padis.slot.SlotService;
 
 public class CustomServiceTest {
 
@@ -18,21 +20,37 @@ public class CustomServiceTest {
 		CustomListenerManager listener = new CustomListenerManager("test",regCenter,null);
 		listener.start();
 		
+//		
+//		GroupListenerManager gl = new GroupListenerManager("test",regCenter,null);
+//		gl.start();
+//		
+//		CustomService customService = new CustomService("test",regCenter);
+//		
+//		
+//		customService.registerCustom();
+//		
+//		
+//		System.out.println("fsafsafd");
+//		
+//		Custom custom = new Custom();
+//		custom.setStatus(Status.LIMIT);
+//		customService.updateCustom(custom);
 		
-		GroupListenerManager gl = new GroupListenerManager("test",regCenter,null);
-		gl.start();
 		
-		CustomService customService = new CustomService("test",regCenter);
+		SlotService slotService = new SlotService("test", regCenter);
 		
+		for(int i=0;i<=1023;i++){
+			Slot slot = new Slot();
+			
+			slot.setId(i);
+			slot.setCreate(System.currentTimeMillis());
+			slot.setStatus(Status.ONLINE);
+			slot.setSrc_gid(6);
+
+			
+			slotService.setSlot(slot);
+		}
 		
-		customService.registerCustom();
-		
-		
-		System.out.println("fsafsafd");
-		
-		Custom custom = new Custom();
-		custom.setStatus(Status.LIMIT);
-		customService.updateCustom(custom);
 		
 		System.out.println("fsafsafd");
 	}

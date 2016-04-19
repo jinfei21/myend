@@ -39,13 +39,15 @@ function MigrateListCtrl($scope, $rootScope, MigrateService, BaseTableService,
 				title : 'Add Migrate',
 				msg : '',
 				type : '',
-				isShow : false
+				isShow : false,
+				instance:$scope.curInstance
 			};
 			var modalInstance = $modal.open({
 				templateUrl : '/padis-admin/partials/migrate/addMigrate.html',
 				controller : AddMigrateCtrl,
 				resolve : {
 					data : function() {
+						$scope.message.instance = $scope.curInstance;
 						return $scope.message;
 					}
 				}

@@ -18,9 +18,9 @@
 				<div class="widget-body">
 					<div class="widget-main">
 						<div>
-							<select id="instance-form" class="form-control" ng-model="curInstance"
-								ng-repeat="instance in padis.instances">
-								<option value="{{instance}}">{{instance}}</option>
+							<select id="instance-form" class="form-control"
+								ng-model="curInstance"
+								ng-options="instance for instance in padis.instances">
 							</select>
 						</div>
 
@@ -59,18 +59,20 @@
 								<th>to</th>
 								<th class="hidden-480">create</th>
 								<th class="hidden-480">Status</th>
+								<th class="hidden-480">delay</th>
 								<th class="hidden-480">percent</th>
 							</tr>
 						</thead>
 
 						<tbody>
 							<tr ng-repeat="migrate in padis.migrates">
-								<td>{{$migrate.id}}</td>
-								<td>{{$migrate.from}}</td>
-								<td>{{$migrate.to}}</td>
-								<td>{{$migrate.create}}</td>
-								<td>{{$migrate.status}}</td>
-								<td>{{$migrate.percent}}</td>																
+								<td>{{migrate.slot_id}}</td>
+								<td>{{migrate.from_gid}}</td>
+								<td>{{migrate.to_gid}}</td>
+								<td>{{migrate.create | date: 'yyyy-MM-dd HH:mm:ss'}}</td>
+								<td>{{migrate.status}}</td>
+								<td>{{migrate.delay}}</td>
+								<td>{{migrate.percent}}</td>
 							</tr>
 						</tbody>
 					</table>

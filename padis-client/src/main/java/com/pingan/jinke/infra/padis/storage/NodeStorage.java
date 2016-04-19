@@ -27,10 +27,10 @@ public class NodeStorage {
     }
     
     /**
-     * ÅĞ¶Ï½ÚµãÊÇ·ñ´æÔÚ.
+     * åˆ¤æ–­èŠ‚ç‚¹æ˜¯å¦å­˜åœ¨.
      * 
-     * @param path ½ÚµãÂ·¾¶
-     * @return ½ÚµãÊÇ·ñ´æÔÚ
+     * @param path èŠ‚ç‚¹è·¯å¾„
+     * @return èŠ‚ç‚¹æ˜¯å¦å­˜åœ¨
      */
     public boolean isNodePathExisted(final String path) {
         return coordinatorRegistryCenter.isExisted(path);
@@ -38,10 +38,10 @@ public class NodeStorage {
     
     
     /**
-     * »ñÈ¡½ÚµãÊı¾İ.
+     * è·å–èŠ‚ç‚¹æ•°æ®.
      * 
-     * @param path ½ÚµãÂ·¾¶
-     * @return ½ÚµãÊı¾İÖµ
+     * @param path èŠ‚ç‚¹è·¯å¾„
+     * @return èŠ‚ç‚¹æ•°æ®å€¼
      */
     public String getNodePathData(final String path) {
         return coordinatorRegistryCenter.get(path);
@@ -49,10 +49,10 @@ public class NodeStorage {
     
     
     /**
-     * Ö±½Ó´Ó×¢²áÖĞĞÄ¶ø·Ç±¾µØ»º´æ»ñÈ¡½ÚµãÊı¾İ.
+     * ç›´æ¥ä»æ³¨å†Œä¸­å¿ƒè€Œéæœ¬åœ°ç¼“å­˜è·å–èŠ‚ç‚¹æ•°æ®.
      * 
-     * @param path ½ÚµãÂ·¾¶
-     * @return ½ÚµãÊı¾İÖµ
+     * @param path èŠ‚ç‚¹è·¯å¾„
+     * @return èŠ‚ç‚¹æ•°æ®å€¼
      */
     public String getNodePathDataDirectly(final String path) {
         return coordinatorRegistryCenter.getDirectly(path);
@@ -60,10 +60,10 @@ public class NodeStorage {
     
     
     /**
-     * »ñÈ¡½Úµã×Ó½ÚµãÃû³ÆÁĞ±í.
+     * è·å–èŠ‚ç‚¹å­èŠ‚ç‚¹åç§°åˆ—è¡¨.
      * 
-     * @param path ½ÚµãÂ·¾¶
-     * @return ½Úµã×Ó½ÚµãÃû³ÆÁĞ±í
+     * @param path èŠ‚ç‚¹è·¯å¾„
+     * @return èŠ‚ç‚¹å­èŠ‚ç‚¹åç§°åˆ—è¡¨
      */
     public List<String> getNodePathChildrenKeys(final String path) {
         return coordinatorRegistryCenter.getChildrenKeys(path);
@@ -71,9 +71,9 @@ public class NodeStorage {
     
     
     /**
-     * Èç¹û´æÔÚÔò´´½¨½Úµã.
+     * å¦‚æœå­˜åœ¨åˆ™åˆ›å»ºèŠ‚ç‚¹.
      * 
-     * @param path ½ÚµãÂ·¾¶
+     * @param path èŠ‚ç‚¹è·¯å¾„
      */
     public void createNodePathIfNeeded(final String path) {
         if (!isNodePathExisted(path)) {
@@ -82,9 +82,9 @@ public class NodeStorage {
     }
     
     /**
-     * É¾³ı½Úµã.
+     * åˆ é™¤èŠ‚ç‚¹.
      * 
-     * @param path ½ÚµãÂ·¾¶
+     * @param path èŠ‚ç‚¹è·¯å¾„
      */
     public void removeNodeIfExisted(final String path) {
         if (isNodePathExisted(path)) {
@@ -94,28 +94,28 @@ public class NodeStorage {
     
     
     /**
-     * Ìî³äÁÙÊ±½ÚµãÊı¾İ.
+     * å¡«å……ä¸´æ—¶èŠ‚ç‚¹æ•°æ®.
      * 
-     * @param path ½ÚµãÂ·¾¶
-     * @param value ½ÚµãÊı¾İÖµ
+     * @param path èŠ‚ç‚¹è·¯å¾„
+     * @param value èŠ‚ç‚¹æ•°æ®å€¼
      */
     public void fillEphemeralNodePath(final String path, final Object value) {
         coordinatorRegistryCenter.persistEphemeral(path, value.toString());
     }
     
     /**
-     * Ìî³äÁÙÊ±½ÚµãÊı¾İ.
+     * å¡«å……ä¸´æ—¶èŠ‚ç‚¹æ•°æ®.
      * 
-     * @param path ½ÚµãÂ·¾¶
+     * @param path èŠ‚ç‚¹è·¯å¾„
      */
     public String fillEphemeralSeqNodePath(String path, final Object value) {
     	return coordinatorRegistryCenter.persistEphemeralSequential(path,value.toString());
     }
     /**
-     * ¸üĞÂ½ÚµãÊı¾İ.
+     * æ›´æ–°èŠ‚ç‚¹æ•°æ®.
      * 
-     * @param path ½ÚµãÃû³Æ
-     * @param value ½ÚµãÊı¾İÖµ
+     * @param path èŠ‚ç‚¹åç§°
+     * @param value èŠ‚ç‚¹æ•°æ®å€¼
      */
     public void updateNodePath(final String path, final Object value) {
         coordinatorRegistryCenter.update(path, value.toString());
@@ -123,19 +123,19 @@ public class NodeStorage {
     
     
     /**
-     * Ìæ»»×÷Òµ½ÚµãÊı¾İ.
+     * æ›¿æ¢ä½œä¸šèŠ‚ç‚¹æ•°æ®.
      * 
-     * @param path ½ÚµãÂ·¾¶
-     * @param value ´ıÌæ»»µÄÊı¾İ
+     * @param path èŠ‚ç‚¹è·¯å¾„
+     * @param value å¾…æ›¿æ¢çš„æ•°æ®
      */
     public void replaceNodePath(final String path, final Object value) {
         coordinatorRegistryCenter.persist(path, value.toString());
     }
 
     /**
-     * ÔÚÊÂÎñÖĞÖ´ĞĞ²Ù×÷.
+     * åœ¨äº‹åŠ¡ä¸­æ‰§è¡Œæ“ä½œ.
      * 
-     * @param callback Ö´ĞĞ²Ù×÷µÄ»Øµ÷
+     * @param callback æ‰§è¡Œæ“ä½œçš„å›è°ƒ
      */
     public void executeInTransaction(final TransactionExecutionCallback callback) {
         try {
@@ -150,7 +150,7 @@ public class NodeStorage {
     }
     
     /**
-     * ×¢²áÁ¬½Ó×´Ì¬¼àÌıÆ÷.
+     * æ³¨å†Œè¿æ¥çŠ¶æ€ç›‘å¬å™¨.
      */
     public void addConnectionStateListener(final ConnectionStateListener listener) {
         getClient().getConnectionStateListenable().addListener(listener);
@@ -161,7 +161,7 @@ public class NodeStorage {
     }
     
     /**
-     * ×¢²áÊı¾İ¼àÌıÆ÷.
+     * æ³¨å†Œæ•°æ®ç›‘å¬å™¨.
      */
     public void addDataListener(final TreeCacheListener listener,String path) {
         TreeCache cache = (TreeCache) coordinatorRegistryCenter.getRawCache(path);
@@ -169,9 +169,9 @@ public class NodeStorage {
     }
     
     /**
-     * »ñÈ¡×¢²áÖĞĞÄµ±Ç°Ê±¼ä.
+     * è·å–æ³¨å†Œä¸­å¿ƒå½“å‰æ—¶é—´.
      * 
-     * @return ×¢²áÖĞĞÄµ±Ç°Ê±¼ä
+     * @return æ³¨å†Œä¸­å¿ƒå½“å‰æ—¶é—´
      */
     public long getRegistryCenterTime() {
         return coordinatorRegistryCenter.getRegistryCenterTime("/padis/systemTime/current");

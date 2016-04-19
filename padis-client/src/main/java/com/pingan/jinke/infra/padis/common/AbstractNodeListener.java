@@ -5,7 +5,7 @@ import org.apache.curator.framework.recipes.cache.TreeCacheEvent;
 import org.apache.curator.framework.recipes.cache.TreeCacheListener;
 
 /**
- * 作业注册中心的监听器.
+ * 浣滀笟娉ㄥ唽涓績鐨勭洃鍚櫒.
  * 
  * @author feiyongjun
  */

@@ -11,9 +11,9 @@ public final class RegExceptionHandler {
 	private static final Logger log = LoggerFactory.getLogger(RegExceptionHandler.class);
     
     /**
-     * 处理掉中断和连接失效异常并继续抛出RuntimeException.
+     * 澶勭悊鎺変腑鏂拰杩炴帴澶辨晥寮傚父骞剁户缁姏鍑篟untimeException.
      * 
-     * @param cause 待处理的异常.
+     * @param cause 寰呭鐞嗙殑寮傚父.
      */
     public static void handleException(final Exception cause) {
         if (isIgnoredException(cause) || isIgnoredException(cause.getCause())) {

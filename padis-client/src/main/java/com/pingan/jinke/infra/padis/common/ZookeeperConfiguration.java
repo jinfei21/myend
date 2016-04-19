@@ -3,7 +3,7 @@ package com.pingan.jinke.infra.padis.common;
 import com.google.common.base.Strings;
 
 /**
- * »ùÓÚZookeeperµÄ×¢²áÖĞĞÄÅäÖÃ.
+ * åŸºäºZookeeperçš„æ³¨å†Œä¸­å¿ƒé…ç½®.
  * 
  * @author feiyongjun
  */
@@ -13,73 +13,73 @@ public class ZookeeperConfiguration {
 
 	
     /**
-     * Á¬½ÓZookeeper·şÎñÆ÷µÄÁĞ±í.
-     * °üÀ¨IPµØÖ·ºÍ¶Ë¿ÚºÅ.
-     * ¶à¸öµØÖ·ÓÃ¶ººÅ·Ö¸ô.
-     * Èç: host1:2181,host2:2181
+     * è¿æ¥ZookeeperæœåŠ¡å™¨çš„åˆ—è¡¨.
+     * åŒ…æ‹¬IPåœ°å€å’Œç«¯å£å·.
+     * å¤šä¸ªåœ°å€ç”¨é€—å·åˆ†éš”.
+     * å¦‚: host1:2181,host2:2181
      */
     private String serverLists;
     
     /**
-     * ÃüÃû¿Õ¼ä.
+     * å‘½åç©ºé—´.
      */
     private String namespace;
     
     /**
-     * µÈ´ıÖØÊÔµÄ¼ä¸ôÊ±¼äµÄ³õÊ¼Öµ.
-     * µ¥Î»ºÁÃë.
+     * ç­‰å¾…é‡è¯•çš„é—´éš”æ—¶é—´çš„åˆå§‹å€¼.
+     * å•ä½æ¯«ç§’.
      */
     private int baseSleepTimeMilliseconds;
     
     /**
-     * µÈ´ıÖØÊÔµÄ¼ä¸ôÊ±¼äµÄ×î´óÖµ.
-     * µ¥Î»ºÁÃë.
+     * ç­‰å¾…é‡è¯•çš„é—´éš”æ—¶é—´çš„æœ€å¤§å€¼.
+     * å•ä½æ¯«ç§’.
      */
     private int maxSleepTimeMilliseconds;
     
     /**
-     * ×î´óÖØÊÔ´ÎÊı.
+     * æœ€å¤§é‡è¯•æ¬¡æ•°.
      */
     private int maxRetries;
     
     /**
-     * »á»°³¬Ê±Ê±¼ä.
-     * µ¥Î»ºÁÃë.
+     * ä¼šè¯è¶…æ—¶æ—¶é—´.
+     * å•ä½æ¯«ç§’.
      */
     private int sessionTimeoutMilliseconds;
     
     /**
-     * Á¬½Ó³¬Ê±Ê±¼ä.
-     * µ¥Î»ºÁÃë.
+     * è¿æ¥è¶…æ—¶æ—¶é—´.
+     * å•ä½æ¯«ç§’.
      */
     private int connectionTimeoutMilliseconds;
     
     /**
-     * Á¬½ÓZookeeperµÄÈ¨ÏŞÁîÅÆ.
-     * È±Ê¡Îª²»ĞèÒªÈ¨ÏŞÑéÖ¤.
+     * è¿æ¥Zookeeperçš„æƒé™ä»¤ç‰Œ.
+     * ç¼ºçœä¸ºä¸éœ€è¦æƒé™éªŒè¯.
      */
     private String digest;
     
     /**
-     * ÄÚÇ¶ZookeeperµÄ¶Ë¿ÚºÅ.
-     * -1±íÊ¾²»¿ªÆôÄÚÇ¶Zookeeper.
+     * å†…åµŒZookeeperçš„ç«¯å£å·.
+     * -1è¡¨ç¤ºä¸å¼€å¯å†…åµŒZookeeper.
      */
     private int nestedPort = -1;
     
     /**
-     * ÄÚÇ¶ZookeeperµÄÊı¾İ´æ´¢Â·¾¶.
-     * Îª¿Õ±íÊ¾²»¿ªÆôÄÚÇ¶Zookeeper.
+     * å†…åµŒZookeeperçš„æ•°æ®å­˜å‚¨è·¯å¾„.
+     * ä¸ºç©ºè¡¨ç¤ºä¸å¼€å¯å†…åµŒZookeeper.
      */
     private String nestedDataDir;
     
     /**
-     * °üº¬ÁË±ØĞèÊôĞÔµÄ¹¹ÔìÆ÷.
+     * åŒ…å«äº†å¿…éœ€å±æ€§çš„æ„é€ å™¨.
      * 
-     * @param serverLists Á¬½ÓZookeeper·şÎñÆ÷µÄÁĞ±í
-     * @param namespace ÃüÃû¿Õ¼ä
-     * @param baseSleepTimeMilliseconds µÈ´ıÖØÊÔµÄ¼ä¸ôÊ±¼äµÄ³õÊ¼Öµ
-     * @param maxSleepTimeMilliseconds µÈ´ıÖØÊÔµÄ¼ä¸ôÊ±¼äµÄ×î´óÖµ
-     * @param maxRetries ×î´óÖØÊÔ´ÎÊı
+     * @param serverLists è¿æ¥ZookeeperæœåŠ¡å™¨çš„åˆ—è¡¨
+     * @param namespace å‘½åç©ºé—´
+     * @param baseSleepTimeMilliseconds ç­‰å¾…é‡è¯•çš„é—´éš”æ—¶é—´çš„åˆå§‹å€¼
+     * @param maxSleepTimeMilliseconds ç­‰å¾…é‡è¯•çš„é—´éš”æ—¶é—´çš„æœ€å¤§å€¼
+     * @param maxRetries æœ€å¤§é‡è¯•æ¬¡æ•°
      */
     public ZookeeperConfiguration(final String serverLists, final String namespace, final int baseSleepTimeMilliseconds, final int maxSleepTimeMilliseconds, final int maxRetries) {
         this.serverLists = serverLists;
@@ -91,9 +91,9 @@ public class ZookeeperConfiguration {
     
     
     /**
-     * ÅĞ¶ÏÊÇ·ñĞèÒª¿ªÆôÄÚÇ¶Zookeeper.
+     * åˆ¤æ–­æ˜¯å¦éœ€è¦å¼€å¯å†…åµŒZookeeper.
      * 
-     * @return ÊÇ·ñĞèÒª¿ªÆôÄÚÇ¶Zookeeper
+     * @return æ˜¯å¦éœ€è¦å¼€å¯å†…åµŒZookeeper
      */
     public boolean isUseNestedZookeeper() {
         return -1 != nestedPort && !Strings.isNullOrEmpty(nestedDataDir);

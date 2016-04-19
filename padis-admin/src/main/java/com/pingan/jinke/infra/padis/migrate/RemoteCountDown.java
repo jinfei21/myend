@@ -7,17 +7,12 @@ import org.apache.curator.framework.recipes.cache.TreeCacheEvent.Type;
 import com.pingan.jinke.infra.padis.common.AbstractListenerManager;
 import com.pingan.jinke.infra.padis.common.AbstractNodeListener;
 import com.pingan.jinke.infra.padis.common.CoordinatorRegistryCenter;
-import com.pingan.jinke.infra.padis.core.ClusterManager;
-import com.pingan.jinke.infra.padis.service.MigrateService;
 
-public class MigrateListenerManager extends AbstractListenerManager{
-
-	private MigrateService migrateService;
+public class RemoteCountDown extends AbstractListenerManager{
 	
 
-	public MigrateListenerManager(String instance, CoordinatorRegistryCenter coordinatorRegistryCenter,ClusterManager clusterManager) {
-		super(instance, coordinatorRegistryCenter,clusterManager);
-		this.migrateService = new MigrateService(coordinatorRegistryCenter);
+	public RemoteCountDown(String instance, CoordinatorRegistryCenter coordinatorRegistryCenter) {
+		super(instance, coordinatorRegistryCenter,null);
 	}
 
 	@Override

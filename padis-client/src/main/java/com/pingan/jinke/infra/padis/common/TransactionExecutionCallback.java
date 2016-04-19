@@ -3,17 +3,17 @@ package com.pingan.jinke.infra.padis.common;
 import org.apache.curator.framework.api.transaction.CuratorTransactionFinal;
 
 /**
- * ÊÂÎñÖ´ĞĞ²Ù×÷µÄ»Øµ÷½Ó¿Ú.
+ * äº‹åŠ¡æ‰§è¡Œæ“ä½œçš„å›è°ƒæ¥å£.
  * 
  * @author feiyongjun
  */
 public interface TransactionExecutionCallback {
     
     /**
-     * ÊÂÎñÖ´ĞĞµÄ»Øµ÷·½·¨.
+     * äº‹åŠ¡æ‰§è¡Œçš„å›è°ƒæ–¹æ³•.
      * 
-     * @param curatorTransactionFinal Ö´ĞĞÊÂÎñµÄÉÏÏÂÎÄ
-     * @throws Exception ´¦ÀíÖĞÒì³£
+     * @param curatorTransactionFinal æ‰§è¡Œäº‹åŠ¡çš„ä¸Šä¸‹æ–‡
+     * @throws Exception å¤„ç†ä¸­å¼‚å¸¸
      */
     void execute(CuratorTransactionFinal curatorTransactionFinal) throws Exception;
 }

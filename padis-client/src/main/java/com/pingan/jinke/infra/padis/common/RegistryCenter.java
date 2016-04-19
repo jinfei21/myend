@@ -1,73 +1,73 @@
 package com.pingan.jinke.infra.padis.common;
 /**
- * ×¢²áÖĞĞÄ.
+ * æ³¨å†Œä¸­å¿ƒ.
  * 
  * @author feiyongjun
  */
 public interface RegistryCenter {
     
     /**
-     * ³õÊ¼»¯×¢²áÖĞĞÄ.
+     * åˆå§‹åŒ–æ³¨å†Œä¸­å¿ƒ.
      */
     void init();
     
     /**
-     * ¹Ø±Õ×¢²áÖĞĞÄ.
+     * å…³é—­æ³¨å†Œä¸­å¿ƒ.
      */
     void close();
     
     /**
-     * »ñÈ¡×¢²áÊı¾İ.
+     * è·å–æ³¨å†Œæ•°æ®.
      * 
-     * @param key ¼ü
-     * @return Öµ
+     * @param key é”®
+     * @return å€¼
      */
     String get(String key);
     
     /**
-     * »ñÈ¡Êı¾İÊÇ·ñ´æÔÚ.
+     * è·å–æ•°æ®æ˜¯å¦å­˜åœ¨.
      * 
-     * @param key ¼ü
-     * @return Êı¾İÊÇ·ñ´æÔÚ
+     * @param key é”®
+     * @return æ•°æ®æ˜¯å¦å­˜åœ¨
      */
     boolean isExisted(String key);
     
     /**
-     * ³Ö¾Ã»¯×¢²áÊı¾İ.
+     * æŒä¹…åŒ–æ³¨å†Œæ•°æ®.
      * 
-     * @param key ¼ü
-     * @param value Öµ
+     * @param key é”®
+     * @param value å€¼
      */
     void persist(String key, String value);
     
     /**
-     * ¸üĞÂ×¢²áÊı¾İ.
+     * æ›´æ–°æ³¨å†Œæ•°æ®.
      * 
-     * @param key ¼ü
-     * @param value Öµ
+     * @param key é”®
+     * @param value å€¼
      */
     void update(String key, String value);
     
     /**
-     * É¾³ı×¢²áÊı¾İ.
+     * åˆ é™¤æ³¨å†Œæ•°æ®.
      * 
-     * @param key ¼ü
+     * @param key é”®
      */
     void remove(String key);
     
     /**
-     * »ñÈ¡×¢²áÖĞĞÄµ±Ç°Ê±¼ä.
+     * è·å–æ³¨å†Œä¸­å¿ƒå½“å‰æ—¶é—´.
      * 
-     * @param key ÓÃÓÚ»ñÈ¡Ê±¼äµÄ¼ü
-     * @return ×¢²áÖĞĞÄµ±Ç°Ê±¼ä
+     * @param key ç”¨äºè·å–æ—¶é—´çš„é”®
+     * @return æ³¨å†Œä¸­å¿ƒå½“å‰æ—¶é—´
      */
     long getRegistryCenterTime(String key);
     
     /**
-     * Ö±½Ó»ñÈ¡²Ù×÷×¢²áÖĞĞÄµÄÔ­Éú¿Í»§¶Ë.
-     * Èç£ºZookeeper»òRedisµÈÔ­Éú¿Í»§¶Ë.
+     * ç›´æ¥è·å–æ“ä½œæ³¨å†Œä¸­å¿ƒçš„åŸç”Ÿå®¢æˆ·ç«¯.
+     * å¦‚ï¼šZookeeperæˆ–Redisç­‰åŸç”Ÿå®¢æˆ·ç«¯.
      * 
-     * @return ×¢²áÖĞĞÄµÄÔ­Éú¿Í»§¶Ë
+     * @return æ³¨å†Œä¸­å¿ƒçš„åŸç”Ÿå®¢æˆ·ç«¯
      */
     Object getRawClient();
 }

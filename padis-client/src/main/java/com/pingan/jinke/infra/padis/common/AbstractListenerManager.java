@@ -7,7 +7,7 @@ import com.pingan.jinke.infra.padis.core.ClusterManager;
 import com.pingan.jinke.infra.padis.storage.NodeStorage;
 
 /**
- * ×¢²áÖĞĞÄµÄ¼àÌıÆ÷¹ÜÀíÕßµÄ³éÏóÀà.
+ * æ³¨å†Œä¸­å¿ƒçš„ç›‘å¬å™¨ç®¡ç†è€…çš„æŠ½è±¡ç±».
  * 
  * @author feiyongjun
  */
@@ -25,7 +25,7 @@ public abstract class AbstractListenerManager {
     }
 
     /**
-     * ¿ªÆô¼àÌıÆ÷.
+     * å¼€å¯ç›‘å¬å™¨.
      */
     public abstract void start();
     

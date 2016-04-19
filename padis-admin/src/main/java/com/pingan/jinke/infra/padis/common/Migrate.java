@@ -15,8 +15,11 @@ public class Migrate {
 	
 	private int to_gid;
 	
-	private String status;
+	private Status status;
 	
+	private int from_gid;
 	
+	private int percent;
 	
+	private int delay;
 }

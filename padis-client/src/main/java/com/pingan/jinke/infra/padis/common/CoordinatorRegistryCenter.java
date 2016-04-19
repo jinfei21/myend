@@ -3,56 +3,56 @@ package com.pingan.jinke.infra.padis.common;
 import java.util.List;
 
 /**
- * ÓÃÓÚĞ­µ÷·Ö²¼Ê½·şÎñµÄ×¢²áÖĞĞÄ.
+ * ç”¨äºåè°ƒåˆ†å¸ƒå¼æœåŠ¡çš„æ³¨å†Œä¸­å¿ƒ.
  * 
  * @author feiyongjun
  */
 public interface CoordinatorRegistryCenter extends RegistryCenter {
     
     /**
-     * Ö±½Ó´Ó×¢²áÖĞĞÄ¶ø·Ç±¾µØ»º´æ»ñÈ¡Êı¾İ.
+     * ç›´æ¥ä»æ³¨å†Œä¸­å¿ƒè€Œéæœ¬åœ°ç¼“å­˜è·å–æ•°æ®.
      * 
-     * @param key ¼ü
-     * @return Öµ
+     * @param key é”®
+     * @return å€¼
      */
     String getDirectly(String key);
     
     /**
-     * »ñÈ¡×Ó½ÚµãÃû³Æ¼¯ºÏ.
+     * è·å–å­èŠ‚ç‚¹åç§°é›†åˆ.
      * 
-     * @param key ¼ü
-     * @return ×Ó½ÚµãÃû³Æ¼¯ºÏ
+     * @param key é”®
+     * @return å­èŠ‚ç‚¹åç§°é›†åˆ
      */
     List<String> getChildrenKeys(String key);
     
     /**
-     * ³Ö¾Ã»¯ÁÙÊ±×¢²áÊı¾İ.
+     * æŒä¹…åŒ–ä¸´æ—¶æ³¨å†Œæ•°æ®.
      * 
-     * @param key ¼ü
-     * @param value Öµ
+     * @param key é”®
+     * @param value å€¼
      */
     void persistEphemeral(String key, String value);
     
     /**
-     * ³Ö¾Ã»¯ÁÙÊ±Ë³Ğò×¢²áÊı¾İ.
+     * æŒä¹…åŒ–ä¸´æ—¶é¡ºåºæ³¨å†Œæ•°æ®.
      * 
-     * @param key ¼ü
-     * @param value Öµ
+     * @param key é”®
+     * @param value å€¼
      */
     String persistEphemeralSequential(String key, String value);
     
     /**
-     * Ìí¼Ó±¾µØ»º´æ.
+     * æ·»åŠ æœ¬åœ°ç¼“å­˜.
      * 
-     * @param cachePath Ğè¼ÓÈë»º´æµÄÂ·¾¶
+     * @param cachePath éœ€åŠ å…¥ç¼“å­˜çš„è·¯å¾„
      */
     void addCacheData(String cachePath);
     
     /**
-     * »ñÈ¡×¢²áÖĞĞÄÊı¾İ»º´æ¶ÔÏó.
+     * è·å–æ³¨å†Œä¸­å¿ƒæ•°æ®ç¼“å­˜å¯¹è±¡.
      * 
-     * @param cachePath »º´æµÄ½ÚµãÂ·¾¶
-     * @return ×¢²áÖĞĞÄÊı¾İ»º´æ¶ÔÏó
+     * @param cachePath ç¼“å­˜çš„èŠ‚ç‚¹è·¯å¾„
+     * @return æ³¨å†Œä¸­å¿ƒæ•°æ®ç¼“å­˜å¯¹è±¡
      */
     Object getRawCache(String cachePath);
 }

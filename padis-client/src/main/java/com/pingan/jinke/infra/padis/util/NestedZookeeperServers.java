@@ -8,11 +8,11 @@ import java.util.concurrent.ConcurrentMap;
 import org.apache.curator.test.TestingServer;
 
 /**
- * ÄÚÇ¶µÄZookeeper·şÎñÆ÷.
+ * å†…åµŒçš„ZookeeperæœåŠ¡å™¨.
  * 
  * <p>
- * ¿ÉÒÔ¸ù¾İ²»Í¬µÄ¶Ë¿ÚºÅÆô¶¯¶à¸öZookeeper·şÎñ.
- * µ«Ã¿¸öÏàÍ¬µÄ¶Ë¿ÚºÅ¹²ÓÃÒ»¸ö·şÎñÊµÀı.
+ * å¯ä»¥æ ¹æ®ä¸åŒçš„ç«¯å£å·å¯åŠ¨å¤šä¸ªZookeeperæœåŠ¡.
+ * ä½†æ¯ä¸ªç›¸åŒçš„ç«¯å£å·å…±ç”¨ä¸€ä¸ªæœåŠ¡å®ä¾‹.
  * </p>
  * 
  * @author feiyongjun
@@ -29,22 +29,22 @@ public final class NestedZookeeperServers {
     }
     
     /**
-     * »ñÈ¡µ¥ÀıÊµÀı.
+     * è·å–å•ä¾‹å®ä¾‹.
      * 
-     * @return µ¥ÀıÊµÀı
+     * @return å•ä¾‹å®ä¾‹
      */
     public static NestedZookeeperServers getInstance() {
         return instance;
     }
     
     /**
-     * Æô¶¯ÄÚÇ¶µÄZookeeper·şÎñ.
+     * å¯åŠ¨å†…åµŒçš„ZookeeperæœåŠ¡.
      * 
-     * @param port ¶Ë¿ÚºÅ
+     * @param port ç«¯å£å·
      * 
      * <p>
-     * Èç¹û¸Ã¶Ë¿ÚºÅµÄZookeeper·şÎñÎ´Æô¶¯, ÔòÆô¶¯·şÎñ.
-     * Èç¹û¸Ã¶Ë¿ÚºÅµÄZookeeper·şÎñÒÑÆô¶¯, Ôò²»×öÈÎºÎ²Ù×÷.
+     * å¦‚æœè¯¥ç«¯å£å·çš„ZookeeperæœåŠ¡æœªå¯åŠ¨, åˆ™å¯åŠ¨æœåŠ¡.
+     * å¦‚æœè¯¥ç«¯å£å·çš„ZookeeperæœåŠ¡å·²å¯åŠ¨, åˆ™ä¸åšä»»ä½•æ“ä½œ.
      * </p>
      */
     public synchronized void startServerIfNotStarted(final int port, final String dataDir) {
@@ -62,9 +62,9 @@ public final class NestedZookeeperServers {
     }
     
     /**
-     * ¹Ø±ÕÄÚÇ¶µÄZookeeper·şÎñ.
+     * å…³é—­å†…åµŒçš„ZookeeperæœåŠ¡.
      * 
-     * @param port ¶Ë¿ÚºÅ
+     * @param port ç«¯å£å·
      */
     public void closeServer(final int port) {
         TestingServer nestedServer = nestedServers.get(port);
