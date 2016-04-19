@@ -1,0 +1,43 @@
+<div class="modal-header">
+	<h4 class="modal-title">Migrate Slot(s)</h4>
+</div>
+<div class="col-xs-12">
+    	<alert ng-show="data.isShow" type="data.type" close="closeAlert()">{{data.msg}}</alert>
+</div>
+
+<div class="modal-body">
+	<form novalidate="novalidate" class="form-horizontal">
+		<div class="control-group">
+			<label class="control-label">Slot From</label>
+			<div class="controls">
+				<input class="form-control" type="number" ng-model="task.from" />
+			</div>
+		</div>
+
+		<div class="control-group">
+			<label class="control-label">Slot To</label>
+			<div class="controls">
+				<input class="form-control" type="number" ng-model="task.to" />
+			</div>
+		</div>
+
+		<div class="control-group">
+			<label class="control-label">Migrate to (Group Id)</label>
+			<div class="controls">
+				<input class="form-control" type="number" ng-model="task.new_group" />
+			</div>
+		</div>
+
+		<div class="control-group">
+			<label class="control-label">Migrate Key Delay (MS)</label>
+			<div class="controls">
+				<input class="form-control" type="number" ng-model="task.delay" />
+			</div>
+		</div>
+
+	</form>
+</div>
+<div class="modal-footer">
+	<button class="btn btn-default" ng-click="ok(task)">OK</button>
+	<button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+</div>

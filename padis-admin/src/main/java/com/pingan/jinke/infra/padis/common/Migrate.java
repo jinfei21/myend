@@ -11,9 +11,9 @@ public class Migrate {
 
 	private long create;
 	
-	private int slot;
+	private int slot_id;
 	
-	private int groupid;
+	private int to_gid;
 	
 	private String status;
 	

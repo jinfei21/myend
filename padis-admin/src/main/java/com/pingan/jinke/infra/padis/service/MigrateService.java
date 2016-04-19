@@ -7,7 +7,7 @@ public class MigrateService {
 	
 	private NodeStorage nodeStorage;
 	
-	public MigrateService(String instance,CoordinatorRegistryCenter coordinatorRegistryCenter){
+	public MigrateService(CoordinatorRegistryCenter coordinatorRegistryCenter){
 		this.nodeStorage = new NodeStorage(coordinatorRegistryCenter);		
 	}
 

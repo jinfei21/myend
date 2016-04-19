@@ -23,19 +23,32 @@
 
 
 
-	<bean id="zkConfig" class="com.pingan.jinke.infra.padis.common.ZookeeperConfiguration">
+	<bean id="zkConfig"
+		class="com.pingan.jinke.infra.padis.common.ZookeeperConfiguration">
 		<constructor-arg name="serverLists" value="${zkAddr}" />
 		<constructor-arg name="namespace" value="padis" />
-		<constructor-arg name="baseSleepTimeMilliseconds" value="3000" />
-		<constructor-arg name="maxSleepTimeMilliseconds" value="2000" />
+		<constructor-arg name="baseSleepTimeMilliseconds"
+			value="3000" />
+		<constructor-arg name="maxSleepTimeMilliseconds"
+			value="2000" />
 		<constructor-arg name="maxRetries" value="3" />
 	</bean>
-	
-	<bean id="zkRegCenter" class="com.pingan.jinke.infra.padis.core.ZookeeperRegistryCenter" init-method="init" >
+
+	<bean id="zkRegCenter"
+		class="com.pingan.jinke.infra.padis.core.ZookeeperRegistryCenter"
+		init-method="init">
 		<constructor-arg name="zkConfig" ref="zkConfig" />
 	</bean>
-	
+
 	<bean id="groupService" class="com.pingan.jinke.infra.padis.group.GroupService">
+		<constructor-arg name="coordinatorRegistryCenter" ref="zkRegCenter" />
+	</bean>
+	
+	<bean id="instanceService" class="com.pingan.jinke.infra.padis.service.InstanceService">
+		<constructor-arg name="coordinatorRegistryCenter" ref="zkRegCenter" />
+	</bean>
+	
+	<bean id="migrateService" class="com.pingan.jinke.infra.padis.service.MigrateService">
 		<constructor-arg name="coordinatorRegistryCenter" ref="zkRegCenter" />
 	</bean>
 </beans>

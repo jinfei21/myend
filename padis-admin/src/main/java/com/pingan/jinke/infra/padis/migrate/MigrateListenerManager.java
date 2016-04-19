@@ -8,8 +8,6 @@ import com.pingan.jinke.infra.padis.common.AbstractListenerManager;
 import com.pingan.jinke.infra.padis.common.AbstractNodeListener;
 import com.pingan.jinke.infra.padis.common.CoordinatorRegistryCenter;
 import com.pingan.jinke.infra.padis.core.ClusterManager;
-import com.pingan.jinke.infra.padis.custom.Custom;
-import com.pingan.jinke.infra.padis.custom.CustomService;
 import com.pingan.jinke.infra.padis.service.MigrateService;
 
 public class MigrateListenerManager extends AbstractListenerManager{
@@ -19,7 +17,7 @@ public class MigrateListenerManager extends AbstractListenerManager{
 
 	public MigrateListenerManager(String instance, CoordinatorRegistryCenter coordinatorRegistryCenter,ClusterManager clusterManager) {
 		super(instance, coordinatorRegistryCenter,clusterManager);
-		this.migrateService = new MigrateService(instance,coordinatorRegistryCenter);
+		this.migrateService = new MigrateService(coordinatorRegistryCenter);
 	}
 
 	@Override

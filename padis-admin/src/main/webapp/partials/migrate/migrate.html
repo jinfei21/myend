@@ -1,0 +1,90 @@
+<div ng-controller="MigrateListCtrl" class="page-content">
+	<div class="page-header">
+		<h1>
+			Migrate <small> <i class="icon-double-angle-right"></i> 迁移
+			</small>
+		</h1>
+	</div>
+
+
+	<div class="row">
+
+		<div>
+			<div class="widget-box">
+				<div class="widget-header">
+					<h4>实例列表</h4>
+				</div>
+
+				<div class="widget-body">
+					<div class="widget-main">
+						<div>
+							<select id="instance-form" class="form-control" ng-model="curInstance"
+								ng-repeat="instance in padis.instances">
+								<option value="{{instance}}">{{instance}}</option>
+							</select>
+						</div>
+
+						<hr>
+						<div>
+							<button type="button" class="btn btn-default btn-info"
+								ng-click="addTask()">
+								<span class="icon-plus" aria-hidden="true"></span>增加新的task
+							</button>
+						</div>
+
+						<hr>
+
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		<h4>
+			Migrate Status
+			<button class="btn btn-yellow" ng-click="reFresh()">{{padis.fresh}}</button>
+
+		</h4>
+
+
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="table-responsive">
+					<table id="sample-table-1"
+						class="table table-striped table-bordered table-hover">
+						<thead>
+							<tr>
+								<th class="center">slotid</th>
+								<th>from</th>
+								<th>to</th>
+								<th class="hidden-480">create</th>
+								<th class="hidden-480">Status</th>
+								<th class="hidden-480">percent</th>
+							</tr>
+						</thead>
+
+						<tbody>
+							<tr ng-repeat="migrate in padis.migrates">
+								<td>{{$migrate.id}}</td>
+								<td>{{$migrate.from}}</td>
+								<td>{{$migrate.to}}</td>
+								<td>{{$migrate.create}}</td>
+								<td>{{$migrate.status}}</td>
+								<td>{{$migrate.percent}}</td>																
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<!-- /.table-responsive -->
+			</div>
+			<!-- /span -->
+		</div>
+		<!-- /row -->
+
+
+	</div>
+
+
+
+</div>
+
