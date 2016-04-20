@@ -22,8 +22,7 @@
 		<curator.version>2.10.0</curator.version>
 		<lombok.version>1.16.4</lombok.version>
 		<spring.version>3.2.6.RELEASE</spring.version>
-
-
+    	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 
 	<dependencyManagement>
@@ -155,6 +154,7 @@
 			<artifactId>lombok</artifactId>
 		</dependency>
 	</dependencies>
+
 
 
 	<developers>

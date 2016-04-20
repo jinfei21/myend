@@ -36,6 +36,15 @@ public class SlotService {
 		this.nodeStorage.replaceNodePath(path, data);
 	}
 	
+	public void updateSlot(Slot slot){
+		Slot old = getSlot(slot.getId());
+		if(old != null){
+			slot.setCreate(old.getCreate());
+			slot.setModify(System.currentTimeMillis());
+			setSlot(slot);
+		}		
+	}
+	
 	public List<Slot> getAllSlots(){
 		List<Slot> list = Lists.newArrayList();
 		

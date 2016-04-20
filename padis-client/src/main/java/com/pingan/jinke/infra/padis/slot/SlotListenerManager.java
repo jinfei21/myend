@@ -56,6 +56,11 @@ public class SlotListenerManager extends AbstractListenerManager{
 						custom.setStatus(Status.MIGRATE);
 						custom.setModify(System.currentTimeMillis());
 						getClusterManager().updateCustom(custom, true);
+					}else if(Status.ONLINE == slot.getStatus()){
+						Custom custom = new Custom();
+						custom.setStatus(Status.ONLINE);
+						custom.setModify(System.currentTimeMillis());
+						getClusterManager().updateCustom(custom, true);
 					}
 				} catch (Throwable t) {
 					log.error("slot update fail!", t);

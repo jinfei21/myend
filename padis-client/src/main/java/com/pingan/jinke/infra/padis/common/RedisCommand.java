@@ -13,6 +13,8 @@ public interface RedisCommand {
 	 * @return PONG
 	 */
 	String ping();
+	
+	Set<String> keys(final String pattern);
 
 	Long delete(String key);
 	

@@ -7,10 +7,30 @@ import com.google.common.collect.Maps;
 public class PadisFactory {
 
 	private static ConcurrentMap<String, IPadis> cache = Maps.newConcurrentMap();
-	
-	
-	public PadisFactory(String zkAddr,String instance,String nameSpace){
-		
+
+	private String zkAddr;
+
+	public PadisFactory(String zkAddr) {
+		this.zkAddr = zkAddr;
 	}
-	
+
+	public IPadis getPadisClient(String instance, String namespace) {
+		IPadis padisClient = this.cache.get(instance);
+
+		if (padisClient == null) {
+			PadisClient newClient = new PadisClient(zkAddr, instance, namespace);
+			
+			IPadis oldClient = this.cache.putIfAbsent(instance, newClient);
+			if(oldClient == null){
+				newClient.init();
+				padisClient = newClient;
+			}else{
+				padisClient = oldClient;
+			}
+		}
+
+		padisClient.setNameSpace(namespace);
+		return padisClient;
+	}
+
 }

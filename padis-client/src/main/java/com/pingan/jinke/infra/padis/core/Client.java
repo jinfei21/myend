@@ -45,7 +45,8 @@ import static com.pingan.jinke.infra.padis.common.ProtocolCommand.ZADD;
 import static com.pingan.jinke.infra.padis.common.ProtocolCommand.ZCARD;
 import static com.pingan.jinke.infra.padis.common.ProtocolCommand.ZRANGE;
 import static com.pingan.jinke.infra.padis.common.ProtocolCommand.ZREM;
-import static com.pingan.jinke.infra.padis.common.ProtocolCommand.ZSCORE;
+import static com.pingan.jinke.infra.padis.common.ProtocolCommand.*;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -435,6 +436,12 @@ public class Client extends Connection implements RedisCommand {
 		sendCommand(PING,EMPTY_ARGS);		
 		return getStatusCodeReply();
 	}
+	
+	@Override
+	public Set<String> keys(String pattern) {
+		sendCommand(KEYS, pattern);
+		return BuilderFactory.STRING_SET.build(getBinaryMultiBulkReply());
+	}
 
 	private byte[][] joinParameters(byte[] first, byte[][] rest) {
 		byte[][] result = new byte[rest.length + 1][];
@@ -458,5 +465,6 @@ public class Client extends Connection implements RedisCommand {
 	public static final byte[] toByteArray(final double value) {
 		return SafeEncoder.encode(String.valueOf(value));
 	}
+
 
 }

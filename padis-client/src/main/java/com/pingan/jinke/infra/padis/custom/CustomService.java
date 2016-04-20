@@ -51,13 +51,17 @@ public class CustomService {
 		return custom;
 	}
 	
-	public Custom updateCustom(Custom custom){
-		Custom old =  getLocalCustom();
-		custom.setCreate(old.getCreate());
-		custom.setModify(System.currentTimeMillis());
-		String data = JSON.toJSONString(custom);
-		this.nodeStorage.updateNodePath(customPath, data);
-		return custom;
+	public Custom updateCustom(Custom custom) {
+		Custom old = getLocalCustom();
+		if (old != null) {
+			custom.setCreate(old.getCreate());
+			custom.setModify(System.currentTimeMillis());
+			String data = JSON.toJSONString(custom);
+			this.nodeStorage.updateNodePath(customPath, data);
+			return custom;
+		} else {
+			return null;
+		}
 	}
 	
 	

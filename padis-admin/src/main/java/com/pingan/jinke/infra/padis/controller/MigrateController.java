@@ -45,11 +45,17 @@ public class MigrateController {
 			
 			JSONObject jsonObj = JSONObject.parseObject(data);
 						
-			int from = Integer.valueOf(jsonObj.getString("from"));
-			int to = Integer.valueOf(jsonObj.getString("to"));
+			int from = Integer.parseInt(jsonObj.getString("from"));
+			int to = Integer.parseInt(jsonObj.getString("to"));
 			
 			if(from > to||to > 1023 || from < 0){
 				result.setMessages("slot范围不正确,from 大于 to.");
+				result.setSuccess(false);
+				return result;
+			}
+			
+			if((to - from) > 350){
+				result.setMessages("slot一次只能迁移最大350个");
 				result.setSuccess(false);
 				return result;
 			}
@@ -62,7 +68,7 @@ public class MigrateController {
 				return result;
 			}
 			
-			int to_gid = Integer.valueOf(jsonObj.getString("new_group"));
+			int to_gid = Integer.parseInt(jsonObj.getString("new_group"));
 
 			Group group = groupService.getGroup(to_gid);
 			
@@ -75,7 +81,7 @@ public class MigrateController {
 			String d = jsonObj.getString("delay");
 			
 			if(d == null){
-				delay = Integer.valueOf(d);
+				delay = Integer.parseInt(d);
 			}
 			
 			migrateService.addTask(instance, from, to, to_gid, delay);

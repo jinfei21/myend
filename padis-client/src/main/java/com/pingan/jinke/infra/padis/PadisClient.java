@@ -32,7 +32,7 @@ class PadisClient implements IPadis{
 		this(new ZookeeperConfiguration(zkAddr, "padis", 1000, 3000, 3),instance,nameSpace);
 	}
 	
-	private void init(){
+	public void init(){
 		//启动监听器
 		this.clusterManager.startAllListeners();
 		//加载slot配置
@@ -46,6 +46,7 @@ class PadisClient implements IPadis{
 		return String.format("%s$%s$%s", instance,nameSpace,key);
 	}
 	
+	@Override
 	public String set(final String key, final String value) throws Exception{
 		final String targetKey = makeKey(key);
 		return new PadisCommand<String>(clusterManager,poolManager){
@@ -58,6 +59,7 @@ class PadisClient implements IPadis{
 		}.run(targetKey,true);
 	}
 	
+	@Override	
 	public String get(final  String key) throws Exception{
 		final String targetKey = makeKey(key);
 		return new PadisCommand<String>(clusterManager,poolManager){
@@ -68,6 +70,11 @@ class PadisClient implements IPadis{
 			}
 			
 		}.run(targetKey,false);
+	}
+
+	@Override
+	public void setNameSpace(String nameSpace) {
+		this.nameSpace = nameSpace;
 	}
 	
 }

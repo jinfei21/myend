@@ -1,0 +1,6 @@
+*.log
+.project
+padis-admin/.settings/*.*
+padis-client/.settings/*.*
+.settings/*.prefs
+*.classpath
