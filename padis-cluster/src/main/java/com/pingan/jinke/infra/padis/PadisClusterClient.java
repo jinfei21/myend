@@ -14,13 +14,21 @@ public class PadisClusterClient extends AbstractClusterClient implements IPadis{
 	}
 	
 	@Override
-	public String get(String key) throws Exception {		
+	public String get(String key) throws Exception {	
+		check();
 		return jedisCluster.get(makeKey(key));
 	}
 
 	@Override
 	public String set(String key, String value) throws Exception {
+		check();
 		return jedisCluster.set(makeKey(key), value);
+	}
+
+	@Override
+	public Long delete(String key) throws Exception {
+		check();
+		return jedisCluster.del(key);
 	}
 
 

@@ -35,7 +35,7 @@
 	</bean>
 
 	<bean id="zkRegCenter"
-		class="com.pingan.jinke.infra.padis.core.ZookeeperRegistryCenter"
+		class="com.pingan.jinke.infra.padis.storage.ZookeeperRegistryCenter"
 		init-method="init">
 		<constructor-arg name="zkConfig" ref="zkConfig" />
 	</bean>
@@ -51,4 +51,6 @@
 	<bean id="migrateService" class="com.pingan.jinke.infra.padis.service.MigrateService">
 		<constructor-arg name="coordinatorRegistryCenter" ref="zkRegCenter" />
 	</bean>
+	
+	
 </beans>

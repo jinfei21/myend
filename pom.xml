@@ -12,6 +12,7 @@
 		<module>padis-admin</module>
 		<module>padis-cluster</module>
 		<module>padis-common</module>
+		<module>padis-metrics</module>
 	</modules>
 
 	<properties>
@@ -139,6 +140,12 @@
 			<dependency>
 				<groupId>com.pingan.padis</groupId>
 				<artifactId>padis-common</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.pingan.padis</groupId>
+				<artifactId>padis-metrics</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 

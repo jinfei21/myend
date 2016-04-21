@@ -26,7 +26,7 @@ function MigrateListCtrl($scope, $rootScope, MigrateService, BaseTableService,
 				$scope.padis.instances = data.result;
 
 			} else {
-
+				console.log(data);
 			}
 		});
 

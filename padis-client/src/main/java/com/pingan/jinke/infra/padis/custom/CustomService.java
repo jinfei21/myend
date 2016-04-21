@@ -5,6 +5,7 @@ import static com.pingan.jinke.infra.padis.common.Status.ONLINE;
 import java.util.List;
 
 import com.alibaba.fastjson.JSON;
+import com.google.common.collect.Lists;
 import com.pingan.jinke.infra.padis.common.CoordinatorRegistryCenter;
 import com.pingan.jinke.infra.padis.node.Custom;
 import com.pingan.jinke.infra.padis.node.CustomNode;
@@ -44,11 +45,13 @@ public class CustomService {
 	}
 	
 	public Custom getLocalCustom(){	
-		return getLocalCustom(customPath);
+		String data = this.nodeStorage.getNodePathDataDirectly(customPath);		
+		Custom custom = JSON.parseObject(data, Custom.class);		
+		return custom;
 	}
 	
-	public Custom getLocalCustom(String path){
-		String data = this.nodeStorage.getNodePathDataDirectly(customPath);		
+	public Custom getLocalCustom(String node){
+		String data = this.nodeStorage.getNodePathDataDirectly(customNode.getCustomPath(node));		
 		Custom custom = JSON.parseObject(data, Custom.class);		
 		return custom;
 	}
@@ -67,7 +70,15 @@ public class CustomService {
 	}
 	
 	
-	public List<String> getAllCustomPath(){
+	public List<String> getAllCustomNode(){
 		return this.nodeStorage.getNodePathChildrenKeys(customNode.getRootCustomPath());
+	}
+	
+	public List<Custom> getAllCustom(){
+		List<Custom> list = Lists.newArrayList();
+		for(String node:getAllCustomNode()){
+			Custom custom = getLocalCustom(customNode.getCustomPath(node));
+		}
+		return list;
 	}
 }

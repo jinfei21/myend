@@ -28,4 +28,13 @@ public enum Status {
 	public String toString(){
 		return this.name;
 	}
+	
+	public static Status getStatus(String name){
+		for(Status n:values()){
+			if(n.name.equals(name.trim())){
+				return n;
+			}
+		}
+		return ONLINE;
+	}
 }

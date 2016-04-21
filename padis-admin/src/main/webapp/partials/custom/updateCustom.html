@@ -1,0 +1,29 @@
+<div class="modal-header">
+	<h4 class="modal-title">ÏÞÁ÷</h4>
+</div>
+<div class="col-xs-12">
+    	<alert ng-show="data.isShow" type="data.type" close="closeAlert()">{{data.msg}}</alert>
+</div>
+
+<div class="modal-body">
+	<form novalidate="novalidate" class="form-horizontal">
+		<div class="control-group">
+			<label class="control-label">node</label>
+			<div class="controls">
+				<input class="form-control" type="number" ng-model="custom.host" />
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label">Limit</label>
+			<div class="controls">
+				<input class="form-control" type="number" ng-model="custom.limit" />
+			</div>
+		</div>
+
+
+	</form>
+</div>
+<div class="modal-footer">
+	<button class="btn btn-default" ng-click="ok(task)">OK</button>
+	<button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+</div>

@@ -1,6 +1,11 @@
 package com.pingan.jinke.infra.padis;
 
+import java.util.Random;
 import java.util.Set;
+
+import com.pingan.jinke.infra.padis.common.Status;
+import com.pingan.jinke.infra.padis.node.Custom;
+import com.pingan.jinke.infra.padis.util.SleepUtils;
 
 import lombok.extern.slf4j.Slf4j;
 import redis.clients.jedis.HostAndPort;
@@ -35,6 +40,15 @@ public abstract class AbstractClusterClient {
 	}
 	
 	public void check(){
+		Custom custom = this.clusterConfig.getCustom();
+		
+		if(custom != null && custom.getStatus() == Status.LIMIT){
+			int rand = new Random().nextInt(100);
+			
+			if(rand <= custom.getLimit()){
+				SleepUtils.sleep(200);
+			}
+		}
 		
 	}
 }

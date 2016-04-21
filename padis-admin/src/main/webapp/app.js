@@ -7,6 +7,7 @@ var module = angular.module('portal', ['ngRoute',
 				'ngResource',
 				'groupService',
 				'migrateService',
+				'customService',
 				'baseTableService',
 				'ui.bootstrap']);
 				
@@ -22,6 +23,9 @@ var module = angular.module('portal', ['ngRoute',
                 reloadOnSearch: false
             }).when("/migrate",{
                 templateUrl: '/padis-admin/partials/migrate/migrate.html',
+                reloadOnSearch: false
+            }).when("/custom",{
+                templateUrl: '/padis-admin/partials/custom/custom.html',
                 reloadOnSearch: false
             }).otherwise({
                 templateUrl: '/padis-admin/partials/group/group.html',

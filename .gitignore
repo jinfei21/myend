@@ -7,3 +7,5 @@ padis-client/.settings/*.*
 *.prefs
 padis-cluster/.settings/*.*
 padis-common/.settings/*.*
+*.properties
+*.jar

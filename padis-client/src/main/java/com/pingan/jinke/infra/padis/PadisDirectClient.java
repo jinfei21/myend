@@ -41,6 +41,11 @@ class PadisDirectClient implements IPadis{
 		this.poolManager.init(this.clusterManager.getAllMaster());
 	}
 
+	@Override
+	public void setNameSpace(String nameSpace) {
+		this.nameSpace = nameSpace;
+	}
+
 	
 	private String makeKey(String key){
 		return String.format("%s$%s$%s", instance,nameSpace,key);
@@ -73,8 +78,16 @@ class PadisDirectClient implements IPadis{
 	}
 
 	@Override
-	public void setNameSpace(String nameSpace) {
-		this.nameSpace = nameSpace;
+	public Long delete(String key) throws Exception {
+		final String targetKey = makeKey(key);
+		return new PadisCommand<Long>(clusterManager,poolManager){
+
+			@Override
+			public Long execute(Client client) {
+				return client.delete(targetKey);
+			}
+			
+		}.run(targetKey,false);
 	}
 	
 }
