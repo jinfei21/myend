@@ -2,17 +2,21 @@ package com.pingan.jinke.infra.padis.group;
 
 import java.util.List;
 import java.util.Set;
+
 import org.apache.curator.framework.CuratorFramework;
 import org.apache.curator.framework.recipes.cache.TreeCacheEvent;
 import org.apache.curator.framework.recipes.cache.TreeCacheEvent.Type;
+
 import com.alibaba.fastjson.JSON;
 import com.google.common.collect.Sets;
 import com.pingan.jinke.infra.padis.common.AbstractListenerManager;
-import com.pingan.jinke.infra.padis.common.AbstractNodeListener;
 import com.pingan.jinke.infra.padis.common.CoordinatorRegistryCenter;
 import com.pingan.jinke.infra.padis.common.HostAndPort;
 import com.pingan.jinke.infra.padis.common.PoolManager;
 import com.pingan.jinke.infra.padis.core.ClusterManager;
+import com.pingan.jinke.infra.padis.node.Group;
+import com.pingan.jinke.infra.padis.storage.AbstractNodeListener;
+
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -46,8 +50,9 @@ public class GroupListenerManager extends AbstractListenerManager {
 		protected void dataChanged(CuratorFramework client, TreeCacheEvent event, String path) {
 			try{
 				String json = new String(event.getData().getData());
-				Group group = JSON.parseObject(json, Group.class);
+				
 				if (Type.NODE_UPDATED == event.getType()) {
+					Group group = JSON.parseObject(json, Group.class);
 					getClusterManager().addGroup(group);
 					Group oldGroup = getClusterManager().getGroup(group.getId());
 	
@@ -64,8 +69,10 @@ public class GroupListenerManager extends AbstractListenerManager {
 					}
 					
 				} else if (Type.NODE_ADDED == event.getType()) {
+					Group group = JSON.parseObject(json, Group.class);
 					getClusterManager().addGroup(group);
 				} else if (Type.NODE_REMOVED == event.getType()) {
+					Group group = JSON.parseObject(json, Group.class);
 					poolManager.closePool(group.getMaster());
 					poolManager.closePool(group.getSlave());
 				}

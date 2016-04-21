@@ -5,6 +5,8 @@ import java.util.List;
 import com.alibaba.fastjson.JSON;
 import com.google.common.collect.Lists;
 import com.pingan.jinke.infra.padis.common.CoordinatorRegistryCenter;
+import com.pingan.jinke.infra.padis.node.Group;
+import com.pingan.jinke.infra.padis.node.GroupNode;
 import com.pingan.jinke.infra.padis.storage.NodeStorage;
 
 public class GroupService {

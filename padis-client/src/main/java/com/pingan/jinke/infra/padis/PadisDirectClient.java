@@ -6,9 +6,9 @@ import com.pingan.jinke.infra.padis.core.Client;
 import com.pingan.jinke.infra.padis.core.ClientPoolManager;
 import com.pingan.jinke.infra.padis.core.ClusterManager;
 import com.pingan.jinke.infra.padis.core.PadisCommand;
-import com.pingan.jinke.infra.padis.core.ZookeeperRegistryCenter;
+import com.pingan.jinke.infra.padis.storage.ZookeeperRegistryCenter;
 
-class PadisClient implements IPadis{
+class PadisDirectClient implements IPadis{
 
 	private String instance;
 	private String nameSpace;	
@@ -18,7 +18,7 @@ class PadisClient implements IPadis{
 	private ClusterManager clusterManager;
 	
 	
-	public PadisClient(ZookeeperConfiguration zkConfig,String instance,String nameSpace){
+	public PadisDirectClient(ZookeeperConfiguration zkConfig,String instance,String nameSpace){
 		this.instance = instance;
 		this.nameSpace = nameSpace;
 		CoordinatorRegistryCenter regCenter = new ZookeeperRegistryCenter(zkConfig);
@@ -28,7 +28,7 @@ class PadisClient implements IPadis{
 		this.clusterManager.setPoolManager(poolManager);
 	}
 	
-	public PadisClient(String zkAddr,String instance,String nameSpace){
+	public PadisDirectClient(String zkAddr,String instance,String nameSpace){
 		this(new ZookeeperConfiguration(zkAddr, "padis", 1000, 3000, 3),instance,nameSpace);
 	}
 	

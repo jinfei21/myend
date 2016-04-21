@@ -1,4 +1,4 @@
-package com.pingan.jinke.infra.padis.slot;
+package com.pingan.jinke.infra.padis.node;
 
 public class SlotNode {
 

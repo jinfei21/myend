@@ -3,13 +3,10 @@ package com.pingan.infra;
 import com.pingan.jinke.infra.padis.common.CoordinatorRegistryCenter;
 import com.pingan.jinke.infra.padis.common.Status;
 import com.pingan.jinke.infra.padis.common.ZookeeperConfiguration;
-import com.pingan.jinke.infra.padis.core.ZookeeperRegistryCenter;
-import com.pingan.jinke.infra.padis.custom.Custom;
 import com.pingan.jinke.infra.padis.custom.CustomListenerManager;
-import com.pingan.jinke.infra.padis.custom.CustomService;
-import com.pingan.jinke.infra.padis.group.GroupListenerManager;
-import com.pingan.jinke.infra.padis.slot.Slot;
+import com.pingan.jinke.infra.padis.node.Slot;
 import com.pingan.jinke.infra.padis.slot.SlotService;
+import com.pingan.jinke.infra.padis.storage.ZookeeperRegistryCenter;
 
 public class CustomServiceTest {
 

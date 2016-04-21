@@ -10,6 +10,8 @@
 	<modules>
 		<module>padis-client</module>
 		<module>padis-admin</module>
+		<module>padis-cluster</module>
+		<module>padis-common</module>
 	</modules>
 
 	<properties>
@@ -22,7 +24,8 @@
 		<curator.version>2.10.0</curator.version>
 		<lombok.version>1.16.4</lombok.version>
 		<spring.version>3.2.6.RELEASE</spring.version>
-    	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven.compile.encoding>UTF-8</maven.compile.encoding>
 	</properties>
 
 	<dependencyManagement>
@@ -127,6 +130,18 @@
 				<version>${project.version}</version>
 			</dependency>
 
+			<dependency>
+				<groupId>com.pingan.padis</groupId>
+				<artifactId>padis-cluster</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.pingan.padis</groupId>
+				<artifactId>padis-common</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+
 		</dependencies>
 	</dependencyManagement>
 
@@ -176,4 +191,18 @@
 			<url>https://oss.sonatype.org/service/local/staging/deploy/maven2</url>
 		</repository>
 	</distributionManagement>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.5.1</version>
+				<configuration>
+					<source>${java.version}</source>
+					<target>${java.version}</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 </project>	

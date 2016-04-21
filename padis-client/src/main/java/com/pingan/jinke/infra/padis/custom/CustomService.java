@@ -6,8 +6,10 @@ import java.util.List;
 
 import com.alibaba.fastjson.JSON;
 import com.pingan.jinke.infra.padis.common.CoordinatorRegistryCenter;
+import com.pingan.jinke.infra.padis.node.Custom;
+import com.pingan.jinke.infra.padis.node.CustomNode;
 import com.pingan.jinke.infra.padis.storage.NodeStorage;
-import com.pingan.jinke.infra.padis.util.NetUtils;
+import com.pingan.jinke.infra.padis.util.IPUtils;
 
 public class CustomService {
 	private CustomNode customNode;
@@ -30,7 +32,7 @@ public class CustomService {
 	}
 	
 	public void registerCustom(){
-		String ip = NetUtils.getIP();
+		String ip = IPUtils.getIP();
 		Custom custom = new Custom();
 		custom.setCreate(System.currentTimeMillis());
 		custom.setModify(System.currentTimeMillis());

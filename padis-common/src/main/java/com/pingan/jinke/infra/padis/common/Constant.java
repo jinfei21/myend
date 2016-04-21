@@ -20,5 +20,21 @@ public class Constant {
 	public static final String CLUSTERDOWN_RESPONSE = "CLUSTERDOWN";
 	
 	
-	public static final String NAME_SPACE = "padis";
+	public static final String ZK_DIRECT_NAME_SPACE = "padis";
+	
+	public static final String ZK_Cluster_NAME_SPACE = "padis-cluster";
+	
+	
+			
+    public static final int DEFAULT_MAX_TOTAL = 8;
+
+    public static final int DEFAULT_MAX_IDLE = 8;
+
+    public static final int DEFAULT_MIN_IDLE = 0;
+    
+    public static final int DEFAULT_MAX_DIRECTION = 3;
+
+    public static final int DEFAULT_CONNECT_TIMEOUT = 3000;
+
+    public static final int DEFAULT_SO_TIMEOUT = 3000;
 }

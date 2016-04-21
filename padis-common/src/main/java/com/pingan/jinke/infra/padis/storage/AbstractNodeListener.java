@@ -1,4 +1,4 @@
-package com.pingan.jinke.infra.padis.common;
+package com.pingan.jinke.infra.padis.storage;
 
 import org.apache.curator.framework.CuratorFramework;
 import org.apache.curator.framework.recipes.cache.TreeCacheEvent;

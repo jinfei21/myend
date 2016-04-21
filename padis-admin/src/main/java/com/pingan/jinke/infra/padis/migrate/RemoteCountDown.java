@@ -7,10 +7,11 @@ import java.util.concurrent.TimeUnit;
 import org.apache.curator.framework.CuratorFramework;
 import org.apache.curator.framework.recipes.cache.TreeCacheEvent;
 import org.apache.curator.framework.recipes.cache.TreeCacheEvent.Type;
+
 import com.google.common.collect.Sets;
 import com.pingan.jinke.infra.padis.common.AbstractListenerManager;
-import com.pingan.jinke.infra.padis.common.AbstractNodeListener;
 import com.pingan.jinke.infra.padis.common.CoordinatorRegistryCenter;
+import com.pingan.jinke.infra.padis.storage.AbstractNodeListener;
 
 public class RemoteCountDown extends AbstractListenerManager{
 	
@@ -29,10 +30,15 @@ public class RemoteCountDown extends AbstractListenerManager{
 	}
 	
 	public void fresh(){
-		this.countDown = new CountDownLatch(1);
+		
 		nodeSet.clear();
 		for(String node:this.nodeStorage.getNodePathChildrenKeys(instance)){
 			nodeSet.add(instance+"/"+node);
+		}
+		if(nodeSet.isEmpty()){
+			this.countDown = new CountDownLatch(0);			
+		}else{
+			this.countDown = new CountDownLatch(1);
 		}
 	}
 	

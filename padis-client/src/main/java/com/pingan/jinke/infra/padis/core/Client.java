@@ -60,8 +60,8 @@ import com.pingan.jinke.infra.padis.common.RedisCommand;
 import com.pingan.jinke.infra.padis.common.SetParams;
 import com.pingan.jinke.infra.padis.common.SortingParams;
 import com.pingan.jinke.infra.padis.common.ZAddParams;
-import com.pingan.jinke.infra.padis.storage.SafeEncoder;
 import com.pingan.jinke.infra.padis.util.BuilderFactory;
+import com.pingan.jinke.infra.padis.util.SafeEncoder;
 
 public class Client extends Connection implements RedisCommand {
 

@@ -20,9 +20,9 @@ import com.pingan.jinke.infra.padis.exceptions.ClusterException;
 import com.pingan.jinke.infra.padis.exceptions.ConnectionException;
 import com.pingan.jinke.infra.padis.exceptions.DataException;
 import com.pingan.jinke.infra.padis.exceptions.MovedDataException;
-import com.pingan.jinke.infra.padis.storage.SafeEncoder;
 import com.pingan.jinke.infra.padis.util.PadisInputStream;
 import com.pingan.jinke.infra.padis.util.PadisOutputStream;
+import com.pingan.jinke.infra.padis.util.SafeEncoder;
 
 public class Protocol {
 	public static final byte[] BYTES_TRUE = toByteArray(1);

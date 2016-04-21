@@ -10,8 +10,8 @@ import com.pingan.jinke.infra.padis.common.Status;
 import com.pingan.jinke.infra.padis.common.TaskInfo;
 import com.pingan.jinke.infra.padis.migrate.MigrateManager;
 import com.pingan.jinke.infra.padis.migrate.MigrateNode;
-import com.pingan.jinke.infra.padis.slot.Slot;
-import com.pingan.jinke.infra.padis.slot.SlotNode;
+import com.pingan.jinke.infra.padis.node.Slot;
+import com.pingan.jinke.infra.padis.node.SlotNode;
 import com.pingan.jinke.infra.padis.storage.NodeStorage;
 
 import lombok.extern.slf4j.Slf4j;

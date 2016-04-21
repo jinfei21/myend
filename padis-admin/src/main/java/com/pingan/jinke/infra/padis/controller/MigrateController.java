@@ -11,11 +11,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSONObject;
-import com.google.common.collect.Lists;
 import com.pingan.jinke.infra.padis.common.Migrate;
 import com.pingan.jinke.infra.padis.common.Result;
-import com.pingan.jinke.infra.padis.group.Group;
 import com.pingan.jinke.infra.padis.group.GroupService;
+import com.pingan.jinke.infra.padis.node.Group;
 import com.pingan.jinke.infra.padis.service.InstanceService;
 import com.pingan.jinke.infra.padis.service.MigrateService;
 
@@ -41,7 +40,6 @@ public class MigrateController {
 		Result<String> result = new Result<String>();
 
 		try {
-			System.out.println(data); 
 			
 			JSONObject jsonObj = JSONObject.parseObject(data);
 						

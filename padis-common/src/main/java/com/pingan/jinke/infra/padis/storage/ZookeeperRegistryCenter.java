@@ -1,4 +1,4 @@
-package com.pingan.jinke.infra.padis.core;
+package com.pingan.jinke.infra.padis.storage;
 
 import java.nio.charset.Charset;
 import java.util.Collections;
@@ -102,11 +102,11 @@ public class ZookeeperRegistryCenter implements CoordinatorRegistryCenter {
 		}
 	}
 
-	/*
-	 * TODO 等待500ms, cache先关闭再关闭client, 否则会抛异常 因为异步处理,
-	 * 可能会导致client先关闭而cache还未关闭结束. 等待Curator新版本解决这个bug.
-	 * BUG地址：https://issues.apache.org/jira/browse/CURATOR-157
-	 */
+    /* TODO 绛夊緟500ms, cache鍏堝叧闂啀鍏抽棴client, 鍚﹀垯浼氭姏寮傚父
+     * 鍥犱负寮傛澶勭悊, 鍙兘浼氬鑷碿lient鍏堝叧闂�宑ache杩樻湭鍏抽棴缁撴潫.
+     * 绛夊緟Curator鏂扮増鏈В鍐宠繖涓猙ug.
+     * BUG鍦板潃锛歨ttps://issues.apache.org/jira/browse/CURATOR-157
+     */
 	private void waitForCacheClose() {
 		try {
 			Thread.sleep(500L);

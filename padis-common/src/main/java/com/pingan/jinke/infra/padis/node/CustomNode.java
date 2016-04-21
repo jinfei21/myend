@@ -1,4 +1,4 @@
-package com.pingan.jinke.infra.padis.custom;
+package com.pingan.jinke.infra.padis.node;
 
 public class CustomNode {
 	private String CUSTOM_ROOT;

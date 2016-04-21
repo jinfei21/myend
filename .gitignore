@@ -4,3 +4,6 @@ padis-admin/.settings/*.*
 padis-client/.settings/*.*
 .settings/*.prefs
 *.classpath
+*.prefs
+padis-cluster/.settings/*.*
+padis-common/.settings/*.*

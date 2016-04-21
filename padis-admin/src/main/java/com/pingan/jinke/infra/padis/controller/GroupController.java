@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.alibaba.fastjson.JSONObject;
 import com.pingan.jinke.infra.padis.common.Result;
 import com.pingan.jinke.infra.padis.common.Status;
-import com.pingan.jinke.infra.padis.group.Group;
 import com.pingan.jinke.infra.padis.group.GroupService;
+import com.pingan.jinke.infra.padis.node.Group;
 import com.pingan.jinke.infra.padis.util.HostPortUtils;
 
 import lombok.extern.slf4j.Slf4j;

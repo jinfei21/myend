@@ -1,6 +1,6 @@
 package com.pingan.jinke.infra.padis.common;
 
-import com.pingan.jinke.infra.padis.storage.SafeEncoder;
+import com.pingan.jinke.infra.padis.util.SafeEncoder;
 
 public enum ProtocolCommand {
 

@@ -8,7 +8,7 @@ import java.net.UnknownHostException;
 import java.util.Enumeration;
 import java.util.List;
 
-public class NetUtils {
+public class IPUtils {
 
 	
 	public static final String getIP(){

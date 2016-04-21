@@ -1,6 +1,5 @@
-package com.pingan.jinke.infra.padis.group;
+package com.pingan.jinke.infra.padis.node;
 
-import com.alibaba.fastjson.JSON;
 import com.pingan.jinke.infra.padis.common.HostAndPort;
 import com.pingan.jinke.infra.padis.common.Status;
 
@@ -25,20 +24,5 @@ public class Group {
 	
 	private long modifyTime;
 
-	
-	public static void main(String args[]){
-		
-		Group g = new Group();
-		g.setId(0);
-		g.setMaster(new HostAndPort("1111", 1));
-		g.setStatus(Status.ONLINE);
-		
-		String s = JSON.toJSONString(g);
-		System.out.println(s);
-		
-		Group t = JSON.parseObject(s, Group.class);
-		
-		System.out.println(t);
-	}
 	
 }

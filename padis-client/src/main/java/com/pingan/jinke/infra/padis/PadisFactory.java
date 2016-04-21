@@ -18,7 +18,7 @@ public class PadisFactory {
 		IPadis padisClient = this.cache.get(instance);
 
 		if (padisClient == null) {
-			PadisClient newClient = new PadisClient(zkAddr, instance, namespace);
+			PadisDirectClient newClient = new PadisDirectClient(zkAddr, instance, namespace);
 			
 			IPadis oldClient = this.cache.putIfAbsent(instance, newClient);
 			if(oldClient == null){

@@ -8,8 +8,8 @@ import static com.pingan.jinke.infra.padis.common.Status.PRE_MIGRATE;
 import com.pingan.jinke.infra.padis.common.HostAndPort;
 import com.pingan.jinke.infra.padis.common.PoolManager;
 import com.pingan.jinke.infra.padis.exceptions.ClusterException;
-import com.pingan.jinke.infra.padis.group.Group;
-import com.pingan.jinke.infra.padis.slot.Slot;
+import com.pingan.jinke.infra.padis.node.Group;
+import com.pingan.jinke.infra.padis.node.Slot;
 import com.pingan.jinke.infra.padis.util.CRC16Utils;
 
 import lombok.extern.slf4j.Slf4j;

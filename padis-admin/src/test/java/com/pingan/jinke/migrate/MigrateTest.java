@@ -1,9 +1,11 @@
 package com.pingan.jinke.migrate;
 
+import com.pingan.jinke.infra.padis.IPadis;
+import com.pingan.jinke.infra.padis.PadisFactory;
 import com.pingan.jinke.infra.padis.common.CoordinatorRegistryCenter;
 import com.pingan.jinke.infra.padis.common.ZookeeperConfiguration;
-import com.pingan.jinke.infra.padis.core.ZookeeperRegistryCenter;
 import com.pingan.jinke.infra.padis.service.MigrateService;
+import com.pingan.jinke.infra.padis.storage.ZookeeperRegistryCenter;
 
 public class MigrateTest {
 
@@ -19,6 +21,12 @@ public class MigrateTest {
 		MigrateService service = new MigrateService(regCenter);
 		
 		service.delAllMigrateSlot("test");
+		
+		PadisFactory factory = new PadisFactory("localhost:2181");
+		IPadis padis = factory.getPadisClient("test", "ns");
+		
+		
+		System.out.println("fsafsafasf");
 		
 		
 	}
