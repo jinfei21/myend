@@ -15,6 +15,11 @@ function CustomListCtrl($scope, $rootScope, MigrateService, CustomService,
 			'instances' : [],
 			'customs' : [],
 		}
+		$scope.data = {
+				msg : '',
+				type : '',
+				isShow : false,
+		}
 		refreshData();
 	}
 
@@ -25,13 +30,19 @@ function CustomListCtrl($scope, $rootScope, MigrateService, CustomService,
 				$scope.padis.instances = data.result;
 
 			} else {
-				console.log(data);
+				showAlert('warning', data.messages);
 			}
 		});
 
 	}
 
 	function initFunctions() {
+        //不显示提示信息
+        $scope.closeAlert = function () {
+            $scope.data.isShow = false;
+            
+        };  
+        
 		$scope.reFresh = function() {
 			console.log($scope.curInstance);
 			
@@ -43,7 +54,7 @@ function CustomListCtrl($scope, $rootScope, MigrateService, CustomService,
 					$scope.padis.customs = data.result;
 
 				} else {
-					console.log(data);
+					showAlert('warning', data.messages);
 				}
 			});
 		}
@@ -61,21 +72,40 @@ function CustomListCtrl($scope, $rootScope, MigrateService, CustomService,
 					templateUrl : '/padis-admin/partials/custom/updateCustom.html',
 					controller : UpdateCustomCtrl,
 					resolve : {
-						data : function() {							
+						data : function() {		
 							return custom;
 						}
 					}
 				});
 				modalInstance.result.then(function(data) {
-					loadTaskData();
+					$scope.reFresh();
 				}, function() {
 				});
 		}
 		
 		$scope.open = function(custom) {
-			
+			custom.status = 'oline'
+			custom.limit = -1;
+        	var result = CustomService.updateCustom({
+                'data': custom
+              });
+            result.$promise.then(
+                    function (data) {
+                    	console.log(data);
+                        $scope.isLoading = false;
+                        if (data.success) {         
+                        } else {
+                            showAlert('warning', data.messages);
+                        }
+                 });
+        	
 		}
 		
-		
+	    //显示提示信息
+	    function showAlert(type, msg) {
+	        $scope.data.msg = msg;
+	        $scope.data.type = type;
+	        $scope.data.isShow = true;
+	    }
 	}
 }

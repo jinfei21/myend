@@ -50,7 +50,7 @@ public class CustomController {
 				custom.setLimit(0);
 			}
 			custom.setStatus(Status.getStatus(status));
-			customService.updateCustom(custom);
+			customService.updateCustom(custom,node);
 			
 			result.setSuccess(true);
 		} catch (Throwable t) {
@@ -71,6 +71,10 @@ public class CustomController {
 		Result<List<Map<String,String>>> result = new Result<List<Map<String,String>>>();
 
 		try {
+			if(instance== null||instance.trim().length()==0){
+				result.setSuccess(true);
+				return result;
+			}
 			CustomService customService = new CustomService(instance,zkRegCenter);
 			List<Map<String,String>> list = Lists.newArrayList();
 			for(String node:customService.getAllCustomNode()){

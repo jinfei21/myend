@@ -50,7 +50,7 @@ public class RemoteCountDown extends AbstractListenerManager{
 
 		@Override
 		protected void dataChanged(CuratorFramework client, TreeCacheEvent event, String path) {
-			if(Type.NODE_UPDATED == event.getType()){				
+			if(Type.NODE_UPDATED == event.getType()||Type.NODE_REMOVED == event.getType()){				
 				nodeSet.remove(path);
 				if(nodeSet.isEmpty()){
 					countDown.countDown();

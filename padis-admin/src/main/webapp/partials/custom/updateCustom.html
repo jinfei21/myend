@@ -1,5 +1,5 @@
 <div class="modal-header">
-	<h4 class="modal-title">очаВ</h4>
+	<h4 class="modal-title">И≥░Ф╣│</h4>
 </div>
 <div class="col-xs-12">
     	<alert ng-show="data.isShow" type="data.type" close="closeAlert()">{{data.msg}}</alert>
@@ -10,7 +10,13 @@
 		<div class="control-group">
 			<label class="control-label">node</label>
 			<div class="controls">
-				<input class="form-control" type="number" ng-model="custom.host" />
+				<input class="form-control" type="text" readonly = "true" ng-model="custom.node" />
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label">host</label>
+			<div class="controls">
+				<input class="form-control" type="text" readonly = "true" ng-model="custom.host" />
 			</div>
 		</div>
 		<div class="control-group">
@@ -24,6 +30,6 @@
 	</form>
 </div>
 <div class="modal-footer">
-	<button class="btn btn-default" ng-click="ok(task)">OK</button>
+	<button class="btn btn-default" ng-click="ok(custom)">OK</button>
 	<button class="btn btn-warning" ng-click="cancel()">Cancel</button>
 </div>

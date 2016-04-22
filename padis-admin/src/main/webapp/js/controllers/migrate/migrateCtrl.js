@@ -68,6 +68,26 @@ function MigrateListCtrl($scope, $rootScope, MigrateService, BaseTableService,
 				$scope.padis.fresh = '刷新'
 			}
 		}
+		
+	    $scope.deleteMigrate = function(migrate){
+	        var modalInstance = $modal.open({
+	 
+	            templateUrl: '/padis-admin/partials/common/deleteConfirm.html',
+	            controller: 'DelMigrateCtrl',
+	            resolve: {
+	                migrate: function () {
+	                	migrate.instance = $scope.curInstance;
+	                    return migrate;
+	                }
+	            }
+	        });
+	       
+
+	        modalInstance.result.then(function () {
+	        	loadTaskData();
+	        }, function () {
+	        });
+	    }
 	}
 	
 	function loadTaskData(){
