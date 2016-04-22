@@ -11,12 +11,6 @@ angular.module("slotService", ['ngResource'])
                             slotsInfo:'@slotsInfo'
                         }
                     },
-                    getInstances: {
-                        method: 'GET',
-                        params: {
-                            action: 'getInstances'
-                        }
-                    },
                     getSlotsInfo: {
                     	method: 'POST',
                     	params: {

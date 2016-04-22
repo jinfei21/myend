@@ -71,24 +71,6 @@ public class SlotController {
 		return result;
 	}
 	
-	@RequestMapping(value = "/getInstances", method = RequestMethod.GET)
-	@ResponseBody
-	public Result<List<String>> getInstances() {
-		Result<List<String>> result = new Result<List<String>>();
-
-		try {
-			List<String> list = instanceService.getAllInstances();
-			result.setResult(list);
-			result.setSuccess(true);
-		} catch (Throwable t) {
-			log.error("get instances fail!", t);
-			result.setSuccess(false);
-			result.setMessages(t.getMessage());
-		}
-
-		return result;
-	}
-	
 	@RequestMapping(value = "/getSlotsInfo", method = RequestMethod.POST)
 	@ResponseBody
 	public Result<Object> getSlotsInfo(@RequestParam(value = "instance") String instance) {

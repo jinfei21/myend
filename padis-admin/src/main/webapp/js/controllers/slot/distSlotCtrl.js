@@ -1,7 +1,7 @@
 'use strict';
 
 //展示信息的dialog的controller
-function DistSlotCtrl($scope, SlotService,GroupService) {
+function DistSlotCtrl($scope, SlotService,GroupService,MigrateService) {
 	
     /***********************执行开始***********************/
     initScope();
@@ -30,7 +30,7 @@ function DistSlotCtrl($scope, SlotService,GroupService) {
 	}
     
     function getInstances() {
-    	var instancesResult = SlotService.getInstances();
+    	var instancesResult = MigrateService.getInstances();
     	instancesResult.$promise.then(function(data) {
     		if (data.success) {
     			$scope.instances = data.result;

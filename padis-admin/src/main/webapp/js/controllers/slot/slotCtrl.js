@@ -1,4 +1,4 @@
-function SlotCtrl($scope, SlotService) {
+function SlotCtrl($scope, SlotService,MigrateService) {
 
 	initScope();
 
@@ -68,7 +68,7 @@ function SlotCtrl($scope, SlotService) {
 	}
 	
 	function getInstances() {
-		var instanceResult = SlotService.getInstances();
+		var instanceResult = MigrateService.getInstances();
 		instanceResult.$promise.then(function(data) {
 			if (data.success) {
 				$scope.instances = data.result;
