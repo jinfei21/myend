@@ -69,6 +69,20 @@ public class CustomService {
 		}
 	}
 	
+	public  Custom updateCustom(Custom custom,String node){
+		Custom old = getLocalCustom(node);
+		if (old != null) {
+			custom.setCreate(old.getCreate());
+			custom.setModify(System.currentTimeMillis());
+			String data = JSON.toJSONString(custom);
+			this.nodeStorage.updateNodePath(customNode.getCustomPath(node), data);
+			return custom;
+		} else {
+			return null;
+		}
+		
+	}
+	
 	
 	public List<String> getAllCustomNode(){
 		return this.nodeStorage.getNodePathChildrenKeys(customNode.getRootCustomPath());

@@ -1,5 +1,5 @@
 
-function UpdateCustomCtrl($scope,$rootScope,CustomService,data,BaseTableService,$modalInstance,$filter,$timeout){
+function UpdateCustomCtrl($scope,$rootScope,CustomService,data,BaseTableService,$modalInstance,$filter){
 
 	
 
@@ -12,7 +12,7 @@ function UpdateCustomCtrl($scope,$rootScope,CustomService,data,BaseTableService,
 	}
 	
 	function initParameters() {
-		$scope.data = data;
+		$scope.custom = data;
 	}
     
     function initFunctions() {
@@ -27,9 +27,10 @@ function UpdateCustomCtrl($scope,$rootScope,CustomService,data,BaseTableService,
             $modalInstance.dismiss('cancel');
         };
         
-        $scope.ok = function(task){
+        $scope.ok = function(custom){
+			custom.status = 'limit';
         	var result = CustomService.updateCustom({
-                'data': $scope.data.custom
+                'data': custom
               });
         	processData(result);
         }

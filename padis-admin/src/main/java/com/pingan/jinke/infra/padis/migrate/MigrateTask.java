@@ -85,7 +85,7 @@ public class MigrateTask extends Thread {
 			try {
 				Slot slot = this.slotService.getSlot(cur);
 				Migrate migrate = getMigrate(slot.getId());
-				if (slot != null && migrate != null) {
+				if ( migrate != null) {
 					
 					migrateSingleSlot(slot,migrate);
 					delMigrate(migrate);

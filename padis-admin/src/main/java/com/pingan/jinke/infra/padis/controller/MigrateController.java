@@ -94,6 +94,34 @@ public class MigrateController {
 		return result;
 	}
 	
+	@RequestMapping(value = "/delTask", method = RequestMethod.POST)
+	@ResponseBody
+	public Result delTask(@RequestParam(value = "data", defaultValue = "") String data) {
+		Result<String> result = new Result<String>();
+
+		try {
+			
+			JSONObject jsonObj = JSONObject.parseObject(data);
+			
+			String instance = jsonObj.getString("instance");
+			
+			if(!instanceService.isExisted(instance)){
+				result.setMessages("instance 不存在。");
+				result.setSuccess(false);
+				return result;
+			}
+			int slotid = Integer.parseInt(jsonObj.getString("slot_id"));
+			migrateService.delMigrateSlot(instance, slotid);
+			result.setSuccess(true);
+		} catch (Throwable t) {
+			log.error("delete migrate task fail!", t);
+			result.setSuccess(false);
+			result.setMessages(t.getMessage());
+		}
+	
+		return result;
+	}
+	
 	@RequestMapping(value = "/getTask", method = RequestMethod.GET)
 	@ResponseBody
 	public Result getTask(@RequestParam(value = "data", defaultValue = "") String instance) {

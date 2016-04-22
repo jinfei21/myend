@@ -50,7 +50,7 @@ public class CustomController {
 				custom.setLimit(0);
 			}
 			custom.setStatus(Status.getStatus(status));
-			customService.updateCustom(custom);
+			customService.updateCustom(custom,node);
 			
 			result.setSuccess(true);
 		} catch (Throwable t) {

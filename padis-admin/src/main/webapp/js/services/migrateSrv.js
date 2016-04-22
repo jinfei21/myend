@@ -11,6 +11,13 @@ angular.module("migrateService", ['ngResource'])
                             data: '@data'
                         }
                     }, 
+                    delTask: {
+                        method: 'POST',
+                        params: {
+                            action: 'delTask',
+                            data: '@data'
+                        }
+                    }, 
                     getInstances: {
                         method: 'GET',
                         params: {
