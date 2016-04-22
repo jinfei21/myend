@@ -62,7 +62,9 @@ public class SlotService {
 		Set<Integer> set = Sets.newHashSet();
 		
 		for(Slot slot:getAllSlots()){
-			set.add(slot.getSrc_gid());
+			if(null != slot){
+				set.add(slot.getSrc_gid());	
+			}
 		}
 		return set;
 	}

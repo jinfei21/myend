@@ -1,0 +1,47 @@
+<div ng-controller="DistSlotCtrl" class="page-content">
+    <div class="page-header">
+        <h1>
+            Slot
+            <small>
+                <i class="icon-double-angle-right"></i>
+                 	分配
+            </small>
+        </h1>
+    </div>
+    <form role="form" class="form-horizontal">
+        <div class="form-group">
+            <label class="col-sm-1 control-label">Instance</label>
+            <div class="col-sm-2">
+                <input type="text" class="form-control" ng-model="slotsInfo.instance" required/>
+            </div>
+            <div class="col-sm-2">
+                <button type="button" class="btn btn-default btn-info" ng-click="addSlot()">
+                    <span class="icon-plus" aria-hidden="true"></span>增加新的Slot
+                </button>
+            </div>
+        </div>
+        <hr/>
+        <div class="form-group" ng-repeat="slot in slots">
+            <label class="col-sm-1 control-label">Slot From</label>
+            <div class="col-sm-1">
+                <input type="text" class="form-control" ng-model="slot.fromId"/>
+            </div>
+            <label class="col-sm-1 control-label">Slot To</label>
+            <div class="col-sm-1">
+                <input type="text" class="form-control" ng-model="slot.toId"/>
+            </div>
+            <label class="col-sm-1 control-label">Group</label>
+            <div class="col-sm-2">
+                <select ng-model="slot.groupId" ng-options="grp.id as grp.master.host + ' : ' + grp.master.port for grp in groups"></select>
+            </div>
+            <a class="black" ng-click="remove($index)"
+               tooltip-placement="top" tooltip="删除">
+                <i class="icon-trash bigger-170"></i>
+            </a>
+        </div>
+    </form>
+
+    <div class="modal-footer">
+        <button class="btn btn-primary col-sm-1" ng-click="distSlots()">提交</button>
+    </div>
+</div>
