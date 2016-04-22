@@ -13,20 +13,27 @@ import com.pingan.jinke.infra.padis.common.AbstractListenerManager;
 import com.pingan.jinke.infra.padis.common.CoordinatorRegistryCenter;
 import com.pingan.jinke.infra.padis.storage.AbstractNodeListener;
 
-public class RemoteCountDown extends AbstractListenerManager{
+public class DistributeCountDown extends AbstractListenerManager{
 	
 	private CountDownLatch countDown;
 	
 	private Set<String> nodeSet;
 
-	public RemoteCountDown(String path,CoordinatorRegistryCenter coordinatorRegistryCenter) {
+	private AbstractNodeListener listener;
+	
+	public DistributeCountDown(String path,CoordinatorRegistryCenter coordinatorRegistryCenter) {
 		super(path, coordinatorRegistryCenter,null);
 		this.nodeSet = Sets.newHashSet();
+		this.listener = new CountDownListener();
 	}
 
 	@Override
 	public void start() {		
-		addDataListener(new CountDownListener() , instance);
+		addDataListener(listener , instance);
+	}
+	
+	public void close(){
+		nodeStorage.addDataListener(listener,instance);
 	}
 	
 	public void fresh(){

@@ -43,14 +43,26 @@
 	<bean id="groupService" class="com.pingan.jinke.infra.padis.group.GroupService">
 		<constructor-arg name="coordinatorRegistryCenter" ref="zkRegCenter" />
 	</bean>
-	
+
 	<bean id="instanceService" class="com.pingan.jinke.infra.padis.service.InstanceService">
 		<constructor-arg name="coordinatorRegistryCenter" ref="zkRegCenter" />
 	</bean>
-	
+
 	<bean id="migrateService" class="com.pingan.jinke.infra.padis.service.MigrateService">
 		<constructor-arg name="coordinatorRegistryCenter" ref="zkRegCenter" />
 	</bean>
 	
+	<bean id="migrateManager" class="com.pingan.jinke.infra.padis.migrate.MigrateTaskManager" init-method="start">
+		<constructor-arg name="coordinatorRegistryCenter" ref="zkRegCenter" />
+		<constructor-arg name="executor" ref="taskExecutor" />	
+	</bean>
+
+	<bean id="taskExecutor"
+		class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">
+		<property name="corePoolSize" value="5" />
+		<property name="keepAliveSeconds" value="3000" />
+		<property name="maxPoolSize" value="50" />
+		<property name="queueCapacity" value="20" />
+	</bean>
 	
 </beans>

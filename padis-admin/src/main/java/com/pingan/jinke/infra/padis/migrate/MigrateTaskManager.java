@@ -3,6 +3,8 @@ package com.pingan.jinke.infra.padis.migrate;
 import java.util.Map.Entry;
 import java.util.concurrent.ConcurrentMap;
 
+import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
+
 import com.google.common.collect.Maps;
 import com.pingan.jinke.infra.padis.common.CoordinatorRegistryCenter;
 import com.pingan.jinke.infra.padis.common.TaskInfo;
@@ -11,7 +13,7 @@ import lombok.extern.slf4j.Slf4j;
 
 
 @Slf4j
-public class MigrateManager {
+public class MigrateTaskManager {
 
 	private CoordinatorRegistryCenter coordinatorRegistryCenter;
 	
@@ -19,14 +21,17 @@ public class MigrateManager {
 	
 	private ConcurrentMap<String, MigrateTask> taskQueue;
 	
-	public MigrateManager(CoordinatorRegistryCenter coordinatorRegistryCenter){
+	private ThreadPoolTaskExecutor executor;
+	
+	public MigrateTaskManager(CoordinatorRegistryCenter coordinatorRegistryCenter,ThreadPoolTaskExecutor executor){
 		this.coordinatorRegistryCenter = coordinatorRegistryCenter;	
 		this.run = false;
 		this.taskQueue = Maps.newConcurrentMap();
+		this.executor = executor;
 	}
 	
 	public boolean postTask(TaskInfo task){
-		MigrateTask oldTask = taskQueue.putIfAbsent(task.getInstance(), new MigrateTask(task));
+		MigrateTask oldTask = taskQueue.putIfAbsent(task.getInstance(), new MigrateTask(task,coordinatorRegistryCenter));
 		if(oldTask == null){
 			return true;
 		}else{
@@ -37,7 +42,7 @@ public class MigrateManager {
 	public void start(){
 		if(!this.run){
 			this.run = true;
-			new MigrateThread().start();
+			executor.execute(new ManageThread(),200);
 		}
 	}
 	
@@ -46,7 +51,7 @@ public class MigrateManager {
 	}
 	
 	
-	class MigrateThread extends Thread{
+	class ManageThread implements Runnable{
 		
 		@Override
 		public void run(){
@@ -55,7 +60,7 @@ public class MigrateManager {
 					for(Entry<String, MigrateTask> entry:taskQueue.entrySet()){
 						MigrateTask task = entry.getValue();
 						if(!task.isFinished()){
-							task.start(coordinatorRegistryCenter);
+							task.start( executor);
 						}else{
 							taskQueue.remove(entry.getKey());
 						}

@@ -169,6 +169,14 @@ public class NodeStorage {
     }
     
     /**
+     * 删除数据监听器.
+     */
+    public void delDataListener(final TreeCacheListener listener,String path) {
+        TreeCache cache = (TreeCache) coordinatorRegistryCenter.getRawCache(path);
+        cache.getListenable().removeListener(listener);
+    }
+    
+    /**
      * 获取注册中心当前时间.
      * 
      * @return 注册中心当前时间

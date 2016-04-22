@@ -68,7 +68,7 @@ public class GroupListenerManager extends AbstractListenerManager {
 						poolManager.closePool(oldGroup.getSlave());
 					}
 					
-				} else if (Type.NODE_ADDED == event.getType()) {
+				} else if (Type.NODE_ADDED == event.getType()&&!json.isEmpty()) {
 					Group group = JSON.parseObject(json, Group.class);
 					getClusterManager().addGroup(group);
 				} else if (Type.NODE_REMOVED == event.getType()) {

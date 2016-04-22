@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.alibaba.fastjson.JSONObject;
 import com.pingan.jinke.infra.padis.common.Migrate;
 import com.pingan.jinke.infra.padis.common.Result;
+import com.pingan.jinke.infra.padis.common.TaskInfo;
 import com.pingan.jinke.infra.padis.group.GroupService;
+import com.pingan.jinke.infra.padis.migrate.MigrateTaskManager;
 import com.pingan.jinke.infra.padis.node.Group;
 import com.pingan.jinke.infra.padis.service.InstanceService;
 import com.pingan.jinke.infra.padis.service.MigrateService;
@@ -30,6 +32,9 @@ public class MigrateController {
 	
 	@Resource(name = "migrateService")
 	private MigrateService migrateService;
+	
+	@Resource(name = "migrateManager")
+	private MigrateTaskManager migrateManager;
 	
 	@Resource(name = "groupService")
 	private GroupService groupService;
@@ -82,7 +87,7 @@ public class MigrateController {
 				delay = Integer.parseInt(d);
 			}
 			
-			migrateService.addTask(instance, from, to, to_gid, delay);
+			addTask(instance, from, to, to_gid, delay);
 			
 			result.setSuccess(true);
 		} catch (Throwable t) {
@@ -92,6 +97,19 @@ public class MigrateController {
 		}
 
 		return result;
+	}
+	
+	public void addTask(String instance, int from, int to, int gid, int delay) {
+
+		if (migrateManager.postTask(new TaskInfo(instance, from, to))) {
+			for (int i = from; i <= to; i++) {
+				migrateService.persistMigrate(instance, i, gid, delay);
+			}
+		} else {
+			log.warn(instance +"is migrating.please wait!");
+			throw new RuntimeException(instance +"is migrating.please wait!");
+		}
+
 	}
 	
 	@RequestMapping(value = "/delTask", method = RequestMethod.POST)
@@ -111,7 +129,7 @@ public class MigrateController {
 				return result;
 			}
 			int slotid = Integer.parseInt(jsonObj.getString("slot_id"));
-			migrateService.delMigrateSlot(instance, slotid);
+			migrateService.delSlotMigrate(instance, slotid);
 			result.setSuccess(true);
 		} catch (Throwable t) {
 			log.error("delete migrate task fail!", t);

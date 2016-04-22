@@ -6,6 +6,7 @@ import java.util.Map;
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -71,7 +72,7 @@ public class CustomController {
 		Result<List<Map<String,String>>> result = new Result<List<Map<String,String>>>();
 
 		try {
-			if(instance== null||instance.trim().length()==0){
+			if(StringUtils.isEmpty(instance)){
 				result.setSuccess(true);
 				return result;
 			}
