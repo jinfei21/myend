@@ -80,4 +80,15 @@ public class MigrateService {
 		nodeStorage.replaceNodePath(migrateNode.getMigrateSlotPath(instance, migrate.getSlot_id()), JSON.toJSONString(migrate));
 	}
 	
+	public void updateSlotMigrate(String instance,int slotid,Status status){
+		Migrate migrate = getSlotMigrate( instance, slotid);
+		
+		if(migrate != null){
+			migrate.setStatus(status);
+			migrate.setModify(System.currentTimeMillis());
+			updateSlotMigrate(instance,migrate);
+		}
+	}
+
+		
 }

@@ -7,7 +7,7 @@ import org.apache.curator.framework.recipes.cache.TreeCacheEvent.Type;
 import com.alibaba.fastjson.JSON;
 import com.pingan.jinke.infra.padis.common.AbstractListenerManager;
 import com.pingan.jinke.infra.padis.common.CoordinatorRegistryCenter;
-import com.pingan.jinke.infra.padis.core.ClusterManager;
+import com.pingan.jinke.infra.padis.core.ClusterInfoCacheManager;
 import com.pingan.jinke.infra.padis.node.Custom;
 import com.pingan.jinke.infra.padis.storage.AbstractNodeListener;
 
@@ -16,10 +16,9 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class CustomListenerManager extends AbstractListenerManager{
 	
-
 	private CustomService customService;
 	
-	public CustomListenerManager(String instance, CoordinatorRegistryCenter coordinatorRegistryCenter,ClusterManager clusterManager) {
+	public CustomListenerManager(String instance, CoordinatorRegistryCenter coordinatorRegistryCenter,ClusterInfoCacheManager clusterManager) {
 		super(instance, coordinatorRegistryCenter,clusterManager);
 		this.customService = new CustomService(instance, coordinatorRegistryCenter);
 		this.customService.registerCustom();
@@ -32,6 +31,10 @@ public class CustomListenerManager extends AbstractListenerManager{
 	public Custom updateCustom(Custom custom){
 		return this.customService.updateCustom(custom);
 	}
+	
+    public ClusterInfoCacheManager getClusterManager(){
+    	return (ClusterInfoCacheManager) clusterManager;
+    }
 
 	@Override 
 	public void start() {

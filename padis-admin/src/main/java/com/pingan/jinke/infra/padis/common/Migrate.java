@@ -11,6 +11,8 @@ public class Migrate {
 
 	private long create;
 	
+	private long modify;
+	
 	private int slot_id;
 	
 	private int to_gid;
@@ -22,4 +24,5 @@ public class Migrate {
 	private int percent;
 	
 	private int delay;
+	
 }

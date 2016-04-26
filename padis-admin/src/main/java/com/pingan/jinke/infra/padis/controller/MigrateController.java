@@ -1,5 +1,7 @@
 package com.pingan.jinke.infra.padis.controller;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -148,6 +150,18 @@ public class MigrateController {
 		try {
 
 			List<Migrate> list = migrateService.getTask(instance);
+			Collections.sort(list, new Comparator<Migrate>(){
+
+				@Override
+				public int compare(Migrate arg0, Migrate arg1) {
+					if(arg0 != null && arg1!=null){
+						return arg0.getSlot_id() - arg1.getSlot_id() ;
+					}else{
+						return 0;
+					}
+				}
+				
+			});
 			result.setResult(list);
 			result.setSuccess(true);
 		} catch (Throwable t) {

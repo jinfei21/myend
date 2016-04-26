@@ -15,15 +15,15 @@ import redis.clients.jedis.JedisCluster;
 public abstract class AbstractClusterClient {
 	protected JedisCluster jedisCluster;
 	
-	private ClusterConfig clusterConfig;
+	private ClusterInfoCache clusterConfig;
 	
 	public AbstractClusterClient(PadisConfig config){
 		//this(new ZookeeperConfiguration(config.getZkAddr(), "padis", 1000, 3000, 3),config.getInstance(),config.getNameSpace(),config.getConnectionTimeout(),config.getMaxRedirections(),config.getSoTimeout());
-		this.clusterConfig = new ClusterConfig(config);
+		this.clusterConfig = new ClusterInfoCache(config);
 		initializeCluster(clusterConfig);
 	}
 	
-	private void initializeCluster(ClusterConfig clusterConfig){
+	private void initializeCluster(ClusterInfoCache clusterConfig){
 		Set<HostAndPort> set = clusterConfig.getServers();
 		if(set.isEmpty()){
 			throw new RuntimeException("Remote cluster is null.");

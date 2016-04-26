@@ -10,7 +10,7 @@ import com.alibaba.fastjson.JSON;
 import com.pingan.jinke.infra.padis.common.AbstractListenerManager;
 import com.pingan.jinke.infra.padis.common.CoordinatorRegistryCenter;
 import com.pingan.jinke.infra.padis.common.Status;
-import com.pingan.jinke.infra.padis.core.ClusterManager;
+import com.pingan.jinke.infra.padis.core.ClusterInfoCacheManager;
 import com.pingan.jinke.infra.padis.node.Custom;
 import com.pingan.jinke.infra.padis.node.Slot;
 import com.pingan.jinke.infra.padis.storage.AbstractNodeListener;
@@ -23,7 +23,7 @@ public class SlotListenerManager extends AbstractListenerManager{
 	private SlotService slotService;
 	
 	
-	public SlotListenerManager(String instance, CoordinatorRegistryCenter coordinatorRegistryCenter,ClusterManager clusterManager) {
+	public SlotListenerManager(String instance, CoordinatorRegistryCenter coordinatorRegistryCenter,ClusterInfoCacheManager clusterManager) {
 		super(instance, coordinatorRegistryCenter, clusterManager);
 		this.slotService = new SlotService(instance, coordinatorRegistryCenter);
 	}
@@ -40,6 +40,11 @@ public class SlotListenerManager extends AbstractListenerManager{
 	public void start() {
 		addDataListener(new SlotStatusListener() , slotService.getRootSlotPath());
 	}
+	
+    
+    public ClusterInfoCacheManager getClusterManager(){
+    	return (ClusterInfoCacheManager) clusterManager;
+    }
 	
 	class SlotStatusListener extends AbstractNodeListener{
 

@@ -2,18 +2,14 @@ package com.pingan.jinke.infra.padis.common;
 
 import java.util.Set;
 
-import com.pingan.jinke.infra.padis.core.Client;
-
-public interface PoolManager {
+public interface PoolManager<T> {
 	
-	Client lease(HostAndPort node) throws Exception;
+	T lease(HostAndPort node) throws Exception;
 	
-	void release(Client client);
+	void release(T client);
 	
-	void releaseClose(Client client) throws Exception;
-	
-	void closePool(HostAndPort node);
-	
-	void init(Set<HostAndPort> set);
+	void releaseClose(T client) throws Exception;
+		
+	void init(Set<HostAndPort> set,PoolConfig config);
 	
 }
