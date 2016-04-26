@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -17,6 +18,7 @@ import com.pingan.jinke.infra.padis.common.Migrate;
 import com.pingan.jinke.infra.padis.common.Result;
 import com.pingan.jinke.infra.padis.common.TaskInfo;
 import com.pingan.jinke.infra.padis.group.GroupService;
+import com.pingan.jinke.infra.padis.migrate.MigrateTask;
 import com.pingan.jinke.infra.padis.migrate.MigrateTaskManager;
 import com.pingan.jinke.infra.padis.node.Group;
 import com.pingan.jinke.infra.padis.service.InstanceService;
@@ -41,6 +43,9 @@ public class MigrateController {
 	@Resource(name = "groupService")
 	private GroupService groupService;
 	
+	@Resource(name = "taskExecutor")
+	private ThreadPoolTaskExecutor executor;
+
 	@RequestMapping(value = "/addTask", method = RequestMethod.POST)
 	@ResponseBody
 	public Result addTask(@RequestParam(value = "data", defaultValue = "") String data) {
@@ -89,6 +94,14 @@ public class MigrateController {
 				delay = Integer.parseInt(d);
 			}
 			
+			MigrateTask task = migrateManager.getTask(instance);
+			
+			if(task != null){
+				result.setMessages("正在迁移 ,一次只能迁移一个！");
+				result.setSuccess(false);
+				return result;
+			}
+			
 			addTask(instance, from, to, to_gid, delay);
 			
 			result.setSuccess(true);
@@ -101,16 +114,24 @@ public class MigrateController {
 		return result;
 	}
 	
-	public void addTask(String instance, int from, int to, int gid, int delay) {
+	public void addTask(final String instance, final int from, final int to, final int gid, final int delay) {
 
-		if (migrateManager.postTask(new TaskInfo(instance, from, to))) {
-			for (int i = from; i <= to; i++) {
-				migrateService.persistMigrate(instance, i, gid, delay);
+		executor.execute(new Runnable() {
+			
+			@Override
+			public void run() {
+				for (int i = from; i <= to; i++) {
+					migrateService.persistMigrate(instance, i, gid, delay);
+				}
+				if (!migrateManager.postTask(new TaskInfo(instance, from, to))) {
+					for (int i = from; i <= to; i++) {
+						migrateService.delSlotMigrate(instance, i);
+					}
+					log.warn(instance +"is migrating.please wait!");
+				}
 			}
-		} else {
-			log.warn(instance +"is migrating.please wait!");
-			throw new RuntimeException(instance +"is migrating.please wait!");
-		}
+		});
+
 
 	}
 	

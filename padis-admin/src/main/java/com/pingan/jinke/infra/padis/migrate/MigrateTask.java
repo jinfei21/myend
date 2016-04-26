@@ -64,7 +64,7 @@ public class MigrateTask extends Thread {
 	@Override
 	public void run() {
 		countdown.start();
-		SleepUtils.sleep(2000);
+		SleepUtils.sleep(50);
 		for (int cur = taskInfo.getFrom(); cur <= taskInfo.getTo(); cur++) {
 			try {
 				Slot slot = this.slotService.getSlot(cur);

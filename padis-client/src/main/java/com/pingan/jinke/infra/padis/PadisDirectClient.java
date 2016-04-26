@@ -4,9 +4,9 @@ import com.pingan.jinke.infra.padis.common.CoordinatorRegistryCenter;
 import com.pingan.jinke.infra.padis.common.PoolConfig;
 import com.pingan.jinke.infra.padis.common.ZookeeperConfiguration;
 import com.pingan.jinke.infra.padis.core.Client;
-import com.pingan.jinke.infra.padis.core.PadisClientPoolManager;
 import com.pingan.jinke.infra.padis.core.ClusterInfoCacheManager;
 import com.pingan.jinke.infra.padis.core.PadisClientCommand;
+import com.pingan.jinke.infra.padis.core.PadisClientPoolManager;
 import com.pingan.jinke.infra.padis.storage.ZookeeperRegistryCenter;
 
 class PadisDirectClient implements IPadis{

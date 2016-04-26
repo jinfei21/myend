@@ -39,6 +39,10 @@ public class MigrateTaskManager {
 		}
 	}
 	
+	public MigrateTask getTask(String instance){
+		return this.taskQueue.get(instance);
+	}
+	
 	public void start(){
 		if(!this.run){
 			this.run = true;
