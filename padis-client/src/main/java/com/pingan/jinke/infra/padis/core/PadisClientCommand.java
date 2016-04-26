@@ -6,7 +6,6 @@ import static com.pingan.jinke.infra.padis.common.Status.OFFLINE;
 import static com.pingan.jinke.infra.padis.common.Status.PRE_MIGRATE;
 
 import com.pingan.jinke.infra.padis.common.HostAndPort;
-import com.pingan.jinke.infra.padis.common.PoolManager;
 import com.pingan.jinke.infra.padis.exceptions.ClusterException;
 import com.pingan.jinke.infra.padis.node.Group;
 import com.pingan.jinke.infra.padis.node.Slot;
@@ -17,13 +16,13 @@ import lombok.extern.slf4j.Slf4j;
 
 
 @Slf4j
-public abstract class PadisCommand<T> {
+public abstract class PadisClientCommand<T> {
 
-	protected PoolManager poolManager;
+	protected PadisClientPoolManager poolManager;
 
-	protected ClusterManager clusterManager;
+	protected ClusterInfoCacheManager clusterManager;
 
-	public PadisCommand(ClusterManager clusterManager, PoolManager poolManager) {
+	public PadisClientCommand(ClusterInfoCacheManager clusterManager, PadisClientPoolManager poolManager) {
 		this.clusterManager = clusterManager;
 		this.poolManager = poolManager;
 	}
@@ -33,19 +32,16 @@ public abstract class PadisCommand<T> {
 	public T run(String key,boolean isWrite) throws Exception {
 
 		checkNotNull(key, "No way to dispatch this command to Redis Cluster.");
-		if(this.clusterManager.limit()){
-			try{
-				Thread.sleep(100);
-			}catch(Throwable t){				
-			}
-		}
+
+		this.clusterManager.checkLimit();
+		
 		int sid = CRC16Utils.getSlot(key);
 
 		Slot slot = this.clusterManager.getSlot(sid);
 
 		checkNotNull(slot, "slot is null,sid=%s", sid);
 
-		if (isWrite || PRE_MIGRATE == slot.getStatus() || OFFLINE == slot.getStatus()) {
+		if ((isWrite && PRE_MIGRATE == slot.getStatus()) || OFFLINE == slot.getStatus()) {
 			throw new ClusterException("Can not write key for slot {sid=" + sid + "} pre_migrate.");
 		}
 
@@ -79,7 +75,7 @@ public abstract class PadisCommand<T> {
 	}
 
 	private Group getGroup(int gid) {
-		Group group = this.clusterManager.getGroup(gid);
+		Group group = this.poolManager.getGroup(gid);
 		checkNotNull(group, "group is null,gid=%s", gid);
 		return group;
 	}

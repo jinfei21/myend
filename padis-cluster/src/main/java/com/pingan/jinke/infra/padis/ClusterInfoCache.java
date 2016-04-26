@@ -26,7 +26,7 @@ import lombok.extern.slf4j.Slf4j;
 import redis.clients.jedis.HostAndPort;
 
 @Slf4j
-public class ClusterConfig {
+public class ClusterInfoCache {
 
 	private NodeStorage nodeStorage;
 
@@ -34,12 +34,12 @@ public class ClusterConfig {
 
 	private AtomicReference<Custom> atomicCustom;
 
-	public ClusterConfig(PadisConfig config) {
+	public ClusterInfoCache(PadisConfig config) {
 		CoordinatorRegistryCenter regCenter = new ZookeeperRegistryCenter(
 				new ZookeeperConfiguration(config.getZkAddr(), "padis", 1000, 3000, 3));
 		regCenter.init();
 		this.nodeStorage = new NodeStorage(regCenter);
-		this.config = config;
+		this.config = new PadisConfig(config);
 		registerCustom();
 	}
 

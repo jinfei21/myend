@@ -4,29 +4,32 @@ import com.pingan.jinke.infra.padis.common.CoordinatorRegistryCenter;
 import com.pingan.jinke.infra.padis.common.PoolConfig;
 import com.pingan.jinke.infra.padis.common.ZookeeperConfiguration;
 import com.pingan.jinke.infra.padis.core.Client;
-import com.pingan.jinke.infra.padis.core.PadisClientPoolManager;
 import com.pingan.jinke.infra.padis.core.ClusterInfoCacheManager;
+import com.pingan.jinke.infra.padis.core.JedisClientCommand;
+import com.pingan.jinke.infra.padis.core.JedisClientPoolManager;
 import com.pingan.jinke.infra.padis.core.PadisClientCommand;
 import com.pingan.jinke.infra.padis.storage.ZookeeperRegistryCenter;
 
-class PadisDirectClient implements IPadis{
+import redis.clients.jedis.Jedis;
 
-	private PadisClientPoolManager poolManager;
+class JedisDirectClient implements IPadis{
+
+	private JedisClientPoolManager poolManager;
 	
 	private ClusterInfoCacheManager clusterManager;
 	
 	private PadisConfig config;
 	
-	public PadisDirectClient(PadisConfig config){
+	public JedisDirectClient(PadisConfig config){
 		this.config = new PadisConfig(config);	
 		CoordinatorRegistryCenter regCenter = new ZookeeperRegistryCenter(new ZookeeperConfiguration(this.config.getZkAddr(), "padis", 1000, 3000, 3));
 		regCenter.init();		
-		this.poolManager = new PadisClientPoolManager(this.config.getInstance(),regCenter,new PoolConfig(config));		
+		this.poolManager = new JedisClientPoolManager(this.config.getInstance(),regCenter,new PoolConfig(config));		
 		this.clusterManager = new ClusterInfoCacheManager(this.config.getInstance(),regCenter);		
 		init();
 	}
 	
-	public PadisDirectClient(String zkAddr,String instance, String namespace){
+	public JedisDirectClient(String zkAddr,String instance, String namespace){
 		this(new PadisConfig(zkAddr, instance, namespace));
 	}
 	
@@ -50,10 +53,10 @@ class PadisDirectClient implements IPadis{
 	@Override
 	public String set(final String key, final String value) throws Exception{
 		final String targetKey = makeKey(key);
-		return new PadisClientCommand<String>(clusterManager,poolManager){
+		return new JedisClientCommand<String>(clusterManager,poolManager){
 
 			@Override
-			public String execute(Client client) {
+			public String execute(Jedis client) {
 				return client.set(targetKey, value);
 			}
 			
@@ -63,10 +66,10 @@ class PadisDirectClient implements IPadis{
 	@Override	
 	public String get(final  String key) throws Exception{
 		final String targetKey = makeKey(key);
-		return new PadisClientCommand<String>(clusterManager,poolManager){
+		return new JedisClientCommand<String>(clusterManager,poolManager){
 
 			@Override
-			public String execute(Client client) {
+			public String execute(Jedis client) {
 				return client.get(targetKey);
 			}
 			
@@ -76,14 +79,14 @@ class PadisDirectClient implements IPadis{
 	@Override
 	public Long delete(String key) throws Exception {
 		final String targetKey = makeKey(key);
-		return new PadisClientCommand<Long>(clusterManager,poolManager){
+		return new JedisClientCommand<Long>(clusterManager,poolManager){
 
 			@Override
-			public Long execute(Client client) {
-				return client.delete(targetKey);
+			public Long execute(Jedis client) {
+				return client.del(targetKey);
 			}
-			
 		}.run(targetKey,false);
 	}
+	
 	
 }

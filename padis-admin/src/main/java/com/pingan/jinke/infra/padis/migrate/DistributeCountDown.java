@@ -13,6 +13,10 @@ import com.pingan.jinke.infra.padis.common.AbstractListenerManager;
 import com.pingan.jinke.infra.padis.common.CoordinatorRegistryCenter;
 import com.pingan.jinke.infra.padis.storage.AbstractNodeListener;
 
+import lombok.extern.java.Log;
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 public class DistributeCountDown extends AbstractListenerManager{
 	
 	private CountDownLatch countDown;
@@ -37,15 +41,13 @@ public class DistributeCountDown extends AbstractListenerManager{
 	}
 	
 	public void fresh(){
-		
+		this.countDown = new CountDownLatch(1);
 		nodeSet.clear();
 		for(String node:this.nodeStorage.getNodePathChildrenKeys(instance)){
 			nodeSet.add(instance+"/"+node);
 		}
 		if(nodeSet.isEmpty()){
 			this.countDown = new CountDownLatch(0);			
-		}else{
-			this.countDown = new CountDownLatch(1);
 		}
 	}
 	
@@ -58,6 +60,7 @@ public class DistributeCountDown extends AbstractListenerManager{
 		@Override
 		protected void dataChanged(CuratorFramework client, TreeCacheEvent event, String path) {
 			if(Type.NODE_UPDATED == event.getType()||Type.NODE_REMOVED == event.getType()){				
+				log.debug("custom data:{}", new String(event.getData().getData()));
 				nodeSet.remove(path);
 				if(nodeSet.isEmpty()){
 					countDown.countDown();

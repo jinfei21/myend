@@ -27,6 +27,13 @@
 			<groupId>com.pingan.padis</groupId>
 			<artifactId>padis-common</artifactId>
 		</dependency>
+		
+		<dependency>
+			<groupId>redis.clients</groupId>
+			<artifactId>jedis</artifactId>
+			<version>2.8.1</version>
+		</dependency>
+		
 	</dependencies>
 
 

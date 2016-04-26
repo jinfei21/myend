@@ -4,24 +4,23 @@ import java.util.Set;
 
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 
-import com.alibaba.fastjson.JSON;
 import com.pingan.jinke.infra.padis.common.CoordinatorRegistryCenter;
 import com.pingan.jinke.infra.padis.common.Migrate;
 import com.pingan.jinke.infra.padis.common.Status;
 import com.pingan.jinke.infra.padis.common.TaskInfo;
-import com.pingan.jinke.infra.padis.core.Client;
 import com.pingan.jinke.infra.padis.group.GroupService;
 import com.pingan.jinke.infra.padis.node.CustomNode;
 import com.pingan.jinke.infra.padis.node.Group;
 import com.pingan.jinke.infra.padis.node.Slot;
 import com.pingan.jinke.infra.padis.service.MigrateService;
 import com.pingan.jinke.infra.padis.slot.SlotService;
-import com.pingan.jinke.infra.padis.storage.NodeStorage;
 import com.pingan.jinke.infra.padis.util.CRC16Utils;
+import com.pingan.jinke.infra.padis.util.SleepUtils;
 
 import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
+import redis.clients.jedis.Jedis;
 
 @Setter
 @Getter
@@ -57,7 +56,7 @@ public class MigrateTask extends Thread {
 	public void start(ThreadPoolTaskExecutor executor) {
 		if (!this.run) {
 			this.run = true;
-			executor.execute(this,200);
+			executor.execute(this,1000);
 		}
 	}
 
@@ -65,6 +64,7 @@ public class MigrateTask extends Thread {
 	@Override
 	public void run() {
 		countdown.start();
+		SleepUtils.sleep(2000);
 		for (int cur = taskInfo.getFrom(); cur <= taskInfo.getTo(); cur++) {
 			try {
 				Slot slot = this.slotService.getSlot(cur);
@@ -76,12 +76,15 @@ public class MigrateTask extends Thread {
 					this.migrateService.delSlotMigrate(taskInfo.getInstance(), cur);
 				} else {
 					log.error(String.format("slot %s is null.", cur));
+					this.migrateService.updateSlotMigrate(taskInfo.getInstance(), cur, Status.ERROR);
 				}
 
 			} catch (Throwable t) {
+				this.migrateService.updateSlotMigrate(taskInfo.getInstance(), cur, Status.ERROR);
 				log.error(String.format("migrate slot:%s fail!", cur), t);
 			}
 		}
+		countdown.close();
 		isFinished = true;
 	}
 
@@ -92,7 +95,7 @@ public class MigrateTask extends Thread {
 		slot.setModify(System.currentTimeMillis());
 		countdown.fresh();
 		slotService.setSlot(slot);
-		countdown.await(30);
+		countdown.await(600);
 		
 		slot.setStatus(Status.MIGRATE);
 		slot.setTo_gid(migrate.getTo_gid());
@@ -115,7 +118,7 @@ public class MigrateTask extends Thread {
 			Group fromGroup = groupService.getGroup(migrate.getFrom_gid());
 			Group toGroup = groupService.getGroup(migrate.getTo_gid());
 			
-			Client client = new Client(fromGroup.getMaster());
+			Jedis client = new Jedis(fromGroup.getMaster().getHost(),fromGroup.getMaster().getPort(),1000,2000);
 			
 			Set<String> keys = client.keys(taskInfo.getInstance()+"*");
 			
@@ -130,6 +133,7 @@ public class MigrateTask extends Thread {
 					
 				}
 			}
+			SleepUtils.sleep(6000);
 			
 			//完成
 			postMigrateStatus(slot, migrate);
@@ -145,7 +149,7 @@ public class MigrateTask extends Thread {
 		slot.setStatus(Status.ONLINE);
 		countdown.fresh();
 		slotService.setSlot(slot);
-		countdown.await(30);
+		countdown.await(600);
 	}
 	
 

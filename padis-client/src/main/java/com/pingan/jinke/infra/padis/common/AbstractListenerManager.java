@@ -3,7 +3,7 @@ package com.pingan.jinke.infra.padis.common;
 import org.apache.curator.framework.recipes.cache.TreeCacheListener;
 import org.apache.curator.framework.state.ConnectionStateListener;
 
-import com.pingan.jinke.infra.padis.core.ClusterManager;
+import com.pingan.jinke.infra.padis.core.ClusterInfoCacheManager;
 import com.pingan.jinke.infra.padis.storage.NodeStorage;
 
 /**
@@ -36,9 +36,5 @@ public abstract class AbstractListenerManager {
     
     protected void addConnectionStateListener(final ConnectionStateListener listener) {
     	nodeStorage.addConnectionStateListener(listener);
-    }
-    
-    public ClusterManager getClusterManager(){
-    	return clusterManager;
     }
 }

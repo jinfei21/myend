@@ -39,3 +39,4 @@ var module = angular.module('portal', ['ngRoute',
                 reloadOnSearch: false
             });
     }]);
+	 

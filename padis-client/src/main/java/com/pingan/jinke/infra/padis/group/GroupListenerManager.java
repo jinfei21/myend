@@ -10,10 +10,10 @@ import org.apache.curator.framework.recipes.cache.TreeCacheEvent.Type;
 import com.alibaba.fastjson.JSON;
 import com.google.common.collect.Sets;
 import com.pingan.jinke.infra.padis.common.AbstractListenerManager;
+import com.pingan.jinke.infra.padis.common.ClusterManager;
 import com.pingan.jinke.infra.padis.common.CoordinatorRegistryCenter;
 import com.pingan.jinke.infra.padis.common.HostAndPort;
-import com.pingan.jinke.infra.padis.common.PoolManager;
-import com.pingan.jinke.infra.padis.core.ClusterManager;
+import com.pingan.jinke.infra.padis.core.AbstractClientPoolManager;
 import com.pingan.jinke.infra.padis.node.Group;
 import com.pingan.jinke.infra.padis.storage.AbstractNodeListener;
 
@@ -23,7 +23,6 @@ import lombok.extern.slf4j.Slf4j;
 public class GroupListenerManager extends AbstractListenerManager {
 
 	private GroupService groupService;
-	private PoolManager poolManager;
 
 	public GroupListenerManager(String instance, CoordinatorRegistryCenter coordinatorRegistryCenter,
 			ClusterManager clusterManager) {
@@ -35,15 +34,15 @@ public class GroupListenerManager extends AbstractListenerManager {
 		return this.groupService.getAllGroups();
 	}
 
-	public void setPoolManager(PoolManager poolManager) {
-		this.poolManager = poolManager;
-	}
-
 	@Override
 	public void start() {
 		addDataListener(new GroupStatusListener(), groupService.getRootGroupPath());
 	}
 
+	public AbstractClientPoolManager getClusterManager(){
+    	return (AbstractClientPoolManager) clusterManager;
+    }
+	
 	class GroupStatusListener extends AbstractNodeListener {
 
 		@Override
@@ -61,11 +60,11 @@ public class GroupListenerManager extends AbstractListenerManager {
 					set.add(group.getSlave());
 	
 					if (!set.contains(oldGroup.getMaster())) {
-						poolManager.closePool(oldGroup.getMaster());
+						getClusterManager().closePool(oldGroup.getMaster());
 					}
 	
 					if (!set.contains(oldGroup.getSlave())) {
-						poolManager.closePool(oldGroup.getSlave());
+						getClusterManager().closePool(oldGroup.getSlave());
 					}
 					
 				} else if (Type.NODE_ADDED == event.getType()&&!json.isEmpty()) {
@@ -73,8 +72,8 @@ public class GroupListenerManager extends AbstractListenerManager {
 					getClusterManager().addGroup(group);
 				} else if (Type.NODE_REMOVED == event.getType()) {
 					Group group = JSON.parseObject(json, Group.class);
-					poolManager.closePool(group.getMaster());
-					poolManager.closePool(group.getSlave());
+					getClusterManager().closePool(group.getMaster());
+					getClusterManager().closePool(group.getSlave());
 				}
 			}catch(Throwable t){
 				log.error("update group fail!", t);
