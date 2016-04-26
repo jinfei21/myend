@@ -34,7 +34,8 @@
     <table class="table table-bordered table-hover table-responsive table-condensed">
         <tbody>
         <tr ng-repeat="trId in tableLength">
-            <td ng-repeat="tdId in tableLength" ng-click="showGroup(trId * 32 + $index)" style="background-color:{{colors[slotGidMap[trId * 32 + $index]]}};">{{trId * 32 + $index}}</td>
+            <td ng-repeat="tdId in tableLength" ng-click="showGroup(trId * 32 + $index)" ng-mouseover="getStatus(trId * 32 + $index)" data-toggle="tooltip"
+                title="{{status}}" style="background-color:{{colors[slotGidMap[trId * 32 + $index]]}};">{{trId * 32 + $index}}</td>
         </tr>
         </tbody>
     </table>

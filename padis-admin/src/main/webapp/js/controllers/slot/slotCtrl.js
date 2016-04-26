@@ -14,6 +14,7 @@ function SlotCtrl($scope, SlotService,MigrateService) {
 		$scope.slotsInfo = {'instance':'','slots':[], 'groups':[]};
 		$scope.tableLength = [];
 		$scope.group = {};
+		$scope.status = '';
 		$scope.slotGidMap = {};
 		$scope.colors = ['red','yellow','lightgreen','lightskyblue','lightgray','gold','violet','pink','thistle','lavender','aqua'];
 
@@ -55,7 +56,17 @@ function SlotCtrl($scope, SlotService,MigrateService) {
 		        }
 		    }
 		};
+		
+		$scope.getStatus = function(index){
+			var slots = $scope.slotsInfo.slots;
+	        if(slots[index]){
+	           $scope.status = "id : "+ index +"\nstatus : " + slots[index].status;
+	           return;
+	        }
+		    $scope.status = "id : "+ index +"\nstatus : OFFLINE";
+		}
 	}
+	
 	
 	function getInstances() {
 		var instanceResult = MigrateService.getInstances();
