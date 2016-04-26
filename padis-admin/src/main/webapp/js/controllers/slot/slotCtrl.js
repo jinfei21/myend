@@ -13,9 +13,9 @@ function SlotCtrl($scope, SlotService,MigrateService) {
 		$scope.instances = [];
 		$scope.slotsInfo = {'instance':'','slots':[], 'groups':[]};
 		$scope.tableLength = [];
-		$scope.group = '';
+		$scope.group = {};
 		$scope.slotGidMap = {};
-		$scope.colors = ['red','yellow','green','blue','gray','black','indigo'];
+		$scope.colors = ['red','yellow','lightgreen','lightskyblue','lightgray','gold','violet','pink','thistle','lavender','aqua'];
 
 		refreshData();
 	}
@@ -24,11 +24,6 @@ function SlotCtrl($scope, SlotService,MigrateService) {
 		getInstances();
 		setTableLength();
 		initSlotGidMap();
-		console.log("Instances:"+JSON.stringify($scope.instances));
-		console.log("slotsInfo:"+JSON.stringify($scope.slotsInfo));
-		console.log("tableLength:"+JSON.stringify($scope.tableLength));
-		console.log("slotGidMap:"+JSON.stringify($scope.slotGidMap));
-
 	}
 	
 	function initFunctions() {
@@ -39,11 +34,6 @@ function SlotCtrl($scope, SlotService,MigrateService) {
 					$scope.slotsInfo = data.result;
 					$scope.isShow = false;
 					initSlotGidMap();
-//					console.log("data.result:"+JSON.stringify(data.result));
-					console.log("Instances:"+JSON.stringify($scope.instances));
-					console.log("slotsInfo:"+JSON.stringify($scope.slotsInfo));
-					console.log("tableLength:"+JSON.stringify($scope.tableLength));
-					console.log("slotGidMap:"+JSON.stringify($scope.slotGidMap));
 				} else {
 					//do nothing
 				}
@@ -59,7 +49,7 @@ function SlotCtrl($scope, SlotService,MigrateService) {
 		    var groups = $scope.slotsInfo.groups;
 		    for(var i in groups){
 		        if(groups[i].id === grpId){
-		            $scope.group = groups[i].master;
+		            $scope.group = groups[i];
 		            $scope.isShow = true;
 		            break;
 		        }

@@ -8,42 +8,35 @@
             </small>
         </h1>
     </div>
-    <div class="row">
-        <div class="widget-box">
-            <div class="widget-header">
-                <h4>实例列表</h4>
-            </div>
-
-            <div class="widget-body">
-                <div class="widget-main">
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <label class="col-md-1 control-label">Instance</label>
-                            <select class="form-control col-md-2" ng-model="instance" ng-options="ins for ins in instances" ng-change="getSlotsInfo(instance)"></select>
-
-
-                            <!--<hr>-->
-                            <div ng-show ="isShow">
-                                <label class="col-sm-1 control-label">Group</label>
-                                <label class="col-md-2 control-label b">{{group.host + ' : ' + group.port}}</label>
-                            </div>
-                        </div>
-                        <hr>
-                        <div class="col-xs-12">
-                            <label class="col-sm-1 control-label">Slots Status</label>
-                            <div class="table-responsive">
-                                <table class="table table-bordered table-hover col-sm-4">
-                                    <tbody>
-                                    <tr ng-repeat="trId in tableLength">
-                                        <td ng-repeat="tdId in tableLength" ng-click="showGroup(trId * 32 + $index)" style="background-color:{{colors[slotGidMap[trId * 32 + $index]]}};">{{trId * 32 + $index}}</td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+    
+    <div>
+        <label class="control-label h5">Instance</label>
     </div>
+    <div>
+    	<select class="form-control" ng-model="instance" ng-options="ins for ins in instances" ng-change="getSlotsInfo(instance)"></select>
+    </div>
+    <hr>
+    
+   <div ng-show ="isShow">
+     <div>
+         <label class="control-label h5">Group</label>
+     </div>
+     <div>
+       	<label class="control-label">{{'id : ' + group.id + ',  master : ' + group.master.host + ' : ' + group.master.port + ',  slave : ' + group.slave.host + ' : ' + group.slave.port}}</label>
+   	 </div>
+   	 <hr>
+   </div>
+   
+    <div>
+        <label class="control-label h5">Slots Status</label>
+    </div> 
+                  
+    <table class="table table-bordered table-hover table-responsive table-condensed">
+        <tbody>
+        <tr ng-repeat="trId in tableLength">
+            <td ng-repeat="tdId in tableLength" ng-click="showGroup(trId * 32 + $index)" style="background-color:{{colors[slotGidMap[trId * 32 + $index]]}};">{{trId * 32 + $index}}</td>
+        </tr>
+        </tbody>
+    </table>
+         
 </div>
