@@ -2,6 +2,10 @@ package com.pingan.jinke.infra.padis.slot;
 
 import java.util.List;
 import java.util.Set;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 
 import com.alibaba.fastjson.JSON;
 import com.google.common.collect.Lists;
@@ -10,6 +14,7 @@ import com.pingan.jinke.infra.padis.common.CoordinatorRegistryCenter;
 import com.pingan.jinke.infra.padis.node.Slot;
 import com.pingan.jinke.infra.padis.node.SlotNode;
 import com.pingan.jinke.infra.padis.storage.NodeStorage;
+import com.pingan.jinke.infra.padis.util.RegExceptionHandler;
 
 public class SlotService {
 
@@ -49,12 +54,29 @@ public class SlotService {
 	
 	public List<Slot> getAllSlots(){
 		List<Slot> list = Lists.newArrayList();
+		ExecutorService service = Executors.newCachedThreadPool();
 		
-		for(int i=0;i<1024;i++){
-			Slot slot = getSlot(i);
-			list.add(slot);
+		int num = 50;
+		List<Future<List<Slot>>> fList = Lists.newArrayList();
+		
+		for(int i=0;i<1024;i = i+num){
+			int to = i + num;
+			if(to > 1024){
+				to = 1024;
+			}
+			Future<List<Slot>> f = service.submit(new SlotCallable(i, to));
+			fList.add(f);
 		}
 		
+		for(Future<List<Slot>> f:fList){
+			try{
+				List<Slot> sList = f.get();
+				list.addAll(sList);
+			}catch(Exception e){
+				RegExceptionHandler.handleException(e);
+			}
+		}
+		service.shutdown();
 		return list;
 	}
 	
@@ -78,5 +100,29 @@ public class SlotService {
 			}
 		}
 		return set;
+	}
+	
+	
+	class SlotCallable implements Callable<List<Slot>>{
+
+		private int from;
+		private int to;
+		
+		public SlotCallable(int from,int to){
+			this.from = from;
+			this.to = to;
+		}
+		
+		@Override
+		public List<Slot> call() throws Exception {
+			List<Slot> list = Lists.newArrayList();
+
+			for(int i=from;i<to;i++){
+				Slot slot = getSlot(i);
+				list.add(slot);
+			}
+			return list;
+		}
+		
 	}
 }
