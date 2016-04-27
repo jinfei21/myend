@@ -68,4 +68,15 @@ public class SlotService {
 		}
 		return set;
 	}
+	
+	public Set<Integer> getSlotGroups(List<Slot> slotList){
+		Set<Integer> set = Sets.newHashSet();
+		
+		for(Slot slot : slotList){
+			if(null != slot){
+				set.add(slot.getSrc_gid());	
+			}
+		}
+		return set;
+	}
 }

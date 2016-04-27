@@ -47,7 +47,6 @@ function DistSlotCtrl($scope, SlotService,GroupService,MigrateService) {
     	instancesResult.$promise.then(function(data) {
     		if (data.success) {
     			$scope.instances = data.result;
-    			console.log("instances: " +JSON.stringify($scope.instances));
     		} else {
     			//do nothing
     		}
@@ -60,7 +59,6 @@ function DistSlotCtrl($scope, SlotService,GroupService,MigrateService) {
     	groupResult.$promise.then(function(data) {
     		if (data.success) {
     			$scope.groups = data.result;
-    			console.log("groups: " +JSON.stringify($scope.groups));
     		} else {
     			//do nothing
     		}

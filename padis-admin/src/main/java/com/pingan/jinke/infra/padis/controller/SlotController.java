@@ -83,7 +83,7 @@ public class SlotController {
 			String jsonStr = JSON.toJSONString(list,true);
 			JSONArray slotJsonArray = JSONArray.parseArray(jsonStr);
 			//Groups
-			Set<Integer> set = slotService.getAllGroups();
+			Set<Integer> set = slotService.getSlotGroups(list);
 			List<Group> grpList = new ArrayList<Group>();
 			for(int gid : set){
 				Group grp = groupService.getGroup(gid);
