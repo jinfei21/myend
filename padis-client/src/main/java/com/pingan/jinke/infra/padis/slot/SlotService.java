@@ -56,7 +56,7 @@ public class SlotService {
 		List<Slot> list = Lists.newArrayList();
 		ExecutorService service = Executors.newCachedThreadPool();
 		
-		int num = 50;
+		int num = 10;
 		List<Future<List<Slot>>> fList = Lists.newArrayList();
 		
 		for(int i=0;i<1024;i = i+num){
