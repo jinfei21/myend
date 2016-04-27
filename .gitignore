@@ -1,11 +1,7 @@
-*.log
-.project
+*.project
+*.prefs
+*.classpath
+*.jsdtscope
+*.container
 padis-admin/.settings/*.*
 padis-client/.settings/*.*
-.settings/*.prefs
-*.classpath
-*.prefs
-padis-cluster/.settings/*.*
-padis-common/.settings/*.*
-*.properties
-*.jar
