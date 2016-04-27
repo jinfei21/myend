@@ -10,9 +10,11 @@ function DistSlotCtrl($scope, SlotService,GroupService,MigrateService) {
     /***********************functions***********************/
     function initScope() {
         initParameters();
+        initFunctions();
     }
     
     function initParameters() {
+    	$scope.data = [{msg:'',type:'',isShow:''}];
     	 $scope.instances = [];
     	 $scope.groups = [];
     	 $scope.slots = [{fromId:'',toId:'',groupId:''}];
@@ -20,7 +22,8 @@ function DistSlotCtrl($scope, SlotService,GroupService,MigrateService) {
 			 instance:'',
     	 	 slots:$scope.slots
     	 };
-    	 
+    	 $scope.isShowGrpInfo = false;
+    	 $scope.grpInfo = {};
     	 refreshData();
     }
 	
@@ -28,6 +31,16 @@ function DistSlotCtrl($scope, SlotService,GroupService,MigrateService) {
     	getInstances();
 		getGroups();
 	}
+    
+    function initFunctions() {
+    	
+        //不显示提示信息
+        $scope.closeAlert = function () {
+            $scope.data.isShow = false;
+            
+        };  
+    	
+    }
     
     function getInstances() {
     	var instancesResult = MigrateService.getInstances();
@@ -58,6 +71,7 @@ function DistSlotCtrl($scope, SlotService,GroupService,MigrateService) {
     
     $scope.addSlot = function(){
     	$scope.slots.push({fromId:'',toId:'',groupId:''});
+		
     };
     
     $scope.remove = function (index) {
@@ -69,7 +83,42 @@ function DistSlotCtrl($scope, SlotService,GroupService,MigrateService) {
     	var result = SlotService.distSlots({
             'slotsInfo': $scope.slotsInfo
           });
+		showAlert('success', '提交成功！');  
+    	processData(result);
     };
     
+    function processData(result) {
+        result.$promise.then(
+            function (data) {
+                $scope.isLoading = false;
+                if (data.success) {
+                	showAlert('success', 'SLot分配成功！');    
+ 
+                } else {
+                    showAlert('warning', 'SLot分配失败！' + data.messages);
+                }
+         });
+    }
+    
+    function showAlert(type, msg) {
+        $scope.data.msg = msg;
+        $scope.data.type = type;
+        $scope.data.isShow = true;
+    }
+    
+    $scope.showGroup = function(grpId){
+    	var groups = $scope.groups;
+	    for(var i in groups){
+	        if(groups[i].id === grpId){
+	        	var grpStr = "master : " + groups[i].master.host + ":" + groups[i].master.port
+				+ ",  slave : " + groups[i].slave.host + ":" + groups[i].slave.port;
+	        	
+	            $scope.grpInfo[grpId+""] = grpStr;
+	            $scope.isShowGrpInfo = true;
+	            return;
+	        }
+	    }
+	    $scope.isShowGrpInfo = false;
+	};
 	
 }
