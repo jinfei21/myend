@@ -106,4 +106,11 @@ public class JedisClientPoolManager extends AbstractClientPoolManager implements
 		}
 	}
 
+	@Override
+	public void close() {
+		for(JedisPool pool:node2Pool.values()){
+			pool.close();
+		}
+	}
+
 }

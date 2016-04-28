@@ -16,11 +16,13 @@ class JedisDirectClient implements IPadis{
 	
 	private ClusterInfoCacheManager clusterManager;
 	
+	private CoordinatorRegistryCenter regCenter;
+	
 	private PadisConfig config;
 	
 	public JedisDirectClient(PadisConfig config){
 		this.config = new PadisConfig(config);	
-		CoordinatorRegistryCenter regCenter = new ZookeeperRegistryCenter(new ZookeeperConfiguration(this.config.getZkAddr(), "padis", 1000, 3000, 3));
+		regCenter = new ZookeeperRegistryCenter(new ZookeeperConfiguration(this.config.getZkAddr(), "padis", 1000, 3000, 3));
 		regCenter.init();		
 		this.poolManager = new JedisClientPoolManager(this.config.getInstance(),regCenter,new PoolConfig(config));		
 		this.clusterManager = new ClusterInfoCacheManager(this.config.getInstance(),regCenter);		
@@ -34,7 +36,6 @@ class JedisDirectClient implements IPadis{
 	public void init(){
 		//启动监听器,加载slot信息，注册custom
 		this.clusterManager.init();
-		
 		//初始化连接池
 		this.poolManager.init();
 	}
@@ -44,6 +45,12 @@ class JedisDirectClient implements IPadis{
 		this.config.setNameSpace(nameSpace);
 	}
 
+	@Override
+	public void close() {
+		regCenter.close();
+		poolManager.close();
+	}
+	
 	private String makeKey(String key){
 		return String.format("%s$%s$%s", config.getInstance(),config.getNameSpace(),key);
 	}

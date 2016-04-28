@@ -1,5 +1,9 @@
 package com.pingan.jinke.infra.padis;
 
+import java.io.IOException;
+
+import com.pingan.jinke.infra.padis.util.RegExceptionHandler;
+
 public class PadisClusterClient extends AbstractClusterClient implements IPadis{
 	
 	public PadisClusterClient(PadisConfig config){
@@ -29,6 +33,14 @@ public class PadisClusterClient extends AbstractClusterClient implements IPadis{
 		return jedisCluster.del(key);
 	}
 
+	@Override
+	public void close() {
+		try {
+			clusterConfig.close();
+			jedisCluster.close();			
+		} catch (IOException e) {
+			RegExceptionHandler.handleException(e);
+		}
+	}
 
-	
 }

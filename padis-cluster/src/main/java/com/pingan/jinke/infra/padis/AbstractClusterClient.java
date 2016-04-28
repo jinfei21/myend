@@ -15,7 +15,7 @@ import redis.clients.jedis.JedisCluster;
 public abstract class AbstractClusterClient {
 	protected JedisCluster jedisCluster;
 	
-	private ClusterInfoCache clusterConfig;
+	protected ClusterInfoCache clusterConfig;
 	
 	public AbstractClusterClient(PadisConfig config){
 		//this(new ZookeeperConfiguration(config.getZkAddr(), "padis", 1000, 3000, 3),config.getInstance(),config.getNameSpace(),config.getConnectionTimeout(),config.getMaxRedirections(),config.getSoTimeout());

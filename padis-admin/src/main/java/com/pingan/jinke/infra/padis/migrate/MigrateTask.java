@@ -114,27 +114,33 @@ public class MigrateTask extends Thread {
 		}else{
 			//等待所有的客户端确认状态
 			preMigrateStatus( slot, migrate);
-			
+			Jedis client = null;
 			Group fromGroup = groupService.getGroup(migrate.getFrom_gid());
 			Group toGroup = groupService.getGroup(migrate.getTo_gid());
 			
-			Jedis client = new Jedis(fromGroup.getMaster().getHost(),fromGroup.getMaster().getPort(),1000,2000);
-			
-			Set<String> keys = client.keys(taskInfo.getInstance()+"*");
-			
-			for(String key:keys){
-				int id = CRC16Utils.getSlot(key);
-				if(id == slot.getId()){
-					try{
-						client.migrate(toGroup.getMaster().getHost(), toGroup.getMaster().getPort(), key, 0, migrate.getDelay());
-					}catch(Throwable t){
-						log.error(String.format("migrate key:%s  from %s to %s", key,fromGroup.getMaster(),toGroup.getMaster()), t);
+			try{
+				
+				client = new Jedis(fromGroup.getMaster().getHost(),fromGroup.getMaster().getPort(),1000,2000);
+				
+				Set<String> keys = client.keys(taskInfo.getInstance()+"*");
+				
+				for(String key:keys){
+					int id = CRC16Utils.getSlot(key);
+					if(id == slot.getId()){
+						try{
+							client.migrate(toGroup.getMaster().getHost(), toGroup.getMaster().getPort(), key, 0, migrate.getDelay());
+						}catch(Throwable t){
+							log.error(String.format("migrate key:%s  from %s to %s", key,fromGroup.getMaster(),toGroup.getMaster()), t);
+						}
+						
 					}
-					
 				}
+			}catch(Throwable t){
+				log.error(String.format("slot:%s,from:%s,to:%s", slot.getId(),fromGroup==null?slot.getSrc_gid():fromGroup.getMaster(),toGroup==null?slot.getTo_gid():toGroup.getMaster()), t);
+				if(client != null){
+					client.close();
+				}				
 			}
-			SleepUtils.sleep(6000);
-			
 			//完成
 			postMigrateStatus(slot, migrate);
 			

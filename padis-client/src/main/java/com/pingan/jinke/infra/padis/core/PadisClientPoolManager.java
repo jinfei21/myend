@@ -14,6 +14,7 @@ import com.pingan.jinke.infra.padis.common.PoolManager;
 import com.pingan.jinke.infra.padis.node.Group;
 
 import lombok.extern.slf4j.Slf4j;
+import redis.clients.jedis.JedisPool;
 
 @Slf4j
 public class PadisClientPoolManager extends AbstractClientPoolManager implements PoolManager<Client> {
@@ -92,6 +93,13 @@ public class PadisClientPoolManager extends AbstractClientPoolManager implements
 	public void closePool(HostAndPort node) {
 		Pool pool = this.node2Pool.remove(node);
 		if (pool != null) {
+			pool.close();
+		}
+	}
+	
+	@Override
+	public void close() {
+		for(ClientPool pool:node2Pool.values()){
 			pool.close();
 		}
 	}

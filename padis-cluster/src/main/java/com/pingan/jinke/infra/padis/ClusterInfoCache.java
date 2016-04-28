@@ -144,4 +144,8 @@ public class ClusterInfoCache {
 	public int getMinIdle() {
 		return this.config.getMinIdle();
 	}
+	
+	public void close(){
+		this.nodeStorage.close();
+	}
 }

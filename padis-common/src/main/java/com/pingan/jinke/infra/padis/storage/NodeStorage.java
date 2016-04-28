@@ -184,4 +184,11 @@ public class NodeStorage {
     public long getRegistryCenterTime() {
         return coordinatorRegistryCenter.getRegistryCenterTime("/padis/systemTime/current");
     }
+    
+    /**
+     * 关闭注册中心
+     */
+    public void close(){
+    	coordinatorRegistryCenter.close();
+    }
 }

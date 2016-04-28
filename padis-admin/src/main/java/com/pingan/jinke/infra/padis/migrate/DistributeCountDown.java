@@ -59,8 +59,10 @@ public class DistributeCountDown extends AbstractListenerManager{
 
 		@Override
 		protected void dataChanged(CuratorFramework client, TreeCacheEvent event, String path) {
-			if(Type.NODE_UPDATED == event.getType()||Type.NODE_REMOVED == event.getType()){				
-				log.debug("custom data:{}", new String(event.getData().getData()));
+			if(Type.NODE_UPDATED == event.getType()||Type.NODE_REMOVED == event.getType()){	
+				if(event.getData() != null){
+					log.debug("custom data:{}", new String(event.getData().getData()));
+				}
 				nodeSet.remove(path);
 				if(nodeSet.isEmpty()){
 					countDown.countDown();

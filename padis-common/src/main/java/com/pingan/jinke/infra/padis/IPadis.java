@@ -9,4 +9,6 @@ public interface IPadis {
 	Long delete(final  String key) throws Exception;
 	
 	void setNameSpace(String nameSpace);
+	
+	void close();
 }

@@ -34,4 +34,6 @@ public abstract class AbstractClientPoolManager implements ClusterManager {
 	}
 	
 	public abstract void closePool(HostAndPort node);
+	
+	public abstract void close();
 }
