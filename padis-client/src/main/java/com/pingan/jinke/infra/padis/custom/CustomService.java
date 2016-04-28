@@ -61,6 +61,7 @@ public class CustomService {
 		if (old != null) {
 			custom.setCreate(old.getCreate());
 			custom.setModify(System.currentTimeMillis());
+			custom.setHost(old.getHost());
 			String data = JSON.toJSONString(custom);
 			this.nodeStorage.updateNodePath(customPath, data);
 			return custom;
