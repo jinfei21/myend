@@ -17,14 +17,14 @@ function SlotCtrl($scope, SlotService,MigrateService) {
 		$scope.status = '';
 		$scope.slotGidMap = {};
 		$scope.colors = ['red','yellow','lightgreen','lightskyblue','lightgray','gold','violet','pink','thistle','lavender','aqua'];
-
+		$scope.fresh = '刷新';
+		
 		refreshData();
 	}
 
 	function refreshData() {
 		getInstances();
 		setTableLength();
-		initSlotGidMap();
 	}
 	
 	function initFunctions() {
@@ -39,6 +39,16 @@ function SlotCtrl($scope, SlotService,MigrateService) {
 					//do nothing
 				}
 			});
+		};
+		
+		$scope.reFresh = function(instance){
+			if('刷新' === $scope.fresh){
+				$scope.fresh = '停止';
+				$scope.timer = setInterval($scope.getSlotsInfo, 1000, instance); 
+			}else{
+				clearInterval( $scope.timer );
+				$scope.fresh = '刷新';
+			}
 		};
 		
 		$scope.showGroup = function(index){
@@ -109,8 +119,4 @@ function SlotCtrl($scope, SlotService,MigrateService) {
 	}
 
 }
-
-
-
-
 

@@ -6,6 +6,7 @@ import java.util.Set;
 
 import javax.annotation.Resource;
 
+import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.google.common.collect.Lists;
 import com.pingan.jinke.infra.padis.common.CoordinatorRegistryCenter;
 import com.pingan.jinke.infra.padis.common.Result;
 import com.pingan.jinke.infra.padis.common.Status;
@@ -40,6 +42,9 @@ public class SlotController {
 	@Resource(name = "groupService")
 	private GroupService groupService;
 	
+	@Resource(name = "taskExecutor")
+	private ThreadPoolTaskExecutor executor;
+	
 	@RequestMapping(value = "/distSlots",  method = RequestMethod.POST)
 	@ResponseBody
 	public Result<String> distSlots(@RequestParam(value = "slotsInfo", defaultValue = "") String slotsInfo){
@@ -47,20 +52,44 @@ public class SlotController {
 		
 		try{
 			JSONObject jsonObj = JSONObject.parseObject(slotsInfo);
-			log.debug("slotsInfo: "+JSON.toJSONString(slotsInfo));
+//			log.info("SlotController distSlots slotsInfo: "+JSON.toJSONString(slotsInfo));
 			String instance = jsonObj.getString("instance");
+			
+			if(instanceService.isExisted(instance)){
+				result.setMessages("instance已经存在。");
+				result.setSuccess(false);
+				return result;
+			}
+			
 			JSONArray slots = jsonObj.getJSONArray("slots");
-			log.debug("slots: "+JSON.toJSONString(slots));
+			SlotService slotService = new SlotService(instance,coordinatorRegistryCenter);
+			
+			List<Slot> slotList = Lists.newArrayList();
+			int count = 200;
 			for(Object obj : slots){
 				JSONObject jsonData = JSON.parseObject(obj.toString());
 				int fromId = jsonData.getIntValue("fromId");
 				int toId = jsonData.getIntValue("toId");
 				int groupId = jsonData.getIntValue("groupId");
-				for(int id = fromId; id <= toId; id++){
-					Slot slot = new Slot(id,Status.ONLINE,0,groupId,0,0);
-					SlotService slotService = new SlotService(instance,coordinatorRegistryCenter);
-					slotService.setSlot(slot);
+				
+				if(fromId > toId || toId > 1023 || fromId < 0){
+					result.setMessages("slot from 或slot to取值范围不正确.");
+					result.setSuccess(false);
+					return result;
 				}
+				
+				for(int id = fromId; id <= toId; id++){
+					long currentTime = System.currentTimeMillis();
+					Slot slot = new Slot(id,Status.ONLINE,currentTime,groupId,0,currentTime);
+					slotList.add(slot);
+					if(slotList.size() == count){
+						executor.execute(new distSlotThread(slotList, slotService));
+						slotList = Lists.newArrayList();
+					}
+				}
+			}
+			if(!slotList.isEmpty()){
+				executor.execute(new distSlotThread(slotList, slotService));
 			}
 			result.setSuccess(true);
 		}catch (Throwable t) {
@@ -107,6 +136,26 @@ public class SlotController {
 		}
 		
 		return result;
+	}
+	
+	
+	class distSlotThread implements Runnable{
+		private List<Slot> slotList;
+		private SlotService slotService;
+		
+		public distSlotThread(List<Slot> slotList, SlotService slotService){
+			this.slotList = slotList;
+			this.slotService = slotService;
+		}
+		
+		@Override
+		public void run() {
+			for(Slot slot : slotList){
+				slotService.setSlot(slot);
+			}
+			slotList.clear();
+		}
+		
 	}
 	
 }

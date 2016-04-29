@@ -90,10 +90,10 @@ function DistSlotCtrl($scope, SlotService,GroupService,MigrateService) {
             function (data) {
                 $scope.isLoading = false;
                 if (data.success) {
-                	showAlert('success', 'SLot分配成功！');    
+//                	showAlert('success', 'SLot分配成功！');    
  
                 } else {
-                    showAlert('warning', 'SLot分配失败！' + data.messages);
+                    showAlert('warning', '错误！' + data.messages);
                 }
          });
     }

@@ -13,7 +13,7 @@
         <label class="control-label h5">Instance</label>
     </div>
     <div>
-    	<select class="form-control" ng-model="instance" ng-options="ins for ins in instances" ng-click="getSlotsInfo(instance)"></select>
+    	<select class="form-control" ng-model="slotsInfo.instance" ng-options="ins for ins in instances" ng-change="getSlotsInfo(slotsInfo.instance)"></select>
     </div>
     <hr>
     
@@ -27,9 +27,10 @@
    	 <hr>
    </div>
    
-    <div>
+    <h5>
         <label class="control-label h5">Slots Status</label>
-    </div> 
+        <button class="btn btn-yellow" ng-click="reFresh(slotsInfo.instance)">{{fresh}}</button>
+    </h5> 
                   
     <table class="table table-bordered table-hover table-responsive table-condensed">
         <tbody>
