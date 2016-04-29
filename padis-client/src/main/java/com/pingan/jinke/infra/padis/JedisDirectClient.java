@@ -58,7 +58,7 @@ class JedisDirectClient implements IPadis{
 	@Override
 	public String set(final String key, final String value) throws Exception{
 		final String targetKey = makeKey(key);
-		return new JedisClientCommand<String>(clusterManager,poolManager){
+		return new JedisClientCommand<String>(clusterManager,poolManager,config.getMaxRedirections()){
 
 			@Override
 			public String execute(Jedis client) {
@@ -71,7 +71,7 @@ class JedisDirectClient implements IPadis{
 	@Override	
 	public String get(final  String key) throws Exception{
 		final String targetKey = makeKey(key);
-		return new JedisClientCommand<String>(clusterManager,poolManager){
+		return new JedisClientCommand<String>(clusterManager,poolManager,config.getMaxRedirections()){
 
 			@Override
 			public String execute(Jedis client) {
@@ -84,7 +84,7 @@ class JedisDirectClient implements IPadis{
 	@Override
 	public Long delete(String key) throws Exception {
 		final String targetKey = makeKey(key);
-		return new JedisClientCommand<Long>(clusterManager,poolManager){
+		return new JedisClientCommand<Long>(clusterManager,poolManager,config.getMaxRedirections()){
 
 			@Override
 			public Long execute(Jedis client) {
