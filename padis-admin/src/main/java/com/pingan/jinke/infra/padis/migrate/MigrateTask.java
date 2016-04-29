@@ -21,6 +21,7 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import redis.clients.jedis.Jedis;
+import redis.clients.jedis.exceptions.JedisConnectionException;
 
 @Setter
 @Getter
@@ -66,8 +67,9 @@ public class MigrateTask extends Thread {
 		countdown.start();
 		SleepUtils.sleep(50);
 		for (int cur = taskInfo.getFrom(); cur <= taskInfo.getTo(); cur++) {
+			Slot slot = null;
 			try {
-				Slot slot = this.slotService.getSlot(cur);
+				slot = this.slotService.getSlot(cur);
 				Migrate migrate = this.migrateService.getSlotMigrate(taskInfo.getInstance(), cur);
 				if ( migrate != null) {
 					
@@ -135,22 +137,24 @@ public class MigrateTask extends Thread {
 						
 					}
 				}
-			}catch(Throwable t){
+			}catch(JedisConnectionException t){
 				log.error(String.format("slot:%s,from:%s,to:%s", slot.getId(),fromGroup==null?slot.getSrc_gid():fromGroup.getMaster(),toGroup==null?slot.getTo_gid():toGroup.getMaster()), t);
 				if(client != null){
 					client.close();
-				}				
+				}
+				postMigrateStatus(slot, migrate.getFrom_gid());
+				throw t;
 			}
 			//完成
-			postMigrateStatus(slot, migrate);
+			postMigrateStatus(slot, migrate.getTo_gid());
 			
 		}
 	}
 	
 	
-	private void postMigrateStatus(Slot slot,Migrate migrate) throws InterruptedException {
+	private void postMigrateStatus(Slot slot,int gid) throws InterruptedException {
 		slot.setTo_gid(-1);
-		slot.setSrc_gid(migrate.getTo_gid());
+		slot.setSrc_gid(gid);
 		slot.setModify(System.currentTimeMillis());
 		slot.setStatus(Status.ONLINE);
 		countdown.fresh();
