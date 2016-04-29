@@ -64,6 +64,7 @@ public class MigrateTaskManager {
 				try{
 					for(Entry<String, MigrateTask> entry:taskQueue.entrySet()){
 						MigrateTask task = entry.getValue();
+						
 						if(!task.isFinished()){
 							task.start( executor);
 						}else{

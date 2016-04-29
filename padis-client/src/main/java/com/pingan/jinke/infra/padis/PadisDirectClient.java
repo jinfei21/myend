@@ -57,7 +57,7 @@ class PadisDirectClient implements IPadis{
 	@Override
 	public String set(final String key, final String value) throws Exception{
 		final String targetKey = makeKey(key);
-		return new PadisClientCommand<String>(clusterManager,poolManager){
+		return new PadisClientCommand<String>(clusterManager,poolManager,config.getMaxRedirections()){
 
 			@Override
 			public String execute(Client client) {
@@ -70,7 +70,7 @@ class PadisDirectClient implements IPadis{
 	@Override	
 	public String get(final  String key) throws Exception{
 		final String targetKey = makeKey(key);
-		return new PadisClientCommand<String>(clusterManager,poolManager){
+		return new PadisClientCommand<String>(clusterManager,poolManager,config.getMaxRedirections()){
 
 			@Override
 			public String execute(Client client) {
@@ -83,7 +83,7 @@ class PadisDirectClient implements IPadis{
 	@Override
 	public Long delete(String key) throws Exception {
 		final String targetKey = makeKey(key);
-		return new PadisClientCommand<Long>(clusterManager,poolManager){
+		return new PadisClientCommand<Long>(clusterManager,poolManager,config.getMaxRedirections()){
 
 			@Override
 			public Long execute(Client client) {
