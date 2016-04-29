@@ -120,9 +120,11 @@ public class MigrateController {
 			
 			@Override
 			public void run() {
-				for (int i = from; i <= to; i++) {
-					migrateService.persistMigrate(instance, i, gid, delay);
-				}
+//				for (int i = from; i <= to; i++) {
+//					migrateService.persistMigrate(instance, i, gid, delay);
+//				}
+				
+				migrateService.persistMigrate(instance, from, to, gid, delay);
 				if (!migrateManager.postTask(new TaskInfo(instance, from, to))) {
 					for (int i = from; i <= to; i++) {
 						migrateService.delSlotMigrate(instance, i);

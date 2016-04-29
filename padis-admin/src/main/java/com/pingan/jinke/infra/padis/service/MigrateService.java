@@ -1,6 +1,11 @@
 package com.pingan.jinke.infra.padis.service;
 
 import java.util.List;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
+
 import com.alibaba.fastjson.JSON;
 import com.google.common.collect.Lists;
 import com.pingan.jinke.infra.padis.common.CoordinatorRegistryCenter;
@@ -10,6 +15,7 @@ import com.pingan.jinke.infra.padis.migrate.MigrateNode;
 import com.pingan.jinke.infra.padis.node.Slot;
 import com.pingan.jinke.infra.padis.node.SlotNode;
 import com.pingan.jinke.infra.padis.storage.NodeStorage;
+import com.pingan.jinke.infra.padis.util.RegExceptionHandler;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -43,20 +49,119 @@ public class MigrateService {
 		migrate.setSlot_id(slotid);
 		nodeStorage.replaceNodePath(migrateNode.getMigrateSlotPath(instance, slotid), JSON.toJSONString(migrate));
 	}
+	
+	
+	public void persistMigrate(String instance, int from_slotid,int to_slotid, int to_gid, int delay) {
+		ExecutorService service = Executors.newCachedThreadPool();
+		
+		int num = 10;
+		List<Future> fList = Lists.newArrayList();
+		to_slotid++;
+		for (int i = from_slotid; i < to_slotid; i = i + num) {
+			int to = i + num;
+			if(to > to_slotid){
+				to = to_slotid;
+			}
+			Future f = service.submit(new PersistCallable(instance,i, to,to_gid, delay));
+			fList.add(f);
+		}
+		
+		for(Future f:fList){
+			try{
+				f.get();
+			}catch(Exception e){
+				RegExceptionHandler.handleException(e);
+			}
+		}
+		
+		service.shutdown();
+	}
+
+	class PersistCallable implements Callable {
+		private int from;
+		private int to;
+		private String instance;
+		private int to_gid;
+		private int delay;
+
+		public PersistCallable(String instance, int from, int to, int to_gid, int delay) {
+			this.from = from;
+			this.to = to;
+			this.instance = instance;
+			this.to_gid = to_gid;
+			this.delay = delay;
+		}
+
+		@Override
+		public Object call() throws Exception {
+			for (int i = from; i < to; i++) {
+				persistMigrate(instance, i, to_gid, delay);
+			}
+			return null;
+		}
+
+	}
 
 	public List<Migrate> getTask(String instance) {
 		List<Migrate> migrates = Lists.newArrayList();
 
 		String instancePath = migrateNode.getMigratePath(instance);
 		List<String> nodes = this.nodeStorage.getNodePathChildrenKeys(instancePath);
-
-		for (String node : nodes) {
-			String data = this.nodeStorage.getNodePathDataDirectly(instancePath + "/" + node);
-			Migrate migrate = JSON.parseObject(data, Migrate.class);
-			migrates.add(migrate);
+		
+		ExecutorService service = Executors.newCachedThreadPool();
+		
+		int num = 10;
+		List<Future<List<Migrate>>> fList = Lists.newArrayList();
+		
+		for(int i=0;i<nodes.size();i = i+num){
+			int to = i + num;
+			if(to > nodes.size()){
+				to = nodes.size();
+			}
+			Future<List<Migrate>> f = service.submit(new MigrateCallable(instance,i, to,nodes));
+			fList.add(f);
 		}
-
+		
+		for(Future<List<Migrate>> f:fList){
+			try{
+				List<Migrate> sList = f.get();
+				migrates.addAll(sList);
+			}catch(Exception e){
+				RegExceptionHandler.handleException(e);
+			}
+		}
+		service.shutdown();
 		return migrates;
+	}
+	
+	
+	class MigrateCallable implements Callable<List<Migrate>>{
+
+		private int from;
+		private int to;
+		private String instance;
+		private List<String> nodes;
+		
+		public MigrateCallable(String instance,int from,int to,List<String> nodes){
+			this.from = from;
+			this.to = to;
+			this.instance = instance;
+			this.nodes = nodes;
+		}
+		
+		@Override
+		public List<Migrate> call() throws Exception {
+			List<Migrate> list = Lists.newArrayList();
+			String instancePath = migrateNode.getMigratePath(instance);
+			for(int i=from;i<to;i++){
+				
+				String data = nodeStorage.getNodePathDataDirectly(instancePath + "/" + nodes.get(i));
+				Migrate migrate = JSON.parseObject(data, Migrate.class);
+				list.add(migrate);
+			}
+			return list;
+		}
+		
 	}
 	
 	public Migrate getSlotMigrate(String instance,int slotid){
