@@ -83,13 +83,13 @@ public class SlotController {
 					Slot slot = new Slot(id,Status.ONLINE,currentTime,groupId,0,currentTime);
 					slotList.add(slot);
 					if(slotList.size() == count){
-						executor.execute(new distSlotThread(slotList, slotService));
+						executor.execute(new DistSlotThread(slotList, slotService));
 						slotList = Lists.newArrayList();
 					}
 				}
 			}
 			if(!slotList.isEmpty()){
-				executor.execute(new distSlotThread(slotList, slotService));
+				executor.execute(new DistSlotThread(slotList, slotService));
 			}
 			result.setSuccess(true);
 		}catch (Throwable t) {
@@ -139,11 +139,11 @@ public class SlotController {
 	}
 	
 	
-	class distSlotThread implements Runnable{
+	class DistSlotThread implements Runnable{
 		private List<Slot> slotList;
 		private SlotService slotService;
 		
-		public distSlotThread(List<Slot> slotList, SlotService slotService){
+		public DistSlotThread(List<Slot> slotList, SlotService slotService){
 			this.slotList = slotList;
 			this.slotService = slotService;
 		}
