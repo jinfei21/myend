@@ -108,12 +108,20 @@ function SlotCtrl($scope, SlotService,MigrateService) {
 	
 	function initSlotGidMap(){
 	    var slots = $scope.slotsInfo.slots;
-	    var grpId = '';
+	    var grpId = 8;
+	    var prevGid = null;
 	    $scope.slotGidMap = {};
 	    for(var i in slots){
-	    	if(slots[i]){
-	    		grpId = slots[i].src_gid;
-		        $scope.slotGidMap[slots[i].id] = grpId;
+	    	if(slots[i]){	    		
+	    		if(slots[i].src_gid === null){
+	    			$scope.slotGidMap[slots[i].id] = null;
+	    		}else{
+	    			if(slots[i].src_gid !== prevGid){
+	    				prevGid = slots[i].src_gid;
+	    				grpId++;
+	    			}
+	    			$scope.slotGidMap[slots[i].id] = grpId%8;
+	    		}
 	    	}
 	    }
 	}
