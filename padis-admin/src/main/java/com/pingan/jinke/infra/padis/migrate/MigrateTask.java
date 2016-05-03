@@ -142,8 +142,10 @@ public class MigrateTask extends Thread {
 				if(client != null){
 					client.close();
 				}
-				postMigrateStatus(slot, migrate.getFrom_gid());
-				throw t;
+				if(migrate.getDelay() < 100){
+					postMigrateStatus(slot, migrate.getFrom_gid());
+					throw t;
+				}
 			}
 			//完成
 			postMigrateStatus(slot, migrate.getTo_gid());

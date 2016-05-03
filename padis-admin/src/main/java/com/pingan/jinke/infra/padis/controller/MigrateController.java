@@ -90,7 +90,7 @@ public class MigrateController {
 			int delay = 500;
 			String d = jsonObj.getString("delay");
 			
-			if(d == null){
+			if(d != null){
 				delay = Integer.parseInt(d);
 			}
 			
