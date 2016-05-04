@@ -2,7 +2,7 @@ package com.pingan.jinke.infra.padis.common;
 
 import java.util.ArrayList;
 
-import com.pingan.jinke.infra.padis.util.SafeEncoder;
+import com.yjfei.cache.padis.util.SafeEncoder;
 
 public class ZAddParams extends Params {
 

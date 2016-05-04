@@ -11,6 +11,7 @@ import java.util.Set;
 
 import com.pingan.jinke.infra.padis.common.Builder;
 import com.pingan.jinke.infra.padis.common.ByteHashMap;
+import com.yjfei.cache.padis.util.SafeEncoder;
 
 public final class BuilderFactory {
   public static final Builder<Double> DOUBLE = new Builder<Double>() {

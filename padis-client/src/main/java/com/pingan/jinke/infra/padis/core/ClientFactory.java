@@ -1,7 +1,7 @@
 package com.pingan.jinke.infra.padis.core;
 
-import com.pingan.jinke.infra.padis.common.HostAndPort;
 import com.pingan.jinke.infra.padis.common.ObjectFactory;
+import com.yjfei.cache.padis.common.HostAndPort;
 
 public class ClientFactory implements ObjectFactory<Client> {
 

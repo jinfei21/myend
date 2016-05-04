@@ -3,6 +3,7 @@ package com.pingan.jinke.infra.padis;
 import java.util.concurrent.ConcurrentMap;
 
 import com.google.common.collect.Maps;
+import com.yjfei.cache.padis.IPadis;
 
 public class PadisFactory {
 

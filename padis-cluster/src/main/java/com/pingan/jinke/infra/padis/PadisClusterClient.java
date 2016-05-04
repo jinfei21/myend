@@ -2,7 +2,9 @@ package com.pingan.jinke.infra.padis;
 
 import java.io.IOException;
 
-import com.pingan.jinke.infra.padis.util.RegExceptionHandler;
+import com.yjfei.cache.padis.IPadis;
+import com.yjfei.cache.padis.PadisConfig;
+import com.yjfei.cache.padis.util.RegExceptionHandler;
 
 public class PadisClusterClient extends AbstractClusterClient implements IPadis{
 	

@@ -1,16 +1,16 @@
 package com.pingan.jinke.infra.padis.custom;
 
-import static com.pingan.jinke.infra.padis.common.Status.ONLINE;
+import static com.yjfei.cache.padis.common.Status.ONLINE;
 
 import java.util.List;
 
 import com.alibaba.fastjson.JSON;
 import com.google.common.collect.Lists;
-import com.pingan.jinke.infra.padis.common.CoordinatorRegistryCenter;
-import com.pingan.jinke.infra.padis.node.Custom;
-import com.pingan.jinke.infra.padis.node.CustomNode;
-import com.pingan.jinke.infra.padis.storage.NodeStorage;
-import com.pingan.jinke.infra.padis.util.IPUtils;
+import com.yjfei.cache.padis.common.CoordinatorRegistryCenter;
+import com.yjfei.cache.padis.node.Custom;
+import com.yjfei.cache.padis.node.CustomNode;
+import com.yjfei.cache.padis.storage.NodeStorage;
+import com.yjfei.cache.padis.util.IPUtils;
 
 public class CustomService {
 	private CustomNode customNode;

@@ -1,19 +1,19 @@
 package com.pingan.jinke.infra.padis.core;
 
 import static com.google.common.base.Preconditions.checkNotNull;
-import static com.pingan.jinke.infra.padis.common.Status.MIGRATE;
-import static com.pingan.jinke.infra.padis.common.Status.OFFLINE;
-import static com.pingan.jinke.infra.padis.common.Status.PRE_MIGRATE;
+import static com.yjfei.cache.padis.common.Status.MIGRATE;
+import static com.yjfei.cache.padis.common.Status.OFFLINE;
+import static com.yjfei.cache.padis.common.Status.PRE_MIGRATE;
 
-import com.pingan.jinke.infra.padis.common.HostAndPort;
 import com.pingan.jinke.infra.padis.exceptions.ClusterException;
 import com.pingan.jinke.infra.padis.exceptions.ConnectionException;
 import com.pingan.jinke.infra.padis.exceptions.DataException;
 import com.pingan.jinke.infra.padis.exceptions.MaxRedirectionsException;
 import com.pingan.jinke.infra.padis.exceptions.RedirectionException;
-import com.pingan.jinke.infra.padis.node.Group;
-import com.pingan.jinke.infra.padis.node.Slot;
-import com.pingan.jinke.infra.padis.util.CRC16Utils;
+import com.yjfei.cache.padis.common.HostAndPort;
+import com.yjfei.cache.padis.node.Group;
+import com.yjfei.cache.padis.node.Slot;
+import com.yjfei.cache.padis.util.CRC16Utils;
 
 import lombok.extern.slf4j.Slf4j;
 import redis.clients.jedis.Jedis;

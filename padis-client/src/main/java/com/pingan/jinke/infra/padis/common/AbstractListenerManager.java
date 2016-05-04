@@ -4,7 +4,8 @@ import org.apache.curator.framework.recipes.cache.TreeCacheListener;
 import org.apache.curator.framework.state.ConnectionStateListener;
 
 import com.pingan.jinke.infra.padis.core.ClusterInfoCacheManager;
-import com.pingan.jinke.infra.padis.storage.NodeStorage;
+import com.yjfei.cache.padis.common.CoordinatorRegistryCenter;
+import com.yjfei.cache.padis.storage.NodeStorage;
 
 /**
  * 注册中心的监听器管理者的抽象类.

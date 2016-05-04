@@ -1,19 +1,18 @@
 package com.pingan.jinke.infra.padis.core;
 
-import static com.pingan.jinke.infra.padis.common.Constant.ASK_RESPONSE;
-import static com.pingan.jinke.infra.padis.common.Constant.ASTERISK_BYTE;
-import static com.pingan.jinke.infra.padis.common.Constant.CLUSTERDOWN_RESPONSE;
-import static com.pingan.jinke.infra.padis.common.Constant.COLON_BYTE;
-import static com.pingan.jinke.infra.padis.common.Constant.DOLLAR_BYTE;
-import static com.pingan.jinke.infra.padis.common.Constant.MINUS_BYTE;
-import static com.pingan.jinke.infra.padis.common.Constant.MOVED_RESPONSE;
-import static com.pingan.jinke.infra.padis.common.Constant.PLUS_BYTE;
+import static com.yjfei.cache.padis.common.Constant.ASK_RESPONSE;
+import static com.yjfei.cache.padis.common.Constant.ASTERISK_BYTE;
+import static com.yjfei.cache.padis.common.Constant.CLUSTERDOWN_RESPONSE;
+import static com.yjfei.cache.padis.common.Constant.COLON_BYTE;
+import static com.yjfei.cache.padis.common.Constant.DOLLAR_BYTE;
+import static com.yjfei.cache.padis.common.Constant.MINUS_BYTE;
+import static com.yjfei.cache.padis.common.Constant.MOVED_RESPONSE;
+import static com.yjfei.cache.padis.common.Constant.PLUS_BYTE;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.pingan.jinke.infra.padis.common.HostAndPort;
 import com.pingan.jinke.infra.padis.common.ProtocolCommand;
 import com.pingan.jinke.infra.padis.exceptions.AskDataException;
 import com.pingan.jinke.infra.padis.exceptions.ClusterException;
@@ -22,7 +21,8 @@ import com.pingan.jinke.infra.padis.exceptions.DataException;
 import com.pingan.jinke.infra.padis.exceptions.MovedDataException;
 import com.pingan.jinke.infra.padis.util.PadisInputStream;
 import com.pingan.jinke.infra.padis.util.PadisOutputStream;
-import com.pingan.jinke.infra.padis.util.SafeEncoder;
+import com.yjfei.cache.padis.common.HostAndPort;
+import com.yjfei.cache.padis.util.SafeEncoder;
 
 public class Protocol {
 	public static final byte[] BYTES_TRUE = toByteArray(1);

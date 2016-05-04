@@ -1,10 +1,10 @@
 package com.pingan.jinke.infra.padis.common;
 
-import static com.pingan.jinke.infra.padis.common.Constant.DEFAULT_MAX_IDLE;
-import static com.pingan.jinke.infra.padis.common.Constant.DEFAULT_MAX_TOTAL;
-import static com.pingan.jinke.infra.padis.common.Constant.DEFAULT_MIN_IDLE;
+import static com.yjfei.cache.padis.common.Constant.DEFAULT_MAX_IDLE;
+import static com.yjfei.cache.padis.common.Constant.DEFAULT_MAX_TOTAL;
+import static com.yjfei.cache.padis.common.Constant.DEFAULT_MIN_IDLE;
 
-import com.pingan.jinke.infra.padis.PadisConfig;
+import com.yjfei.cache.padis.PadisConfig;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

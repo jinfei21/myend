@@ -9,7 +9,7 @@
 			           http://www.springframework.org/schema/mvc
 			       	   http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd ">
 
-	<context:component-scan base-package="com.pingan.jinke" />
+	<context:component-scan base-package="com.yjfei.cache*" />
 	<context:annotation-config />
 	<context:property-placeholder location="classpath*:*.properties" />
 	<mvc:annotation-driven />
@@ -24,7 +24,7 @@
 
 
 	<bean id="zkConfig"
-		class="com.pingan.jinke.infra.padis.common.ZookeeperConfiguration">
+		class="com.yjfei.cache.padis.common.ZookeeperConfiguration">
 		<constructor-arg name="serverLists" value="${zkAddr}" />
 		<constructor-arg name="namespace" value="padis" />
 		<constructor-arg name="baseSleepTimeMilliseconds"
@@ -35,24 +35,24 @@
 	</bean>
 
 	<bean id="zkRegCenter"
-		class="com.pingan.jinke.infra.padis.storage.ZookeeperRegistryCenter"
+		class="com.yjfei.cache.padis.storage.ZookeeperRegistryCenter"
 		init-method="init">
 		<constructor-arg name="zkConfig" ref="zkConfig" />
 	</bean>
 
-	<bean id="groupService" class="com.pingan.jinke.infra.padis.group.GroupService">
+	<bean id="groupService" class="com.yjfei.cache.padis.group.GroupService">
 		<constructor-arg name="coordinatorRegistryCenter" ref="zkRegCenter" />
 	</bean>
 
-	<bean id="instanceService" class="com.pingan.jinke.infra.padis.service.InstanceService">
+	<bean id="instanceService" class="com.yjfei.cache.padis.service.InstanceService">
 		<constructor-arg name="coordinatorRegistryCenter" ref="zkRegCenter" />
 	</bean>
 
-	<bean id="migrateService" class="com.pingan.jinke.infra.padis.service.MigrateService">
+	<bean id="migrateService" class="com.yjfei.cache.padis.service.MigrateService">
 		<constructor-arg name="coordinatorRegistryCenter" ref="zkRegCenter" />
 	</bean>
 	
-	<bean id="migrateManager" class="com.pingan.jinke.infra.padis.migrate.MigrateTaskManager" init-method="start">
+	<bean id="migrateManager" class="com.yjfei.cache.padis.migrate.MigrateTaskManager" init-method="start">
 		<constructor-arg name="coordinatorRegistryCenter" ref="zkRegCenter" />
 		<constructor-arg name="executor" ref="taskExecutor" />	
 	</bean>

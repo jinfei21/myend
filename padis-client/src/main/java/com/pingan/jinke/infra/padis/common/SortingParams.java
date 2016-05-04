@@ -14,7 +14,7 @@ import java.util.Collections;
 import java.util.List;
 
 import com.pingan.jinke.infra.padis.core.Protocol;
-import com.pingan.jinke.infra.padis.util.SafeEncoder;
+import com.yjfei.cache.padis.util.SafeEncoder;
 
 public class SortingParams {
   private List<byte[]> params = new ArrayList<byte[]>();

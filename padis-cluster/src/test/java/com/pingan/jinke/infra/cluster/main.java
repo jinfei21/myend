@@ -1,7 +1,7 @@
 package com.pingan.jinke.infra.cluster;
 
 import com.pingan.jinke.infra.padis.PadisClusterClient;
-import com.pingan.jinke.infra.padis.PadisConfig;
+import com.yjfei.cache.padis.PadisConfig;
 
 public class main {
 

@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import com.pingan.jinke.infra.padis.util.SafeEncoder;
+import com.yjfei.cache.padis.util.SafeEncoder;
 
 public abstract class Params {
 

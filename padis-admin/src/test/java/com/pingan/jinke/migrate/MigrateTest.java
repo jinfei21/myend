@@ -1,11 +1,11 @@
 package com.pingan.jinke.migrate;
 
-import com.pingan.jinke.infra.padis.IPadis;
 import com.pingan.jinke.infra.padis.PadisFactory;
-import com.pingan.jinke.infra.padis.common.CoordinatorRegistryCenter;
-import com.pingan.jinke.infra.padis.common.ZookeeperConfiguration;
-import com.pingan.jinke.infra.padis.service.MigrateService;
-import com.pingan.jinke.infra.padis.storage.ZookeeperRegistryCenter;
+import com.yjfei.cache.padis.IPadis;
+import com.yjfei.cache.padis.common.CoordinatorRegistryCenter;
+import com.yjfei.cache.padis.common.ZookeeperConfiguration;
+import com.yjfei.cache.padis.service.MigrateService;
+import com.yjfei.cache.padis.storage.ZookeeperRegistryCenter;
 
 public class MigrateTest {
 

@@ -1,6 +1,6 @@
 package com.pingan.jinke.infra.padis.common;
 
-import static com.pingan.jinke.infra.padis.common.Constant.DEFAULT_TIMEOUT;
+import static com.yjfei.cache.padis.common.Constant.DEFAULT_TIMEOUT;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
@@ -10,10 +10,11 @@ import java.util.List;
 
 import com.pingan.jinke.infra.padis.core.Protocol;
 import com.pingan.jinke.infra.padis.exceptions.ConnectionException;
-import com.pingan.jinke.infra.padis.util.IOUtils;
 import com.pingan.jinke.infra.padis.util.PadisInputStream;
 import com.pingan.jinke.infra.padis.util.PadisOutputStream;
-import com.pingan.jinke.infra.padis.util.SafeEncoder;
+import com.yjfei.cache.padis.common.HostAndPort;
+import com.yjfei.cache.padis.util.IOUtils;
+import com.yjfei.cache.padis.util.SafeEncoder;
 
 public class Connection {
 

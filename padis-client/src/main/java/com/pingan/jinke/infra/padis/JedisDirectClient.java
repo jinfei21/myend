@@ -1,12 +1,14 @@
 package com.pingan.jinke.infra.padis;
 
-import com.pingan.jinke.infra.padis.common.CoordinatorRegistryCenter;
 import com.pingan.jinke.infra.padis.common.PoolConfig;
-import com.pingan.jinke.infra.padis.common.ZookeeperConfiguration;
 import com.pingan.jinke.infra.padis.core.ClusterInfoCacheManager;
 import com.pingan.jinke.infra.padis.core.JedisClientCommand;
 import com.pingan.jinke.infra.padis.core.JedisClientPoolManager;
-import com.pingan.jinke.infra.padis.storage.ZookeeperRegistryCenter;
+import com.yjfei.cache.padis.IPadis;
+import com.yjfei.cache.padis.PadisConfig;
+import com.yjfei.cache.padis.common.CoordinatorRegistryCenter;
+import com.yjfei.cache.padis.common.ZookeeperConfiguration;
+import com.yjfei.cache.padis.storage.ZookeeperRegistryCenter;
 
 import redis.clients.jedis.Jedis;
 

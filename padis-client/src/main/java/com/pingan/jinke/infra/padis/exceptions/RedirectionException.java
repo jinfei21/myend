@@ -1,6 +1,6 @@
 package com.pingan.jinke.infra.padis.exceptions;
 
-import com.pingan.jinke.infra.padis.common.HostAndPort;
+import com.yjfei.cache.padis.common.HostAndPort;
 
 public class RedirectionException extends DataException {
 	private static final long serialVersionUID = 3878126572474819403L;
