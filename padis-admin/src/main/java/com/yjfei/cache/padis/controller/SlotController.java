@@ -17,14 +17,14 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.google.common.collect.Lists;
-import com.pingan.jinke.infra.padis.group.GroupService;
-import com.pingan.jinke.infra.padis.slot.SlotService;
 import com.yjfei.cache.padis.common.CoordinatorRegistryCenter;
 import com.yjfei.cache.padis.common.Result;
 import com.yjfei.cache.padis.common.Status;
+import com.yjfei.cache.padis.group.GroupService;
 import com.yjfei.cache.padis.node.Group;
 import com.yjfei.cache.padis.node.Slot;
 import com.yjfei.cache.padis.service.InstanceService;
+import com.yjfei.cache.padis.slot.SlotService;
 
 import lombok.extern.slf4j.Slf4j;
 

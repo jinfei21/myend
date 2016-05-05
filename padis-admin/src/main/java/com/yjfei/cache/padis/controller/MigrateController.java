@@ -14,10 +14,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSONObject;
-import com.pingan.jinke.infra.padis.group.GroupService;
 import com.yjfei.cache.padis.common.Migrate;
 import com.yjfei.cache.padis.common.Result;
 import com.yjfei.cache.padis.common.TaskInfo;
+import com.yjfei.cache.padis.group.GroupService;
 import com.yjfei.cache.padis.migrate.MigrateTask;
 import com.yjfei.cache.padis.migrate.MigrateTaskManager;
 import com.yjfei.cache.padis.node.Group;
