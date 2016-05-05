@@ -1,4 +1,4 @@
-package com.pingan.infra;
+package com.yjfei.cache;
 
 import com.yjfei.cache.padis.common.CoordinatorRegistryCenter;
 import com.yjfei.cache.padis.common.Status;

@@ -1,4 +1,4 @@
-package com.pingan.jinke.infra.padis;
+package com.yjfei.cache.padis;
 
 import java.util.Random;
 import java.util.Set;

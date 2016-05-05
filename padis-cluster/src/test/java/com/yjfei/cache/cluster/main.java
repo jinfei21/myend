@@ -1,6 +1,6 @@
-package com.pingan.jinke.infra.cluster;
+package com.yjfei.cache.cluster;
 
-import com.pingan.jinke.infra.padis.PadisClusterClient;
+import com.yjfei.cache.padis.PadisClusterClient;
 import com.yjfei.cache.padis.PadisConfig;
 
 public class main {
