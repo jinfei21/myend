@@ -10,6 +10,12 @@ zkAddr=ip:2181 #zookeeper注册中心地址
 ```
 
 ``` adminaddr
+cd /padis
+make install
+cd padis-admin/target
+拷贝padis-admin.war,将包放到tomcat的webapps目录下
+确保zookeeper配置是正确的。
+打开如下地址：
 http://localhost:8080/padis-admin
 ```
 
