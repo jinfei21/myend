@@ -9,7 +9,7 @@
 zkAddr=ip:2181 #zookeeper注册中心地址
 ```
 
-``` admin addr
+``` adminaddr
 http://localhost:8080/padis-admin
 ```
 
