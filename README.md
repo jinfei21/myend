@@ -9,6 +9,10 @@
 zkAddr=ip:2181 #zookeeper注册中心地址
 ```
 
+``` admin addr
+http://localhost:8080/padis-admin
+```
+
 ####2.2 client配置
 ```PadisConfig
 instance：实例对应一组redis group，需要admin分配
@@ -52,6 +56,8 @@ public class main {
 |-|-|
 |---|---|
 |codis|https://github.com/CodisLabs/codis|
+|markdown|http://www.jianshu.com/p/1e402922ee32/|
+
 
 
 
