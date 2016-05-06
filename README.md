@@ -18,7 +18,7 @@ cd padis-admin/target
 打开如下地址：
 http://localhost:8080/padis-admin
 ```
-
+![admin](https://github.com/jinfei21/padis/blob/master/doc/admin.PNG)
 ####2.2 client配置
 ```PadisConfig
 instance：实例对应一组redis group，需要admin分配
@@ -58,7 +58,7 @@ public class main {
 ```
 
 
-###3、参考
+###4、参考
 |-|-|
 |---|---|
 |codis|https://github.com/CodisLabs/codis|
