@@ -3,7 +3,7 @@
 	<groupId>com.pingan.padis</groupId>
 	<artifactId>padis</artifactId>
 	<packaging>pom</packaging>
-	<version>0.1.1</version>
+	<version>0.1.2-SNAPSHOT</version>
 	<description>padis distributed cache</description>
 
 	<modules>
@@ -189,7 +189,7 @@
         <connection>scm:git:https://github.com/jinfei21/padis.git</connection>
         <developerConnection>scm:git:git@github.com:jinfei21/padis.git</developerConnection>
         <url>https://github.com/jinfei21/padis.git</url>
-      <tag>padis-0.1.1</tag>
+      <tag>HEAD</tag>
   </scm>
     
 	<distributionManagement>
