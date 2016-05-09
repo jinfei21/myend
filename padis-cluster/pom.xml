@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>com.pingan.padis</groupId>
 		<artifactId>padis</artifactId>
-		<version>0.1.1-SNAPSHOT</version>
+		<version>0.1.1</version>
 	</parent>
 	<artifactId>padis-cluster</artifactId>
 	<packaging>jar</packaging>
