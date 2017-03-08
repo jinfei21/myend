@@ -90,7 +90,7 @@
 	</dependencies>
 
 	<build>
-		<finalName>jedisx-admin</finalName>
+		<finalName>padis-admin</finalName>
 		<resources>
 			<resource>
 				<directory>src/main/resources/</directory>
