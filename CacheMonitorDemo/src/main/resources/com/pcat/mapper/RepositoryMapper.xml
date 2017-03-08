@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.pcat.mapper.RepositoryMapper" >
+
+  <select id="selectRepository" parameterType="long" resultType="com.pcat.entity.Repository">
+    select t.id as productId, category, amount, price from t_repository t where t.id= #{id}
+  </select>
+
+</mapper>

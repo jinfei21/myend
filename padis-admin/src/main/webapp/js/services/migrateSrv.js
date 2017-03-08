@@ -1,7 +1,7 @@
 angular.module("migrateService", ['ngResource'])
     .factory("MigrateService", ['$resource', '$routeParams',
         function ($resource, $routeParams) {
-            return $resource("/padis-admin/migrate/:action",
+            return $resource("/jedisx-admin/migrate/:action",
                 {},
                 {
                     getTask: {

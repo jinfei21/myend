@@ -8,6 +8,7 @@ var module = angular.module('portal', ['ngRoute',
 				'groupService',
 				'migrateService',
 				'customService',
+				'loginService',
 				'slotService',
 				'baseTableService',
 				'ui.bootstrap']);
@@ -17,25 +18,25 @@ var module = angular.module('portal', ['ngRoute',
 
         $routeProvider
         	.when("/group",{
-                templateUrl: '/padis-admin/partials/group/group.html',
+                templateUrl: '/jedisx-admin/partials/group/group.html',
                 reloadOnSearch: false
             }).when("/group/:id",{
-                templateUrl: '/padis-admin/partials/group/showGroup.html',
+                templateUrl: '/jedisx-admin/partials/group/showGroup.html',
                 reloadOnSearch: false
             }).when("/migrate",{
-                templateUrl: '/padis-admin/partials/migrate/migrate.html',
+                templateUrl: '/jedisx-admin/partials/migrate/migrate.html',
                 reloadOnSearch: false
             }).when("/custom",{
-                templateUrl: '/padis-admin/partials/custom/custom.html',
+                templateUrl: '/jedisx-admin/partials/custom/custom.html',
                 reloadOnSearch: false
             }).when("/slot",{
-            	templateUrl: '/padis-admin/partials/slot/slot.html',
+            	templateUrl: '/jedisx-admin/partials/slot/slot.html',
             	reloadOnSearch: false	
             }).when("/distSlot",{
-            	templateUrl: '/padis-admin/partials/slot/distSlot.html',
+            	templateUrl: '/jedisx-admin/partials/slot/distSlot.html',
             	reloadOnSearch: false	
             }).otherwise({
-                templateUrl: '/padis-admin/partials/group/group.html',
+                templateUrl: '/jedisx-admin/partials/group/group.html',
                 reloadOnSearch: false
             });
     }]);

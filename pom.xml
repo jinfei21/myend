@@ -1,9 +1,10 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.pingan.padis</groupId>
+	<groupId>com.yjfei.padis</groupId>
 	<artifactId>padis</artifactId>
 	<packaging>pom</packaging>
-	<version>0.1.2-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<description>padis distributed cache</description>
 
 	<modules>
@@ -15,15 +16,17 @@
 	</modules>
 
 	<properties>
-		<junit.version>4.8.1</junit.version>
-		<java.version>1.6</java.version>
+		<junit.version>4.12</junit.version>
+		<mockito.version>1.10.19</mockito.version>
+		<java.version>1.7</java.version>
 		<slf4j-api.version>1.6.1</slf4j-api.version>
 		<logback.version>1.0.9</logback.version>
 		<guava.version>17.0</guava.version>
+		<jedis.version>2.8.1</jedis.version>
 		<fastjson.version>1.2.8</fastjson.version>
 		<curator.version>2.10.0</curator.version>
 		<lombok.version>1.16.4</lombok.version>
-		<spring.version>3.2.6.RELEASE</spring.version>
+		<spring.version>3.2.14.RELEASE</spring.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compile.encoding>UTF-8</maven.compile.encoding>
 	</properties>
@@ -40,6 +43,13 @@
 				<groupId>junit</groupId>
 				<artifactId>junit</artifactId>
 				<version>${junit.version}</version>
+				<scope>test</scope>
+			</dependency>
+
+			<dependency>
+				<groupId>org.mockito</groupId>
+				<artifactId>mockito-core</artifactId>
+				<version>${mockito.version}</version>
 				<scope>test</scope>
 			</dependency>
 
@@ -119,31 +129,37 @@
 			</dependency>
 
 			<dependency>
-				<groupId>com.pingan.padis</groupId>
+				<groupId>redis.clients</groupId>
+				<artifactId>jedis</artifactId>
+				<version>${jedis.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.yjfei.padis</groupId>
 				<artifactId>padis-client</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 
 			<dependency>
-				<groupId>com.pingan.padis</groupId>
+				<groupId>com.yjfei.padis</groupId>
 				<artifactId>padis-admin</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 
 			<dependency>
-				<groupId>com.pingan.padis</groupId>
+				<groupId>com.yjfei.padis</groupId>
 				<artifactId>padis-cluster</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 
 			<dependency>
-				<groupId>com.pingan.padis</groupId>
+				<groupId>com.yjfei.padis</groupId>
 				<artifactId>padis-common</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 
 			<dependency>
-				<groupId>com.pingan.padis</groupId>
+				<groupId>com.yjfei.padis</groupId>
 				<artifactId>padis-metrics</artifactId>
 				<version>${project.version}</version>
 			</dependency>
@@ -184,24 +200,7 @@
 			<timezone>8</timezone>
 		</developer>
 	</developers>
-	
-    <scm>
-        <connection>scm:git:https://github.com/jinfei21/padis.git</connection>
-        <developerConnection>scm:git:git@github.com:jinfei21/padis.git</developerConnection>
-        <url>https://github.com/jinfei21/padis.git</url>
-      <tag>HEAD</tag>
-  </scm>
-    
-	<distributionManagement>
-		<snapshotRepository>
-			<id>sonatype-nexus-snapshots</id>
-			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
-		</snapshotRepository>
-		<repository>
-			<id>sonatype-nexus-releases</id>
-			<url>https://oss.sonatype.org/service/local/staging/deploy/maven2</url>
-		</repository>
-	</distributionManagement>
+
 
 	<build>
 		<plugins>
@@ -214,17 +213,76 @@
 					<target>${java.version}</target>
 				</configuration>
 			</plugin>
-
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-release-plugin</artifactId>
-				<version>2.5.3</version>
+				<version>2.3.2</version>
 				<configuration>
-					<tagBase>https://github.com/jinfei21/padis.git</tagBase>
+					<tagBase>scm:svn:http://10.20.22.122:18080/svn/INFRA/tags/</tagBase>
 				</configuration>
 			</plugin>
-
-
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>2.6</version>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>2.4</version>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.18.1</version>
+			</plugin>
 		</plugins>
 	</build>
+
+
+	<scm>
+		<connection>scm:svn:http://10.20.22.122:18080/svn/INFRA/tags/</connection>
+		<developerConnection>scm:svn:http://10.20.22.122:18080/svn/INFRA/tags/</developerConnection>
+		<tag>HEAD</tag>
+	</scm>
+
+	<distributionManagement>
+		<snapshotRepository>
+			<id>nexus</id>
+			<url>http://10.20.23.160:8081/nexus/content/repositories/snapshots/</url>
+		</snapshotRepository>
+		<repository>
+			<id>nexus</id>
+			<url>http://10.20.23.160:8081/nexus/content/repositories/releases/</url>
+		</repository>
+	</distributionManagement>
+
+	<repositories>
+		<repository>
+			<id>nexus</id>
+			<name>nexus respository</name>
+			<url>http://10.20.23.160:8081/nexus/content/groups/public/</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
+	<pluginRepositories>
+		<pluginRepository>
+			<id>nexus-plugin</id>
+			<name>nexus plugin respository</name>
+			<url>http://10.20.23.160:8081/nexus/content/groups/public/</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</pluginRepository>
+	</pluginRepositories>
+
+
 </project>	

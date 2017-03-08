@@ -1,7 +1,7 @@
 angular.module("customService", ['ngResource'])
     .factory("CustomService", ['$resource', '$routeParams',
         function ($resource, $routeParams) {
-            return $resource("/padis-admin/custom/:action",
+            return $resource("/jedisx-admin/custom/:action",
                 {},
                 {
                     getCustom: {

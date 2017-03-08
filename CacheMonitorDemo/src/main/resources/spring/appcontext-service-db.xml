@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="
+	     http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+		 http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd"
+       default-autowire="byName">
+
+    <description>数据源配置</description>
+  
+   <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" destroy-method="close">
+		<property name="driverClassName" value="${mysql.driver}" />
+		<property name="url" value="${mysql.url}" />
+		<property name="username" value="${mysql.userName}" />
+		<property name="password" value="${mysql.passWord}" />
+		<property name="initialSize" value="${mysql.initialSize}"/>
+		<property name="maxActive" value="${mysql.maxActive}"/>
+		<property name="maxIdle" value="${mysql.maxIdle}"/>
+		<property name="minIdle" value="${mysql.minIdle}"/>
+		<property name="maxWait" value="${mysql.maxWait}"/>
+	</bean> 
+	
+	<!-- (事务管理)transaction manager, use JtaTransactionManager for global tx -->
+	<bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	
+    <bean id="jedisxConfig" class="com.pingan.jinke.infra.jedisx.JedisxConfig">
+        <!-- 自定义配置路径（可选） -->
+        <property name="zkAddr" value="${redis.zkAddr}" />
+            <property name="instance" value="${redis.instance}" />
+            <property name="nameSpace" value="${redis.ns}" />
+            <property name="password" value="${redis.passwd}" />
+            <property name="maxRedirections" value="3" />
+            <property name="maxTotal" value="10" />
+    </bean>
+    <bean id="jedisx" class="com.pingan.jinke.infra.jedisx.JedisDirectClient" destroy-method="close">
+        <constructor-arg name="config" ref="jedisxConfig" />
+    </bean>
+</beans>

@@ -9,7 +9,7 @@
 			           http://www.springframework.org/schema/mvc
 			       	   http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd ">
 
-	<context:component-scan base-package="com.yjfei.cache*" />
+	<context:component-scan base-package="com.pingan.jinke" />
 	<context:annotation-config />
 	<context:property-placeholder location="classpath*:*.properties" />
 	<mvc:annotation-driven />
@@ -24,37 +24,40 @@
 
 
 	<bean id="zkConfig"
-		class="com.yjfei.cache.padis.common.ZookeeperConfiguration">
-		<constructor-arg name="serverLists" value="${zkAddr}" />
-		<constructor-arg name="namespace" value="padis" />
-		<constructor-arg name="baseSleepTimeMilliseconds"
+		class="com.pingan.jinke.infra.jedisx.common.ZookeeperConfiguration">
+		<constructor-arg index="0" type="String" value="${zkAddr}" />
+		<constructor-arg index="1" type="String" value="padis" />
+		<constructor-arg index="2" type="int"
 			value="3000" />
-		<constructor-arg name="maxSleepTimeMilliseconds"
+		<constructor-arg index="3" type="int"
 			value="2000" />
-		<constructor-arg name="maxRetries" value="3" />
+		<constructor-arg index="4" type="int" value="3" />
 	</bean>
 
 	<bean id="zkRegCenter"
-		class="com.yjfei.cache.padis.storage.ZookeeperRegistryCenter"
+		class="com.pingan.jinke.infra.jedisx.storage.ZookeeperRegistryCenter"
 		init-method="init">
-		<constructor-arg name="zkConfig" ref="zkConfig" />
+		<constructor-arg index="0" ref="zkConfig" />
 	</bean>
 
-	<bean id="groupService" class="com.yjfei.cache.padis.group.GroupService">
-		<constructor-arg name="coordinatorRegistryCenter" ref="zkRegCenter" />
+	<bean id="groupService" class="com.pingan.jinke.infra.jedisx.group.GroupService">
+		<constructor-arg index="0" ref="zkRegCenter" />
 	</bean>
 
-	<bean id="instanceService" class="com.yjfei.cache.padis.service.InstanceService">
-		<constructor-arg name="coordinatorRegistryCenter" ref="zkRegCenter" />
+	<bean id="instanceService" class="com.pingan.jinke.infra.jedisx.service.InstanceService">
+		<constructor-arg index="0" ref="zkRegCenter" />
 	</bean>
 
-	<bean id="migrateService" class="com.yjfei.cache.padis.service.MigrateService">
-		<constructor-arg name="coordinatorRegistryCenter" ref="zkRegCenter" />
+	<bean id="migrateService" class="com.pingan.jinke.infra.jedisx.service.MigrateService">
+		<constructor-arg index="0" ref="zkRegCenter" />
 	</bean>
-	
-	<bean id="migrateManager" class="com.yjfei.cache.padis.migrate.MigrateTaskManager" init-method="start">
-		<constructor-arg name="coordinatorRegistryCenter" ref="zkRegCenter" />
-		<constructor-arg name="executor" ref="taskExecutor" />	
+
+	<bean id="migrateManager"
+		class="com.pingan.jinke.infra.jedisx.migrate.MigrateTaskManager"
+		init-method="start">
+		<constructor-arg index="0" ref="zkRegCenter" />
+		<constructor-arg index="1" ref="taskExecutor" />
+		<constructor-arg index="2" value="${passwd}" />
 	</bean>
 
 	<bean id="taskExecutor"
@@ -64,5 +67,26 @@
 		<property name="maxPoolSize" value="50" />
 		<property name="queueCapacity" value="1000" />
 	</bean>
+<!-- 
+	<bean id="serviceConfig" class="com.pingan.um.client.service.ServiceConfig">
+		<property name="searchUrl" value="${um2.search.http.url}" />
+		<property name="companyCode" value="${um2.company.code}" />
+		<property name="vUserID" value="${um2.vuser.id}" />
+		<property name="vUserPassword" value="${um2.vuser.pwd}" />
+		<property name="unitCode" value="${um2.unit.code}" />
+		<property name="userCacheSize" value="${um2.user.cache.size}" />
+	</bean>
+	<bean id="umServiceManager" class="com.pingan.um.client.service.UMServiceManager"
+		factory-method="getInstance">
+		<constructor-arg ref="serviceConfig" />
+	</bean>
+	<bean id="umUserService" factory-bean="umServiceManager"
+		factory-method="getUMUserService">
+	</bean>
+	<bean id="umAttributeService " factory-bean="umServiceManager"
+		factory-method="getUMAttributeService">
+	</bean>
 	
+
+ -->
 </beans>

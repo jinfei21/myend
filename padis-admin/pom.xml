@@ -2,9 +2,9 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>com.pingan.padis</groupId>
+		<groupId>com.yjfei.padis</groupId>
 		<artifactId>padis</artifactId>
-		<version>0.1.2-SNAPSHOT</version>
+		<version>1.0.0</version>
 	</parent>
 	<artifactId>padis-admin</artifactId>
 	<packaging>war</packaging>
@@ -16,24 +16,35 @@
 			<artifactId>junit</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>2.5</version>
+		</dependency>
+		
 
 		<dependency>
-			<groupId>com.pingan.padis</groupId>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-core</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>com.yjfei.padis</groupId>
 			<artifactId>padis-client</artifactId>
 			<exclusions>
 				<exclusion>
 					<groupId>redis.clients</groupId>
-					<artifactId>jedis</artifactId>				
+					<artifactId>jedis</artifactId>
 				</exclusion>
 			</exclusions>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>redis.clients</groupId>
 			<artifactId>jedis</artifactId>
-			<version>2.8.1</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-core</artifactId>
@@ -71,10 +82,15 @@
 			<version>1.9.9</version>
 		</dependency>
 
+		<dependency>
+			<groupId>commons-codec</groupId>
+			<artifactId>commons-codec</artifactId>
+			<version>1.9</version>
+		</dependency>
 	</dependencies>
 
 	<build>
-		<finalName>padis-admin</finalName>
+		<finalName>jedisx-admin</finalName>
 		<resources>
 			<resource>
 				<directory>src/main/resources/</directory>
@@ -90,8 +106,8 @@
 				<plugin>
 					<artifactId>maven-compiler-plugin</artifactId>
 					<configuration>
-						<source>1.6</source>
-						<target>1.6</target>
+						<source>1.7</source>
+						<target>1.7</target>
 						<encoding>utf8</encoding>
 					</configuration>
 				</plugin>

@@ -1,7 +1,7 @@
 angular.module("slotService", ['ngResource'])
     .factory("SlotService", ['$resource', '$routeParams',
         function ($resource, $routeParams) {
-            return $resource("/padis-admin/slot/:action",
+            return $resource("/jedisx-admin/slot/:action",
                 {},
                 {
                     distSlots:{

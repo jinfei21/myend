@@ -69,7 +69,7 @@ function CustomListCtrl($scope, $rootScope, MigrateService, CustomService,
 					custom:custom
 				};
 				var modalInstance = $modal.open({
-					templateUrl : '/padis-admin/partials/custom/updateCustom.html',
+					templateUrl : '/jedisx-admin/partials/custom/updateCustom.html',
 					controller : UpdateCustomCtrl,
 					resolve : {
 						data : function() {		

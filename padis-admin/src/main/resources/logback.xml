@@ -8,9 +8,9 @@
 	
 	<appender name="logfile" class="ch.qos.logback.core.rolling.RollingFileAppender">
 		<Encoding>UTF-8</Encoding>
-		<File>${log.base}/padis.log</File>
+		<File>${pafa.log.home}/jedisx.log</File>
 		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-			<FileNamePattern>${log.base}/padis-%d{yyyy-MM-dd}-%i.log</FileNamePattern>
+			<FileNamePattern>${pafa.log.home}/jedisx-%d{yyyy-MM-dd}-%i.log</FileNamePattern>
 			<MaxHistory>10</MaxHistory>
 			<TimeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
 				<MaxFileSize>2MB</MaxFileSize>

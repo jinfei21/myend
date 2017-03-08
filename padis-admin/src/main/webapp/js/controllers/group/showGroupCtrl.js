@@ -37,7 +37,7 @@ function ShowGroupCtrl($scope, $http, $modal, $routeParams, GroupService) {
     function initFunctions() {
     	
     	$scope.closeGroup = function(){
-    		 window.location = "/padis-admin/#/group";
+    		 window.location = "/jedisx-admin/#/group";
     	}
         
         $scope.closeAlert = function () {
