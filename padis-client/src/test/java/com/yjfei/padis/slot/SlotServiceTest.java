@@ -1,4 +1,4 @@
-package com.pingan.infra.slot;
+package com.yjfei.padis.slot;
 
 import java.util.List;
 
@@ -6,7 +6,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.pingan.infra.AbstractNestedZookeeperBaseTest;
+import com.yjfei.padis.AbstractNestedZookeeperBaseTest;
 import com.yjfei.padis.common.Status;
 import com.yjfei.padis.node.Slot;
 import com.yjfei.padis.slot.SlotService;

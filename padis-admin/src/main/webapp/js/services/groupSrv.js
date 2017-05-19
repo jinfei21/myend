@@ -1,7 +1,7 @@
 angular.module("groupService", ['ngResource'])
     .factory("GroupService", ['$resource', '$routeParams',
         function ($resource, $routeParams) {
-            return $resource("/jedisx-admin/group/:action",
+            return $resource("/padis-admin/group/:action",
                 {},
                 {
                 	getAllGroups: {

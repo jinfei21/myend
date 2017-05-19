@@ -1,4 +1,4 @@
-package com.pingan.infra.client;
+package com.yjfei.padis.client;
 
 import java.util.List;
 import java.util.Random;

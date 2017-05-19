@@ -24,7 +24,7 @@
 
 
 	<bean id="zkConfig"
-		class="com.pingan.jinke.infra.jedisx.common.ZookeeperConfiguration">
+		class="com.yjfei.padis.common.ZookeeperConfiguration">
 		<constructor-arg index="0" type="String" value="${zkAddr}" />
 		<constructor-arg index="1" type="String" value="padis" />
 		<constructor-arg index="2" type="int"
@@ -35,25 +35,25 @@
 	</bean>
 
 	<bean id="zkRegCenter"
-		class="com.pingan.jinke.infra.jedisx.storage.ZookeeperRegistryCenter"
+		class="com.yjfei.padis.storage.ZookeeperRegistryCenter"
 		init-method="init">
 		<constructor-arg index="0" ref="zkConfig" />
 	</bean>
 
-	<bean id="groupService" class="com.pingan.jinke.infra.jedisx.group.GroupService">
+	<bean id="groupService" class="com.yjfei.padis.group.GroupService">
 		<constructor-arg index="0" ref="zkRegCenter" />
 	</bean>
 
-	<bean id="instanceService" class="com.pingan.jinke.infra.jedisx.service.InstanceService">
+	<bean id="instanceService" class="com.yjfei.padis.service.InstanceService">
 		<constructor-arg index="0" ref="zkRegCenter" />
 	</bean>
 
-	<bean id="migrateService" class="com.pingan.jinke.infra.jedisx.service.MigrateService">
+	<bean id="migrateService" class="com.yjfei.padis.service.MigrateService">
 		<constructor-arg index="0" ref="zkRegCenter" />
 	</bean>
 
 	<bean id="migrateManager"
-		class="com.pingan.jinke.infra.jedisx.migrate.MigrateTaskManager"
+		class="com.yjfei.padis.migrate.MigrateTaskManager"
 		init-method="start">
 		<constructor-arg index="0" ref="zkRegCenter" />
 		<constructor-arg index="1" ref="taskExecutor" />

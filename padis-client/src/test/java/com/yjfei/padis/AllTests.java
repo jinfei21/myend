@@ -1,13 +1,13 @@
-package com.pingan.infra;
+package com.yjfei.padis;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
-import com.pingan.infra.client.JedisClientTest;
-import com.pingan.infra.custom.CustomServiceTest;
-import com.pingan.infra.group.GroupServiceTest;
-import com.pingan.infra.slot.SlotServiceTest;
+import com.yjfei.padis.client.JedisClientTest;
+import com.yjfei.padis.custom.CustomServiceTest;
+import com.yjfei.padis.group.GroupServiceTest;
+import com.yjfei.padis.slot.SlotServiceTest;
 
 
 @RunWith(Suite.class)

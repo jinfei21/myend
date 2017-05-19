@@ -1,11 +1,11 @@
-package com.pingan.infra.custom;
+package com.yjfei.padis.custom;
 
 import junit.framework.Assert;
 
 import org.junit.Before;
 import org.junit.Test;
 
-import com.pingan.infra.AbstractNestedZookeeperBaseTest;
+import com.yjfei.padis.AbstractNestedZookeeperBaseTest;
 import com.yjfei.padis.common.Status;
 import com.yjfei.padis.custom.CustomService;
 import com.yjfei.padis.node.Custom;

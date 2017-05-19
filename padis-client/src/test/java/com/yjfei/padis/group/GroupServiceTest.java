@@ -1,4 +1,4 @@
-package com.pingan.infra.group;
+package com.yjfei.padis.group;
 
 import static org.mockito.Mockito.when;
 

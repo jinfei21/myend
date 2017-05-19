@@ -1,4 +1,4 @@
-package com.pingan.infra;
+package com.yjfei.padis;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;

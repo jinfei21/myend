@@ -1,7 +1,7 @@
 angular.module("loginService", ['ngResource'])
     .factory("LoginService", ['$resource', '$routeParams',
         function ($resource, $routeParams) {
-            return $resource("/jedisx-admin/login/:action",
+            return $resource("/padis-admin/login/:action",
                 {},
                 {
                     login: {

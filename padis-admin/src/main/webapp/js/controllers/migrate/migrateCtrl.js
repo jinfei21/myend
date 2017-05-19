@@ -43,7 +43,7 @@ function MigrateListCtrl($scope, $rootScope, MigrateService, BaseTableService,
 				instance:$scope.curInstance
 			};
 			var modalInstance = $modal.open({
-				templateUrl : '/jedisx-admin/partials/migrate/addMigrate.html',
+				templateUrl : '/padis-admin/partials/migrate/addMigrate.html',
 				controller : AddMigrateCtrl,
 				resolve : {
 					data : function() {
@@ -72,7 +72,7 @@ function MigrateListCtrl($scope, $rootScope, MigrateService, BaseTableService,
 	    $scope.deleteMigrate = function(migrate){
 	        var modalInstance = $modal.open({
 	 
-	            templateUrl: '/jedisx-admin/partials/common/deleteConfirm.html',
+	            templateUrl: '/padis-admin/partials/common/deleteConfirm.html',
 	            controller: 'DelMigrateCtrl',
 	            resolve: {
 	                migrate: function () {

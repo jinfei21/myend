@@ -45,7 +45,7 @@ function GroupListCtrl($scope,$rootScope,GroupService,BaseTableService,$modal,$f
 	                isShow:false
 	            };
 	            var modalInstance = $modal.open({
-	                templateUrl: '/jedisx-admin/partials/group/addGroup.html',
+	                templateUrl: '/padis-admin/partials/group/addGroup.html',
 	                controller: AddGroupCtrl,
 	                resolve: {
 	                    data: function () {
@@ -62,7 +62,7 @@ function GroupListCtrl($scope,$rootScope,GroupService,BaseTableService,$modal,$f
 	    $scope.deleteGroup = function(group){
 	        var modalInstance = $modal.open({
 	 
-	            templateUrl: '/jedisx-admin/partials/common/deleteConfirm.html',
+	            templateUrl: '/padis-admin/partials/common/deleteConfirm.html',
 	            controller: 'DelGroupCtrl',
 	            resolve: {
 	                group: function () {
