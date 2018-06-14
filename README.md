@@ -1,10 +1,10 @@
 # padis分布式缓存
-###1、介绍
+### 1、介绍
   padis是一套分布式redis缓存解决方案，包含了客户端和管理界面，提供高可用，容量动态伸缩，数据隔离和客户端限流等功能。
   
   
-###2、配置
-####2.1 admin配置
+### 2、配置
+#### 2.1 admin配置
 ```config.properties
 zkAddr=ip:2181 #zookeeper注册中心地址
 ```
@@ -19,7 +19,7 @@ cd padis-admin/target
 http://localhost:8080/padis-admin
 ```
 ![admin](https://github.com/jinfei21/padis/blob/master/doc/admin.PNG)
-####2.2 client配置
+#### 2.2 client配置
 ```PadisConfig
 instance：实例对应一组redis group，需要admin分配
 zkAddr：zookeeper注册中心地址
@@ -30,7 +30,7 @@ soTimeout：数据传输超时时间
 maxTotal：连接池最大连接数
 ```
 
-###3、使用client
+### 3、使用client
 ```java
 import com.yjfei.cache.padis.IPadis;
 import com.yjfei.cache.padis.PadisDirectClient;
@@ -58,7 +58,7 @@ public class main {
 ```
 
 
-###4、参考
+### 4、参考
 |-|-|
 |---|---|
 |codis|https://github.com/CodisLabs/codis|
